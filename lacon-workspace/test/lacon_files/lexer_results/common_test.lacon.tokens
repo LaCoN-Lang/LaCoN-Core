@@ -1,0 +1,817 @@
+TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
+------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                            |                                          |                      | 1:1        |            |           
+Underscore                     | _                                        |                      | 1:1        | True       |           
+Newline                        |                                          |                      | 1:2        |            |           
+Identifier                     | __                                       |                      | 2:1        | True       |           
+Newline                        |                                          |                      | 2:3        |            |           
+Identifier                     | na_me                                    |                      | 3:1        | True       |           
+Newline                        |                                          |                      | 3:6        |            |           
+Identifier                     | __na_me                                  |                      | 4:1        | True       |           
+Newline                        |                                          |                      | 4:8        |            |           
+Number                         | 1                                        | 1                    | 5:1        | True       |           
+AsteriskAsterisk               | ××                                       |                      | 5:3        |            | WS        
+Number                         | 2                                        | 2                    | 5:6        |            | WS        
+Newline                        |                                          |                      | 5:7        |            |           
+Number                         | 1                                        | 1                    | 6:1        | True       |           
+AsteriskAsterisk               | **                                       |                      | 6:3        |            | WS        
+Number                         | 2                                        | 2                    | 6:6        |            | WS        
+Newline                        |                                          |                      | 6:7        |            |           
+Number                         | 1                                        | 1                    | 7:1        | True       |           
+AsteriskAsterisk               | ×*                                       |                      | 7:3        |            | WS        
+Number                         | 2                                        | 2                    | 7:6        |            | WS        
+Newline                        |                                          |                      | 7:7        |            |           
+Number                         | 1                                        | 1                    | 8:1        | True       |           
+AsteriskAsterisk               | *×                                       |                      | 8:3        |            | WS        
+Number                         | 2                                        | 2                    | 8:6        |            | WS        
+Newline                        |                                          |                      | 8:7        |            |           
+Number                         | 10                                       | 10                   | 9:1        | True       |           
+Unit                           | kW⋅s                                     | kW⋅s                 | 9:4        |            |           
+Newline                        |                                          |                      | 9:8        |            |           
+Number                         | 10                                       | 10                   | 10:1       | True       |           
+Unit                           | W*s                                      | W*s                  | 10:4       |            |           
+Newline                        |                                          |                      | 10:7       |            |           
+Number                         | 10                                       | 10                   | 11:1       | True       |           
+Unit                           | kW*fs                                    | kW*fs                | 11:4       |            |           
+Newline                        |                                          |                      | 11:9       |            |           
+Number                         | 10                                       | 10                   | 12:1       | True       |           
+Unit                           | kW⋅fs                                    | kW⋅fs                | 12:4       |            |           
+Newline                        |                                          |                      | 12:9       |            |           
+Number                         | 10                                       | 10                   | 13:1       | True       |           
+Unit                           | m3                                       | m3                   | 13:4       |            |           
+Arrow                          | ->                                       |                      | 13:7       |            | WS        
+Number                         | n                                        | 1                    | 13:10      |            | WS        
+Unit                           | L                                        | L                    | 13:11      |            |           
+Newline                        |                                          |                      | 13:12      |            |           
+Number                         | 10                                       | 10                   | 14:1       | True       |           
+Unit                           | m3                                       | m3                   | 14:4       |            |           
+Arrow                          | ->                                       |                      | 14:7       |            | WS        
+Identifier                     | n                                        |                      | 14:10      |            | WS        
+Newline                        |                                          |                      | 14:11      |            |           
+Number                         | 10                                       | 10                   | 15:1       | True       |           
+Unit                           | m3                                       | m3                   | 15:4       |            |           
+Arrow                          | ->                                       |                      | 15:7       |            | WS        
+Identifier                     | n                                        |                      | 15:10      |            | WS        
+Number                         | 1                                        | 1                    | 15:12      |            | WS        
+Newline                        |                                          |                      | 15:13      |            |           
+Number                         | 10                                       | 10                   | 16:1       | True       |           
+Unit                           | m3                                       | m3                   | 16:4       |            |           
+Arrow                          | ->                                       |                      | 16:7       |            | WS        
+Number                         | 1                                        | 1                    | 16:10      |            | WS        
+Unit                           | L                                        | L                    | 16:11      |            |           
+Newline                        |                                          |                      | 16:12      |            |           
+Number                         | 10                                       | 10                   | 17:1       | True       |           
+Unit                           | m3                                       | m3                   | 17:4       |            |           
+Arrow                          | ->                                       |                      | 17:7       |            | WS        
+Number                         | n                                        | 1                    | 17:10      |            | WS        
+Unit                           | nL                                       | nL                   | 17:11      |            |           
+Newline                        |                                          |                      | 17:13      |            |           
+Number                         | 10                                       | 10                   | 18:1       | True       |           
+Unit                           | m3                                       | m3                   | 18:4       |            |           
+Arrow                          | ->                                       |                      | 18:7       |            | WS        
+Number                         | 10                                       | 10                   | 18:10      |            | WS        
+Unit                           | nL                                       | nL                   | 18:12      |            |           
+Newline                        |                                          |                      | 18:14      |            |           
+Number                         | 10                                       | 10                   | 19:1       | True       |           
+Unit                           | kg⋅m/μs                                  | kg⋅m/μs              | 19:4       |            |           
+Newline                        |                                          |                      | 19:11      |            |           
+Number                         | 10                                       | 10                   | 20:1       | True       |           
+Unit                           | kg/m3                                    | kg/m3                | 20:3       |            |           
+Newline                        |                                          |                      | 20:8       |            |           
+Number                         | 10                                       | 10                   | 21:1       | True       |           
+Unit                           | kg/m3                                    | kg/m3                | 21:8       |            |           
+Newline                        |                                          |                      | 21:13      |            |           
+Identifier                     | kg                                       |                      | 22:1       | True       |           
+Slash                          | /                                        |                      | 22:3       |            |           
+Identifier                     | m3                                       |                      | 22:4       |            |           
+Newline                        |                                          |                      | 22:6       |            |           
+Identifier                     | key                                      |                      | 23:1       | True       |           
+Equal                          | =                                        |                      | 23:5       |            | WS        
+Number                         | 1                                        | 1                    | 23:7       |            | WS        
+Unit                           | m/s6                                     | m/s6                 | 23:8       |            |           
+Newline                        |                                          |                      | 23:12      |            |           
+Identifier                     | key                                      |                      | 24:1       | True       |           
+Equal                          | =                                        |                      | 24:5       |            | WS        
+Number                         | 1                                        | 1                    | 24:7       |            | WS        
+Unit                           | km/s6                                    | km/s6                | 24:8       |            |           
+Newline                        |                                          |                      | 24:13      |            |           
+Identifier                     | key                                      |                      | 25:1       | True       |           
+Equal                          | =                                        |                      | 25:5       |            | WS        
+Number                         | 1                                        | 1                    | 25:7       |            | WS        
+Unit                           | km/ks6                                   | km/ks6               | 25:8       |            |           
+Newline                        |                                          |                      | 25:14      |            |           
+Identifier                     | key                                      |                      | 26:1       | True       |           
+Equal                          | =                                        |                      | 26:5       |            | WS        
+Number                         | 1                                        | 1                    | 26:7       |            | WS        
+Unit                           | Mm/μs6                                   | Mm/μs6               | 26:8       |            |           
+Newline                        |                                          |                      | 26:14      |            |           
+Identifier                     | key                                      |                      | 27:1       | True       |           
+Equal                          | =                                        |                      | 27:5       |            | WS        
+Number                         | 1                                        | 1                    | 27:7       |            | WS        
+Unit                           | μm/Ms6                                   | μm/Ms6               | 27:8       |            |           
+Newline                        |                                          |                      | 27:14      |            |           
+Identifier                     | key                                      |                      | 28:1       | True       |           
+Equal                          | =                                        |                      | 28:5       |            | WS        
+Number                         | 1                                        | 1                    | 28:7       |            | WS        
+Unit                           | %                                        | %                    | 28:8       |            |           
+Newline                        |                                          |                      | 28:9       |            |           
+Identifier                     | key                                      |                      | 29:1       | True       |           
+Equal                          | =                                        |                      | 29:5       |            | WS        
+Number                         | 1                                        | 1                    | 29:7       |            | WS        
+Unit                           | kg                                       | kg                   | 29:8       |            |           
+Newline                        |                                          |                      | 29:10      |            |           
+Identifier                     | key                                      |                      | 30:1       | True       |           
+Equal                          | =                                        |                      | 30:5       |            | WS        
+Number                         | 1                                        | 1                    | 30:7       |            | WS        
+Unit                           | g                                        | g                    | 30:8       |            |           
+Newline                        |                                          |                      | 30:9       |            |           
+Identifier                     | key                                      |                      | 31:1       | True       |           
+Equal                          | =                                        |                      | 31:5       |            | WS        
+Number                         | 1                                        | 1                    | 31:7       |            | WS        
+Unit                           | μg/m3                                    | μg/m3                | 31:8       |            |           
+Newline                        |                                          |                      | 31:13      |            |           
+Identifier                     | key                                      |                      | 32:1       | True       |           
+Equal                          | =                                        |                      | 32:5       |            | WS        
+Number                         | 1                                        | 1                    | 32:7       |            | WS        
+Unit                           | μg/μm3                                   | μg/μm3               | 32:8       |            |           
+Newline                        |                                          |                      | 32:14      |            |           
+Identifier                     | key                                      |                      | 33:1       | True       |           
+Equal                          | =                                        |                      | 33:5       |            | WS        
+Number                         | 1                                        | 1                    | 33:7       |            | WS        
+Unit                           | kg/cm3                                   | kg/cm3               | 33:8       |            |           
+Newline                        |                                          |                      | 33:14      |            |           
+Identifier                     | key                                      |                      | 34:1       | True       |           
+Equal                          | =                                        |                      | 34:5       |            | WS        
+Number                         | 1                                        | 1                    | 34:7       |            | WS        
+Unit                           | kg/m3                                    | kg/m3                | 34:8       |            |           
+Newline                        |                                          |                      | 34:13      |            |           
+Number                         | 25                                       | 25                   | 35:1       | True       |           
+DotMinus                       | ∸                                        |                      | 35:4       |            | WS        
+Number                         | 100                                      | 100                  | 35:6       |            | WS        
+Newline                        |                                          |                      | 35:9       |            |           
+Identifier                     | string                                   |                      | 36:1       | True       |           
+EqualEqualEqual                | ≣                                        |                      | 36:8       |            | WS        
+Identifier                     | string                                   |                      | 36:10      |            | WS        
+Newline                        |                                          |                      | 36:16      |            |           
+Newline                        |                                          |                      | 37:1       |            |           
+Generate                       | generate                                 |                      | 38:1       | True       |           
+LeftParen                      | (                                        |                      | 38:10      |            | WS        
+Number                         | 0x4E3                                    | 0x4E3                | 38:11      |            |           
+DotDot                         | ..                                       |                      | 38:17      |            | WS        
+Minus                          | -                                        |                      | 38:20      |            | WS        
+Number                         | 10                                       | 10                   | 38:21      |            |           
+RightParen                     | )                                        |                      | 38:23      |            |           
+As                             | as                                       |                      | 38:25      |            | WS        
+Local                          | local                                    |                      | 38:28      |            | WS        
+Variable                       | let                                      |                      | 38:34      |            | WS        
+Identifier                     | code-point                               |                      | 38:38      |            | WS        
+LeftBrace                      | {                                        |                      | 38:49      |            | WS        
+Newline                        |                                          |                      | 38:50      |            |           
+Yield                          | yield                                    |                      | 39:2       | True       |           
+Identifier                     | unicode-                                 |                      | 39:8       |            | WS        
+DollarLeftBrace                | ${                                       |                      | 39:16      |            |           
+Identifier                     | code-point                               |                      | 39:18      |            |           
+RightBrace                     | }                                        |                      | 39:28      |            |           
+LeftBrace                      | {                                        |                      | 39:30      |            | WS        
+Newline                        |                                          |                      | 39:31      |            |           
+Identifier                     | char                                     |                      | 40:3       | True       |           
+Backslash                      | \                                        |                      | 40:8       |            | WS        
+Identifier                     | u                                        |                      | 40:9       |            |           
+LeftBrace                      | {                                        |                      | 40:10      |            |           
+DollarLeftBrace                | ${                                       |                      | 40:11      |            |           
+Identifier                     | code-point                               |                      | 40:13      |            |           
+RightBrace                     | }                                        |                      | 40:23      |            |           
+RightBrace                     | }                                        |                      | 40:24      |            |           
+Newline                        |                                          |                      | 40:25      |            |           
+Indent                         |                                          |                      | 41:1       |            |           
+RightBrace                     | }                                        |                      | 41:2       | True       |           
+Newline                        |                                          |                      | 41:3       |            |           
+Dedent                         |                                          |                      | 42:1       |            |           
+RightBrace                     | }                                        |                      | 42:1       | True       |           
+Newline                        |                                          |                      | 42:2       |            |           
+Spread                         | spread                                   |                      | 43:1       | True       |           
+LeftBracket                    | [                                        |                      | 43:8       |            | WS        
+SingleQuotedString             | 'one'                                    | one                  | 43:9       |            |           
+Comma                          | ,                                        |                      | 43:14      |            |           
+SingleQuotedString             | 'two'                                    | two                  | 43:16      |            | WS        
+Comma                          | ,                                        |                      | 43:21      |            |           
+SingleQuotedString             | 'three'                                  | three                | 43:23      |            | WS        
+Comma                          | ,                                        |                      | 43:30      |            |           
+SingleQuotedString             | 'four'                                   | four                 | 43:32      |            | WS        
+Comma                          | ,                                        |                      | 43:38      |            |           
+SingleQuotedString             | 'five'                                   | five                 | 43:40      |            | WS        
+RightBracket                   | ]                                        |                      | 43:46      |            |           
+As                             | as                                       |                      | 43:48      |            | WS        
+Identifier                     | name                                     |                      | 43:51      |            | WS        
+LeftBrace                      | {                                        |                      | 43:56      |            | WS        
+Newline                        |                                          |                      | 43:57      |            |           
+Yield                          | yield                                    |                      | 44:2       | True       |           
+Identifier                     | digit-                                   |                      | 44:8       |            | WS        
+DollarLeftBrace                | ${                                       |                      | 44:14      |            |           
+Identifier                     | name                                     |                      | 44:16      |            |           
+RightBrace                     | }                                        |                      | 44:20      |            |           
+LeftBrace                      | {                                        |                      | 44:22      |            | WS        
+Newline                        |                                          |                      | 44:23      |            |           
+Identifier                     | number-value                             |                      | 45:3       | True       |           
+Colon                          | :                                        |                      | 45:15      |            |           
+Identifier                     | index                                    |                      | 45:17      |            | WS        
+Newline                        |                                          |                      | 45:22      |            |           
+RightBrace                     | }                                        |                      | 46:2       | True       |           
+Newline                        |                                          |                      | 46:3       |            |           
+RightBrace                     | }                                        |                      | 47:1       | True       |           
+Newline                        |                                          |                      | 47:2       |            |           
+Spread                         | spread                                   |                      | 48:1       | True       |           
+LeftBracket                    | [                                        |                      | 48:8       |            | WS        
+SingleQuotedString             | 'aries'                                  | aries                | 48:9       |            |           
+Comma                          | ,                                        |                      | 48:16      |            |           
+SingleQuotedString             | 'taurus'                                 | taurus               | 48:18      |            | WS        
+Comma                          | ,                                        |                      | 48:26      |            |           
+SingleQuotedString             | 'gemini'                                 | gemini               | 48:28      |            | WS        
+Comma                          | ,                                        |                      | 48:36      |            |           
+SingleQuotedString             | 'cancer'                                 | cancer               | 48:38      |            | WS        
+Comma                          | ,                                        |                      | 48:46      |            |           
+SingleQuotedString             | 'leo'                                    | leo                  | 48:48      |            | WS        
+Comma                          | ,                                        |                      | 48:53      |            |           
+SingleQuotedString             | 'virgo'                                  | virgo                | 48:55      |            | WS        
+Comma                          | ,                                        |                      | 48:62      |            |           
+SingleQuotedString             | 'libra'                                  | libra                | 48:64      |            | WS        
+Comma                          | ,                                        |                      | 48:71      |            |           
+SingleQuotedString             | 'scorpio'                                | scorpio              | 48:73      |            | WS        
+Comma                          | ,                                        |                      | 48:82      |            |           
+SingleQuotedString             | 'sagittarius'                            | sagittarius          | 48:84      |            | WS        
+Comma                          | ,                                        |                      | 48:97      |            |           
+SingleQuotedString             | 'capricorn'                              | capricorn            | 48:99      |            | WS        
+Comma                          | ,                                        |                      | 48:110     |            |           
+SingleQuotedString             | 'aquarius'                               | aquarius             | 48:112     |            | WS        
+Comma                          | ,                                        |                      | 48:122     |            |           
+SingleQuotedString             | 'pisces'                                 | pisces               | 48:124     |            | WS        
+Comma                          | ,                                        |                      | 48:132     |            |           
+SingleQuotedString             | 'ophiuchus'                              | ophiuchus            | 48:134     |            | WS        
+RightBracket                   | ]                                        |                      | 48:145     |            |           
+As                             | as                                       |                      | 48:147     |            | WS        
+Variable                       | let                                      |                      | 48:150     |            | WS        
+Identifier                     | name                                     |                      | 48:154     |            | WS        
+LeftBrace                      | {                                        |                      | 48:159     |            | WS        
+Newline                        |                                          |                      | 48:160     |            |           
+Local                          | local                                    |                      | 49:2       | True       |           
+Identifier                     | code-point                               |                      | 49:8       |            | WS        
+Equal                          | =                                        |                      | 49:19      |            | WS        
+Identifier                     | format                                   |                      | 49:21      |            | WS        
+LeftParen                      | (                                        |                      | 49:27      |            |           
+String                         | "{:04X}"                                 | {:04X}               | 49:28      |            |           
+Comma                          | ,                                        |                      | 49:36      |            |           
+Number                         | 0x2648                                   | 0x2648               | 49:38      |            | WS        
+Plus                           | +                                        |                      | 49:45      |            | WS        
+Identifier                     | index                                    |                      | 49:47      |            | WS        
+RightParen                     | )                                        |                      | 49:52      |            |           
+Newline                        |                                          |                      | 49:53      |            |           
+Yield                          | yield                                    |                      | 50:2       | True       |           
+Identifier                     | astrological-zodiacal-sign               |                      | 50:8       |            | WS        
+Minus                          | -                                        |                      | 50:34      |            |           
+LeftBrace                      | {                                        |                      | 50:35      |            |           
+Identifier                     | name                                     |                      | 50:36      |            |           
+RightBrace                     | }                                        |                      | 50:40      |            |           
+Identifier                     | -text                                    |                      | 50:41      |            |           
+LeftBrace                      | {                                        |                      | 50:47      |            | WS        
+Newline                        |                                          |                      | 50:48      |            |           
+Identifier                     | code-point                               |                      | 51:3       | True       |           
+Colon                          | :                                        |                      | 51:13      |            |           
+GraveQuotedString              | `U+                                      | U+                   | 51:15      |            | WS        
+DollarLeftBrace                | ${                                       |                      | 51:18      |            |           
+Identifier                     | code-point                               |                      | 51:20      |            |           
+RightBrace                     | }                                        |                      | 51:30      |            |           
+GraveQuotedString              | `                                        |                      | 51:31      |            |           
+Newline                        |                                          |                      | 51:32      |            |           
+Identifier                     | sequence                                 |                      | 52:3       | True       |           
+Colon                          | :                                        |                      | 52:11      |            |           
+LeftBracket                    | [                                        |                      | 52:13      |            | WS        
+Identifier                     | code-point                               |                      | 52:14      |            |           
+Comma                          | ,                                        |                      | 52:24      |            |           
+GraveQuotedString              | `FE0E`                                   | FE0E                 | 52:26      |            | WS        
+RightBracket                   | ]                                        |                      | 52:32      |            |           
+Newline                        |                                          |                      | 52:33      |            |           
+Identifier                     | pos                                      |                      | 53:3       | True       |           
+Colon                          | :                                        |                      | 53:6       |            |           
+Identifier                     | index                                    |                      | 53:8       |            | WS        
+Newline                        |                                          |                      | 53:13      |            |           
+RightBrace                     | }                                        |                      | 54:2       | True       |           
+Newline                        |                                          |                      | 54:3       |            |           
+RightBrace                     | }                                        |                      | 55:1       | True       |           
+Newline                        |                                          |                      | 55:2       |            |           
+Spread                         | spread                                   |                      | 56:1       | True       |           
+LeftParen                      | (                                        |                      | 56:8       |            | WS        
+LeftBracket                    | [                                        |                      | 56:9       |            |           
+SingleQuotedString             | 'c'                                      | c                    | 56:10      |            |           
+Comma                          | ,                                        |                      | 56:13      |            |           
+SingleQuotedString             | 's'                                      | s                    | 56:15      |            | WS        
+RightBracket                   | ]                                        |                      | 56:18      |            |           
+Comma                          | ,                                        |                      | 56:19      |            |           
+LeftBracket                    | [                                        |                      | 56:21      |            | WS        
+SingleQuotedString             | 'prosgegrammeni'                         | prosgegrammeni       | 56:22      |            |           
+Comma                          | ,                                        |                      | 56:38      |            |           
+SingleQuotedString             | 'ypogegrammeni'                          | ypogegrammeni        | 56:40      |            | WS        
+RightBracket                   | ]                                        |                      | 56:55      |            |           
+RightParen                     | )                                        |                      | 56:56      |            |           
+As                             | as                                       |                      | 56:58      |            | WS        
+Variable                       | let                                      |                      | 56:61      |            | WS        
+LeftParen                      | (                                        |                      | 56:65      |            | WS        
+Identifier                     | letter-case                              |                      | 56:66      |            |           
+Comma                          | ,                                        |                      | 56:77      |            |           
+Identifier                     | suffix                                   |                      | 56:79      |            | WS        
+RightParen                     | )                                        |                      | 56:85      |            |           
+LeftBrace                      | {                                        |                      | 56:87      |            | WS        
+Newline                        |                                          |                      | 56:88      |            |           
+Local                          | local                                    |                      | 57:2       | True       |           
+Constant                       | const                                    |                      | 57:8       |            | WS        
+Identifier                     | code-points                              |                      | 57:14      |            | WS        
+Equal                          | =                                        |                      | 57:26      |            | WS        
+LeftBracket                    | [                                        |                      | 57:28      |            | WS        
+Number                         | 1                                        | 1                    | 57:29      |            |           
+Identifier                     | FBC                                      |                      | 57:30      |            |           
+Comma                          | ,                                        |                      | 57:33      |            |           
+Number                         | 1                                        | 1                    | 57:35      |            | WS        
+Identifier                     | FB3                                      |                      | 57:36      |            |           
+RightBracket                   | ]                                        |                      | 57:39      |            |           
+Newline                        |                                          |                      | 57:40      |            |           
+Yield                          | yield                                    |                      | 58:2       | True       |           
+Identifier                     | hel_                                     |                      | 58:8       |            | WS        
+DollarLeftBrace                | ${                                       |                      | 58:12      |            |           
+Identifier                     | letter-case                              |                      | 58:14      |            |           
+RightBrace                     | }                                        |                      | 58:25      |            |           
+Identifier                     | _let_a_alpha__                           |                      | 58:26      |            |           
+DollarLeftBrace                | ${                                       |                      | 58:40      |            |           
+Identifier                     | suffix                                   |                      | 58:42      |            |           
+RightBrace                     | }                                        |                      | 58:48      |            |           
+LeftBrace                      | {                                        |                      | 58:50      |            | WS        
+Newline                        |                                          |                      | 58:51      |            |           
+Identifier                     | unicode                                  |                      | 59:3       | True       |           
+Colon                          | :                                        |                      | 59:10      |            |           
+Identifier                     | select                                   |                      | 59:12      |            | WS        
+LeftParen                      | (                                        |                      | 59:18      |            |           
+Identifier                     | code-points                              |                      | 59:19      |            |           
+RightParen                     | )                                        |                      | 59:30      |            |           
+Newline                        |                                          |                      | 59:31      |            |           
+Identifier                     | symbol                                   |                      | 60:3       | True       |           
+LeftBrace                      | {                                        |                      | 60:10      |            | WS        
+Newline                        |                                          |                      | 60:11      |            |           
+Identifier                     | letter                                   |                      | 61:4       | True       |           
+Colon                          | :                                        |                      | 61:10      |            |           
+Identifier                     | hel_                                     |                      | 61:12      |            | WS        
+DollarLeftBrace                | ${                                       |                      | 61:16      |            |           
+Identifier                     | letter-case                              |                      | 61:18      |            |           
+RightBrace                     | }                                        |                      | 61:29      |            |           
+Identifier                     | _let_a_alpha                             |                      | 61:30      |            |           
+Newline                        |                                          |                      | 61:42      |            |           
+RightBrace                     | }                                        |                      | 62:3       | True       |           
+Newline                        |                                          |                      | 62:4       |            |           
+Indent                         |                                          |                      | 63:1       |            |           
+RightBrace                     | }                                        |                      | 63:2       | True       |           
+Newline                        |                                          |                      | 63:3       |            |           
+Dedent                         |                                          |                      | 64:1       |            |           
+RightBrace                     | }                                        |                      | 64:1       | True       |           
+Newline                        |                                          |                      | 64:2       |            |           
+Spread                         | spread                                   |                      | 65:1       | True       |           
+LeftParen                      | (                                        |                      | 65:8       |            | WS        
+LeftBracket                    | [                                        |                      | 65:9       |            |           
+SingleQuotedString             | 'c'                                      | c                    | 65:10      |            |           
+Comma                          | ,                                        |                      | 65:13      |            |           
+SingleQuotedString             | 's'                                      | s                    | 65:15      |            | WS        
+RightBracket                   | ]                                        |                      | 65:18      |            |           
+Comma                          | ,                                        |                      | 65:19      |            |           
+LeftBracket                    | [                                        |                      | 65:21      |            | WS        
+SingleQuotedString             | 'prosgegrammeni'                         | prosgegrammeni       | 65:22      |            |           
+Comma                          | ,                                        |                      | 65:38      |            |           
+SingleQuotedString             | 'ypogegrammeni'                          | ypogegrammeni        | 65:40      |            | WS        
+RightBracket                   | ]                                        |                      | 65:55      |            |           
+Comma                          | ,                                        |                      | 65:56      |            |           
+LeftBracket                    | [                                        |                      | 65:58      |            | WS        
+Number                         | 1                                        | 1                    | 65:59      |            |           
+Identifier                     | FBC                                      |                      | 65:60      |            |           
+Comma                          | ,                                        |                      | 65:63      |            |           
+Number                         | 1                                        | 1                    | 65:65      |            | WS        
+Identifier                     | FB3                                      |                      | 65:66      |            |           
+RightBracket                   | ]                                        |                      | 65:69      |            |           
+RightParen                     | )                                        |                      | 65:70      |            |           
+As                             | as                                       |                      | 65:72      |            | WS        
+Variable                       | let                                      |                      | 65:75      |            | WS        
+LeftParen                      | (                                        |                      | 65:79      |            | WS        
+Identifier                     | letter-case                              |                      | 65:80      |            |           
+Comma                          | ,                                        |                      | 65:91      |            |           
+Identifier                     | suffix                                   |                      | 65:93      |            | WS        
+Comma                          | ,                                        |                      | 65:99      |            |           
+Identifier                     | code-point                               |                      | 65:101     |            | WS        
+RightParen                     | )                                        |                      | 65:111     |            |           
+LeftBrace                      | {                                        |                      | 65:113     |            | WS        
+Newline                        |                                          |                      | 65:114     |            |           
+Yield                          | yield                                    |                      | 66:2       | True       |           
+Identifier                     | hel_                                     |                      | 66:8       |            | WS        
+DollarLeftBrace                | ${                                       |                      | 66:12      |            |           
+Identifier                     | letter-case                              |                      | 66:14      |            |           
+RightBrace                     | }                                        |                      | 66:25      |            |           
+Identifier                     | _let_a_alpha__                           |                      | 66:26      |            |           
+DollarLeftBrace                | ${                                       |                      | 66:40      |            |           
+Identifier                     | suffix                                   |                      | 66:42      |            |           
+RightBrace                     | }                                        |                      | 66:48      |            |           
+LeftBrace                      | {                                        |                      | 66:50      |            | WS        
+Newline                        |                                          |                      | 66:51      |            |           
+Identifier                     | unicode                                  |                      | 67:3       | True       |           
+Colon                          | :                                        |                      | 67:10      |            |           
+Identifier                     | code-point                               |                      | 67:12      |            | WS        
+Newline                        |                                          |                      | 67:22      |            |           
+Identifier                     | symbol                                   |                      | 68:3       | True       |           
+LeftBrace                      | {                                        |                      | 68:10      |            | WS        
+Newline                        |                                          |                      | 68:11      |            |           
+Identifier                     | letter                                   |                      | 69:4       | True       |           
+Colon                          | :                                        |                      | 69:10      |            |           
+GraveQuotedString              | `hel_                                    | hel_                 | 69:12      |            | WS        
+DollarLeftBrace                | ${                                       |                      | 69:17      |            |           
+Identifier                     | letter-case                              |                      | 69:19      |            |           
+RightBrace                     | }                                        |                      | 69:30      |            |           
+GraveQuotedString              | _let_a_alpha`                            | _let_a_alpha         | 69:31      |            |           
+Newline                        |                                          |                      | 69:44      |            |           
+RightBrace                     | }                                        |                      | 70:3       | True       |           
+Newline                        |                                          |                      | 70:4       |            |           
+Indent                         |                                          |                      | 71:1       |            |           
+RightBrace                     | }                                        |                      | 71:2       | True       |           
+Newline                        |                                          |                      | 71:3       |            |           
+Dedent                         |                                          |                      | 72:1       |            |           
+RightBrace                     | }                                        |                      | 72:1       | True       |           
+Newline                        |                                          |                      | 72:2       |            |           
+Newline                        |                                          |                      | 73:1       |            |           
+Variable                       | let                                      |                      | 74:1       | True       |           
+Identifier                     | что-то-там                               |                      | 74:5       |            | WS        
+Equal                          | =                                        |                      | 74:16      |            | WS        
+Number                         | 20_000                                   | 20_000               | 74:18      |            | WS        
+Unit                           | μW                                       | μW                   | 74:24      |            |           
+Newline                        |                                          |                      | 74:26      |            |           
+Variable                       | let                                      |                      | 75:1       | True       |           
+Identifier                     | speed                                    |                      | 75:5       |            | WS        
+Less                           | <                                        |                      | 75:10      |            |           
+Identifier                     | Speed                                    |                      | 75:11      |            |           
+Greater                        | >                                        |                      | 75:16      |            |           
+Equal                          | =                                        |                      | 75:18      |            | WS        
+Number                         | 278                                      | 278                  | 75:20      |            | WS        
+Unit                           | ft/s                                     | ft/s                 | 75:23      |            |           
+Newline                        |                                          |                      | 75:27      |            |           
+Variable                       | let                                      |                      | 76:1       | True       |           
+Identifier                     | time                                     |                      | 76:5       |            | WS        
+Less                           | <                                        |                      | 76:9       |            |           
+Identifier                     | Time                                     |                      | 76:10      |            |           
+Greater                        | >                                        |                      | 76:14      |            |           
+Equal                          | =                                        |                      | 76:16      |            | WS        
+Number                         | 25                                       | 25                   | 76:18      |            | WS        
+Unit                           | μs                                       | μs                   | 76:20      |            |           
+Newline                        |                                          |                      | 76:22      |            |           
+Variable                       | let                                      |                      | 77:1       | True       |           
+Identifier                     | length                                   |                      | 77:5       |            | WS        
+Less                           | <                                        |                      | 77:11      |            |           
+Identifier                     | Length                                   |                      | 77:12      |            |           
+Greater                        | >                                        |                      | 77:18      |            |           
+Equal                          | =                                        |                      | 77:20      |            | WS        
+Number                         | 25                                       | 25                   | 77:22      |            | WS        
+Unit                           | pc                                       | pc                   | 77:24      |            |           
+Newline                        |                                          |                      | 77:26      |            |           
+Variable                       | let                                      |                      | 78:1       | True       |           
+Identifier                     | degree                                   |                      | 78:5       |            | WS        
+Less                           | <                                        |                      | 78:11      |            |           
+Identifier                     | Degree                                   |                      | 78:12      |            |           
+Greater                        | >                                        |                      | 78:18      |            |           
+Equal                          | =                                        |                      | 78:20      |            | WS        
+Number                         | 45                                       | 45                   | 78:22      |            | WS        
+Unit                           | °                                        | °                    | 78:24      |            |           
+Newline                        |                                          |                      | 78:25      |            |           
+Constant                       | const                                    |                      | 79:1       | True       |           
+Identifier                     | generator-power                          |                      | 79:7       |            | WS        
+Less                           | <                                        |                      | 79:22      |            |           
+Identifier                     | ElectricPower                            |                      | 79:23      |            |           
+Greater                        | >                                        |                      | 79:36      |            |           
+Equal                          | =                                        |                      | 79:38      |            | WS        
+Number                         | 15                                       | 15                   | 79:40      |            | WS        
+Unit                           | kW                                       | kW                   | 79:42      |            |           
+Newline                        |                                          |                      | 79:44      |            |           
+Constant                       | const                                    |                      | 80:1       | True       |           
+Identifier                     | vector-shield-dimension                  |                      | 80:7       |            | WS        
+Less                           | <                                        |                      | 80:30      |            |           
+Identifier                     | Dimension                                |                      | 80:31      |            |           
+Greater                        | >                                        |                      | 80:40      |            |           
+Equal                          | =                                        |                      | 80:42      |            | WS        
+Number                         | 2                                        | 2                    | 80:44      |            | WS        
+Unit                           | D                                        | D                    | 80:45      |            |           
+Newline                        |                                          |                      | 80:46      |            |           
+Constant                       | const                                    |                      | 81:1       | True       |           
+Identifier                     | fule-energy                              |                      | 81:7       |            | WS        
+Less                           | <                                        |                      | 81:18      |            |           
+Identifier                     | Energy                                   |                      | 81:19      |            |           
+Greater                        | >                                        |                      | 81:25      |            |           
+Equal                          | =                                        |                      | 81:27      |            | WS        
+Number                         | 1.5                                      | 1.5                  | 81:29      |            | WS        
+Unit                           | MJ                                       | MJ                   | 81:32      |            |           
+Newline                        |                                          |                      | 81:34      |            |           
+Constant                       | const                                    |                      | 82:1       | True       |           
+Identifier                     | temperature                              |                      | 82:7       |            | WS        
+Less                           | <                                        |                      | 82:18      |            |           
+Identifier                     | Temperature                              |                      | 82:19      |            |           
+Greater                        | >                                        |                      | 82:30      |            |           
+Equal                          | =                                        |                      | 82:32      |            | WS        
+Number                         | 25                                       | 25                   | 82:34      |            | WS        
+Unit                           | °C                                       | °C                   | 82:36      |            |           
+Newline                        |                                          |                      | 82:38      |            |           
+Constant                       | const                                    |                      | 83:1       | True       |           
+Identifier                     | temperature                              |                      | 83:7       |            | WS        
+Less                           | <                                        |                      | 83:18      |            |           
+Identifier                     | Temperature                              |                      | 83:19      |            |           
+Greater                        | >                                        |                      | 83:30      |            |           
+Equal                          | =                                        |                      | 83:32      |            | WS        
+Number                         | 25                                       | 25                   | 83:34      |            | WS        
+Unit                           | K                                        | K                    | 83:36      |            |           
+Newline                        |                                          |                      | 83:37      |            |           
+Constant                       | const                                    |                      | 84:1       | True       |           
+Identifier                     | resistance                               |                      | 84:7       |            | WS        
+Less                           | <                                        |                      | 84:17      |            |           
+Identifier                     | ElectricResistance                       |                      | 84:18      |            |           
+Greater                        | >                                        |                      | 84:36      |            |           
+Equal                          | =                                        |                      | 84:38      |            | WS        
+Number                         | 10_000                                   | 10_000               | 84:40      |            | WS        
+Unit                           | MΩ                                       | MΩ                   | 84:46      |            |           
+Newline                        |                                          |                      | 84:48      |            |           
+Constant                       | const                                    |                      | 85:1       | True       |           
+Identifier                     | resistance                               |                      | 85:7       |            | WS        
+Less                           | <                                        |                      | 85:17      |            |           
+Identifier                     | ElectricResistance                       |                      | 85:18      |            |           
+Greater                        | >                                        |                      | 85:36      |            |           
+Equal                          | =                                        |                      | 85:38      |            | WS        
+Number                         | 10000                                    | 10000                | 85:40      |            | WS        
+Unit                           | kΩ                                       | kΩ                   | 85:45      |            |           
+Newline                        |                                          |                      | 85:47      |            |           
+Constant                       | const                                    |                      | 86:1       | True       |           
+Identifier                     | field-area                               |                      | 86:7       |            | WS        
+Less                           | <                                        |                      | 86:17      |            |           
+Identifier                     | Area                                     |                      | 86:18      |            |           
+Greater                        | >                                        |                      | 86:22      |            |           
+Equal                          | =                                        |                      | 86:24      |            | WS        
+Number                         | 73.14                                    | 73.14                | 86:26      |            | WS        
+Unit                           | m2                                       | m2                   | 86:31      |            |           
+Newline                        |                                          |                      | 86:33      |            |           
+Constant                       | const                                    |                      | 87:1       | True       |           
+Identifier                     | cube-volume                              |                      | 87:7       |            | WS        
+Less                           | <                                        |                      | 87:18      |            |           
+Identifier                     | Volume                                   |                      | 87:19      |            |           
+Greater                        | >                                        |                      | 87:25      |            |           
+Equal                          | =                                        |                      | 87:27      |            | WS        
+Number                         | 15                                       | 15                   | 87:29      |            | WS        
+Unit                           | m3                                       | m3                   | 87:31      |            |           
+Newline                        |                                          |                      | 87:33      |            |           
+Constant                       | const                                    |                      | 88:1       | True       |           
+Identifier                     | vessel-volume                            |                      | 88:7       |            | WS        
+Less                           | <                                        |                      | 88:20      |            |           
+Identifier                     | Volume                                   |                      | 88:21      |            |           
+Greater                        | >                                        |                      | 88:27      |            |           
+Equal                          | =                                        |                      | 88:29      |            | WS        
+Number                         | 0.1                                      | 0.1                  | 88:31      |            | WS        
+Unit                           | kL                                       | kL                   | 88:34      |            |           
+Newline                        |                                          |                      | 88:36      |            |           
+Constant                       | const                                    |                      | 89:1       | True       |           
+Identifier                     | number2                                  |                      | 89:7       |            | WS        
+Less                           | <                                        |                      | 89:14      |            |           
+Identifier                     | Number                                   |                      | 89:15      |            |           
+Greater                        | >                                        |                      | 89:21      |            |           
+Equal                          | =                                        |                      | 89:23      |            | WS        
+Number                         | 0b1011110011                             | 0b1011110011         | 89:25      |            | WS        
+Newline                        |                                          |                      | 89:37      |            |           
+Constant                       | const                                    |                      | 90:1       | True       |           
+Identifier                     | number8                                  |                      | 90:7       |            | WS        
+Less                           | <                                        |                      | 90:14      |            |           
+Identifier                     | Number                                   |                      | 90:15      |            |           
+Greater                        | >                                        |                      | 90:21      |            |           
+Equal                          | =                                        |                      | 90:23      |            | WS        
+Number                         | 0o071                                    | 0o071                | 90:25      |            | WS        
+Newline                        |                                          |                      | 90:30      |            |           
+Constant                       | const                                    |                      | 91:1       | True       |           
+Identifier                     | number16                                 |                      | 91:7       |            | WS        
+Less                           | <                                        |                      | 91:15      |            |           
+Identifier                     | Number                                   |                      | 91:16      |            |           
+Greater                        | >                                        |                      | 91:22      |            |           
+Equal                          | =                                        |                      | 91:24      |            | WS        
+Number                         | 0x348FABD1                               | 0x348FABD1           | 91:26      |            | WS        
+Newline                        |                                          |                      | 91:36      |            |           
+Constant                       | const                                    |                      | 92:1       | True       |           
+Identifier                     | number32                                 |                      | 92:7       |            | WS        
+Less                           | <                                        |                      | 92:15      |            |           
+Identifier                     | Number                                   |                      | 92:16      |            |           
+Greater                        | >                                        |                      | 92:22      |            |           
+Equal                          | =                                        |                      | 92:24      |            | WS        
+Number                         | 0tL1FF                                   | 0tL1FF               | 92:26      |            | WS        
+Newline                        |                                          |                      | 92:32      |            |           
+Constant                       | const                                    |                      | 93:1       | True       |           
+Identifier                     | number32                                 |                      | 93:7       |            | WS        
+Less                           | <                                        |                      | 93:15      |            |           
+Identifier                     | Number                                   |                      | 93:16      |            |           
+Greater                        | >                                        |                      | 93:22      |            |           
+Equal                          | =                                        |                      | 93:24      |            | WS        
+Number                         | 0cZYX                                    | 0cZYX                | 93:26      |            | WS        
+Newline                        |                                          |                      | 93:31      |            |           
+Newline                        |                                          |                      | 94:1       |            |           
+Constant                       | const                                    |                      | 95:1       | True       |           
+Identifier                     | abcdefg                                  |                      | 95:7       |            | WS        
+Equal                          | =                                        |                      | 95:15      |            | WS        
+Number                         | Infinity                                 | Infinity             | 95:17      |            | WS        
+Unit                           | kg                                       | kg                   | 95:25      |            |           
+Newline                        |                                          |                      | 95:27      |            |           
+Constant                       | const                                    |                      | 96:1       | True       |           
+Identifier                     | hijklmn                                  |                      | 96:7       |            | WS        
+Equal                          | =                                        |                      | 96:15      |            | WS        
+Minus                          | -                                        |                      | 96:17      |            | WS        
+Number                         | Infinity                                 | Infinity             | 96:18      |            |           
+Unit                           | kg                                       | kg                   | 96:26      |            |           
+Newline                        |                                          |                      | 96:28      |            |           
+Constant                       | const                                    |                      | 97:1       | True       |           
+Identifier                     | abcdefg                                  |                      | 97:7       |            | WS        
+Equal                          | =                                        |                      | 97:15      |            | WS        
+Number                         | 10                                       | 10                   | 97:17      |            | WS        
+Unit                           | kg                                       | kg                   | 97:19      |            |           
+Newline                        |                                          |                      | 97:21      |            |           
+Constant                       | const                                    |                      | 98:1       | True       |           
+Identifier                     | hijklmn                                  |                      | 98:7       |            | WS        
+Equal                          | =                                        |                      | 98:15      |            | WS        
+Minus                          | -                                        |                      | 98:17      |            | WS        
+Number                         | 10                                       | 10                   | 98:18      |            |           
+Unit                           | kg                                       | kg                   | 98:20      |            |           
+Newline                        |                                          |                      | 98:22      |            |           
+Newline                        |                                          |                      | 99:1       |            |           
+Constant                       | const                                    |                      | 100:1      | True       |           
+Identifier                     | area                                     |                      | 100:7      |            | WS        
+Equal                          | =                                        |                      | 100:12     |            | WS        
+Number                         | 25                                       | 25                   | 100:14     |            | WS        
+Unit                           | m2                                       | m2                   | 100:16     |            |           
+Newline                        |                                          |                      | 100:18     |            |           
+Constant                       | const                                    |                      | 101:1      | True       |           
+Identifier                     | volume                                   |                      | 101:7      |            | WS        
+Equal                          | =                                        |                      | 101:14     |            | WS        
+Number                         | 25                                       | 25                   | 101:16     |            | WS        
+Unit                           | m3                                       | m3                   | 101:18     |            |           
+Newline                        |                                          |                      | 101:20     |            |           
+Constant                       | const                                    |                      | 102:1      | True       |           
+Identifier                     | force                                    |                      | 102:7      |            | WS        
+Equal                          | =                                        |                      | 102:13     |            | WS        
+Number                         | 25                                       | 25                   | 102:15     |            | WS        
+Unit                           | TN                                       | TN                   | 102:17     |            |           
+Newline                        |                                          |                      | 102:19     |            |           
+Constant                       | const                                    |                      | 103:1      | True       |           
+Identifier                     | pressure                                 |                      | 103:7      |            | WS        
+Equal                          | =                                        |                      | 103:16     |            | WS        
+Number                         | 25                                       | 25                   | 103:18     |            | WS        
+Unit                           | MPa                                      | MPa                  | 103:20     |            |           
+Newline                        |                                          |                      | 103:23     |            |           
+Constant                       | const                                    |                      | 104:1      | True       |           
+Identifier                     | byterate                                 |                      | 104:7      |            | WS        
+Equal                          | =                                        |                      | 104:16     |            | WS        
+Number                         | 25                                       | 25                   | 104:18     |            | WS        
+Unit                           | Mbit/s                                   | Mbit/s               | 104:20     |            |           
+Newline                        |                                          |                      | 104:26     |            |           
+Constant                       | const                                    |                      | 105:1      | True       |           
+Identifier                     | byterate                                 |                      | 105:7      |            | WS        
+Equal                          | =                                        |                      | 105:16     |            | WS        
+Number                         | 25                                       | 25                   | 105:18     |            | WS        
+Unit                           | MB/s                                     | MB/s                 | 105:20     |            |           
+Newline                        |                                          |                      | 105:24     |            |           
+Constant                       | const                                    |                      | 106:1      | True       |           
+Identifier                     | byterate                                 |                      | 106:7      |            | WS        
+Equal                          | =                                        |                      | 106:16     |            | WS        
+Number                         | 25                                       | 25                   | 106:18     |            | WS        
+Identifier                     | MiB                                      |                      | 106:20     |            |           
+Slash                          | /                                        |                      | 106:23     |            |           
+Identifier                     | s                                        |                      | 106:24     |            |           
+Newline                        |                                          |                      | 106:25     |            |           
+Constant                       | const                                    |                      | 107:1      | True       |           
+Identifier                     | byterate                                 |                      | 107:7      |            | WS        
+Equal                          | =                                        |                      | 107:16     |            | WS        
+Number                         | 25                                       | 25                   | 107:18     |            | WS        
+Identifier                     | YiB                                      |                      | 107:20     |            |           
+Slash                          | /                                        |                      | 107:23     |            |           
+Identifier                     | s                                        |                      | 107:24     |            |           
+Newline                        |                                          |                      | 107:25     |            |           
+Variable                       | let                                      |                      | 108:1      | True       |           
+Identifier                     | a                                        |                      | 108:5      |            | WS        
+Equal                          | =                                        |                      | 108:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 108:9      |            | WS        
+Unit                           | m/s                                      | m/s                  | 108:12     |            |           
+Newline                        |                                          |                      | 108:15     |            |           
+Variable                       | let                                      |                      | 109:1      | True       |           
+Identifier                     | a                                        |                      | 109:5      |            | WS        
+Equal                          | =                                        |                      | 109:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 109:9      |            | WS        
+Unit                           | m/s2                                     | m/s2                 | 109:12     |            |           
+Newline                        |                                          |                      | 109:16     |            |           
+Variable                       | let                                      |                      | 110:1      | True       |           
+Identifier                     | a                                        |                      | 110:5      |            | WS        
+Equal                          | =                                        |                      | 110:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 110:9      |            | WS        
+Unit                           | m/s3                                     | m/s3                 | 110:12     |            |           
+Newline                        |                                          |                      | 110:16     |            |           
+Variable                       | let                                      |                      | 111:1      | True       |           
+Identifier                     | a                                        |                      | 111:5      |            | WS        
+Equal                          | =                                        |                      | 111:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 111:9      |            | WS        
+Unit                           | m/s4                                     | m/s4                 | 111:12     |            |           
+Newline                        |                                          |                      | 111:16     |            |           
+Variable                       | let                                      |                      | 112:1      | True       |           
+Identifier                     | a                                        |                      | 112:5      |            | WS        
+Equal                          | =                                        |                      | 112:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 112:9      |            | WS        
+Unit                           | m/s5                                     | m/s5                 | 112:12     |            |           
+Newline                        |                                          |                      | 112:16     |            |           
+Variable                       | let                                      |                      | 113:1      | True       |           
+Identifier                     | a                                        |                      | 113:5      |            | WS        
+Equal                          | =                                        |                      | 113:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 113:9      |            | WS        
+Unit                           | m/s6                                     | m/s6                 | 113:12     |            |           
+Newline                        |                                          |                      | 113:16     |            |           
+Variable                       | let                                      |                      | 114:1      | True       |           
+Identifier                     | a                                        |                      | 114:5      |            | WS        
+Equal                          | =                                        |                      | 114:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 114:9      |            | WS        
+Unit                           | Tm/h                                     | Tm/h                 | 114:12     |            |           
+Newline                        |                                          |                      | 114:16     |            |           
+Variable                       | let                                      |                      | 115:1      | True       |           
+Identifier                     | a                                        |                      | 115:5      |            | WS        
+Equal                          | =                                        |                      | 115:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 115:9      |            | WS        
+Unit                           | km/h                                     | km/h                 | 115:12     |            |           
+Newline                        |                                          |                      | 115:16     |            |           
+Variable                       | let                                      |                      | 116:1      | True       |           
+Identifier                     | a                                        |                      | 116:5      |            | WS        
+Equal                          | =                                        |                      | 116:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 116:9      |            | WS        
+Unit                           | m/h                                      | m/h                  | 116:12     |            |           
+Newline                        |                                          |                      | 116:15     |            |           
+Variable                       | let                                      |                      | 117:1      | True       |           
+Identifier                     | a                                        |                      | 117:5      |            | WS        
+Equal                          | =                                        |                      | 117:7      |            | WS        
+Number                         | 2.5                                      | 2.5                  | 117:9      |            | WS        
+Unit                           | μm/s                                     | μm/s                 | 117:12     |            |           
+Newline                        |                                          |                      | 117:16     |            |           
+Variable                       | let                                      |                      | 118:1      | True       |           
+Identifier                     | a                                        |                      | 118:5      |            | WS        
+Equal                          | =                                        |                      | 118:7      |            | WS        
+Number                         | 25                                       | 25                   | 118:9      |            | WS        
+Identifier                     | mph                                      |                      | 118:11     |            |           
+Newline                        |                                          |                      | 118:14     |            |           
+Variable                       | let                                      |                      | 119:1      | True       |           
+Identifier                     | a                                        |                      | 119:5      |            | WS        
+Equal                          | =                                        |                      | 119:7      |            | WS        
+Number                         | 25                                       | 25                   | 119:9      |            | WS        
+Unit                           | t                                        | t                    | 119:11     |            |           
+Newline                        |                                          |                      | 119:12     |            |           
+Variable                       | let                                      |                      | 120:1      | True       |           
+Identifier                     | a                                        |                      | 120:5      |            | WS        
+Equal                          | =                                        |                      | 120:7      |            | WS        
+Number                         | 25                                       | 25                   | 120:9      |            | WS        
+Unit                           | kg/m3                                    | kg/m3                | 120:11     |            |           
+Newline                        |                                          |                      | 120:16     |            |           
+Variable                       | let                                      |                      | 121:1      | True       |           
+Identifier                     | a                                        |                      | 121:5      |            | WS        
+Equal                          | =                                        |                      | 121:7      |            | WS        
+Number                         | 25                                       | 25                   | 121:9      |            | WS        
+Unit                           | Mg/m3                                    | Mg/m3                | 121:11     |            |           
+Newline                        |                                          |                      | 121:16     |            |           
+Variable                       | let                                      |                      | 122:1      | True       |           
+Identifier                     | a                                        |                      | 122:5      |            | WS        
+Equal                          | =                                        |                      | 122:7      |            | WS        
+Number                         | 25                                       | 25                   | 122:9      |            | WS        
+Unit                           | μlx                                      | μlx                  | 122:11     |            |           
+Newline                        |                                          |                      | 122:14     |            |           
+Variable                       | let                                      |                      | 123:1      | True       |           
+Identifier                     | a                                        |                      | 123:5      |            | WS        
+Equal                          | =                                        |                      | 123:7      |            | WS        
+Number                         | 25                                       | 25                   | 123:9      |            | WS        
+Unit                           | Tlm                                      | Tlm                  | 123:11     |            |           
+Newline                        |                                          |                      | 123:14     |            |           
+Variable                       | let                                      |                      | 124:1      | True       |           
+Identifier                     | a                                        |                      | 124:5      |            | WS        
+Equal                          | =                                        |                      | 124:7      |            | WS        
+Number                         | 25                                       | 25                   | 124:9      |            | WS        
+Unit                           | kcd                                      | kcd                  | 124:11     |            |           
+Newline                        |                                          |                      | 124:14     |            |           
+Variable                       | let                                      |                      | 125:1      | True       |           
+Identifier                     | a                                        |                      | 125:5      |            | WS        
+Equal                          | =                                        |                      | 125:7      |            | WS        
+Number                         | 25                                       | 25                   | 125:9      |            | WS        
+Unit                           | nmol                                     | nmol                 | 125:11     |            |           
+Newline                        |                                          |                      | 125:15     |            |           
+Newline                        |                                          |                      | 126:1      |            |           
+Identifier                     | text-data                                |                      | 127:1      | True       |           
+Equal                          | =                                        |                      | 127:11     |            | WS        
+MultilineString                | """\n    Line 1\n    Line 2\n    """     | 
+    Line 1
+    Line 2
+     | 127:13     |            | WS        
+Dot                            | .                                        |                      | 130:8      |            |           
+Identifier                     | trim                                     |                      | 130:9      |            |           
+LeftParen                      | (                                        |                      | 130:13     |            |           
+RightParen                     | )                                        |                      | 130:14     |            |           
+Dot                            | .                                        |                      | 130:15     |            |           
+Identifier                     | to-upper                                 |                      | 130:16     |            |           
+LeftParen                      | (                                        |                      | 130:24     |            |           
+RightParen                     | )                                        |                      | 130:25     |            |           
+Newline                        |                                          |                      | 130:26     |            |           
+EOF                            |                                          |                      | 131:1      |            |           

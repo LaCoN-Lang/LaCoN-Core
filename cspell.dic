@@ -1,1 +1,10 @@
 lacon
+llacon
+slacon
+Permille
+
+bitflags
+bindgen
+serde
+cdylib
+rlib

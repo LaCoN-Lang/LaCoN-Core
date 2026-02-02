@@ -1,0 +1,4 @@
+entity_type: <String>
+power_reproduction: <Power>
+fuel@[value in ["solid", "liquid", "gas"]]: <String>
+fuel_consumption<Expr>: <Mass> / delta <Time>

@@ -1,0 +1,26 @@
+TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
+------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                            |                                          |                      | 1:1        |            |           
+Use                            | use                                      |                      | 1:1        | True       |           
+Schema                         | schema                                   |                      | 1:5        |            | WS        
+String                         | "./schema.slacon"                        | ./schema.slacon      | 1:12       |            | WS        
+Newline                        |                                          |                      | 1:29       |            |           
+Newline                        |                                          |                      | 2:1        |            |           
+Identifier                     | entity_type                              |                      | 3:1        | True       |           
+String                         | "steam-engine"                           | steam-engine         | 3:13       |            | WS        
+Newline                        |                                          |                      | 3:27       |            |           
+Identifier                     | power_reproduction                       |                      | 4:1        | True       |           
+Number                         | 15                                       | 15                   | 4:20       |            | WS        
+Unit                           | kW                                       | kW                   | 4:22       |            |           
+Newline                        |                                          |                      | 4:24       |            |           
+Identifier                     | fuel                                     |                      | 5:1        | True       |           
+String                         | "solid"                                  | solid                | 5:6        |            | WS        
+Newline                        |                                          |                      | 5:13       |            |           
+Identifier                     | fuel_consumption                         |                      | 6:1        | True       |           
+Number                         | 100                                      | 100                  | 6:18       |            | WS        
+Unit                           | g                                        | g                    | 6:21       |            |           
+Slash                          | /                                        |                      | 6:23       |            | WS        
+Number                         | 1                                        | 1                    | 6:25       |            | WS        
+Unit                           | min                                      | min                  | 6:26       |            |           
+Newline                        |                                          |                      | 6:29       |            |           
+EOF                            |                                          |                      | 7:1        |            |           
