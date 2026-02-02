@@ -209,6 +209,7 @@ pub enum TokenType {
 	Procedure, // procedure \\ ProcedureDecl
 	Variable,  // var  \\ VariableDecl
 	Constant,  // const\\ ConstantDecl
+	Entry,     // entry \\ Entry
 	Structure, // struct \\ StructureDecl
 	Import,    // import \\ ImportModule
 	Export,    // export \\ ExportSymbol

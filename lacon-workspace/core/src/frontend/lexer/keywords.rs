@@ -51,6 +51,7 @@ static KEYWORDS: phf::Map<&'static str, TokenType> = phf_map! {
 	"proc" |"procedure" => TokenType::Procedure,
 	"let" |"var" |"variable" => TokenType::Variable,
 	"const" |"constant" => TokenType::Constant,
+	"entry" => TokenType::Entry,
 	"struct" |"structure" => TokenType::Structure,
 	"import" => TokenType::Import,
 	"export" => TokenType::Export,
