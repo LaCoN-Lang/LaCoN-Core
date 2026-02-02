@@ -4,6 +4,7 @@ members = [
   "lacon-workspace/cli",
   "lacon-workspace/test",
   "lacon-workspace/wasm",
+  "lacon-workspace/lsp",
 ]
 resolver = "2"
 
@@ -11,3 +12,4 @@ resolver = "2"
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 core = { path = "lacon-workspace/core", version = "0.1.0" }
+lsp = { path = "lacon-workspace/lsp", version = "0.1.0" }

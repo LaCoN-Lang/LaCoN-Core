@@ -11,3 +11,10 @@ args = [
   "--release",
   "--no-pack",
 ]
+
+[tasks.lsp-build]
+workspace = false
+script = [
+  "cargo build -p lsp --release",
+  "cp dist/target/release/lsp.exe dist/lsp.exe",
+]

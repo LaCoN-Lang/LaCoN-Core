@@ -499,7 +499,7 @@ Number                         | 2                                        | 2   
 Unit                           | D                                        | D                    | 80:45      |            |           
 Newline                        |                                          |                      | 80:46      |            |           
 Constant                       | const                                    |                      | 81:1       | True       |           
-Identifier                     | fule-energy                              |                      | 81:7       |            | WS        
+Identifier                     | fuel-energy                              |                      | 81:7       |            | WS        
 Less                           | <                                        |                      | 81:18      |            |           
 Identifier                     | Energy                                   |                      | 81:19      |            |           
 Greater                        | >                                        |                      | 81:25      |            |           
@@ -672,24 +672,26 @@ Constant                       | const                                    |     
 Identifier                     | byterate                                 |                      | 105:7      |            | WS        
 Equal                          | =                                        |                      | 105:16     |            | WS        
 Number                         | 25                                       | 25                   | 105:18     |            | WS        
-Unit                           | MB/s                                     | MB/s                 | 105:20     |            |           
-Newline                        |                                          |                      | 105:24     |            |           
+Unit                           | MByte                                    | MByte                | 105:20     |            |           
+Slash                          | /                                        |                      | 105:25     |            |           
+Identifier                     | s                                        |                      | 105:26     |            |           
+Newline                        |                                          |                      | 105:27     |            |           
 Constant                       | const                                    |                      | 106:1      | True       |           
 Identifier                     | byterate                                 |                      | 106:7      |            | WS        
 Equal                          | =                                        |                      | 106:16     |            | WS        
 Number                         | 25                                       | 25                   | 106:18     |            | WS        
-Identifier                     | MiB                                      |                      | 106:20     |            |           
-Slash                          | /                                        |                      | 106:23     |            |           
-Identifier                     | s                                        |                      | 106:24     |            |           
-Newline                        |                                          |                      | 106:25     |            |           
+Identifier                     | MiByte                                   |                      | 106:20     |            |           
+Slash                          | /                                        |                      | 106:26     |            |           
+Identifier                     | s                                        |                      | 106:27     |            |           
+Newline                        |                                          |                      | 106:28     |            |           
 Constant                       | const                                    |                      | 107:1      | True       |           
 Identifier                     | byterate                                 |                      | 107:7      |            | WS        
 Equal                          | =                                        |                      | 107:16     |            | WS        
 Number                         | 25                                       | 25                   | 107:18     |            | WS        
-Identifier                     | YiB                                      |                      | 107:20     |            |           
-Slash                          | /                                        |                      | 107:23     |            |           
-Identifier                     | s                                        |                      | 107:24     |            |           
-Newline                        |                                          |                      | 107:25     |            |           
+Identifier                     | YiByte                                   |                      | 107:20     |            |           
+Slash                          | /                                        |                      | 107:26     |            |           
+Identifier                     | s                                        |                      | 107:27     |            |           
+Newline                        |                                          |                      | 107:28     |            |           
 Variable                       | let                                      |                      | 108:1      | True       |           
 Identifier                     | a                                        |                      | 108:5      |            | WS        
 Equal                          | =                                        |                      | 108:7      |            | WS        
