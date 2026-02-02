@@ -1,5 +1,5 @@
 [build]
-target-dir = "lacon-workspace/target"
+target-dir = "dist/target"
 
 [term]
 color = "always"
@@ -16,6 +16,3 @@ opt-level = 3
 debug = false
 lto = true
 codegen-units = 1
-
-[alias]
-ci = "check --all-targets && fmt -- --check && clippy --all-targets"

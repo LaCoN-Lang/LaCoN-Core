@@ -1,0 +1,13 @@
+[tasks.wasm-build]
+workspace = false
+command = "wasm-pack"
+args = [
+  "build",
+  "lacon-workspace/wasm",
+  "--target",
+  "nodejs",
+  "--out-dir",
+  "../../dist/wasm",
+  "--release",
+  "--no-pack",
+]

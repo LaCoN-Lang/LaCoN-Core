@@ -1,0 +1,13 @@
+[workspace]
+members = [
+  "lacon-workspace/core",
+  "lacon-workspace/cli",
+  "lacon-workspace/test",
+  "lacon-workspace/wasm",
+]
+resolver = "2"
+
+[workspace.dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+core = { path = "lacon-workspace/core", version = "0.1.0" }
