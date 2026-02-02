@@ -1,0 +1,21 @@
+[build]
+target-dir = "lacon-workspace/target"
+
+[term]
+color = "always"
+
+[resolver]
+incompatible-rust-versions = "fallback"
+
+[profile.dev]
+opt-level = 1
+debug = true
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+codegen-units = 1
+
+[alias]
+ci = "check --all-targets && fmt -- --check && clippy --all-targets"

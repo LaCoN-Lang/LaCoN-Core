@@ -1,0 +1,6 @@
+language: en,ru
+dictionaries: [cspell]
+dictionaryDefinitions: [
+  {name: cspell, path: ./cspell.dic}
+]
+

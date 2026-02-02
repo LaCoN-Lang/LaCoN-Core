@@ -1,0 +1,8 @@
+[workspace]
+members = ["core", "cli", "test"]
+resolver = "2"
+
+[workspace.dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+core = { path = "core", version = "0.1.0" }

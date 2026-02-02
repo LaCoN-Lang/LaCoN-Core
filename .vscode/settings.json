@@ -1,0 +1,11 @@
+{
+	"editor.wordWrap": "on",
+	"editor.formatOnSave": true,
+	"cSpell.enabled": true,
+	"rust-analyzer.procMacro.enable": true,
+	"rust-analyzer.checkOnSave": true,
+	"rust-analyzer.check.command": "clippy",
+	"[rust]": {
+		"editor.semanticHighlighting.enabled": true
+	}
+}
