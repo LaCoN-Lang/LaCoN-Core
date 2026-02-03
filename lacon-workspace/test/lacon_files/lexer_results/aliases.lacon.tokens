@@ -1,0 +1,20 @@
+TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
+------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                            |                                          |                      | 1:1        |            |           
+Hash                           | #                                        |                      | 1:1        | True       |           
+Alias                          | alias                                    |                      | 1:2        |            |           
+LeftBrace                      | {                                        |                      | 1:8        |            | WS        
+Newline                        |                                          |                      | 1:9        |            |           
+Identifier                     | fn                                       |                      | 2:2        | True       |           
+Colon                          | :                                        |                      | 2:4        |            |           
+Function                       | function                                 |                      | 2:6        |            | WS        
+Newline                        |                                          |                      | 2:14       |            |           
+Identifier                     | pub                                      |                      | 3:2        | True       |           
+Colon                          | :                                        |                      | 3:5        |            |           
+Public                         | public                                   |                      | 3:7        |            | WS        
+Newline                        |                                          |                      | 3:13       |            |           
+RightBrace                     | }                                        |                      | 4:1        | True       |           
+Newline                        |                                          |                      | 4:2        |            |           
+Newline                        |                                          |                      | 5:1        |            |           
+Newline                        |                                          |                      | 6:1        |            |           
+EOF                            |                                          |                      | 7:1        |            |           

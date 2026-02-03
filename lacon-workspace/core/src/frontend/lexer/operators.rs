@@ -152,6 +152,10 @@ pub fn match_operator(c1: char, c2: Option<char>, c3: Option<char>) -> OpMatch {
 			_ => simple(TokenType::Backslash),
 		},
 		'%' => match c2 {
+			Some('%') => OpMatch {
+				token_type: TokenType::PercentPercent,
+				consume_count: 1,
+			},
 			Some('=') => OpMatch {
 				token_type: TokenType::PercentEqual,
 				consume_count: 1,

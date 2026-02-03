@@ -67,6 +67,7 @@ pub enum TokenType {
 	Slash,            // /  \\ Divide
 	SlashSlash,       //  \\ IntegerDivide
 	Percent,          // %  \\ Modulo
+	PercentPercent,   // %% \\
 
 	Delta, // Δ \\ Delta
 

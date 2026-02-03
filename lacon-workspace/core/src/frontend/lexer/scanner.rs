@@ -41,7 +41,7 @@ impl Scanner {
 	}
 
 	pub fn scan_tokens(&mut self) -> &Vec<Token> {
-		self.add_token_raw(TokenType::SOF);
+		self.tokens.push(Token::bare(TokenType::SOF, self.position));
 
 		while !self.is_at_end() {
 			self.start = self.current;
@@ -60,7 +60,7 @@ impl Scanner {
 			self.add_token_raw(TokenType::Dedent);
 		}
 
-		self.tokens.push(Token::eof(self.position));
+		self.tokens.push(Token::bare(TokenType::EOF, self.position));
 		&self.tokens
 	}
 
@@ -147,7 +147,7 @@ impl Scanner {
 
 	fn add_token_raw(&mut self, t_type: TokenType) {
 		// Системные токены не сбрасывают флаг начала строки и не используют had_whitespace
-		let is_start = if matches!(t_type, TokenType::Indent | TokenType::Dedent | TokenType::SOF | TokenType::Newline) {
+		let is_start = if matches!(t_type, TokenType::Indent | TokenType::Dedent | TokenType::Newline) {
 			false
 		} else {
 			let res = self.is_at_line_start;

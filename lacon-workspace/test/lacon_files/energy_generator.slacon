@@ -1,0 +1,22 @@
+entity-type: energy-generator
+entity-name: <String>
+entity-description?: <String>
+energy<Dictionary>: {
+	power-reproduction: <Power>
+	fuel?<Dictionary>: {
+		type?: <String> of ("solid" | "liquid" | "gas")
+		consumption<Expr>?: <Mass> ÷ delta <Time>
+		emission<Dictionary[]>?: [
+			{compound: <String>, per-consumption: <Mass>}*
+		]
+	}
+	heat-generation<Expr>?: <Energy> ÷ delta <Time>
+}
+craft<Dictionary[]>: [
+	{component: <String>, count: <Int>}*
+]
+craft-time: <Time>
+cost<Dictionary>: {requisition: <Number>, energy: <Number>}
+size<Dictionary>: {L: <Length>, W: <Length>, H: <Length>}
+weight: <Mass>
+durability: <Number>

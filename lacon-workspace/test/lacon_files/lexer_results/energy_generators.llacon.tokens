@@ -1,0 +1,581 @@
+TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
+------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                            |                                          |                      | 1:1        |            |           
+LeftBracket                    | [                                        |                      | 1:1        | True       |           
+Marker                         | Marker                                   |                      | 1:2        |            |           
+Colon                          | :                                        |                      | 1:8        |            |           
+Identifier                     | Output                                   |                      | 1:9        |            |           
+Less                           | <                                        |                      | 1:15       |            |           
+Identifier                     | Dictionary                               |                      | 1:16       |            |           
+LeftBracket                    | [                                        |                      | 1:26       |            |           
+RightBracket                   | ]                                        |                      | 1:27       |            |           
+Greater                        | >                                        |                      | 1:28       |            |           
+RightBracket                   | ]                                        |                      | 1:29       |            |           
+Newline                        |                                          |                      | 1:30       |            |           
+Use                            | use                                      |                      | 2:1        | True       |           
+Schema                         | schema                                   |                      | 2:5        |            | WS        
+SingleQuotedString             | './energy_generator.slacon'              | ./energy_generator.slacon | 2:12       |            | WS        
+Newline                        |                                          |                      | 2:39       |            |           
+LeftBrace                      | {                                        |                      | 3:1        | True       |           
+Newline                        |                                          |                      | 3:2        |            |           
+Identifier                     | entity-type                              |                      | 4:2        | True       |           
+Colon                          | :                                        |                      | 4:13       |            |           
+Identifier                     | energy-generator                         |                      | 4:15       |            | WS        
+Newline                        |                                          |                      | 4:31       |            |           
+Identifier                     | entity-name                              |                      | 5:2        | True       |           
+Colon                          | :                                        |                      | 5:13       |            |           
+Identifier                     | solar-generator-mk1                      |                      | 5:15       |            | WS        
+Newline                        |                                          |                      | 5:34       |            |           
+Identifier                     | entity-description                       |                      | 6:2        | True       |           
+Colon                          | :                                        |                      | 6:20       |            |           
+Identifier                     | Базовый                                  |                      | 6:22       |            | WS        
+Identifier                     | солнечный                                |                      | 6:30       |            | WS        
+Identifier                     | генератор                                |                      | 6:40       |            | WS        
+Identifier                     | для                                      |                      | 6:50       |            | WS        
+Identifier                     | малых                                    |                      | 6:54       |            | WS        
+Identifier                     | станций                                  |                      | 6:60       |            | WS        
+Newline                        |                                          |                      | 6:67       |            |           
+Identifier                     | energy                                   |                      | 7:2        | True       |           
+Colon                          | :                                        |                      | 7:8        |            |           
+LeftBrace                      | {                                        |                      | 7:10       |            | WS        
+Newline                        |                                          |                      | 7:11       |            |           
+Identifier                     | power-reproduction                       |                      | 8:3        | True       |           
+Colon                          | :                                        |                      | 8:21       |            |           
+Number                         | 50                                       | 50                   | 8:23       |            | WS        
+Unit                           | W                                        | W                    | 8:25       |            |           
+Newline                        |                                          |                      | 8:26       |            |           
+Identifier                     | heat-generation                          |                      | 9:3        | True       |           
+Colon                          | :                                        |                      | 9:18       |            |           
+Number                         | 1                                        | 1                    | 9:20       |            | WS        
+Unit                           | kJ                                       | kJ                   | 9:21       |            |           
+Slash                          | /                                        |                      | 9:24       |            | WS        
+Number                         | 1                                        | 1                    | 9:26       |            | WS        
+Unit                           | min                                      | min                  | 9:28       |            |           
+Newline                        |                                          |                      | 9:31       |            |           
+RightBrace                     | }                                        |                      | 10:2       | True       |           
+Newline                        |                                          |                      | 10:3       |            |           
+Identifier                     | craft                                    |                      | 11:2       | True       |           
+Colon                          | :                                        |                      | 11:7       |            |           
+LeftBracket                    | [                                        |                      | 11:9       |            | WS        
+Newline                        |                                          |                      | 11:10      |            |           
+LeftBrace                      | {                                        |                      | 12:3       | True       |           
+Identifier                     | component                                |                      | 12:4       |            |           
+Colon                          | :                                        |                      | 12:13      |            |           
+Identifier                     | metal-plate                              |                      | 12:15      |            | WS        
+Comma                          | ,                                        |                      | 12:26      |            |           
+Identifier                     | count                                    |                      | 12:28      |            | WS        
+Colon                          | :                                        |                      | 12:33      |            |           
+Number                         | 10                                       | 10                   | 12:35      |            | WS        
+RightBrace                     | }                                        |                      | 12:37      |            |           
+Comma                          | ,                                        |                      | 12:38      |            |           
+Newline                        |                                          |                      | 12:39      |            |           
+LeftBrace                      | {                                        |                      | 13:3       | True       |           
+Identifier                     | component                                |                      | 13:4       |            |           
+Colon                          | :                                        |                      | 13:13      |            |           
+Identifier                     | solar-cell                               |                      | 13:15      |            | WS        
+Comma                          | ,                                        |                      | 13:25      |            |           
+Identifier                     | count                                    |                      | 13:27      |            | WS        
+Colon                          | :                                        |                      | 13:32      |            |           
+Number                         | 8                                        | 8                    | 13:34      |            | WS        
+RightBrace                     | }                                        |                      | 13:35      |            |           
+Comma                          | ,                                        |                      | 13:36      |            |           
+Newline                        |                                          |                      | 13:37      |            |           
+LeftBrace                      | {                                        |                      | 14:3       | True       |           
+Identifier                     | component                                |                      | 14:4       |            |           
+Colon                          | :                                        |                      | 14:13      |            |           
+Identifier                     | circuit-board                            |                      | 14:15      |            | WS        
+Comma                          | ,                                        |                      | 14:28      |            |           
+Identifier                     | count                                    |                      | 14:30      |            | WS        
+Colon                          | :                                        |                      | 14:35      |            |           
+Number                         | 5                                        | 5                    | 14:37      |            | WS        
+RightBrace                     | }                                        |                      | 14:38      |            |           
+Newline                        |                                          |                      | 14:39      |            |           
+RightBracket                   | ]                                        |                      | 15:2       | True       |           
+Newline                        |                                          |                      | 15:3       |            |           
+Identifier                     | craft-time                               |                      | 16:2       | True       |           
+Colon                          | :                                        |                      | 16:12      |            |           
+Number                         | 30                                       | 30                   | 16:14      |            | WS        
+Unit                           | s                                        | s                    | 16:16      |            |           
+Newline                        |                                          |                      | 16:17      |            |           
+Identifier                     | cost                                     |                      | 17:2       | True       |           
+Colon                          | :                                        |                      | 17:6       |            |           
+LeftBrace                      | {                                        |                      | 17:8       |            | WS        
+Identifier                     | requisition                              |                      | 17:9       |            |           
+Colon                          | :                                        |                      | 17:20      |            |           
+Number                         | 200                                      | 200                  | 17:22      |            | WS        
+Comma                          | ,                                        |                      | 17:25      |            |           
+Identifier                     | energy                                   |                      | 17:27      |            | WS        
+Colon                          | :                                        |                      | 17:33      |            |           
+Number                         | 50                                       | 50                   | 17:35      |            | WS        
+RightBrace                     | }                                        |                      | 17:37      |            |           
+Newline                        |                                          |                      | 17:38      |            |           
+Identifier                     | size                                     |                      | 18:2       | True       |           
+Colon                          | :                                        |                      | 18:6       |            |           
+LeftBrace                      | {                                        |                      | 18:8       |            | WS        
+Identifier                     | L                                        |                      | 18:9       |            |           
+Colon                          | :                                        |                      | 18:10      |            |           
+Number                         | 2                                        | 2                    | 18:12      |            | WS        
+Unit                           | m                                        | m                    | 18:13      |            |           
+Comma                          | ,                                        |                      | 18:14      |            |           
+Identifier                     | W                                        |                      | 18:16      |            | WS        
+Colon                          | :                                        |                      | 18:17      |            |           
+Number                         | 1                                        | 1                    | 18:19      |            | WS        
+Unit                           | m                                        | m                    | 18:20      |            |           
+Comma                          | ,                                        |                      | 18:21      |            |           
+Identifier                     | H                                        |                      | 18:23      |            | WS        
+Colon                          | :                                        |                      | 18:24      |            |           
+Number                         | 1                                        | 1                    | 18:26      |            | WS        
+Unit                           | m                                        | m                    | 18:27      |            |           
+RightBrace                     | }                                        |                      | 18:28      |            |           
+Newline                        |                                          |                      | 18:29      |            |           
+Identifier                     | weight                                   |                      | 19:2       | True       |           
+Colon                          | :                                        |                      | 19:8       |            |           
+Number                         | 150                                      | 150                  | 19:10      |            | WS        
+Unit                           | kg                                       | kg                   | 19:13      |            |           
+Newline                        |                                          |                      | 19:15      |            |           
+Identifier                     | durability                               |                      | 20:2       | True       |           
+Colon                          | :                                        |                      | 20:12      |            |           
+Number                         | 100                                      | 100                  | 20:14      |            | WS        
+Newline                        |                                          |                      | 20:17      |            |           
+RightBrace                     | }                                        |                      | 21:1       | True       |           
+Newline                        |                                          |                      | 21:2       |            |           
+LeftBrace                      | {                                        |                      | 22:1       | True       |           
+Newline                        |                                          |                      | 22:2       |            |           
+Identifier                     | entity-type                              |                      | 23:2       | True       |           
+Colon                          | :                                        |                      | 23:13      |            |           
+Identifier                     | energy-generator                         |                      | 23:15      |            | WS        
+Newline                        |                                          |                      | 23:31      |            |           
+Identifier                     | entity-name                              |                      | 24:2       | True       |           
+Colon                          | :                                        |                      | 24:13      |            |           
+Identifier                     | coal-generator                           |                      | 24:15      |            | WS        
+Newline                        |                                          |                      | 24:29      |            |           
+Identifier                     | entity-description                       |                      | 25:2       | True       |           
+Colon                          | :                                        |                      | 25:20      |            |           
+Identifier                     | Угольный                                 |                      | 25:22      |            | WS        
+Identifier                     | генератор                                |                      | 25:31      |            | WS        
+Identifier                     | средней                                  |                      | 25:41      |            | WS        
+Identifier                     | мощности                                 |                      | 25:49      |            | WS        
+Identifier                     | для                                      |                      | 25:58      |            | WS        
+Identifier                     | промышленного                            |                      | 25:62      |            | WS        
+Identifier                     | использования                            |                      | 25:76      |            | WS        
+Newline                        |                                          |                      | 25:89      |            |           
+Identifier                     | energy                                   |                      | 26:2       | True       |           
+Colon                          | :                                        |                      | 26:8       |            |           
+LeftBrace                      | {                                        |                      | 26:10      |            | WS        
+Newline                        |                                          |                      | 26:11      |            |           
+Identifier                     | power-reproduction                       |                      | 27:3       | True       |           
+Colon                          | :                                        |                      | 27:21      |            |           
+Number                         | 200                                      | 200                  | 27:23      |            | WS        
+Unit                           | W                                        | W                    | 27:26      |            |           
+Newline                        |                                          |                      | 27:27      |            |           
+Identifier                     | fuel                                     |                      | 28:3       | True       |           
+Colon                          | :                                        |                      | 28:7       |            |           
+LeftBrace                      | {                                        |                      | 28:9       |            | WS        
+Newline                        |                                          |                      | 28:10      |            |           
+Type                           | type                                     |                      | 29:4       | True       |           
+Colon                          | :                                        |                      | 29:8       |            |           
+Identifier                     | solid                                    |                      | 29:10      |            | WS        
+Newline                        |                                          |                      | 29:15      |            |           
+Identifier                     | consumption                              |                      | 30:4       | True       |           
+Colon                          | :                                        |                      | 30:15      |            |           
+Number                         | 5                                        | 5                    | 30:17      |            | WS        
+Unit                           | kg                                       | kg                   | 30:18      |            |           
+Slash                          | ÷                                        |                      | 30:21      |            | WS        
+Number                         | 1                                        | 1                    | 30:23      |            | WS        
+Unit                           | min                                      | min                  | 30:24      |            |           
+Newline                        |                                          |                      | 30:27      |            |           
+Identifier                     | emission                                 |                      | 31:4       | True       |           
+Colon                          | :                                        |                      | 31:12      |            |           
+LeftBracket                    | [                                        |                      | 31:14      |            | WS        
+Newline                        |                                          |                      | 31:15      |            |           
+LeftBrace                      | {                                        |                      | 32:5       | True       |           
+Identifier                     | compound                                 |                      | 32:6       |            |           
+Colon                          | :                                        |                      | 32:14      |            |           
+Identifier                     | CO2                                      |                      | 32:16      |            | WS        
+Comma                          | ,                                        |                      | 32:19      |            |           
+Identifier                     | per-consumption                          |                      | 32:21      |            | WS        
+Colon                          | :                                        |                      | 32:36      |            |           
+Number                         | 4.5                                      | 4.5                  | 32:38      |            | WS        
+Unit                           | kg                                       | kg                   | 32:41      |            |           
+RightBrace                     | }                                        |                      | 32:43      |            |           
+Comma                          | ,                                        |                      | 32:44      |            |           
+Newline                        |                                          |                      | 32:45      |            |           
+LeftBrace                      | {                                        |                      | 33:5       | True       |           
+Identifier                     | compound                                 |                      | 33:6       |            |           
+Colon                          | :                                        |                      | 33:14      |            |           
+Identifier                     | SO2                                      |                      | 33:16      |            | WS        
+Comma                          | ,                                        |                      | 33:19      |            |           
+Identifier                     | per-consumption                          |                      | 33:21      |            | WS        
+Colon                          | :                                        |                      | 33:36      |            |           
+Number                         | 0.5                                      | 0.5                  | 33:38      |            | WS        
+Unit                           | kg                                       | kg                   | 33:41      |            |           
+RightBrace                     | }                                        |                      | 33:43      |            |           
+Newline                        |                                          |                      | 33:44      |            |           
+RightBracket                   | ]                                        |                      | 34:4       | True       |           
+Newline                        |                                          |                      | 34:5       |            |           
+RightBrace                     | }                                        |                      | 35:3       | True       |           
+Newline                        |                                          |                      | 35:4       |            |           
+Identifier                     | heat-generation                          |                      | 36:3       | True       |           
+Colon                          | :                                        |                      | 36:18      |            |           
+Number                         | 150                                      | 150                  | 36:20      |            | WS        
+Unit                           | kJ                                       | kJ                   | 36:23      |            |           
+Slash                          | /                                        |                      | 36:26      |            | WS        
+Number                         | 1                                        | 1                    | 36:28      |            | WS        
+Unit                           | min                                      | min                  | 36:30      |            |           
+Newline                        |                                          |                      | 36:33      |            |           
+RightBrace                     | }                                        |                      | 37:2       | True       |           
+Newline                        |                                          |                      | 37:3       |            |           
+Identifier                     | craft                                    |                      | 38:2       | True       |           
+Colon                          | :                                        |                      | 38:7       |            |           
+LeftBracket                    | [                                        |                      | 38:9       |            | WS        
+Newline                        |                                          |                      | 38:10      |            |           
+LeftBrace                      | {                                        |                      | 39:3       | True       |           
+Identifier                     | component                                |                      | 39:4       |            |           
+Colon                          | :                                        |                      | 39:13      |            |           
+Identifier                     | steel-plate                              |                      | 39:15      |            | WS        
+Comma                          | ,                                        |                      | 39:26      |            |           
+Identifier                     | count                                    |                      | 39:28      |            | WS        
+Colon                          | :                                        |                      | 39:33      |            |           
+Number                         | 20                                       | 20                   | 39:35      |            | WS        
+RightBrace                     | }                                        |                      | 39:37      |            |           
+Comma                          | ,                                        |                      | 39:38      |            |           
+Newline                        |                                          |                      | 39:39      |            |           
+LeftBrace                      | {                                        |                      | 40:3       | True       |           
+Identifier                     | component                                |                      | 40:4       |            |           
+Colon                          | :                                        |                      | 40:13      |            |           
+Identifier                     | combustion-chamber                       |                      | 40:15      |            | WS        
+Comma                          | ,                                        |                      | 40:33      |            |           
+Identifier                     | count                                    |                      | 40:35      |            | WS        
+Colon                          | :                                        |                      | 40:40      |            |           
+Number                         | 1                                        | 1                    | 40:42      |            | WS        
+RightBrace                     | }                                        |                      | 40:43      |            |           
+Comma                          | ,                                        |                      | 40:44      |            |           
+Newline                        |                                          |                      | 40:45      |            |           
+LeftBrace                      | {                                        |                      | 41:3       | True       |           
+Identifier                     | component                                |                      | 41:4       |            |           
+Colon                          | :                                        |                      | 41:13      |            |           
+Identifier                     | coolant-pipe                             |                      | 41:15      |            | WS        
+Comma                          | ,                                        |                      | 41:27      |            |           
+Identifier                     | count                                    |                      | 41:29      |            | WS        
+Colon                          | :                                        |                      | 41:34      |            |           
+Number                         | 5                                        | 5                    | 41:36      |            | WS        
+RightBrace                     | }                                        |                      | 41:37      |            |           
+Newline                        |                                          |                      | 41:38      |            |           
+RightBracket                   | ]                                        |                      | 42:2       | True       |           
+Newline                        |                                          |                      | 42:3       |            |           
+Identifier                     | craft-time                               |                      | 43:2       | True       |           
+Colon                          | :                                        |                      | 43:12      |            |           
+Number                         | 120                                      | 120                  | 43:14      |            | WS        
+Unit                           | s                                        | s                    | 43:17      |            |           
+Newline                        |                                          |                      | 43:18      |            |           
+Identifier                     | cost                                     |                      | 44:2       | True       |           
+Colon                          | :                                        |                      | 44:6       |            |           
+LeftBrace                      | {                                        |                      | 44:8       |            | WS        
+Identifier                     | requisition                              |                      | 44:9       |            |           
+Colon                          | :                                        |                      | 44:20      |            |           
+Number                         | 1000                                     | 1000                 | 44:22      |            | WS        
+Comma                          | ,                                        |                      | 44:26      |            |           
+Identifier                     | energy                                   |                      | 44:28      |            | WS        
+Colon                          | :                                        |                      | 44:34      |            |           
+Number                         | 200                                      | 200                  | 44:36      |            | WS        
+RightBrace                     | }                                        |                      | 44:39      |            |           
+Newline                        |                                          |                      | 44:40      |            |           
+Identifier                     | size                                     |                      | 45:2       | True       |           
+Colon                          | :                                        |                      | 45:6       |            |           
+LeftBrace                      | {                                        |                      | 45:8       |            | WS        
+Identifier                     | L                                        |                      | 45:9       |            |           
+Colon                          | :                                        |                      | 45:10      |            |           
+Number                         | 5                                        | 5                    | 45:12      |            | WS        
+Unit                           | m                                        | m                    | 45:13      |            |           
+Comma                          | ,                                        |                      | 45:14      |            |           
+Identifier                     | W                                        |                      | 45:16      |            | WS        
+Colon                          | :                                        |                      | 45:17      |            |           
+Number                         | 2                                        | 2                    | 45:19      |            | WS        
+Unit                           | m                                        | m                    | 45:20      |            |           
+Comma                          | ,                                        |                      | 45:21      |            |           
+Identifier                     | H                                        |                      | 45:23      |            | WS        
+Colon                          | :                                        |                      | 45:24      |            |           
+Number                         | 2                                        | 2                    | 45:26      |            | WS        
+Unit                           | m                                        | m                    | 45:27      |            |           
+RightBrace                     | }                                        |                      | 45:28      |            |           
+Newline                        |                                          |                      | 45:29      |            |           
+Identifier                     | weight                                   |                      | 46:2       | True       |           
+Colon                          | :                                        |                      | 46:8       |            |           
+Number                         | 1200                                     | 1200                 | 46:10      |            | WS        
+Unit                           | kg                                       | kg                   | 46:14      |            |           
+Newline                        |                                          |                      | 46:16      |            |           
+Identifier                     | durability                               |                      | 47:2       | True       |           
+Colon                          | :                                        |                      | 47:12      |            |           
+Number                         | 500                                      | 500                  | 47:14      |            | WS        
+Newline                        |                                          |                      | 47:17      |            |           
+RightBrace                     | }                                        |                      | 48:1       | True       |           
+Newline                        |                                          |                      | 48:2       |            |           
+LeftBrace                      | {                                        |                      | 49:1       | True       |           
+Newline                        |                                          |                      | 49:2       |            |           
+Identifier                     | entity-type                              |                      | 50:2       | True       |           
+Colon                          | :                                        |                      | 50:13      |            |           
+Identifier                     | energy-generator                         |                      | 50:15      |            | WS        
+Newline                        |                                          |                      | 50:31      |            |           
+Identifier                     | entity-name                              |                      | 51:2       | True       |           
+Colon                          | :                                        |                      | 51:13      |            |           
+Identifier                     | steam-generator                          |                      | 51:15      |            | WS        
+Newline                        |                                          |                      | 51:30      |            |           
+Identifier                     | entity-description                       |                      | 52:2       | True       |           
+Colon                          | :                                        |                      | 52:20      |            |           
+Identifier                     | Паровой                                  |                      | 52:22      |            | WS        
+Identifier                     | генератор                                |                      | 52:30      |            | WS        
+Identifier                     | средней                                  |                      | 52:40      |            | WS        
+Identifier                     | мощности                                 |                      | 52:48      |            | WS        
+Identifier                     | для                                      |                      | 52:57      |            | WS        
+Identifier                     | промышленных                             |                      | 52:61      |            | WS        
+Identifier                     | и                                        |                      | 52:74      |            | WS        
+Identifier                     | энергетических                           |                      | 52:76      |            | WS        
+Identifier                     | нужд                                     |                      | 52:91      |            | WS        
+Newline                        |                                          |                      | 52:95      |            |           
+Identifier                     | energy                                   |                      | 53:2       | True       |           
+Colon                          | :                                        |                      | 53:8       |            |           
+LeftBrace                      | {                                        |                      | 53:10      |            | WS        
+Newline                        |                                          |                      | 53:11      |            |           
+Identifier                     | power-reproduction                       |                      | 54:3       | True       |           
+Colon                          | :                                        |                      | 54:21      |            |           
+Number                         | 150                                      | 150                  | 54:23      |            | WS        
+Unit                           | W                                        | W                    | 54:26      |            |           
+Newline                        |                                          |                      | 54:27      |            |           
+Identifier                     | fuel                                     |                      | 55:3       | True       |           
+Colon                          | :                                        |                      | 55:7       |            |           
+LeftBrace                      | {                                        |                      | 55:9       |            | WS        
+Newline                        |                                          |                      | 55:10      |            |           
+Type                           | type                                     |                      | 56:4       | True       |           
+Colon                          | :                                        |                      | 56:8       |            |           
+Identifier                     | liquid                                   |                      | 56:10      |            | WS        
+Newline                        |                                          |                      | 56:16      |            |           
+Identifier                     | consumption                              |                      | 57:4       | True       |           
+Colon                          | :                                        |                      | 57:15      |            |           
+Number                         | 3                                        | 3                    | 57:17      |            | WS        
+Unit                           | L                                        | L                    | 57:18      |            |           
+Slash                          | ÷                                        |                      | 57:20      |            | WS        
+Number                         | 1                                        | 1                    | 57:22      |            | WS        
+Unit                           | min                                      | min                  | 57:23      |            |           
+Newline                        |                                          |                      | 57:26      |            |           
+Identifier                     | emission                                 |                      | 58:4       | True       |           
+Colon                          | :                                        |                      | 58:12      |            |           
+LeftBracket                    | [                                        |                      | 58:14      |            | WS        
+Newline                        |                                          |                      | 58:15      |            |           
+LeftBrace                      | {                                        |                      | 59:5       | True       |           
+Identifier                     | compound                                 |                      | 59:6       |            |           
+Colon                          | :                                        |                      | 59:14      |            |           
+Identifier                     | H2O                                      |                      | 59:16      |            | WS        
+Comma                          | ,                                        |                      | 59:19      |            |           
+Identifier                     | per-consumption                          |                      | 59:21      |            | WS        
+Colon                          | :                                        |                      | 59:36      |            |           
+Number                         | 3                                        | 3                    | 59:38      |            | WS        
+Unit                           | L                                        | L                    | 59:39      |            |           
+RightBrace                     | }                                        |                      | 59:40      |            |           
+Newline                        |                                          |                      | 59:41      |            |           
+RightBracket                   | ]                                        |                      | 60:4       | True       |           
+Newline                        |                                          |                      | 60:5       |            |           
+RightBrace                     | }                                        |                      | 61:3       | True       |           
+Newline                        |                                          |                      | 61:4       |            |           
+Identifier                     | heat-generation                          |                      | 62:3       | True       |           
+Colon                          | :                                        |                      | 62:18      |            |           
+Number                         | 120                                      | 120                  | 62:20      |            | WS        
+Unit                           | kJ                                       | kJ                   | 62:23      |            |           
+Slash                          | /                                        |                      | 62:26      |            | WS        
+Number                         | 1                                        | 1                    | 62:28      |            | WS        
+Unit                           | min                                      | min                  | 62:30      |            |           
+Newline                        |                                          |                      | 62:33      |            |           
+RightBrace                     | }                                        |                      | 63:2       | True       |           
+Newline                        |                                          |                      | 63:3       |            |           
+Identifier                     | craft                                    |                      | 64:2       | True       |           
+Colon                          | :                                        |                      | 64:7       |            |           
+LeftBracket                    | [                                        |                      | 64:9       |            | WS        
+Newline                        |                                          |                      | 64:10      |            |           
+LeftBrace                      | {                                        |                      | 65:3       | True       |           
+Identifier                     | component                                |                      | 65:4       |            |           
+Colon                          | :                                        |                      | 65:13      |            |           
+Identifier                     | steel-plate                              |                      | 65:15      |            | WS        
+Comma                          | ,                                        |                      | 65:26      |            |           
+Identifier                     | count                                    |                      | 65:28      |            | WS        
+Colon                          | :                                        |                      | 65:33      |            |           
+Number                         | 15                                       | 15                   | 65:35      |            | WS        
+RightBrace                     | }                                        |                      | 65:37      |            |           
+Comma                          | ,                                        |                      | 65:38      |            |           
+Newline                        |                                          |                      | 65:39      |            |           
+LeftBrace                      | {                                        |                      | 66:3       | True       |           
+Identifier                     | component                                |                      | 66:4       |            |           
+Colon                          | :                                        |                      | 66:13      |            |           
+Identifier                     | boiler                                   |                      | 66:15      |            | WS        
+Comma                          | ,                                        |                      | 66:21      |            |           
+Identifier                     | count                                    |                      | 66:23      |            | WS        
+Colon                          | :                                        |                      | 66:28      |            |           
+Number                         | 1                                        | 1                    | 66:30      |            | WS        
+RightBrace                     | }                                        |                      | 66:31      |            |           
+Comma                          | ,                                        |                      | 66:32      |            |           
+Newline                        |                                          |                      | 66:33      |            |           
+LeftBrace                      | {                                        |                      | 67:3       | True       |           
+Identifier                     | component                                |                      | 67:4       |            |           
+Colon                          | :                                        |                      | 67:13      |            |           
+Identifier                     | pipe                                     |                      | 67:15      |            | WS        
+Comma                          | ,                                        |                      | 67:19      |            |           
+Identifier                     | count                                    |                      | 67:21      |            | WS        
+Colon                          | :                                        |                      | 67:26      |            |           
+Number                         | 10                                       | 10                   | 67:28      |            | WS        
+RightBrace                     | }                                        |                      | 67:30      |            |           
+Comma                          | ,                                        |                      | 67:31      |            |           
+Newline                        |                                          |                      | 67:32      |            |           
+LeftBrace                      | {                                        |                      | 68:3       | True       |           
+Identifier                     | component                                |                      | 68:4       |            |           
+Colon                          | :                                        |                      | 68:13      |            |           
+Identifier                     | valve                                    |                      | 68:15      |            | WS        
+Comma                          | ,                                        |                      | 68:20      |            |           
+Identifier                     | count                                    |                      | 68:22      |            | WS        
+Colon                          | :                                        |                      | 68:27      |            |           
+Number                         | 4                                        | 4                    | 68:29      |            | WS        
+RightBrace                     | }                                        |                      | 68:30      |            |           
+Newline                        |                                          |                      | 68:31      |            |           
+RightBracket                   | ]                                        |                      | 69:2       | True       |           
+Newline                        |                                          |                      | 69:3       |            |           
+Identifier                     | craft-time                               |                      | 70:2       | True       |           
+Colon                          | :                                        |                      | 70:12      |            |           
+Number                         | 90                                       | 90                   | 70:14      |            | WS        
+Unit                           | s                                        | s                    | 70:16      |            |           
+Newline                        |                                          |                      | 70:17      |            |           
+Identifier                     | cost                                     |                      | 71:2       | True       |           
+Colon                          | :                                        |                      | 71:6       |            |           
+LeftBrace                      | {                                        |                      | 71:8       |            | WS        
+Identifier                     | requisition                              |                      | 71:9       |            |           
+Colon                          | :                                        |                      | 71:20      |            |           
+Number                         | 700                                      | 700                  | 71:22      |            | WS        
+Comma                          | ,                                        |                      | 71:25      |            |           
+Identifier                     | energy                                   |                      | 71:27      |            | WS        
+Colon                          | :                                        |                      | 71:33      |            |           
+Number                         | 150                                      | 150                  | 71:35      |            | WS        
+RightBrace                     | }                                        |                      | 71:38      |            |           
+Newline                        |                                          |                      | 71:39      |            |           
+Identifier                     | size                                     |                      | 72:2       | True       |           
+Colon                          | :                                        |                      | 72:6       |            |           
+LeftBrace                      | {                                        |                      | 72:8       |            | WS        
+Identifier                     | L                                        |                      | 72:9       |            |           
+Colon                          | :                                        |                      | 72:10      |            |           
+Number                         | 4                                        | 4                    | 72:12      |            | WS        
+Unit                           | m                                        | m                    | 72:13      |            |           
+Comma                          | ,                                        |                      | 72:14      |            |           
+Identifier                     | W                                        |                      | 72:16      |            | WS        
+Colon                          | :                                        |                      | 72:17      |            |           
+Number                         | 2                                        | 2                    | 72:19      |            | WS        
+Unit                           | m                                        | m                    | 72:20      |            |           
+Comma                          | ,                                        |                      | 72:21      |            |           
+Identifier                     | H                                        |                      | 72:23      |            | WS        
+Colon                          | :                                        |                      | 72:24      |            |           
+Number                         | 2                                        | 2                    | 72:26      |            | WS        
+Unit                           | m                                        | m                    | 72:27      |            |           
+RightBrace                     | }                                        |                      | 72:28      |            |           
+Newline                        |                                          |                      | 72:29      |            |           
+Identifier                     | weight                                   |                      | 73:2       | True       |           
+Colon                          | :                                        |                      | 73:8       |            |           
+Number                         | 900                                      | 900                  | 73:10      |            | WS        
+Unit                           | kg                                       | kg                   | 73:13      |            |           
+Newline                        |                                          |                      | 73:15      |            |           
+Identifier                     | durability                               |                      | 74:2       | True       |           
+Colon                          | :                                        |                      | 74:12      |            |           
+Number                         | 400                                      | 400                  | 74:14      |            | WS        
+Newline                        |                                          |                      | 74:17      |            |           
+RightBrace                     | }                                        |                      | 75:1       | True       |           
+Newline                        |                                          |                      | 75:2       |            |           
+Spread                         | spread                                   |                      | 76:1       | True       |           
+LeftParen                      | (                                        |                      | 76:7       |            |           
+LeftBracket                    | [                                        |                      | 76:8       |            |           
+String                         | "steam-generator-mk2"                    | steam-generator-mk2  | 76:9       |            |           
+Comma                          | ,                                        |                      | 76:30      |            |           
+String                         | "steam-generator-mk3"                    | steam-generator-mk3  | 76:32      |            | WS        
+Comma                          | ,                                        |                      | 76:53      |            |           
+String                         | "steam-generator-mk4"                    | steam-generator-mk4  | 76:55      |            | WS        
+Comma                          | ,                                        |                      | 76:76      |            |           
+String                         | "steam-generator-mk5"                    | steam-generator-mk5  | 76:78      |            | WS        
+RightBracket                   | ]                                        |                      | 76:99      |            |           
+Comma                          | ,                                        |                      | 76:100     |            |           
+LeftBracket                    | [                                        |                      | 76:102     |            | WS        
+LeftBrace                      | {                                        |                      | 76:103     |            |           
+DotDotDot                      | ...                                      |                      | 76:105     |            | WS        
+RightBrace                     | }                                        |                      | 76:109     |            | WS        
+Comma                          | ,                                        |                      | 76:110     |            |           
+LeftBrace                      | {                                        |                      | 76:112     |            | WS        
+DotDotDot                      | ...                                      |                      | 76:114     |            | WS        
+RightBrace                     | }                                        |                      | 76:118     |            | WS        
+Comma                          | ,                                        |                      | 76:119     |            |           
+LeftBrace                      | {                                        |                      | 76:121     |            | WS        
+DotDotDot                      | ...                                      |                      | 76:123     |            | WS        
+RightBrace                     | }                                        |                      | 76:127     |            | WS        
+Comma                          | ,                                        |                      | 76:128     |            |           
+LeftBrace                      | {                                        |                      | 76:130     |            | WS        
+DotDotDot                      | ...                                      |                      | 76:132     |            | WS        
+RightBrace                     | }                                        |                      | 76:136     |            | WS        
+RightBracket                   | ]                                        |                      | 76:137     |            |           
+RightParen                     | )                                        |                      | 76:138     |            |           
+As                             | as                                       |                      | 76:140     |            | WS        
+LeftParen                      | (                                        |                      | 76:143     |            | WS        
+Identifier                     | generator                                |                      | 76:144     |            |           
+Comma                          | ,                                        |                      | 76:153     |            |           
+Identifier                     | data                                     |                      | 76:155     |            | WS        
+RightParen                     | )                                        |                      | 76:159     |            |           
+LeftBrace                      | {                                        |                      | 76:160     |            |           
+Newline                        |                                          |                      | 76:161     |            |           
+Yield                          | yield                                    |                      | 77:2       | True       |           
+LeftBrace                      | {                                        |                      | 77:8       |            | WS        
+Newline                        |                                          |                      | 77:9       |            |           
+Identifier                     | entity-type                              |                      | 78:3       | True       |           
+Colon                          | :                                        |                      | 78:14      |            |           
+Identifier                     | energy-generator                         |                      | 78:16      |            | WS        
+Newline                        |                                          |                      | 78:32      |            |           
+Identifier                     | entity-name                              |                      | 79:3       | True       |           
+Colon                          | :                                        |                      | 79:14      |            |           
+DollarLeftBrace                | ${                                       |                      | 79:16      |            | WS        
+Identifier                     | generator                                |                      | 79:18      |            |           
+RightBrace                     | }                                        |                      | 79:27      |            |           
+Newline                        |                                          |                      | 79:28      |            |           
+Identifier                     | entity-description                       |                      | 80:3       | True       |           
+Colon                          | :                                        |                      | 80:21      |            |           
+DollarLeftBrace                | ${                                       |                      | 80:23      |            | WS        
+Identifier                     | data                                     |                      | 80:25      |            |           
+Dot                            | .                                        |                      | 80:29      |            |           
+Identifier                     | description                              |                      | 80:30      |            |           
+RightBrace                     | }                                        |                      | 80:41      |            |           
+Newline                        |                                          |                      | 80:42      |            |           
+Indent                         |                                          |                      | 81:1       |            |           
+Identifier                     | energy                                   |                      | 81:3       | True       |           
+Colon                          | :                                        |                      | 81:9       |            |           
+LeftBrace                      | {                                        |                      | 81:11      |            | WS        
+Newline                        |                                          |                      | 81:12      |            |           
+Type                           | type                                     |                      | 82:4       | True       |           
+Colon                          | :                                        |                      | 82:8       |            |           
+Identifier                     | liquid                                   |                      | 82:10      |            | WS        
+Newline                        |                                          |                      | 82:16      |            |           
+Identifier                     | consumption                              |                      | 83:4       | True       |           
+Colon                          | :                                        |                      | 83:15      |            |           
+DollarLeftBrace                | ${                                       |                      | 83:17      |            | WS        
+Identifier                     | data                                     |                      | 83:19      |            |           
+Dot                            | .                                        |                      | 83:23      |            |           
+Identifier                     | consumption                              |                      | 83:24      |            |           
+RightBrace                     | }                                        |                      | 83:35      |            |           
+Newline                        |                                          |                      | 83:36      |            |           
+Indent                         |                                          |                      | 84:1       |            |           
+Identifier                     | emission                                 |                      | 84:4       | True       |           
+Colon                          | :                                        |                      | 84:12      |            |           
+DollarLeftBrace                | ${                                       |                      | 84:14      |            | WS        
+Identifier                     | data                                     |                      | 84:16      |            |           
+Dot                            | .                                        |                      | 84:20      |            |           
+Identifier                     | emission                                 |                      | 84:21      |            |           
+RightBrace                     | }                                        |                      | 84:29      |            |           
+Newline                        |                                          |                      | 84:30      |            |           
+Dedent                         |                                          |                      | 85:1       |            |           
+RightBrace                     | }                                        |                      | 85:3       | True       |           
+Newline                        |                                          |                      | 85:4       |            |           
+DotDotDot                      | ...                                      |                      | 86:3       | True       |           
+Identifier                     | data                                     |                      | 86:6       |            |           
+Newline                        |                                          |                      | 86:10      |            |           
+Dedent                         |                                          |                      | 87:1       |            |           
+RightBrace                     | }                                        |                      | 87:2       | True       |           
+Newline                        |                                          |                      | 87:3       |            |           
+RightBrace                     | }                                        |                      | 88:1       | True       |           
+Newline                        |                                          |                      | 88:2       |            |           
+EOF                            |                                          |                      | 89:1       |            |           

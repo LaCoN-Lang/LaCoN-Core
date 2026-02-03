@@ -42,9 +42,9 @@ impl Token {
 		}
 	}
 
-	pub fn eof(position: Position) -> Self {
+	pub fn bare(token_type: TokenType, position: Position) -> Self {
 		Self {
-			token_type: TokenType::EOF,
+			token_type,
 			lexeme: String::new(),
 			literal: None,
 			position,

@@ -1,0 +1,88 @@
+[Marker:Output<Dictionary[]>]
+use schema './energy_generator.slacon'
+{
+	entity-type: energy-generator
+	entity-name: solar-generator-mk1
+	entity-description: Базовый солнечный генератор для малых станций
+	energy: {
+		power-reproduction: 50W
+		heat-generation: 1kJ / 1 min
+	}
+	craft: [
+		{component: metal-plate, count: 10},
+		{component: solar-cell, count: 8},
+		{component: circuit-board, count: 5}
+	]
+	craft-time: 30s
+	cost: {requisition: 200, energy: 50}
+	size: {L: 2m, W: 1m, H: 1m}
+	weight: 150kg
+	durability: 100
+}
+{
+	entity-type: energy-generator
+	entity-name: coal-generator
+	entity-description: Угольный генератор средней мощности для промышленного использования
+	energy: {
+		power-reproduction: 200W
+		fuel: {
+			type: solid
+			consumption: 5kg ÷ 1min
+			emission: [
+				{compound: CO2, per-consumption: 4.5kg},
+				{compound: SO2, per-consumption: 0.5kg}
+			]
+		}
+		heat-generation: 150kJ / 1 min
+	}
+	craft: [
+		{component: steel-plate, count: 20},
+		{component: combustion-chamber, count: 1},
+		{component: coolant-pipe, count: 5}
+	]
+	craft-time: 120s
+	cost: {requisition: 1000, energy: 200}
+	size: {L: 5m, W: 2m, H: 2m}
+	weight: 1200kg
+	durability: 500
+}
+{
+	entity-type: energy-generator
+	entity-name: steam-generator
+	entity-description: Паровой генератор средней мощности для промышленных и энергетических нужд
+	energy: {
+		power-reproduction: 150W
+		fuel: {
+			type: liquid
+			consumption: 3L ÷ 1min
+			emission: [
+				{compound: H2O, per-consumption: 3L}
+			]
+		}
+		heat-generation: 120kJ / 1 min
+	}
+	craft: [
+		{component: steel-plate, count: 15},
+		{component: boiler, count: 1},
+		{component: pipe, count: 10},
+		{component: valve, count: 4}
+	]
+	craft-time: 90s
+	cost: {requisition: 700, energy: 150}
+	size: {L: 4m, W: 2m, H: 2m}
+	weight: 900kg
+	durability: 400
+}
+spread(["steam-generator-mk2", "steam-generator-mk3", "steam-generator-mk4", "steam-generator-mk5"], [{ ... }, { ... }, { ... }, { ... }]) as (generator, data){
+	yield {
+		entity-type: energy-generator
+		entity-name: ${generator}
+		entity-description: ${data.description}
+		energy: {
+			type: liquid
+			consumption: ${data.consumption}
+			emission: ${data.emission}
+		}
+		...data
+	}
+}

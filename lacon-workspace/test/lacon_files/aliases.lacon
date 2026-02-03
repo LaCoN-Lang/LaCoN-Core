@@ -1,0 +1,6 @@
+#alias {
+	fn: function
+	pub: public
+}
+
+

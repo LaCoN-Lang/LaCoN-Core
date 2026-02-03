@@ -135,7 +135,23 @@ static KEYWORDS: phf::Map<&'static str, TokenType> = phf_map! {
 	"Marker" => TokenType::Marker,
 };
 
-/// Проверяет, является ли идентификатор ключевым словом.
 pub fn get_keyword_token(identifier: &str) -> Option<TokenType> {
 	KEYWORDS.get(identifier).cloned()
+}
+
+//
+
+use std::collections::HashMap;
+use std::sync::RwLock;
+lazy_static::lazy_static! {
+	pub static ref ALIAS_KEYWORDS: RwLock<HashMap<String, &'static str>> = RwLock::new(HashMap::new());
+}
+pub fn add_alias(alias: &str, target_keyword: &'static str) {
+	let mut map = ALIAS_KEYWORDS.write().unwrap();
+	map.insert(alias.to_string(), target_keyword);
+}
+pub fn resolve_identifier(identifier: &str) -> Option<TokenType> {
+	let map = ALIAS_KEYWORDS.read().unwrap();
+	let key = map.get(identifier).unwrap_or(&identifier);
+	KEYWORDS.get(key).cloned()
 }

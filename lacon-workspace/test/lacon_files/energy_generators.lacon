@@ -1,0 +1,20 @@
+const generatorsData = readData("./energy_generators.llacon")
+
+public function registerGenerator(generator<Dictionary>) {
+	GameAPI.registerEntity({
+		type: generator["entity-type"],
+		name: generator["entity-name"],
+		description: generator["entity-description"] ?? "Описание отсутствует",
+		energy: generator.energy,
+		craft: generator.craft,
+		craftTime: generator["craft-time"],
+		cost: generator.cost,
+		size: generator.size,
+		weight: generator.weight,
+		durability: generator.durability
+	})
+}
+
+for gen in generatorsData {
+	registerGenerator(gen)
+}
