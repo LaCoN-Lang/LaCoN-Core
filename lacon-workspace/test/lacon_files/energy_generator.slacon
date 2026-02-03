@@ -19,4 +19,4 @@ craft-time: <Time>
 cost<Dictionary>: {requisition: <Number>, energy: <Number>}
 size<Dictionary>: {L: <Length>, W: <Length>, H: <Length>}
 weight: <Mass>
-durability: <Number>
+durability: <UInt16>
