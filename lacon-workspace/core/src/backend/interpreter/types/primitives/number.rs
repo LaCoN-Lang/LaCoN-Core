@@ -1,6 +1,6 @@
-// use f128::f128;
-// use half::{f8, f16};
+use strum_macros::{AsRefStr, EnumVariantNames};
 
+#[derive(EnumVariantNames, AsRefStr)]
 #[feature(f16_and_f128)]
 pub enum Number {
 	Number,
@@ -20,4 +20,10 @@ pub enum Number {
 	Float32(f32),
 	Float64(f64),
 	Float128(f128),
+}
+
+impl Number {
+	pub fn match_if_string_equals_to_subtype_name(&self, name: &str) -> bool {
+		self.as_ref() == name
+	}
 }

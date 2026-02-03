@@ -16,3 +16,5 @@ phf = { version = "0.13.1", features = ["macros"] }
 lazy_static = "1.5.0"
 half = "2.7"
 f128 = "0.2"
+strum = "0.27"
+strum_macros = "0.27"
