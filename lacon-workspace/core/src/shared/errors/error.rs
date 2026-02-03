@@ -39,23 +39,6 @@ impl Error {
 		}
 	}
 
-	pub fn lexical(error_type: LexicalError, start: Position, end: Position) -> Self {
-		let message = match &error_type {
-			LexicalError::InvalidCharacter(c) => format!("Invalid character '{}'", c),
-			LexicalError::UnterminatedString => "Unterminated string literal".to_string(),
-			LexicalError::UnterminatedBlockComment => "Unterminated block comment".to_string(),
-			LexicalError::InvalidIndent => "Invalid indentation".to_string(),
-		};
-
-		Self {
-			error_type: ErrorType::Lexical(error_type),
-			message,
-			code: None,
-			span: Some(Span { start, end }),
-			expected: None,
-		}
-	}
-
 	pub fn format(&self) -> String {
 		let pos_str = self.span.as_ref().map_or("".to_string(), |s| format!("{}-{}", s.start, s.end));
 
@@ -75,6 +58,8 @@ impl fmt::Display for LexicalError {
 			LexicalError::UnterminatedString => write!(f, "Unterminated string"),
 			LexicalError::UnterminatedBlockComment => write!(f, "Unterminated block comment"),
 			LexicalError::InvalidIndent => write!(f, "Invalid indentation"),
+			LexicalError::InvalidEscapeSequence => write!(f, "Invalid escape sequence"),
+			LexicalError::InvalidToken => write!(f, "Invalid token"),
 		}
 	}
 }
