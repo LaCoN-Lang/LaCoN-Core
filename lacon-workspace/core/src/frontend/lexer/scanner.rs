@@ -1,9 +1,11 @@
-use crate::frontend::lexer::error::{LexicalError, LexicalErrorType};
 use crate::frontend::lexer::keywords::get_keyword_token;
 use crate::frontend::lexer::operators::match_operator;
-use crate::frontend::lexer::position::Position;
 use crate::frontend::lexer::token::Token;
 use crate::frontend::lexer::token_type::TokenType;
+use crate::shared::errors::error::{Error, Span};
+use crate::shared::errors::error_type::ErrorType;
+use crate::shared::errors::error_type::LexicalError;
+use crate::shared::position::Position;
 use crate::shared::unit::units::UNITS_TREE;
 
 pub struct Scanner {
@@ -18,7 +20,7 @@ pub struct Scanner {
 	string_stack: Vec<(char, bool)>,
 	is_at_line_start: bool,
 	had_whitespace: bool,
-	pub errors: Vec<LexicalError>,
+	pub errors: Vec<Error>,
 }
 
 impl Scanner {
@@ -420,7 +422,7 @@ impl Scanner {
 		}
 
 		if self.is_at_end() || (!is_multiline && self.peek() == Some('\n')) {
-			self.report_error(LexicalErrorType::UnterminatedString, "Unclosed string");
+			self.report_error(LexicalError::UnterminatedString);
 			return;
 		}
 
@@ -561,12 +563,9 @@ impl Scanner {
 		true
 	}
 
-	fn report_error(&mut self, error_type: LexicalErrorType, message: &str) {
-		self.errors.push(LexicalError {
-			message: message.to_string(),
-			position: self.start_position,
-			error_type,
-		});
+	fn report_error(&mut self, error_type: LexicalError) {
+		let err = Error::new(ErrorType::Lexical(error_type.clone()), format!("{}", error_type), None, Some(Span { start: self.start_position, end: self.position }), None);
+		self.errors.push(err);
 		self.add_token(TokenType::Error);
 	}
 }

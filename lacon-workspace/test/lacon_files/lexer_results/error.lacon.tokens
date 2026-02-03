@@ -1,0 +1,15 @@
+TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
+------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                            |                                          |                      | 1:1        |            |           
+Variable                       | let                                      |                      | 1:1        | True       |           
+Identifier                     | a                                        |                      | 1:5        |            | WS        
+Equal                          | =                                        |                      | 1:7        |            | WS        
+Error                          | "unterminated string                     |                      | 1:9        |            | WS        
+Newline                        |                                          |                      | 1:29       |            |           
+Newline                        |                                          |                      | 2:1        |            |           
+Variable                       | let                                      |                      | 3:1        | True       |           
+Identifier                     | a                                        |                      | 3:5        |            | WS        
+Equal                          | =                                        |                      | 3:7        |            | WS        
+Error                          | "unterminated string                     |                      | 3:9        |            | WS        
+Newline                        |                                          |                      | 3:29       |            |           
+EOF                            |                                          |                      | 4:1        |            |           

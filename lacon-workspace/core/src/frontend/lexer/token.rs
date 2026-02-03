@@ -1,5 +1,5 @@
-use crate::frontend::lexer::position::Position;
 use crate::frontend::lexer::token_type::TokenType;
+use crate::shared::position::Position;
 use bitflags::bitflags;
 use std::fmt;
 
@@ -81,5 +81,11 @@ impl fmt::Display for Token {
 		}
 
 		write!(f, "[{:?}{}] '{}'{} at {}", self.token_type, markers, self.lexeme, literal_str, self.position)
+	}
+}
+
+impl fmt::Display for TokenType {
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{:?}", self)
 	}
 }

@@ -35,6 +35,22 @@ key = 1kg/m3
 25 ∸ 100
 string ≣ string
 
+const t<table> = @|
+	(3) /|\ Явно задаёт количество колонок, может быть использовано вместо или вместе с именованными заголовками
+	("User Name", "Age", "Attributes") /|\ Именованные заголовки колонок
+	(<String>, <Number>, <Dictionary>) /|\ Типы данных колонок
+	[
+		("Alice", 30, {height: 5.5ft, weight: 130lb}),
+		("Bob", 25, {height: 6ft, weight: 180lb}),
+		("Charlie", 35, {height: 5.8ft, weight: 150lb})
+	]
+|@
+
+const cell = t["User Name"].row(2)
+const row = t.findRow(row => row["User Name"] == "Alice")
+const cell = t.findCell((row, colName, rowIndex, colIndex) => row[colName] is String && row[colName] ~= "i)ar?l" )
+
+
 generate (0x4E3 .. -10) as local let code-point {
 	yield unicode-${code-point} {
 		char \u{${code-point}}
