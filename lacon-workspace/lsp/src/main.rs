@@ -13,7 +13,6 @@ fn main() -> io::Result<()> {
 	loop {
 		let mut content_length: usize = 0;
 
-		// 1. Читаем заголовки LSP
 		loop {
 			let mut header = String::new();
 			if stdin_lock.read_line(&mut header)? == 0 {
@@ -34,7 +33,6 @@ fn main() -> io::Result<()> {
 			continue;
 		}
 
-		// 2. Читаем тело сообщения
 		let mut body = vec![0u8; content_length];
 		stdin_lock.read_exact(&mut body)?;
 
