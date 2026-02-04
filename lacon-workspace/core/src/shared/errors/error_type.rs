@@ -1,3 +1,5 @@
+use thiserror::Error;
+
 #[derive(Debug, Clone)]
 pub enum ErrorType {
 	Unknown,
@@ -6,6 +8,11 @@ pub enum ErrorType {
 	Semantic(SemanticError),
 	Runtime,
 	Expected,
+}
+#[derive(Debug, Clone, Error)]
+pub enum ErrorTypeTest {
+	#[error("Expected test failed: got {0}, expected one of {1:?}")]
+	Expected(String, Vec<String>),
 }
 
 #[derive(Debug, Clone)]

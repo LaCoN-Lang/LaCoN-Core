@@ -16,3 +16,4 @@ phf = { version = "0.13.1", features = ["macros"] }
 lazy_static = "1.5.0"
 strum = "0.27"
 strum_macros = "0.27"
+thiserror = "2.0.18"
