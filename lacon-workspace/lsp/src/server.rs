@@ -1,5 +1,5 @@
-use core::shared::unit::dimensions::Dimension;
-use core::shared::unit::units::UNITS;
+use lacon_core::shared::unit::dimensions::Dimension;
+use lacon_core::shared::unit::units::UNITS;
 
 /// Ищет юнит в статическом массиве UNITS и возвращает его формулу
 pub fn get_unit_formula(symbol: &str) -> String {

@@ -1,8 +1,8 @@
 mod server;
 mod types;
 
-use core::frontend::lexer::scanner::Scanner;
-use core::frontend::lexer::token_type::TokenType;
+use lacon_core::frontend::lexer::scanner::Scanner;
+use lacon_core::frontend::lexer::token_type::TokenType;
 use serde_json::{Value, json};
 use std::io::{self, BufRead, Read, Write};
 

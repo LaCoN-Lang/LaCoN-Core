@@ -1,5 +1,5 @@
-use core::frontend::lexer::scanner::Scanner;
 use js_sys::{Array, Object, Reflect};
+use lacon_core::frontend::lexer::scanner::Scanner;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]

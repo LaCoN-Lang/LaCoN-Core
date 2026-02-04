@@ -7,4 +7,4 @@ license = "MIT"
 [dependencies]
 anyhow.workspace = true
 clap.workspace = true
-core = { workspace = true }
+lacon-core = { workspace = true }

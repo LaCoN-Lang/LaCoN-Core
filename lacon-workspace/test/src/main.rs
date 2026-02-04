@@ -3,8 +3,8 @@ fn main() {
 }
 #[cfg(test)]
 mod lexer_tests {
-	use core::frontend::lexer::scanner::Scanner;
-	use core::frontend::lexer::token::TokenFlags;
+	use lacon_core::frontend::lexer::scanner::Scanner;
+	use lacon_core::frontend::lexer::token::TokenFlags;
 	use std::fs::{self, File};
 	use std::io::Write;
 	use std::path::Path;

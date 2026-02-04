@@ -200,7 +200,7 @@ Newline                        |                                          |     
 Identifier                     | durability                               |                      | 22:1       | True       |           
 Colon                          | :                                        |                      | 22:11      |            |           
 Less                           | <                                        |                      | 22:13      |            | WS        
-Identifier                     | Number                                   |                      | 22:14      |            |           
+Identifier                     | UInt16                                   |                      | 22:14      |            |           
 Greater                        | >                                        |                      | 22:20      |            |           
 Newline                        |                                          |                      | 22:21      |            |           
 EOF                            |                                          |                      | 23:1       |            |           

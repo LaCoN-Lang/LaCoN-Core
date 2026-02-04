@@ -1,5 +1,5 @@
 [package]
-name = "cli"
+name = "lacon-cli"
 version = "0.1.0"
 edition = "2024"
 license = "MIT"
@@ -7,4 +7,4 @@ license = "MIT"
 [dependencies]
 anyhow.workspace = true
 clap.workspace = true
-core = { workspace = true }
+lacon-core = { workspace = true }

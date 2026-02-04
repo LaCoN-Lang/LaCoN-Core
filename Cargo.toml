@@ -10,6 +10,18 @@ resolver = "2"
 
 [workspace.dependencies]
 anyhow = "1"
-clap = { version = "4", features = ["derive"] }
-core = { path = "lacon-workspace/core", version = "0.1.0" }
-lsp = { path = "lacon-workspace/lsp", version = "0.1.0" }
+clap = { version = "4.5.57", features = ["derive"] }
+lacon-core = { path = "lacon-workspace/core", version = "0.1.0" }
+lacon-lsp = { path = "lacon-workspace/lsp", version = "0.1.0" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = "warn"
+pedantic = "warn"
+nursery = "warn"
+unwrap_used = "warn"
+expect_used = "warn"
+panic = "warn"
+collapsible_if = "warn"

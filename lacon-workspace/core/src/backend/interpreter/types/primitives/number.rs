@@ -1,7 +1,6 @@
-use strum_macros::{AsRefStr, EnumVariantNames};
+use strum_macros::{AsRefStr, VariantNames};
 
-#[derive(EnumVariantNames, AsRefStr)]
-#[feature(f16_and_f128)]
+#[derive(VariantNames, AsRefStr)]
 pub enum Number {
 	Number,
 	Int(i64),
@@ -16,10 +15,10 @@ pub enum Number {
 	UInt64(u64),
 	UInt128(u128),
 	Float(f64),
-	Float16(f16),
+	// Float16(f16),
 	Float32(f32),
 	Float64(f64),
-	Float128(f128),
+	// Float128(f128),
 }
 
 impl Number {
