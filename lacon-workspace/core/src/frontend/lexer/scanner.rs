@@ -2,11 +2,12 @@ use crate::frontend::lexer::keywords::get_keyword_token;
 use crate::frontend::lexer::operators::match_operator;
 use crate::frontend::lexer::token::Token;
 use crate::frontend::lexer::token_type::TokenType;
-use crate::shared::errors::error::{Error, Span};
+use crate::shared::errors::error::Error;
 use crate::shared::errors::error_type::ErrorType;
 use crate::shared::errors::error_type::LexicalError;
 use crate::shared::position::Position;
 use crate::shared::unit::units::UNITS_TREE;
+use std::path::Path;
 
 pub struct Scanner {
 	source: Vec<char>,
@@ -63,6 +64,11 @@ impl Scanner {
 		}
 
 		self.tokens.push(Token::bare(TokenType::EOF, self.position));
+
+		if self.errors_exist() {
+			self.write_errors();
+			self.write_errors_to_file(Path::new("lexer_errors.log"));
+		}
 		&self.tokens
 	}
 
@@ -564,8 +570,31 @@ impl Scanner {
 	}
 
 	fn report_error(&mut self, error_type: LexicalError) {
-		let err = Error::new(ErrorType::Lexical(error_type.clone()), format!("{}", error_type), None, Some(Span { start: self.start_position, end: self.position }), None);
+		let err = Error::new(ErrorType::Lexical(error_type), Some(self.start_position), Some(self.position));
+
 		self.errors.push(err);
+
 		self.add_token(TokenType::Error);
+	}
+
+	fn write_errors(&self) {
+		for error in &self.errors {
+			eprintln!("{}", error);
+		}
+	}
+
+	fn write_errors_to_file(&self, file_path: &Path) {
+		use std::fs::OpenOptions;
+		use std::io::Write;
+
+		let mut file = OpenOptions::new().create(true).append(true).open(file_path).expect("Не удалось открыть файл для записи ошибок");
+
+		for error in &self.errors {
+			writeln!(file, "{}", error).expect("Не удалось записать ошибку в файл");
+		}
+	}
+
+	fn errors_exist(&self) -> bool {
+		!self.errors.is_empty()
 	}
 }

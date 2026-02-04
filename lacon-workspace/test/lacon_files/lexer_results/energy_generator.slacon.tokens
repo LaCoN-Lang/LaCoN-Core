@@ -1,206 +1,206 @@
 TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-SOF                            |                                          |                      | 1:1        |            |           
-Identifier                     | entity-type                              |                      | 1:1        | True       |           
-Colon                          | :                                        |                      | 1:12       |            |           
-Identifier                     | energy-generator                         |                      | 1:14       |            | WS        
-Newline                        |                                          |                      | 1:30       |            |           
-Identifier                     | entity-name                              |                      | 2:1        | True       |           
-Colon                          | :                                        |                      | 2:12       |            |           
-Less                           | <                                        |                      | 2:14       |            | WS        
-Identifier                     | String                                   |                      | 2:15       |            |           
-Greater                        | >                                        |                      | 2:21       |            |           
-Newline                        |                                          |                      | 2:22       |            |           
-Identifier                     | entity-description                       |                      | 3:1        | True       |           
-Question                       | ?                                        |                      | 3:19       |            |           
-Colon                          | :                                        |                      | 3:20       |            |           
-Less                           | <                                        |                      | 3:22       |            | WS        
-Identifier                     | String                                   |                      | 3:23       |            |           
-Greater                        | >                                        |                      | 3:29       |            |           
-Newline                        |                                          |                      | 3:30       |            |           
-Identifier                     | energy                                   |                      | 4:1        | True       |           
-Less                           | <                                        |                      | 4:7        |            |           
-Identifier                     | Dictionary                               |                      | 4:8        |            |           
-Greater                        | >                                        |                      | 4:18       |            |           
-Colon                          | :                                        |                      | 4:19       |            |           
-LeftBrace                      | {                                        |                      | 4:21       |            | WS        
-Newline                        |                                          |                      | 4:22       |            |           
-Identifier                     | power-reproduction                       |                      | 5:2        | True       |           
-Colon                          | :                                        |                      | 5:20       |            |           
-Less                           | <                                        |                      | 5:22       |            | WS        
-Identifier                     | Power                                    |                      | 5:23       |            |           
-Greater                        | >                                        |                      | 5:28       |            |           
-Newline                        |                                          |                      | 5:29       |            |           
-Identifier                     | fuel                                     |                      | 6:2        | True       |           
-Question                       | ?                                        |                      | 6:6        |            |           
-Less                           | <                                        |                      | 6:7        |            |           
-Identifier                     | Dictionary                               |                      | 6:8        |            |           
-Greater                        | >                                        |                      | 6:18       |            |           
-Colon                          | :                                        |                      | 6:19       |            |           
-LeftBrace                      | {                                        |                      | 6:21       |            | WS        
-Newline                        |                                          |                      | 6:22       |            |           
-Type                           | type                                     |                      | 7:3        | True       |           
-Question                       | ?                                        |                      | 7:7        |            |           
-Colon                          | :                                        |                      | 7:8        |            |           
-Less                           | <                                        |                      | 7:10       |            | WS        
-Identifier                     | String                                   |                      | 7:11       |            |           
-Greater                        | >                                        |                      | 7:17       |            |           
-Of                             | of                                       |                      | 7:19       |            | WS        
-LeftParen                      | (                                        |                      | 7:22       |            | WS        
-String                         | "solid"                                  | solid                | 7:23       |            |           
-Pipe                           | |                                        |                      | 7:31       |            | WS        
-String                         | "liquid"                                 | liquid               | 7:33       |            | WS        
-Pipe                           | |                                        |                      | 7:42       |            | WS        
-String                         | "gas"                                    | gas                  | 7:44       |            | WS        
-RightParen                     | )                                        |                      | 7:49       |            |           
-Newline                        |                                          |                      | 7:50       |            |           
-Identifier                     | consumption                              |                      | 8:3        | True       |           
-Less                           | <                                        |                      | 8:14       |            |           
-Identifier                     | Expr                                     |                      | 8:15       |            |           
-Greater                        | >                                        |                      | 8:19       |            |           
-Question                       | ?                                        |                      | 8:20       |            |           
-Colon                          | :                                        |                      | 8:21       |            |           
-Less                           | <                                        |                      | 8:23       |            | WS        
-Identifier                     | Mass                                     |                      | 8:24       |            |           
-Greater                        | >                                        |                      | 8:28       |            |           
-Slash                          | ÷                                        |                      | 8:30       |            | WS        
-Delta                          | delta                                    |                      | 8:32       |            | WS        
-Less                           | <                                        |                      | 8:38       |            | WS        
-Identifier                     | Time                                     |                      | 8:39       |            |           
-Greater                        | >                                        |                      | 8:43       |            |           
-Newline                        |                                          |                      | 8:44       |            |           
-Identifier                     | emission                                 |                      | 9:3        | True       |           
-Less                           | <                                        |                      | 9:11       |            |           
-Identifier                     | Dictionary                               |                      | 9:12       |            |           
-LeftBracket                    | [                                        |                      | 9:22       |            |           
-RightBracket                   | ]                                        |                      | 9:23       |            |           
-Greater                        | >                                        |                      | 9:24       |            |           
-Question                       | ?                                        |                      | 9:25       |            |           
-Colon                          | :                                        |                      | 9:26       |            |           
-LeftBracket                    | [                                        |                      | 9:28       |            | WS        
-Newline                        |                                          |                      | 9:29       |            |           
-LeftBrace                      | {                                        |                      | 10:4       | True       |           
-Identifier                     | compound                                 |                      | 10:5       |            |           
-Colon                          | :                                        |                      | 10:13      |            |           
-Less                           | <                                        |                      | 10:15      |            | WS        
-Identifier                     | String                                   |                      | 10:16      |            |           
-Greater                        | >                                        |                      | 10:22      |            |           
-Comma                          | ,                                        |                      | 10:23      |            |           
-Identifier                     | per-consumption                          |                      | 10:25      |            | WS        
-Colon                          | :                                        |                      | 10:40      |            |           
-Less                           | <                                        |                      | 10:42      |            | WS        
-Identifier                     | Mass                                     |                      | 10:43      |            |           
-Greater                        | >                                        |                      | 10:47      |            |           
-RightBrace                     | }                                        |                      | 10:48      |            |           
-Asterisk                       | *                                        |                      | 10:49      |            |           
-Newline                        |                                          |                      | 10:50      |            |           
-RightBracket                   | ]                                        |                      | 11:3       | True       |           
-Newline                        |                                          |                      | 11:4       |            |           
-RightBrace                     | }                                        |                      | 12:2       | True       |           
-Newline                        |                                          |                      | 12:3       |            |           
-Identifier                     | heat-generation                          |                      | 13:2       | True       |           
-Less                           | <                                        |                      | 13:17      |            |           
-Identifier                     | Expr                                     |                      | 13:18      |            |           
-Greater                        | >                                        |                      | 13:22      |            |           
-Question                       | ?                                        |                      | 13:23      |            |           
-Colon                          | :                                        |                      | 13:24      |            |           
-Less                           | <                                        |                      | 13:26      |            | WS        
-Identifier                     | Energy                                   |                      | 13:27      |            |           
-Greater                        | >                                        |                      | 13:33      |            |           
-Slash                          | ÷                                        |                      | 13:35      |            | WS        
-Delta                          | delta                                    |                      | 13:37      |            | WS        
-Less                           | <                                        |                      | 13:43      |            | WS        
-Identifier                     | Time                                     |                      | 13:44      |            |           
-Greater                        | >                                        |                      | 13:48      |            |           
-Newline                        |                                          |                      | 13:49      |            |           
-RightBrace                     | }                                        |                      | 14:1       | True       |           
-Newline                        |                                          |                      | 14:2       |            |           
-Identifier                     | craft                                    |                      | 15:1       | True       |           
-Less                           | <                                        |                      | 15:6       |            |           
-Identifier                     | Dictionary                               |                      | 15:7       |            |           
-LeftBracket                    | [                                        |                      | 15:17      |            |           
-RightBracket                   | ]                                        |                      | 15:18      |            |           
-Greater                        | >                                        |                      | 15:19      |            |           
-Colon                          | :                                        |                      | 15:20      |            |           
-LeftBracket                    | [                                        |                      | 15:22      |            | WS        
-Newline                        |                                          |                      | 15:23      |            |           
-LeftBrace                      | {                                        |                      | 16:2       | True       |           
-Identifier                     | component                                |                      | 16:3       |            |           
-Colon                          | :                                        |                      | 16:12      |            |           
-Less                           | <                                        |                      | 16:14      |            | WS        
-Identifier                     | String                                   |                      | 16:15      |            |           
-Greater                        | >                                        |                      | 16:21      |            |           
-Comma                          | ,                                        |                      | 16:22      |            |           
-Identifier                     | count                                    |                      | 16:24      |            | WS        
-Colon                          | :                                        |                      | 16:29      |            |           
-Less                           | <                                        |                      | 16:31      |            | WS        
-Identifier                     | Int                                      |                      | 16:32      |            |           
-Greater                        | >                                        |                      | 16:35      |            |           
-RightBrace                     | }                                        |                      | 16:36      |            |           
-Asterisk                       | *                                        |                      | 16:37      |            |           
-Newline                        |                                          |                      | 16:38      |            |           
-RightBracket                   | ]                                        |                      | 17:1       | True       |           
-Newline                        |                                          |                      | 17:2       |            |           
-Identifier                     | craft-time                               |                      | 18:1       | True       |           
-Colon                          | :                                        |                      | 18:11      |            |           
-Less                           | <                                        |                      | 18:13      |            | WS        
-Identifier                     | Time                                     |                      | 18:14      |            |           
-Greater                        | >                                        |                      | 18:18      |            |           
-Newline                        |                                          |                      | 18:19      |            |           
-Identifier                     | cost                                     |                      | 19:1       | True       |           
-Less                           | <                                        |                      | 19:5       |            |           
-Identifier                     | Dictionary                               |                      | 19:6       |            |           
-Greater                        | >                                        |                      | 19:16      |            |           
-Colon                          | :                                        |                      | 19:17      |            |           
-LeftBrace                      | {                                        |                      | 19:19      |            | WS        
-Identifier                     | requisition                              |                      | 19:20      |            |           
-Colon                          | :                                        |                      | 19:31      |            |           
-Less                           | <                                        |                      | 19:33      |            | WS        
-Identifier                     | Number                                   |                      | 19:34      |            |           
-Greater                        | >                                        |                      | 19:40      |            |           
-Comma                          | ,                                        |                      | 19:41      |            |           
-Identifier                     | energy                                   |                      | 19:43      |            | WS        
-Colon                          | :                                        |                      | 19:49      |            |           
-Less                           | <                                        |                      | 19:51      |            | WS        
-Identifier                     | Number                                   |                      | 19:52      |            |           
-Greater                        | >                                        |                      | 19:58      |            |           
-RightBrace                     | }                                        |                      | 19:59      |            |           
-Newline                        |                                          |                      | 19:60      |            |           
-Identifier                     | size                                     |                      | 20:1       | True       |           
-Less                           | <                                        |                      | 20:5       |            |           
-Identifier                     | Dictionary                               |                      | 20:6       |            |           
-Greater                        | >                                        |                      | 20:16      |            |           
-Colon                          | :                                        |                      | 20:17      |            |           
-LeftBrace                      | {                                        |                      | 20:19      |            | WS        
-Identifier                     | L                                        |                      | 20:20      |            |           
-Colon                          | :                                        |                      | 20:21      |            |           
-Less                           | <                                        |                      | 20:23      |            | WS        
-Identifier                     | Length                                   |                      | 20:24      |            |           
-Greater                        | >                                        |                      | 20:30      |            |           
-Comma                          | ,                                        |                      | 20:31      |            |           
-Identifier                     | W                                        |                      | 20:33      |            | WS        
-Colon                          | :                                        |                      | 20:34      |            |           
-Less                           | <                                        |                      | 20:36      |            | WS        
-Identifier                     | Length                                   |                      | 20:37      |            |           
-Greater                        | >                                        |                      | 20:43      |            |           
-Comma                          | ,                                        |                      | 20:44      |            |           
-Identifier                     | H                                        |                      | 20:46      |            | WS        
-Colon                          | :                                        |                      | 20:47      |            |           
-Less                           | <                                        |                      | 20:49      |            | WS        
-Identifier                     | Length                                   |                      | 20:50      |            |           
-Greater                        | >                                        |                      | 20:56      |            |           
-RightBrace                     | }                                        |                      | 20:57      |            |           
-Newline                        |                                          |                      | 20:58      |            |           
-Identifier                     | weight                                   |                      | 21:1       | True       |           
-Colon                          | :                                        |                      | 21:7       |            |           
-Less                           | <                                        |                      | 21:9       |            | WS        
-Identifier                     | Mass                                     |                      | 21:10      |            |           
-Greater                        | >                                        |                      | 21:14      |            |           
-Newline                        |                                          |                      | 21:15      |            |           
-Identifier                     | durability                               |                      | 22:1       | True       |           
-Colon                          | :                                        |                      | 22:11      |            |           
-Less                           | <                                        |                      | 22:13      |            | WS        
-Identifier                     | UInt16                                   |                      | 22:14      |            |           
-Greater                        | >                                        |                      | 22:20      |            |           
-Newline                        |                                          |                      | 22:21      |            |           
-EOF                            |                                          |                      | 23:1       |            |           
+SOF                            |                                          |                      | 1:1:0      |            |           
+Identifier                     | entity-type                              |                      | 1:1:0      | True       |           
+Colon                          | :                                        |                      | 1:12:11    |            |           
+Identifier                     | energy-generator                         |                      | 1:14:13    |            | WS        
+Newline                        |                                          |                      | 1:30:29    |            |           
+Identifier                     | entity-name                              |                      | 2:1:30     | True       |           
+Colon                          | :                                        |                      | 2:12:41    |            |           
+Less                           | <                                        |                      | 2:14:43    |            | WS        
+Identifier                     | String                                   |                      | 2:15:44    |            |           
+Greater                        | >                                        |                      | 2:21:50    |            |           
+Newline                        |                                          |                      | 2:22:51    |            |           
+Identifier                     | entity-description                       |                      | 3:1:52     | True       |           
+Question                       | ?                                        |                      | 3:19:70    |            |           
+Colon                          | :                                        |                      | 3:20:71    |            |           
+Less                           | <                                        |                      | 3:22:73    |            | WS        
+Identifier                     | String                                   |                      | 3:23:74    |            |           
+Greater                        | >                                        |                      | 3:29:80    |            |           
+Newline                        |                                          |                      | 3:30:81    |            |           
+Identifier                     | energy                                   |                      | 4:1:82     | True       |           
+Less                           | <                                        |                      | 4:7:88     |            |           
+Identifier                     | Dictionary                               |                      | 4:8:89     |            |           
+Greater                        | >                                        |                      | 4:18:99    |            |           
+Colon                          | :                                        |                      | 4:19:100   |            |           
+LeftBrace                      | {                                        |                      | 4:21:102   |            | WS        
+Newline                        |                                          |                      | 4:22:103   |            |           
+Identifier                     | power-reproduction                       |                      | 5:2:105    | True       |           
+Colon                          | :                                        |                      | 5:20:123   |            |           
+Less                           | <                                        |                      | 5:22:125   |            | WS        
+Identifier                     | Power                                    |                      | 5:23:126   |            |           
+Greater                        | >                                        |                      | 5:28:131   |            |           
+Newline                        |                                          |                      | 5:29:132   |            |           
+Identifier                     | fuel                                     |                      | 6:2:134    | True       |           
+Question                       | ?                                        |                      | 6:6:138    |            |           
+Less                           | <                                        |                      | 6:7:139    |            |           
+Identifier                     | Dictionary                               |                      | 6:8:140    |            |           
+Greater                        | >                                        |                      | 6:18:150   |            |           
+Colon                          | :                                        |                      | 6:19:151   |            |           
+LeftBrace                      | {                                        |                      | 6:21:153   |            | WS        
+Newline                        |                                          |                      | 6:22:154   |            |           
+Type                           | type                                     |                      | 7:3:157    | True       |           
+Question                       | ?                                        |                      | 7:7:161    |            |           
+Colon                          | :                                        |                      | 7:8:162    |            |           
+Less                           | <                                        |                      | 7:10:164   |            | WS        
+Identifier                     | String                                   |                      | 7:11:165   |            |           
+Greater                        | >                                        |                      | 7:17:171   |            |           
+Of                             | of                                       |                      | 7:19:173   |            | WS        
+LeftParen                      | (                                        |                      | 7:22:176   |            | WS        
+String                         | "solid"                                  | solid                | 7:23:177   |            |           
+Pipe                           | |                                        |                      | 7:31:185   |            | WS        
+String                         | "liquid"                                 | liquid               | 7:33:187   |            | WS        
+Pipe                           | |                                        |                      | 7:42:196   |            | WS        
+String                         | "gas"                                    | gas                  | 7:44:198   |            | WS        
+RightParen                     | )                                        |                      | 7:49:203   |            |           
+Newline                        |                                          |                      | 7:50:204   |            |           
+Identifier                     | consumption                              |                      | 8:3:207    | True       |           
+Less                           | <                                        |                      | 8:14:218   |            |           
+Identifier                     | Expr                                     |                      | 8:15:219   |            |           
+Greater                        | >                                        |                      | 8:19:223   |            |           
+Question                       | ?                                        |                      | 8:20:224   |            |           
+Colon                          | :                                        |                      | 8:21:225   |            |           
+Less                           | <                                        |                      | 8:23:227   |            | WS        
+Identifier                     | Mass                                     |                      | 8:24:228   |            |           
+Greater                        | >                                        |                      | 8:28:232   |            |           
+Slash                          | ÷                                        |                      | 8:30:234   |            | WS        
+Delta                          | delta                                    |                      | 8:32:237   |            | WS        
+Less                           | <                                        |                      | 8:38:243   |            | WS        
+Identifier                     | Time                                     |                      | 8:39:244   |            |           
+Greater                        | >                                        |                      | 8:43:248   |            |           
+Newline                        |                                          |                      | 8:44:249   |            |           
+Identifier                     | emission                                 |                      | 9:3:252    | True       |           
+Less                           | <                                        |                      | 9:11:260   |            |           
+Identifier                     | Dictionary                               |                      | 9:12:261   |            |           
+LeftBracket                    | [                                        |                      | 9:22:271   |            |           
+RightBracket                   | ]                                        |                      | 9:23:272   |            |           
+Greater                        | >                                        |                      | 9:24:273   |            |           
+Question                       | ?                                        |                      | 9:25:274   |            |           
+Colon                          | :                                        |                      | 9:26:275   |            |           
+LeftBracket                    | [                                        |                      | 9:28:277   |            | WS        
+Newline                        |                                          |                      | 9:29:278   |            |           
+LeftBrace                      | {                                        |                      | 10:4:282   | True       |           
+Identifier                     | compound                                 |                      | 10:5:283   |            |           
+Colon                          | :                                        |                      | 10:13:291  |            |           
+Less                           | <                                        |                      | 10:15:293  |            | WS        
+Identifier                     | String                                   |                      | 10:16:294  |            |           
+Greater                        | >                                        |                      | 10:22:300  |            |           
+Comma                          | ,                                        |                      | 10:23:301  |            |           
+Identifier                     | per-consumption                          |                      | 10:25:303  |            | WS        
+Colon                          | :                                        |                      | 10:40:318  |            |           
+Less                           | <                                        |                      | 10:42:320  |            | WS        
+Identifier                     | Mass                                     |                      | 10:43:321  |            |           
+Greater                        | >                                        |                      | 10:47:325  |            |           
+RightBrace                     | }                                        |                      | 10:48:326  |            |           
+Asterisk                       | *                                        |                      | 10:49:327  |            |           
+Newline                        |                                          |                      | 10:50:328  |            |           
+RightBracket                   | ]                                        |                      | 11:3:331   | True       |           
+Newline                        |                                          |                      | 11:4:332   |            |           
+RightBrace                     | }                                        |                      | 12:2:334   | True       |           
+Newline                        |                                          |                      | 12:3:335   |            |           
+Identifier                     | heat-generation                          |                      | 13:2:337   | True       |           
+Less                           | <                                        |                      | 13:17:352  |            |           
+Identifier                     | Expr                                     |                      | 13:18:353  |            |           
+Greater                        | >                                        |                      | 13:22:357  |            |           
+Question                       | ?                                        |                      | 13:23:358  |            |           
+Colon                          | :                                        |                      | 13:24:359  |            |           
+Less                           | <                                        |                      | 13:26:361  |            | WS        
+Identifier                     | Energy                                   |                      | 13:27:362  |            |           
+Greater                        | >                                        |                      | 13:33:368  |            |           
+Slash                          | ÷                                        |                      | 13:35:370  |            | WS        
+Delta                          | delta                                    |                      | 13:37:373  |            | WS        
+Less                           | <                                        |                      | 13:43:379  |            | WS        
+Identifier                     | Time                                     |                      | 13:44:380  |            |           
+Greater                        | >                                        |                      | 13:48:384  |            |           
+Newline                        |                                          |                      | 13:49:385  |            |           
+RightBrace                     | }                                        |                      | 14:1:386   | True       |           
+Newline                        |                                          |                      | 14:2:387   |            |           
+Identifier                     | craft                                    |                      | 15:1:388   | True       |           
+Less                           | <                                        |                      | 15:6:393   |            |           
+Identifier                     | Dictionary                               |                      | 15:7:394   |            |           
+LeftBracket                    | [                                        |                      | 15:17:404  |            |           
+RightBracket                   | ]                                        |                      | 15:18:405  |            |           
+Greater                        | >                                        |                      | 15:19:406  |            |           
+Colon                          | :                                        |                      | 15:20:407  |            |           
+LeftBracket                    | [                                        |                      | 15:22:409  |            | WS        
+Newline                        |                                          |                      | 15:23:410  |            |           
+LeftBrace                      | {                                        |                      | 16:2:412   | True       |           
+Identifier                     | component                                |                      | 16:3:413   |            |           
+Colon                          | :                                        |                      | 16:12:422  |            |           
+Less                           | <                                        |                      | 16:14:424  |            | WS        
+Identifier                     | String                                   |                      | 16:15:425  |            |           
+Greater                        | >                                        |                      | 16:21:431  |            |           
+Comma                          | ,                                        |                      | 16:22:432  |            |           
+Identifier                     | count                                    |                      | 16:24:434  |            | WS        
+Colon                          | :                                        |                      | 16:29:439  |            |           
+Less                           | <                                        |                      | 16:31:441  |            | WS        
+Identifier                     | Int                                      |                      | 16:32:442  |            |           
+Greater                        | >                                        |                      | 16:35:445  |            |           
+RightBrace                     | }                                        |                      | 16:36:446  |            |           
+Asterisk                       | *                                        |                      | 16:37:447  |            |           
+Newline                        |                                          |                      | 16:38:448  |            |           
+RightBracket                   | ]                                        |                      | 17:1:449   | True       |           
+Newline                        |                                          |                      | 17:2:450   |            |           
+Identifier                     | craft-time                               |                      | 18:1:451   | True       |           
+Colon                          | :                                        |                      | 18:11:461  |            |           
+Less                           | <                                        |                      | 18:13:463  |            | WS        
+Identifier                     | Time                                     |                      | 18:14:464  |            |           
+Greater                        | >                                        |                      | 18:18:468  |            |           
+Newline                        |                                          |                      | 18:19:469  |            |           
+Identifier                     | cost                                     |                      | 19:1:470   | True       |           
+Less                           | <                                        |                      | 19:5:474   |            |           
+Identifier                     | Dictionary                               |                      | 19:6:475   |            |           
+Greater                        | >                                        |                      | 19:16:485  |            |           
+Colon                          | :                                        |                      | 19:17:486  |            |           
+LeftBrace                      | {                                        |                      | 19:19:488  |            | WS        
+Identifier                     | requisition                              |                      | 19:20:489  |            |           
+Colon                          | :                                        |                      | 19:31:500  |            |           
+Less                           | <                                        |                      | 19:33:502  |            | WS        
+Identifier                     | Number                                   |                      | 19:34:503  |            |           
+Greater                        | >                                        |                      | 19:40:509  |            |           
+Comma                          | ,                                        |                      | 19:41:510  |            |           
+Identifier                     | energy                                   |                      | 19:43:512  |            | WS        
+Colon                          | :                                        |                      | 19:49:518  |            |           
+Less                           | <                                        |                      | 19:51:520  |            | WS        
+Identifier                     | Number                                   |                      | 19:52:521  |            |           
+Greater                        | >                                        |                      | 19:58:527  |            |           
+RightBrace                     | }                                        |                      | 19:59:528  |            |           
+Newline                        |                                          |                      | 19:60:529  |            |           
+Identifier                     | size                                     |                      | 20:1:530   | True       |           
+Less                           | <                                        |                      | 20:5:534   |            |           
+Identifier                     | Dictionary                               |                      | 20:6:535   |            |           
+Greater                        | >                                        |                      | 20:16:545  |            |           
+Colon                          | :                                        |                      | 20:17:546  |            |           
+LeftBrace                      | {                                        |                      | 20:19:548  |            | WS        
+Identifier                     | L                                        |                      | 20:20:549  |            |           
+Colon                          | :                                        |                      | 20:21:550  |            |           
+Less                           | <                                        |                      | 20:23:552  |            | WS        
+Identifier                     | Length                                   |                      | 20:24:553  |            |           
+Greater                        | >                                        |                      | 20:30:559  |            |           
+Comma                          | ,                                        |                      | 20:31:560  |            |           
+Identifier                     | W                                        |                      | 20:33:562  |            | WS        
+Colon                          | :                                        |                      | 20:34:563  |            |           
+Less                           | <                                        |                      | 20:36:565  |            | WS        
+Identifier                     | Length                                   |                      | 20:37:566  |            |           
+Greater                        | >                                        |                      | 20:43:572  |            |           
+Comma                          | ,                                        |                      | 20:44:573  |            |           
+Identifier                     | H                                        |                      | 20:46:575  |            | WS        
+Colon                          | :                                        |                      | 20:47:576  |            |           
+Less                           | <                                        |                      | 20:49:578  |            | WS        
+Identifier                     | Length                                   |                      | 20:50:579  |            |           
+Greater                        | >                                        |                      | 20:56:585  |            |           
+RightBrace                     | }                                        |                      | 20:57:586  |            |           
+Newline                        |                                          |                      | 20:58:587  |            |           
+Identifier                     | weight                                   |                      | 21:1:588   | True       |           
+Colon                          | :                                        |                      | 21:7:594   |            |           
+Less                           | <                                        |                      | 21:9:596   |            | WS        
+Identifier                     | Mass                                     |                      | 21:10:597  |            |           
+Greater                        | >                                        |                      | 21:14:601  |            |           
+Newline                        |                                          |                      | 21:15:602  |            |           
+Identifier                     | durability                               |                      | 22:1:603   | True       |           
+Colon                          | :                                        |                      | 22:11:613  |            |           
+Less                           | <                                        |                      | 22:13:615  |            | WS        
+Identifier                     | UInt16                                   |                      | 22:14:616  |            |           
+Greater                        | >                                        |                      | 22:20:622  |            |           
+Newline                        |                                          |                      | 22:21:623  |            |           
+EOF                            |                                          |                      | 23:1:624   |            |           
