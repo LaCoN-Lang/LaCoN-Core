@@ -4,7 +4,6 @@ use super::{CalcMode, UnitProps};
 use super::{PrefixGroup, UnitArena, UnitDef, UnitTree};
 
 use std::collections::BTreeMap;
-use std::sync::LazyLock;
 
 pub static UNITS: &[UnitDef] = units_array![
 				[]
@@ -843,8 +842,6 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 ];
 
-// pub static UNITS_TREE: LazyLock<UnitTree> = LazyLock::new(|| build_unit_tree(UNITS));
-
 pub struct UnitContext<'arena> {
 	pub arena: &'arena UnitArena,
 	pub tree: UnitTree,
@@ -853,24 +850,19 @@ pub struct UnitContext<'arena> {
 
 impl<'arena> UnitContext<'arena> {
 	pub fn new(arena: &'arena UnitArena) -> Self {
-		// 1️⃣ строим дерево единиц
 		let tree = build_unit_tree(UNITS, arena);
 
-		// 2️⃣ строим lookup map
 		let mut lookup = BTreeMap::new();
 
-		// Группируем префиксы по PrefixGroup
 		let mut grouped_p: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
 		for (p_sym, _, p_group) in PREFIXES {
 			grouped_p.entry(*p_group).or_default().push(*p_sym);
 		}
 
 		for unit in UNITS {
-			// сама единица
 			let sym = arena.alloc_str(unit.symbol);
 			lookup.insert(sym, unit.dimension);
 
-			// комбинации с префиксами
 			if let Some(prefixes) = grouped_p.get(&unit.numerator_group) {
 				for p_sym in prefixes {
 					let full = format!("{}{}", p_sym, unit.symbol);
@@ -888,7 +880,6 @@ pub fn build_unit_tree<'arena>(units: &[UnitDef], arena: &'arena UnitArena) -> U
 	let mut tree = UnitTree::default();
 	const SEPARATORS: &[&str] = &["/", "*", "⋅"];
 
-	// группировка префиксов
 	let mut gp: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
 	for (s, _, g) in PREFIXES {
 		gp.entry(*g).or_default().push(*s);

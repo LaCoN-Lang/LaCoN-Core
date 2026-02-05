@@ -3,10 +3,14 @@ mod types;
 
 use lacon_core::frontend::lexer::Scanner;
 use lacon_core::frontend::lexer::TokenKind;
+use lacon_core::shared::unit::{UnitArena, UnitContext};
 use serde_json::{Value, json};
 use std::io::{self, BufRead, Read, Write};
 
 fn main() -> io::Result<()> {
+	let arena = UnitArena::new();
+	let ctx = UnitContext::new(&arena);
+
 	let stdin = io::stdin();
 	let mut stdin_lock = stdin.lock();
 
@@ -61,7 +65,7 @@ fn main() -> io::Result<()> {
 
 			"lacon/parseRaw" => {
 				let content = msg["params"]["content"].as_str().unwrap_or("");
-				let mut scanner = Scanner::new(content);
+				let mut scanner = Scanner::new(content, &ctx);
 				let tokens = scanner.scan_tokens();
 
 				let tokens_json: Vec<Value> = tokens

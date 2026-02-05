@@ -1,10 +1,13 @@
 use js_sys::{Array, Object, Reflect};
 use lacon_core::frontend::lexer::Scanner;
+use lacon_core::shared::unit::{UnitArena, UnitContext};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 pub fn lex(source: &str) -> JsValue {
-	let mut scanner = Scanner::new(source);
+	let arena = UnitArena::new();
+	let ctx = UnitContext::new(&arena);
+	let mut scanner = Scanner::new(source, &ctx);
 	let tokens = scanner.scan_tokens();
 
 	let result = Array::new();
