@@ -1,4 +1,4 @@
-use super::super::keyword::KeywordKind;
+use super::super::{KeywordKind, OperatorKind, SyntaxKind};
 use crate::shared::unit::UnitKind;
 
 #[derive(Debug, Clone, PartialEq)]
@@ -144,15 +144,17 @@ pub enum TokenKind {
 	// ─────────────────────────────────────────────
 	// Литералы и идентификаторы
 	// ─────────────────────────────────────────────
-	Identifier,           // name \\ Identifier
-	Keyword(KeywordKind), // let \\ Keyword
-	Number,               // 123  \\ NumericLiteral
-	NumberInfinity,       // inf  \\ NumericLiteral
-	String,               // " "  \\ StringLiteral
-	SingleQuotedString,   // ' '  \\ StringLiteral
-	GraveQuotedString,    // ` `  \\ StringLiteral
-	MultilineString,      // """ \\ MultilineStringLiteral
-	Placeholder,          // _    \\ Placeholder / PartialApply
+	Identifier,             // name \\ Identifier
+	Keyword(KeywordKind),   // let \\ Keyword
+	Operator(OperatorKind), // + \\ Operator
+	Syntax(SyntaxKind),     // ( \\ Syntax
+	Number,                 // 123  \\ NumericLiteral
+	NumberInfinity,         // inf  \\ NumericLiteral
+	String,                 // " "  \\ StringLiteral
+	SingleQuotedString,     // ' '  \\ StringLiteral
+	GraveQuotedString,      // ` `  \\ StringLiteral
+	MultilineString,        // """ \\ MultilineStringLiteral
+	Placeholder,            // _    \\ Placeholder / PartialApply
 
 	// ─────────────────────────────────────────────
 	// Комментарии

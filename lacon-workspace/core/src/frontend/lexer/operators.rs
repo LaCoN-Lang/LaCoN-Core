@@ -1,4 +1,4 @@
-use super::token::TokenKind;
+use super::TokenKind;
 use crate::shared::common::characters::*;
 
 /// Структура для результата сопоставления оператора

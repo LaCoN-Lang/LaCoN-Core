@@ -1,4 +1,4 @@
-use super::super::keyword::KeywordKind;
+use super::super::KeywordKind;
 use super::{Token, TokenFlags, TokenKind};
 use crate::shared::position::Position;
 use crate::shared::unit::UnitKind;
