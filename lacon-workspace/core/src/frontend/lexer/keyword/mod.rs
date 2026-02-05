@@ -135,6 +135,8 @@ static KEYWORDS: phf::Map<&'static str, KeywordKind> = phf_map! {
 	// --- Константы и Маркеры ---
 	"infinity" |"Infinity" => KeywordKind::NumberInfinity,
 	"delta" => KeywordKind::Delta,
+	"xor" => KeywordKind::Xor,
+	"bitwise" => KeywordKind::Bitwise,
 	"section"=> KeywordKind::SectionMaker,
 
 	"Marker" => KeywordKind::Marker,

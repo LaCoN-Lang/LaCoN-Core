@@ -136,6 +136,8 @@ pub enum KeywordKind {
 
 	NumberInfinity,
 	Delta,
+	Xor,
+	Bitwise,
 	SectionMaker,
 	Marker,
 }

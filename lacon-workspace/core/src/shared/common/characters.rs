@@ -34,6 +34,15 @@ unicode_chars! {
 				CEIL_START = '⌈';
 				CEIL_END = '⌉';
 
+				XOR = '⊻';
+				RING_OPERATOR = '∘';
+
+				ELEMENT_OF = '∈';
+				NOT_AN_ELEMENT_OF = '∉';
+				CONTAINS_AS_MEMBER = '∋';
+				DOES_NOT_CONTAIN_AS_MEMBER = '∌';
+
+
 				ARROW_LEFT = '←';
 				ARROW_RIGHT = '→';
 				ARROW_UP = '↑';

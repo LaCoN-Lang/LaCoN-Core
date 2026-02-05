@@ -67,41 +67,47 @@ macro_rules! define_operators {
 
 define_operators! {
 		// ASCII operators
-		Plus           => '+',
-		Minus          => '-' | MINUS_SIGN,
-		Asterisk       => '*',
-		Slash          => '/',
-		Equal          => '=',
-		Exclamation    => '!',
-		Question       => '?',
-		Percent        => '%',
-		Ampersand      => '&',
-		Pipe           => '|',
-		Greater        => '>',
-		Less           => '<',
-		Dot            => '.',
-		Colon          => ':',
-		Tilde          => '~',
-		Circumflex      => '^',
+		Plus             => '+',
+		Minus            => '-' | MINUS_SIGN,
+		Asterisk         => '*',
+		Slash            => '/',
+		Equal            => '=',
+		Exclamation      => '!',
+		Question         => '?',
+		Percent          => '%',
+		Ampersand        => '&',
+		Pipe             => '|',
+		Greater          => '>',
+		Less             => '<',
+		Dot              => '.',
+		Colon            => ':',
+		Tilde            => '~',
+		Circumflex       => '^',
 
 		// Unicode operators
-		Multiplication => MULTIPLICATION_SIGN,
-		Obelos         => DIVISION_SIGN,
-		PlusMinus      => PLUS_MINUS_SIGN,
-		DotMinus       => DOT_MINUS_SIGN,
-		DotPlus        => DOT_PLUS_SIGN,
-		NotEqual       => NOT_EQUAL_SIGN,
-		AlmostEqual    => ALMOST_EQUAL_SIGN,
-		IdenticalTo    => IDENTICAL_TO_SIGN,
-		StrictEqual    => STRICT_EQUAL_SIGN,
-		LessEqual      => LESS_EQUAL_SIGN,
-		GreaterEqual   => GREATER_EQUAL_SIGN,
+		Multiplication           => MULTIPLICATION_SIGN,
+		Obelus                   => DIVISION_SIGN,
+		PlusMinus                => PLUS_MINUS_SIGN,
+		Monus                    => DOT_MINUS_SIGN,
+		DotPlus                  => DOT_PLUS_SIGN,
+		NotEqual                 => NOT_EQUAL_SIGN,
+		AlmostEqual              => ALMOST_EQUAL_SIGN,
+		IdenticalTo              => IDENTICAL_TO_SIGN,
+		StrictEqual              => STRICT_EQUAL_SIGN,
+		LessEqual                => LESS_EQUAL_SIGN,
+		GreaterEqual             => GREATER_EQUAL_SIGN,
+		Xor                      => XOR_SIGN,
+		Ring                     => RING_OPERATOR_SIGN, // Композиция функций, a(x) = x × 2; b(x) = x + 1; c = a ∘ b ≣ c = b(a(x)) || или без создания переменной → (a ∘ b)(x)
+		ElementOf                => ELEMENT_OF_SIGN, // element ∈ array (element in array); char ∈ string; x ∈ x..x (in range)
+		NotAnElementOf           => NOT_AN_ELEMENT_OF_SIGN,
+		ContainsAsMember         => CONTAINS_AS_MEMBER_SIGN, // array ∋ element (array contains element); string ∋ char
+		DoesNotContainsAsMember  => DOES_NOT_CONTAIN_AS_MEMBER_SIGN,
 
 		// Unicode paired operators
-		FloorStart     => FLOOR_START_SIGN,
-		FloorEnd       => FLOOR_END_SIGN,
-		CeilStart      => CEIL_START_SIGN,
-		CeilEnd        => CEIL_END_SIGN,
+		FloorStart       => FLOOR_START_SIGN,
+		FloorEnd         => FLOOR_END_SIGN,
+		CeilStart        => CEIL_START_SIGN,
+		CeilEnd          => CEIL_END_SIGN,
 }
 
 // .  \\ MemberAccess
@@ -154,13 +160,13 @@ define_operators! {
 // ||  \\ LogicalOr
 // ?? \\ NullishCoalescing
 
-// &  \\ BitwiseAnd
-// |  \\ BitwiseOr
-// ^  \\ BitwiseXor
-// ~  \\ BitwiseNot
-// &= \\ BitwiseAndAssign
-// |= \\ BitwiseOrAssign
-// ^= \\ BitwiseXorAssign
+// &  \\ Ссылка и возможно ASCII для композиции функций
+// |  \\
+// ^  \\ Возведение в степень, обязательно без пробела — 2^3
+// ~=  \\ RegExMatch → string ~= pattern
+// &= \\
+// |= \\
+// ^= \\ Возведение в степень, a ^= b → a = a^b, a^^ → a = a^2
 
 // -> \\ ThinArrow / Mapping
 // => \\ Lambda / CaseArrow
