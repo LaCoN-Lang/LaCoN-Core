@@ -61,7 +61,7 @@ fn main() -> io::Result<()> {
 
 			"lacon/parseRaw" => {
 				let content = msg["params"]["content"].as_str().unwrap_or("");
-				let mut scanner = Scanner::new(content.to_string());
+				let mut scanner = Scanner::new(content);
 				let tokens = scanner.scan_tokens();
 
 				let tokens_json: Vec<Value> = tokens

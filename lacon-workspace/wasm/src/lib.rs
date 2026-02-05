@@ -4,7 +4,7 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 pub fn lex(source: &str) -> JsValue {
-	let mut scanner = Scanner::new(source.to_string());
+	let mut scanner = Scanner::new(source);
 	let tokens = scanner.scan_tokens();
 
 	let result = Array::new();

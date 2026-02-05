@@ -3,19 +3,20 @@ use crate::shared::errors::error::Error;
 use crate::shared::errors::error_type::ErrorType;
 use crate::shared::errors::error_type::LexicalError;
 use crate::shared::position::Position;
-use crate::shared::unit::{UNIT_LOOKUP, UNITS_TREE, UnitKind};
+use crate::shared::unit::{UnitContext, UnitKind};
 
 use std::path::Path;
 use std::str::Chars;
 
 const EOF_CHAR: char = '\0';
 
-pub struct Scanner<'a> {
-	source: &'a str,
-	tokens: Vec<Token<'a>>,
+pub struct Scanner<'src, 'ctx> {
+	source: &'src str,
+	ctx: &'ctx UnitContext<'ctx>,
+	tokens: Vec<Token<'src>>,
 	start: usize,
 	current: usize,
-	chars: Chars<'a>,
+	chars: Chars<'src>,
 	position: Position,
 	start_position: Position,
 	indent_stack: Vec<usize>,
@@ -28,11 +29,12 @@ pub struct Scanner<'a> {
 	prev: char,
 }
 
-impl<'a> Scanner<'a> {
-	pub fn new(source: &'a str) -> Self {
+impl<'src, 'ctx> Scanner<'src, 'ctx> {
+	pub fn new(source: &'src str, ctx: &'ctx UnitContext<'ctx>) -> Self {
 		let start_pos = Position::start();
 		Self {
 			source,
+			ctx,
 			tokens: Vec::new(),
 			start: 0,
 			current: 0,
@@ -188,7 +190,7 @@ impl<'a> Scanner<'a> {
 	}
 
 	#[inline]
-	fn as_str(&self) -> &'a str {
+	fn as_str(&self) -> &'src str {
 		self.chars.as_str()
 	}
 
@@ -277,7 +279,7 @@ impl<'a> Scanner<'a> {
 		self.tokens.push(Token::new(t_type, is_start, has_ws, text, None, self.start_position, len));
 	}
 
-	fn add_token_with_literal(&mut self, t_type: TokenKind, literal: &'a str) {
+	fn add_token_with_literal(&mut self, t_type: TokenKind, literal: &'src str) {
 		let text = &self.source[self.start..self.current];
 		let len = text.len();
 
@@ -437,7 +439,7 @@ impl<'a> Scanner<'a> {
 		self.process_unit_suffix(value_literal);
 	}
 
-	fn process_unit_suffix(&mut self, value_literal: &'a str) {
+	fn process_unit_suffix(&mut self, value_literal: &'src str) {
 		let initial_current = self.current;
 		let initial_position = self.position;
 		let initial_chars = self.chars.clone();
@@ -455,7 +457,7 @@ impl<'a> Scanner<'a> {
 		}
 
 		let lookahead = &self.as_str()[ws_byte_count..];
-		let unit_match_len = UNITS_TREE.longest_match(lookahead);
+		let unit_match_len = self.ctx.tree.longest_match(lookahead);
 
 		if unit_match_len > 0 {
 			let is_valid_boundary = if let Some(nc) = lookahead[unit_match_len..].chars().next() { !(nc.is_alphanumeric() && nc != '/') } else { true };
@@ -479,7 +481,7 @@ impl<'a> Scanner<'a> {
 				self.start_position = self.position;
 
 				let unit_lexeme = &lookahead[..unit_match_len];
-				let unit_kind = UNIT_LOOKUP.get(unit_lexeme).cloned().unwrap_or(UnitKind::None);
+				let unit_kind = self.ctx.lookup.get(unit_lexeme).cloned().unwrap_or(UnitKind::None);
 
 				let mut bytes_to_consume = unit_match_len;
 				while bytes_to_consume > 0 {

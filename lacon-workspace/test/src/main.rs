@@ -9,6 +9,7 @@ mod lexer_tests {
 	use super::*;
 	use lacon_core::frontend::lexer::Scanner;
 	use lacon_core::frontend::lexer::TokenFlags;
+	use lacon_core::shared::unit::{UnitArena, UnitContext};
 	use memory_stats::memory_stats;
 	use std::fs::{self, File};
 	use std::io::Write;
@@ -65,11 +66,13 @@ mod lexer_tests {
 	}
 
 	fn process_file(file_path: &Path) {
+		let arena = UnitArena::new();
+		let ctx = UnitContext::new(&arena);
 		println!("Обработка файла: {:?}", file_path);
 
 		let source = fs::read_to_string(file_path).unwrap_or_else(|_| panic!("Не удалось прочитать файл {:?}", file_path));
 
-		let mut scanner = Scanner::new(&source);
+		let mut scanner = Scanner::new(&source, &ctx);
 		let tokens = scanner.scan_tokens();
 
 		let file_name = file_path.file_name().unwrap().to_str().unwrap();
@@ -105,6 +108,9 @@ mod lexer_tests {
 
 	#[test]
 	fn lexer_speed_test() {
+		let arena = UnitArena::new();
+		let ctx = UnitContext::new(&arena);
+
 		let source_str = *FILE_STRINGS_CYR;
 		let iterations = 100000; // Увеличим до 1000 для более стабильной статистики
 		let warmup_iterations = 10;
@@ -114,7 +120,7 @@ mod lexer_tests {
 		// 1. Предварительная подготовка (Warmup)
 		// Позволяет CPU "разогреться", а кэшам заполниться
 		for _ in 0..warmup_iterations {
-			let mut scanner = Scanner::new(source_str);
+			let mut scanner = Scanner::new(source_str, &ctx);
 			let _ = scanner.scan_tokens();
 		}
 
@@ -131,7 +137,7 @@ mod lexer_tests {
 		for _ in 0..iterations {
 			// Мы используем clone(), так как это минимальная задержка
 			// по сравнению с парсингом, если лексер забирает владение.
-			let mut scanner = Scanner::new(&source_owned);
+			let mut scanner = Scanner::new(&source_owned, &ctx);
 			let tokens = scanner.scan_tokens();
 			total_tokens += tokens.len();
 

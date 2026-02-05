@@ -1,7 +1,7 @@
 use super::UnitKind;
-use super::definition::{PrefixGroup, UnitDef, UnitTree};
 use super::prefixes::PREFIXES;
 use super::{CalcMode, UnitProps};
+use super::{PrefixGroup, UnitArena, UnitDef, UnitTree};
 
 use std::collections::BTreeMap;
 use std::sync::LazyLock;
@@ -843,42 +843,59 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 ];
 
-pub static UNITS_TREE: LazyLock<UnitTree> = LazyLock::new(|| build_unit_tree(UNITS));
-pub static UNIT_LOOKUP: LazyLock<BTreeMap<&'static str, UnitKind>> = LazyLock::new(|| {
-	let mut map = BTreeMap::new();
+// pub static UNITS_TREE: LazyLock<UnitTree> = LazyLock::new(|| build_unit_tree(UNITS));
 
-	let mut grouped_p: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
-	for (p_sym, _, p_group) in PREFIXES {
-		grouped_p.entry(*p_group).or_default().push(*p_sym);
-	}
+pub struct UnitContext<'arena> {
+	pub arena: &'arena UnitArena,
+	pub tree: UnitTree,
+	pub lookup: BTreeMap<&'arena str, UnitKind>,
+}
 
-	for unit in UNITS {
-		map.insert(unit.symbol, unit.dimension);
+impl<'arena> UnitContext<'arena> {
+	pub fn new(arena: &'arena UnitArena) -> Self {
+		// 1️⃣ строим дерево единиц
+		let tree = build_unit_tree(UNITS, arena);
 
-		if let Some(prefixes) = grouped_p.get(&unit.numerator_group) {
-			for p_sym in prefixes {
-				let full_sym = format!("{}{}", p_sym, unit.symbol);
-				let leaked: &'static str = Box::leak(full_sym.into_boxed_str());
-				map.insert(leaked, unit.dimension);
+		// 2️⃣ строим lookup map
+		let mut lookup = BTreeMap::new();
+
+		// Группируем префиксы по PrefixGroup
+		let mut grouped_p: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
+		for (p_sym, _, p_group) in PREFIXES {
+			grouped_p.entry(*p_group).or_default().push(*p_sym);
+		}
+
+		for unit in UNITS {
+			// сама единица
+			let sym = arena.alloc_str(unit.symbol);
+			lookup.insert(sym, unit.dimension);
+
+			// комбинации с префиксами
+			if let Some(prefixes) = grouped_p.get(&unit.numerator_group) {
+				for p_sym in prefixes {
+					let full = format!("{}{}", p_sym, unit.symbol);
+					let interned = arena.alloc_str(&full);
+					lookup.insert(interned, unit.dimension);
+				}
 			}
 		}
-	}
-	map
-});
 
-pub fn build_unit_tree(units: &[UnitDef]) -> UnitTree {
+		Self { arena, tree, lookup }
+	}
+}
+
+pub fn build_unit_tree<'arena>(units: &[UnitDef], arena: &'arena UnitArena) -> UnitTree {
 	let mut tree = UnitTree::default();
 	const SEPARATORS: &[&str] = &["/", "*", "⋅"];
 
+	// группировка префиксов
 	let mut gp: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
 	for (s, _, g) in PREFIXES {
 		gp.entry(*g).or_default().push(*s);
 	}
-
 	for list in gp.values_mut() {
 		list.push("");
 	}
-
 	let default_prefix = vec![""];
 
 	for unit in units {
@@ -900,23 +917,22 @@ pub fn build_unit_tree(units: &[UnitDef]) -> UnitTree {
 
 					for sep in SEPARATORS {
 						let full = format!("{}{}{}{}{}", p_n, n_base, sep, p_d, d_base);
-						let leaked: &'static str = Box::leak(full.into_boxed_str());
-						tree.insert(leaked);
+						let interned = arena.alloc_str(&full);
+						tree.insert(interned);
 					}
 				}
 			}
-		} else {
-			if let Some(prefixes) = gp.get(&unit.numerator_group) {
-				for p_sym in prefixes {
-					if p_sym.is_empty() {
-						continue;
-					}
-					let full = format!("{}{}", p_sym, unit.symbol);
-					let leaked: &'static str = Box::leak(full.into_boxed_str());
-					tree.insert(leaked);
+		} else if let Some(prefixes) = gp.get(&unit.numerator_group) {
+			for p_sym in prefixes {
+				if p_sym.is_empty() {
+					continue;
 				}
+				let full = format!("{}{}", p_sym, unit.symbol);
+				let interned = arena.alloc_str(&full);
+				tree.insert(interned);
 			}
 		}
 	}
+
 	tree
 }

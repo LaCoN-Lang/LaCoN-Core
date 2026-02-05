@@ -1,15 +1,18 @@
 #[macro_use]
-pub mod definition;
+mod definition;
 
 pub mod formulas;
 pub mod prefixes;
 
+mod arena;
 mod impls;
 mod kind;
 mod props;
 mod structs;
 mod units_declaration;
 
+pub use arena::*;
+pub use definition::*;
 pub use formulas::*;
 pub use kind::*;
 pub use props::*;
