@@ -179,7 +179,7 @@ impl<'src, 'ctx> Scanner<'src, 'ctx> {
 				self.scan_identifier();
 			}
 
-			_ if (c as u32) > 127 && c.is_alphabetic() => {
+			_ if !c.is_ascii() && c.is_alphabetic() => {
 				self.scan_identifier();
 			}
 
@@ -345,7 +345,7 @@ impl<'src, 'ctx> Scanner<'src, 'ctx> {
 		}
 
 		let text = &self.source[self.start..self.current];
-		let t_type = get_keyword_token(text).map_or(TokenKind::Identifier, TokenKind::Keyword);
+		let t_type = get_keyword_token(&text).map_or(TokenKind::Identifier, TokenKind::Keyword);
 
 		let is_start = self.is_at_line_start;
 		if is_start {
@@ -384,7 +384,7 @@ impl<'src, 'ctx> Scanner<'src, 'ctx> {
 		}
 
 		let text = &self.source[self.start..self.current];
-		let t_type = get_keyword_token(text).map_or(TokenKind::Identifier, TokenKind::Keyword);
+		let t_type = get_keyword_token(&text).map_or(TokenKind::Identifier, TokenKind::Keyword);
 
 		self.add_token(t_type);
 	}
