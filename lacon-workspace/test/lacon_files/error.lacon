@@ -1,3 +1,8 @@
 let a = "unterminated string
 
-let a = "unterminated string
+let a = 'unterminated string
+
+root:
+	child_1:
+        child_2:
+      broken_indent

@@ -11,7 +11,24 @@ Newline                                                 |                       
 Keyword(Variable)                                       | let                                      |                                | 3:1:30          | True       |           
 Identifier                                              | a                                        |                                | 3:5:34          |            | WS        
 Operator(Equal)                                         | =                                        |                                | 3:7:36          |            | WS        
-Syntax(DoubleQuote)                                     | "                                        |                                | 3:9:38          |            | WS        
+Syntax(SingleQuote)                                     | '                                        |                                | 3:9:38          |            | WS        
 Error                                                   | unterminated string                      |                                | 3:10:39         |            |           
 Newline                                                 |                                          |                                | 3:29:58         |            |           
-EOF                                                     |                                          |                                | 4:1:59          |            |           
+Newline                                                 |                                          |                                | 4:1:59          |            |           
+Keyword(Root)                                           | root                                     |                                | 5:1:60          | True       |           
+Operator(Colon)                                         | :                                        |                                | 5:5:64          |            |           
+Newline                                                 |                                          |                                | 5:6:65          |            |           
+Indent(1)                                               |                                          |                                | 6:1:66          |            |           
+Identifier                                              | child_1                                  |                                | 6:2:67          | True       |           
+Operator(Colon)                                         | :                                        |                                | 6:9:74          |            |           
+Newline                                                 |                                          |                                | 6:10:75         |            |           
+Indent(2)                                               |                                          |                                | 7:1:76          |            |           
+Identifier                                              | child_2                                  |                                | 7:9:84          | True       |           
+Operator(Colon)                                         | :                                        |                                | 7:16:91         |            |           
+Newline                                                 |                                          |                                | 7:17:92         |            |           
+Error                                                   |                                          |                                | 8:1:93          | True       |           
+Dedent(1)                                               |                                          |                                | 8:1:93          |            |           
+Identifier                                              | broken_indent                            |                                | 8:7:99          |            |           
+Newline                                                 |                                          |                                | 8:20:112        |            |           
+Dedent(0)                                               |                                          |                                | 9:1:113         |            |           
+EOF                                                     |                                          |                                | 9:1:113         |            |           

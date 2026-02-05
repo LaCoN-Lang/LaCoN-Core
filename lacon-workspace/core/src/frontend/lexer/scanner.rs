@@ -36,7 +36,7 @@ impl Scanner {
 			context_stack: Vec::new(),
 			string_stack: Vec::new(),
 			is_at_line_start: true,
-			had_whitespace: false, // На старте пробела нет
+			had_whitespace: false,
 			errors: Vec::new(),
 		}
 	}
@@ -51,6 +51,7 @@ impl Scanner {
 			if self.is_at_line_start {
 				self.handle_indentation();
 			}
+
 			if !self.is_at_end() {
 				self.scan_token();
 			}
@@ -58,7 +59,8 @@ impl Scanner {
 
 		while self.indent_stack.len() > 1 {
 			self.indent_stack.pop();
-			self.add_token_raw(TokenKind::Dedent);
+			let level = (self.indent_stack.len() - 1) as u8;
+			self.add_token_raw(TokenKind::Dedent(level));
 		}
 
 		self.tokens.push(Token::bare(TokenKind::EOF, self.position));
@@ -167,7 +169,7 @@ impl Scanner {
 	}
 
 	fn add_token_raw(&mut self, t_type: TokenKind) {
-		let is_start = if matches!(t_type, TokenKind::Indent | TokenKind::Dedent | TokenKind::Newline) {
+		let is_start = if matches!(t_type, TokenKind::Indent(_) | TokenKind::Dedent(_) | TokenKind::Newline) {
 			false
 		} else {
 			let res = self.is_at_line_start;
@@ -177,7 +179,7 @@ impl Scanner {
 			res
 		};
 
-		let has_ws = if matches!(t_type, TokenKind::Indent | TokenKind::Dedent | TokenKind::Newline) {
+		let has_ws = if matches!(t_type, TokenKind::Indent(_) | TokenKind::Dedent(_) | TokenKind::Newline) {
 			false
 		} else {
 			let res = self.had_whitespace;
@@ -466,20 +468,23 @@ impl Scanner {
 	}
 
 	fn handle_indentation(&mut self) {
-		let mut spaces = 0;
+		let mut current_weight = 0;
+
 		while let Some(c) = self.peek() {
 			match c {
 				' ' => {
-					spaces += 1;
+					current_weight += 1;
 					self.advance();
 				}
 				'\t' => {
-					spaces += 4;
+					let last_weight = *self.indent_stack.last().unwrap_or(&0);
+					current_weight += if last_weight == 0 { 4 } else { last_weight };
 					self.advance();
 				}
 				_ => break,
 			}
 		}
+
 		if matches!(self.peek(), Some('\n') | Some('\r')) {
 			return;
 		}
@@ -493,16 +498,24 @@ impl Scanner {
 			return;
 		}
 
-		let last_indent = *self.indent_stack.last().unwrap();
-		if spaces > last_indent {
-			self.indent_stack.push(spaces);
-			self.add_token_raw(TokenKind::Indent);
-		} else if spaces < last_indent {
-			while spaces < *self.indent_stack.last().unwrap() {
+		let last_weight = *self.indent_stack.last().unwrap();
+
+		if current_weight > last_weight {
+			self.indent_stack.push(current_weight);
+			let level = (self.indent_stack.len() - 1) as u8;
+			self.add_token_raw(TokenKind::Indent(level));
+		} else if current_weight < last_weight {
+			if !self.indent_stack.contains(&current_weight) {
+				self.report_error(LexicalError::InvalidIndentation);
+			}
+
+			while current_weight < *self.indent_stack.last().unwrap() {
 				self.indent_stack.pop();
-				self.add_token_raw(TokenKind::Dedent);
+				let level = (self.indent_stack.len() - 1) as u8;
+				self.add_token_raw(TokenKind::Dedent(level));
 			}
 		}
+
 		self.start = self.current;
 		self.start_position = self.position;
 	}
@@ -605,7 +618,7 @@ impl Scanner {
 		use std::fs::OpenOptions;
 		use std::io::Write;
 
-		let mut file = OpenOptions::new().create(true).append(true).open(file_path).expect("Не удалось открыть файл для записи ошибок");
+		let mut file = OpenOptions::new().create(true).write(true).truncate(true).open(file_path).expect("Не удалось открыть файл для записи ошибок");
 
 		for error in &self.errors {
 			writeln!(file, "{}", error).expect("Не удалось записать ошибку в файл");

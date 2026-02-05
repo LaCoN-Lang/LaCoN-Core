@@ -6,15 +6,12 @@ fn simple(t: TokenKind) -> OpMatch {
 }
 
 pub fn match_operator(c1: char, c2: Option<char>, c3: Option<char>) -> OpMatch {
-	// 1. Проверяем, является ли первый символ оператором вообще
 	if !OperatorKind::is_op_char(c1) {
 		return match c1 {
 			_ => simple(TokenKind::Unknown),
 		};
 	}
 
-	// 2. Жадное накопление (Maximum Munch)
-	// Мы собираем все идущие подряд символы, которые числятся в нашем макросе
 	let mut chars = vec![c1];
 
 	if let Some(next) = c2 {
@@ -28,13 +25,8 @@ pub fn match_operator(c1: char, c2: Option<char>, c3: Option<char>) -> OpMatch {
 		}
 	}
 
-	// 3. Сколько символов МЫ СЪЕЛИ (помимо первого)
 	let consume_count = chars.len() - 1;
 
-	// 4. Сборка рекурсивного дерева (справа налево)
-	// Если в chars лежит ['*', '='], то:
-	// 1-й шаг: current = Equal(None)
-	// 2-й шаг: current = Asterisk(Some(Box(Equal(None))))
 	let mut current_op: Option<OperatorKind> = None;
 	while let Some(ch) = chars.pop() {
 		let constructor = OperatorKind::from_char(ch).unwrap();

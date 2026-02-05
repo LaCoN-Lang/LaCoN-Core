@@ -18,8 +18,8 @@ pub enum TokenKind {
 	// ─────────────────────────────────────────────
 	Newline,        // \n \\ LineBreak
 	CarriageReturn, // \r \\ CarriageReturn
-	Indent,         // →  \\ IndentIncrease
-	Dedent,         // ←  \\ IndentDecrease
+	Indent(u8),     // →  \\ IndentIncrease
+	Dedent(u8),     // ←  \\ IndentDecrease
 	SectionMaker,   // §  \\ Scope
 
 	FloorStart, // ⌊  \\ FloorStart

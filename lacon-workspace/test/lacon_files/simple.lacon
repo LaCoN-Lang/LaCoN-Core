@@ -1,0 +1,6 @@
+const a<String> = 'Just string'
+const b<String> = "interpolated ${String.as_ref()}"
+let c = 18kg
+c++
+c *= c × (c ÷ 2)
+local const d<Expr> = 10kJ / delta 2s

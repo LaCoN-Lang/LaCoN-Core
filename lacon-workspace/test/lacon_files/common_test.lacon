@@ -1,6 +1,17 @@
 a = "literal ${identifier} literal"
 module::exported
 a := ssing
+
+test {
+	key value
+}
+test
+	key value
+	key
+					key value
+						key value
+
+
 _
 __
 na_me

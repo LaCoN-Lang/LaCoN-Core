@@ -28,6 +28,8 @@ pub enum LexicalError {
 	InvalidEscapeSequence(String),
 	#[error("Invalid token")]
 	InvalidToken,
+	#[error("Invalid indentation")]
+	InvalidIndentation,
 }
 
 #[derive(Debug, Clone, Error)]
