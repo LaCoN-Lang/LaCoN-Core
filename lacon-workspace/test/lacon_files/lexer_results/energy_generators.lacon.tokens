@@ -40,15 +40,15 @@ Syntax(RightBracket)                                    | ]                     
 Syntax(Comma)                                           | ,                                        |                                | 5:33:180        |            |           
 Newline                                                 |                                          |                                | 5:34:181        |            |           
 Identifier                                              | name                                     |                                | 6:3:184         | True       |           
-Operator(Colon)                                         | :                                        |                                | 6:8:189         |            |           
-Identifier                                              | generator                                |                                | 6:10:191        |            | WS        
-Syntax(LeftBracket)                                     | [                                        |                                | 6:19:200        |            |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 6:20:201        |            |           
-String                                                  | entity-name                              | entity-name                    | 6:21:202        |            |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 6:32:213        |            |           
-Syntax(RightBracket)                                    | ]                                        |                                | 6:33:214        |            |           
-Syntax(Comma)                                           | ,                                        |                                | 6:34:215        |            |           
-Newline                                                 |                                          |                                | 6:35:216        |            |           
+Operator(Colon)                                         | :                                        |                                | 6:7:189         |            |           
+Identifier                                              | generator                                |                                | 6:9:191         |            | WS        
+Syntax(LeftBracket)                                     | [                                        |                                | 6:18:200        |            |           
+Syntax(DoubleQuote)                                     | "                                        |                                | 6:19:201        |            |           
+String                                                  | entity-name                              | entity-name                    | 6:20:202        |            |           
+Syntax(DoubleQuote)                                     | "                                        |                                | 6:31:213        |            |           
+Syntax(RightBracket)                                    | ]                                        |                                | 6:32:214        |            |           
+Syntax(Comma)                                           | ,                                        |                                | 6:33:215        |            |           
+Newline                                                 |                                          |                                | 6:34:216        |            |           
 Identifier                                              | description                              |                                | 7:3:219         | True       |           
 Operator(Colon)                                         | :                                        |                                | 7:14:230        |            |           
 Identifier                                              | generator                                |                                | 7:16:232        |            | WS        

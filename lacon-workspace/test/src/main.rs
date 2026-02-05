@@ -105,7 +105,7 @@ mod lexer_tests {
 
 	#[test]
 	fn lexer_speed_test() {
-		let source_str = *FILE_STRINGS;
+		let source_str = *FILE_STRINGS_CYR;
 		let iterations = 100000; // Увеличим до 1000 для более стабильной статистики
 		let warmup_iterations = 10;
 

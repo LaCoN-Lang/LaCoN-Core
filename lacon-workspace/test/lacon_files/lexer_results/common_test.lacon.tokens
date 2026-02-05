@@ -49,7 +49,7 @@ Newline                                                 |                       
 Identifier                                              | __                                       |                                | 9:1:149         | True       |           
 Newline                                                 |                                          |                                | 9:3:151         |            |           
 Identifier                                              | na_me                                    |                                | 10:1:152        | True       |           
-Newline                                                 |                                          |                                | 10:7:158        |            |           
+Newline                                                 |                                          |                                | 10:6:158        |            |           
 Identifier                                              | __na_me                                  |                                | 11:1:159        | True       |           
 Newline                                                 |                                          |                                | 11:8:166        |            |           
 Number                                                  | 1                                        | 1                              | 12:1:167        | True       |           
@@ -93,13 +93,13 @@ Number                                                  | 10                    
 Unit(Volume)                                            | m3                                       |                                | 21:4:251        |            |           
 Operator(DashGreater)                                   | ->                                       |                                | 21:7:254        |            | WS        
 Identifier                                              | n                                        |                                | 21:10:257       |            | WS        
-Newline                                                 |                                          |                                | 21:12:259       |            |           
+Newline                                                 |                                          |                                | 21:11:259       |            |           
 Number                                                  | 10                                       | 10                             | 22:1:260        | True       |           
 Unit(Volume)                                            | m3                                       |                                | 22:4:263        |            |           
 Operator(DashGreater)                                   | ->                                       |                                | 22:7:266        |            | WS        
 Identifier                                              | n                                        |                                | 22:10:269       |            | WS        
-Number                                                  | 1                                        | 1                              | 22:13:272       |            | WS        
-Newline                                                 |                                          |                                | 22:14:273       |            |           
+Number                                                  | 1                                        | 1                              | 22:12:272       |            | WS        
+Newline                                                 |                                          |                                | 22:13:273       |            |           
 Number                                                  | 10                                       | 10                             | 23:1:274        | True       |           
 Unit(Volume)                                            | m3                                       |                                | 23:4:277        |            |           
 Operator(DashGreater)                                   | ->                                       |                                | 23:7:280        |            | WS        
@@ -340,43 +340,14 @@ Indent(1)                                               |                       
 Syntax(LeftParenthesis)                                 | (                                        |                                | 65:2:1254       | True       |           
 Number                                                  | 3                                        | 3                              | 65:3:1255       |            |           
 Syntax(RightParenthesis)                                | )                                        |                                | 65:4:1256       |            |           
-Newline                                                 |                                          |                                | 65:110:1449     |            |           
-Syntax(LeftParenthesis)                                 | (                                        |                                | 66:2:1451       | True       |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 66:3:1452       |            |           
-String                                                  | User Name                                | User Name                      | 66:4:1453       |            |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 66:13:1462      |            |           
-Syntax(Comma)                                           | ,                                        |                                | 66:14:1463      |            |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 66:16:1465      |            | WS        
-String                                                  | Age                                      | Age                            | 66:17:1466      |            |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 66:20:1469      |            |           
-Syntax(Comma)                                           | ,                                        |                                | 66:21:1470      |            |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 66:23:1472      |            | WS        
-String                                                  | Attributes                               | Attributes                     | 66:24:1473      |            |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 66:34:1483      |            |           
-Syntax(RightParenthesis)                                | )                                        |                                | 66:35:1484      |            |           
-Newline                                                 |                                          |                                | 66:70:1546      |            |           
-Syntax(LeftParenthesis)                                 | (                                        |                                | 67:2:1548       | True       |           
-Operator(Less)                                          | <                                        |                                | 67:3:1549       |            |           
-Identifier                                              | String                                   |                                | 67:4:1550       |            |           
-Operator(Greater)                                       | >                                        |                                | 67:10:1556      |            |           
-Syntax(Comma)                                           | ,                                        |                                | 67:11:1557      |            |           
-Operator(Less)                                          | <                                        |                                | 67:13:1559      |            | WS        
-Identifier                                              | Number                                   |                                | 67:14:1560      |            |           
+Identifier                                              | ber                                      |                                | 67:17:1563      |            | WS        
 Operator(Greater)                                       | >                                        |                                | 67:20:1566      |            |           
 Syntax(Comma)                                           | ,                                        |                                | 67:21:1567      |            |           
 Operator(Less)                                          | <                                        |                                | 67:23:1569      |            | WS        
 Identifier                                              | Dictionary                               |                                | 67:24:1570      |            |           
 Operator(Greater)                                       | >                                        |                                | 67:34:1580      |            |           
 Syntax(RightParenthesis)                                | )                                        |                                | 67:35:1581      |            |           
-Newline                                                 |                                          |                                | 67:60:1623      |            |           
-Syntax(LeftBracket)                                     | [                                        |                                | 68:2:1625       | True       |           
-Newline                                                 |                                          |                                | 68:3:1626       |            |           
-Syntax(LeftParenthesis)                                 | (                                        |                                | 69:3:1629       | True       |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 69:4:1630       |            |           
-String                                                  | Alice                                    | Alice                          | 69:5:1631       |            |           
-Syntax(DoubleQuote)                                     | "                                        |                                | 69:10:1636      |            |           
-Syntax(Comma)                                           | ,                                        |                                | 69:11:1637      |            |           
-Number                                                  | 30                                       | 30                             | 69:13:1639      |            | WS        
+Number                                                  | 0                                        | 0                              | 69:14:1640      |            | WS        
 Syntax(Comma)                                           | ,                                        |                                | 69:15:1641      |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 69:17:1643      |            | WS        
 Identifier                                              | height                                   |                                | 69:18:1644      |            |           
@@ -392,6 +363,7 @@ Syntax(RightBrace)                                      | }                     
 Syntax(RightParenthesis)                                | )                                        |                                | 69:47:1673      |            |           
 Syntax(Comma)                                           | ,                                        |                                | 69:48:1674      |            |           
 Newline                                                 |                                          |                                | 69:49:1675      |            |           
+Indent(2)                                               |                                          |                                | 70:1:1676       |            |           
 Syntax(LeftParenthesis)                                 | (                                        |                                | 70:3:1678       | True       |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 70:4:1679       |            |           
 String                                                  | Bob                                      | Bob                            | 70:5:1680       |            |           
@@ -413,6 +385,7 @@ Syntax(RightBrace)                                      | }                     
 Syntax(RightParenthesis)                                | )                                        |                                | 70:43:1718      |            |           
 Syntax(Comma)                                           | ,                                        |                                | 70:44:1719      |            |           
 Newline                                                 |                                          |                                | 70:45:1720      |            |           
+Indent(3)                                               |                                          |                                | 71:1:1721       |            |           
 Syntax(LeftParenthesis)                                 | (                                        |                                | 71:3:1723       | True       |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 71:4:1724       |            |           
 String                                                  | Charlie                                  | Charlie                        | 71:5:1725       |            |           
@@ -435,6 +408,8 @@ Syntax(RightParenthesis)                                | )                     
 Newline                                                 |                                          |                                | 71:50:1770      |            |           
 Syntax(RightBracket)                                    | ]                                        |                                | 72:2:1772       | True       |           
 Newline                                                 |                                          |                                | 72:3:1773       |            |           
+Dedent(2)                                               |                                          |                                | 73:1:1774       |            |           
+Dedent(1)                                               |                                          |                                | 73:1:1774       |            |           
 Dedent(0)                                               |                                          |                                | 73:1:1774       |            |           
 Operator(Pipe)                                          | |                                        |                                | 73:1:1774       | True       |           
 Syntax(At)                                              | @                                        |                                | 73:2:1775       |            |           
@@ -571,20 +546,20 @@ Syntax(SingleQuote)                                     | '                     
 Syntax(RightBracket)                                    | ]                                        |                                | 85:46:2144      |            |           
 Keyword(As)                                             | as                                       |                                | 85:48:2146      |            | WS        
 Identifier                                              | name                                     |                                | 85:51:2149      |            | WS        
-Syntax(LeftBrace)                                       | {                                        |                                | 85:57:2155      |            | WS        
-Newline                                                 |                                          |                                | 85:58:2156      |            |           
+Syntax(LeftBrace)                                       | {                                        |                                | 85:56:2155      |            | WS        
+Newline                                                 |                                          |                                | 85:57:2156      |            |           
 Keyword(Yield)                                          | yield                                    |                                | 86:2:2158       | True       |           
 Identifier                                              | digit-                                   |                                | 86:8:2164       |            | WS        
 Syntax(Dollar)                                          | $                                        |                                | 86:14:2170      |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 86:15:2171      |            |           
 Identifier                                              | name                                     |                                | 86:16:2172      |            |           
-Syntax(RightBrace)                                      | }                                        |                                | 86:21:2177      |            |           
-Syntax(LeftBrace)                                       | {                                        |                                | 86:23:2179      |            | WS        
-Newline                                                 |                                          |                                | 86:24:2180      |            |           
+Syntax(RightBrace)                                      | }                                        |                                | 86:20:2177      |            |           
+Syntax(LeftBrace)                                       | {                                        |                                | 86:22:2179      |            | WS        
+Newline                                                 |                                          |                                | 86:23:2180      |            |           
 Identifier                                              | number-value                             |                                | 87:3:2183       | True       |           
-Operator(Colon)                                         | :                                        |                                | 87:16:2196      |            |           
-Identifier                                              | index                                    |                                | 87:18:2198      |            | WS        
-Newline                                                 |                                          |                                | 87:23:2203      |            |           
+Operator(Colon)                                         | :                                        |                                | 87:15:2196      |            |           
+Identifier                                              | index                                    |                                | 87:17:2198      |            | WS        
+Newline                                                 |                                          |                                | 87:22:2203      |            |           
 Syntax(RightBrace)                                      | }                                        |                                | 88:2:2205       | True       |           
 Newline                                                 |                                          |                                | 88:3:2206       |            |           
 Syntax(RightBrace)                                      | }                                        |                                | 89:1:2207       | True       |           
@@ -646,8 +621,8 @@ Syntax(RightBracket)                                    | ]                     
 Keyword(As)                                             | as                                       |                                | 90:147:2355     |            | WS        
 Keyword(Variable)                                       | let                                      |                                | 90:150:2358     |            | WS        
 Identifier                                              | name                                     |                                | 90:154:2362     |            | WS        
-Syntax(LeftBrace)                                       | {                                        |                                | 90:160:2368     |            | WS        
-Newline                                                 |                                          |                                | 90:161:2369     |            |           
+Syntax(LeftBrace)                                       | {                                        |                                | 90:159:2368     |            | WS        
+Newline                                                 |                                          |                                | 90:160:2369     |            |           
 Keyword(Local)                                          | local                                    |                                | 91:2:2371       | True       |           
 Identifier                                              | code-point                               |                                | 91:8:2377       |            | WS        
 Operator(Equal)                                         | =                                        |                                | 91:19:2388      |            | WS        
@@ -667,10 +642,10 @@ Identifier                                              | astrological-zodiacal-
 Operator(Minus)                                         | -                                        |                                | 92:34:2456      |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 92:35:2457      |            |           
 Identifier                                              | name                                     |                                | 92:36:2458      |            |           
-Syntax(RightBrace)                                      | }                                        |                                | 92:41:2463      |            |           
-Identifier                                              | -text                                    |                                | 92:42:2464      |            |           
-Syntax(LeftBrace)                                       | {                                        |                                | 92:48:2470      |            | WS        
-Newline                                                 |                                          |                                | 92:49:2471      |            |           
+Syntax(RightBrace)                                      | }                                        |                                | 92:40:2463      |            |           
+Identifier                                              | -text                                    |                                | 92:41:2464      |            |           
+Syntax(LeftBrace)                                       | {                                        |                                | 92:47:2470      |            | WS        
+Newline                                                 |                                          |                                | 92:48:2471      |            |           
 Identifier                                              | code-point                               |                                | 93:3:2474       | True       |           
 Operator(Colon)                                         | :                                        |                                | 93:13:2484      |            |           
 Syntax(GraveAccent)                                     | `                                        |                                | 93:15:2486      |            | WS        
@@ -993,44 +968,44 @@ Unit(Volume)                                            | kL                    
 Newline                                                 |                                          |                                | 130:36:3614     |            |           
 Keyword(Constant)                                       | const                                    |                                | 131:1:3615      | True       |           
 Identifier                                              | number2                                  |                                | 131:7:3621      |            | WS        
-Operator(Less)                                          | <                                        |                                | 131:15:3629     |            |           
-Identifier                                              | Number                                   |                                | 131:16:3630     |            |           
-Operator(Greater)                                       | >                                        |                                | 131:22:3636     |            |           
-Operator(Equal)                                         | =                                        |                                | 131:24:3638     |            | WS        
-Number                                                  | 0b1011110011                             | 0b1011110011                   | 131:26:3640     |            | WS        
-Newline                                                 |                                          |                                | 131:38:3652     |            |           
+Operator(Less)                                          | <                                        |                                | 131:14:3629     |            |           
+Identifier                                              | Number                                   |                                | 131:15:3630     |            |           
+Operator(Greater)                                       | >                                        |                                | 131:21:3636     |            |           
+Operator(Equal)                                         | =                                        |                                | 131:23:3638     |            | WS        
+Number                                                  | 0b1011110011                             | 0b1011110011                   | 131:25:3640     |            | WS        
+Newline                                                 |                                          |                                | 131:37:3652     |            |           
 Keyword(Constant)                                       | const                                    |                                | 132:1:3653      | True       |           
 Identifier                                              | number8                                  |                                | 132:7:3659      |            | WS        
-Operator(Less)                                          | <                                        |                                | 132:15:3667     |            |           
-Identifier                                              | Number                                   |                                | 132:16:3668     |            |           
-Operator(Greater)                                       | >                                        |                                | 132:22:3674     |            |           
-Operator(Equal)                                         | =                                        |                                | 132:24:3676     |            | WS        
-Number                                                  | 0o071                                    | 0o071                          | 132:26:3678     |            | WS        
-Newline                                                 |                                          |                                | 132:31:3683     |            |           
+Operator(Less)                                          | <                                        |                                | 132:14:3667     |            |           
+Identifier                                              | Number                                   |                                | 132:15:3668     |            |           
+Operator(Greater)                                       | >                                        |                                | 132:21:3674     |            |           
+Operator(Equal)                                         | =                                        |                                | 132:23:3676     |            | WS        
+Number                                                  | 0o071                                    | 0o071                          | 132:25:3678     |            | WS        
+Newline                                                 |                                          |                                | 132:30:3683     |            |           
 Keyword(Constant)                                       | const                                    |                                | 133:1:3684      | True       |           
 Identifier                                              | number16                                 |                                | 133:7:3690      |            | WS        
-Operator(Less)                                          | <                                        |                                | 133:16:3699     |            |           
-Identifier                                              | Number                                   |                                | 133:17:3700     |            |           
-Operator(Greater)                                       | >                                        |                                | 133:23:3706     |            |           
-Operator(Equal)                                         | =                                        |                                | 133:25:3708     |            | WS        
-Number                                                  | 0x348FABD1                               | 0x348FABD1                     | 133:27:3710     |            | WS        
-Newline                                                 |                                          |                                | 133:37:3720     |            |           
+Operator(Less)                                          | <                                        |                                | 133:15:3699     |            |           
+Identifier                                              | Number                                   |                                | 133:16:3700     |            |           
+Operator(Greater)                                       | >                                        |                                | 133:22:3706     |            |           
+Operator(Equal)                                         | =                                        |                                | 133:24:3708     |            | WS        
+Number                                                  | 0x348FABD1                               | 0x348FABD1                     | 133:26:3710     |            | WS        
+Newline                                                 |                                          |                                | 133:36:3720     |            |           
 Keyword(Constant)                                       | const                                    |                                | 134:1:3721      | True       |           
 Identifier                                              | number32                                 |                                | 134:7:3727      |            | WS        
-Operator(Less)                                          | <                                        |                                | 134:16:3736     |            |           
-Identifier                                              | Number                                   |                                | 134:17:3737     |            |           
-Operator(Greater)                                       | >                                        |                                | 134:23:3743     |            |           
-Operator(Equal)                                         | =                                        |                                | 134:25:3745     |            | WS        
-Number                                                  | 0tL1FF                                   | 0tL1FF                         | 134:27:3747     |            | WS        
-Newline                                                 |                                          |                                | 134:33:3753     |            |           
+Operator(Less)                                          | <                                        |                                | 134:15:3736     |            |           
+Identifier                                              | Number                                   |                                | 134:16:3737     |            |           
+Operator(Greater)                                       | >                                        |                                | 134:22:3743     |            |           
+Operator(Equal)                                         | =                                        |                                | 134:24:3745     |            | WS        
+Number                                                  | 0tL1FF                                   | 0tL1FF                         | 134:26:3747     |            | WS        
+Newline                                                 |                                          |                                | 134:32:3753     |            |           
 Keyword(Constant)                                       | const                                    |                                | 135:1:3754      | True       |           
 Identifier                                              | number32                                 |                                | 135:7:3760      |            | WS        
-Operator(Less)                                          | <                                        |                                | 135:16:3769     |            |           
-Identifier                                              | Number                                   |                                | 135:17:3770     |            |           
-Operator(Greater)                                       | >                                        |                                | 135:23:3776     |            |           
-Operator(Equal)                                         | =                                        |                                | 135:25:3778     |            | WS        
-Number                                                  | 0cZYX                                    | 0cZYX                          | 135:27:3780     |            | WS        
-Newline                                                 |                                          |                                | 135:32:3785     |            |           
+Operator(Less)                                          | <                                        |                                | 135:15:3769     |            |           
+Identifier                                              | Number                                   |                                | 135:16:3770     |            |           
+Operator(Greater)                                       | >                                        |                                | 135:22:3776     |            |           
+Operator(Equal)                                         | =                                        |                                | 135:24:3778     |            | WS        
+Number                                                  | 0cZYX                                    | 0cZYX                          | 135:26:3780     |            | WS        
+Newline                                                 |                                          |                                | 135:31:3785     |            |           
 Newline                                                 |                                          |                                | 136:1:3786      |            |           
 Keyword(Constant)                                       | const                                    |                                | 137:1:3787      | True       |           
 Identifier                                              | abcdefg                                  |                                | 137:7:3793      |            | WS        

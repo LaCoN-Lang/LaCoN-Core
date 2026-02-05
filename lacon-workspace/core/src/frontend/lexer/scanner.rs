@@ -6,12 +6,16 @@ use crate::shared::position::Position;
 use crate::shared::unit::{UNIT_LOOKUP, UNITS_TREE, UnitKind};
 
 use std::path::Path;
+use std::str::Chars;
+
+const EOF_CHAR: char = '\0';
 
 pub struct Scanner<'a> {
 	source: &'a str,
 	tokens: Vec<Token<'a>>,
 	start: usize,
 	current: usize,
+	chars: Chars<'a>,
 	position: Position,
 	start_position: Position,
 	indent_stack: Vec<usize>,
@@ -20,6 +24,8 @@ pub struct Scanner<'a> {
 	is_at_line_start: bool,
 	had_whitespace: bool,
 	pub errors: Vec<Error>,
+	#[cfg(debug_assertions)]
+	prev: char,
 }
 
 impl<'a> Scanner<'a> {
@@ -30,6 +36,7 @@ impl<'a> Scanner<'a> {
 			tokens: Vec::new(),
 			start: 0,
 			current: 0,
+			chars: source.chars(),
 			position: start_pos,
 			start_position: start_pos,
 			indent_stack: vec![0],
@@ -38,7 +45,8 @@ impl<'a> Scanner<'a> {
 			is_at_line_start: true,
 			had_whitespace: false,
 			errors: Vec::new(),
-			// aliases: Option<&'a HashMap<String, KeywordKind>>,
+			#[cfg(debug_assertions)]
+			prev: EOF_CHAR,
 		}
 	}
 
@@ -75,6 +83,8 @@ impl<'a> Scanner<'a> {
 
 	fn scan_token(&mut self) {
 		let c = self.advance();
+		let first = self.first();
+		let second = self.second();
 
 		match c {
 			' ' | '\t' | '\r' => {
@@ -94,26 +104,24 @@ impl<'a> Scanner<'a> {
 				self.scan_string(c);
 			}
 
-			';' | ',' | '$' | '@' | '#' | '\\' => {
-				let kind = match c {
-					';' => SyntaxKind::Semicolon,
-					',' => SyntaxKind::Comma,
-					'$' => SyntaxKind::Dollar,
-					'@' => SyntaxKind::At,
-					'#' => SyntaxKind::Hash,
-					_ => SyntaxKind::Backslash,
-				};
-				self.add_token(TokenKind::Syntax(kind));
-			}
+			';' => self.add_token(TokenKind::Syntax(SyntaxKind::Semicolon)),
+			',' => self.add_token(TokenKind::Syntax(SyntaxKind::Comma)),
+			'$' => self.add_token(TokenKind::Syntax(SyntaxKind::Dollar)),
+			'@' => self.add_token(TokenKind::Syntax(SyntaxKind::At)),
+			'#' => self.add_token(TokenKind::Syntax(SyntaxKind::Hash)),
+			'\\' => self.add_token(TokenKind::Syntax(SyntaxKind::Backslash)),
 
-			'(' | '[' | '{' => {
-				let s_kind = match c {
-					'(' => SyntaxKind::LeftParenthesis,
-					'[' => SyntaxKind::LeftBracket,
-					_ => SyntaxKind::LeftBrace,
-				};
-				self.context_stack.push(TokenKind::Syntax(s_kind));
-				self.add_token(TokenKind::Syntax(s_kind));
+			'(' => {
+				self.context_stack.push(TokenKind::Syntax(SyntaxKind::LeftParenthesis));
+				self.add_token(TokenKind::Syntax(SyntaxKind::LeftParenthesis));
+			}
+			'[' => {
+				self.context_stack.push(TokenKind::Syntax(SyntaxKind::LeftBracket));
+				self.add_token(TokenKind::Syntax(SyntaxKind::LeftBracket));
+			}
+			'{' => {
+				self.context_stack.push(TokenKind::Syntax(SyntaxKind::LeftBrace));
+				self.add_token(TokenKind::Syntax(SyntaxKind::LeftBrace));
 			}
 
 			')' | ']' | '}' => {
@@ -138,33 +146,96 @@ impl<'a> Scanner<'a> {
 			}
 
 			'-' => {
-				let next = self.peek();
-				let next_next = self.peek_next();
-				let is_inf = (next == Some('I') || next == Some('i')) && self.check_infinity(1);
+				let is_inf = (first == 'I' || first == 'i') && self.check_infinity(1);
 
-				if next == Some('>') {
+				if first == '>' {
 					self.handle_operator(c);
-				} else if (!is_inf && next.map_or(false, |n| n.is_alphabetic() || n == '_')) || (next == Some('$') && next_next == Some('{')) {
+				} else if (!is_inf && (first.is_ascii_alphabetic() || first == '_')) || (first == '$' && second == '{') {
 					self.scan_identifier();
 				} else {
 					self.handle_operator(c);
 				}
 			}
 
+			'0'..='9' => {
+				self.scan_number();
+			}
+
+			'I' | 'i' if self.check_infinity(0) => {
+				self.scan_infinity_as_number();
+			}
+
+			'n' => {
+				self.process_unit_suffix("n");
+			}
+
+			'_' if !first.is_ascii_alphanumeric() && first != '_' => {
+				self.handle_operator(c);
+			}
+
+			_ if c.is_ascii_alphabetic() || c == '_' => {
+				self.scan_identifier();
+			}
+
+			_ if (c as u32) > 127 && c.is_alphabetic() => {
+				self.scan_identifier();
+			}
+
 			_ => {
-				if c.is_digit(10) {
-					self.scan_number();
-				} else if (c == 'I' || c == 'i') && self.check_infinity(0) {
-					self.scan_infinity_as_number();
-				} else if c == 'n' {
-					self.process_unit_suffix("n");
-				} else if c == '_' && !self.peek().map_or(false, |next| next.is_alphanumeric() || next == '_') {
-					self.handle_operator(c);
-				} else if c.is_alphabetic() || c == '_' {
-					self.scan_identifier();
-				} else {
-					self.handle_operator(c);
-				}
+				self.handle_operator(c);
+			}
+		}
+	}
+
+	#[inline]
+	fn as_str(&self) -> &'a str {
+		self.chars.as_str()
+	}
+
+	#[inline]
+	fn first(&self) -> char {
+		self.chars.clone().next().unwrap_or(EOF_CHAR)
+	}
+
+	#[inline]
+	fn second(&self) -> char {
+		let mut iter = self.chars.clone();
+		iter.next();
+		iter.next().unwrap_or(EOF_CHAR)
+	}
+
+	#[inline]
+	fn third(&self) -> char {
+		let mut iter = self.chars.clone();
+		iter.next();
+		iter.next();
+		iter.next().unwrap_or(EOF_CHAR)
+	}
+
+	fn advance(&mut self) -> char {
+		let c = self.chars.next().unwrap_or(EOF_CHAR);
+
+		if c != EOF_CHAR {
+			self.current += c.len_utf8();
+		}
+
+		#[cfg(debug_assertions)]
+		{
+			self.prev = c;
+		}
+
+		self.position.advance(c);
+		c
+	}
+
+	fn eat_until(&mut self, byte: u8) {
+		if let Some(index) = memchr::memchr(byte, self.as_str().as_bytes()) {
+			for _ in 0..index {
+				self.advance();
+			}
+		} else {
+			while !self.is_at_end() {
+				self.advance();
 			}
 		}
 	}
@@ -188,11 +259,11 @@ impl<'a> Scanner<'a> {
 			res
 		};
 
-		self.tokens.push(Token::new(t_type, is_start, has_ws, "".into(), None, self.start_position, 0));
+		self.tokens.push(Token::new(t_type, is_start, has_ws, "", None, self.start_position, 0));
 	}
 
 	fn add_token(&mut self, t_type: TokenKind) {
-		let text = self.get_lexeme();
+		let text = &self.source[self.start..self.current];
 		let len = text.len();
 
 		let is_start = self.is_at_line_start;
@@ -207,7 +278,7 @@ impl<'a> Scanner<'a> {
 	}
 
 	fn add_token_with_literal(&mut self, t_type: TokenKind, literal: &'a str) {
-		let text = self.get_lexeme();
+		let text = &self.source[self.start..self.current];
 		let len = text.len();
 
 		let is_start = self.is_at_line_start;
@@ -222,117 +293,198 @@ impl<'a> Scanner<'a> {
 	}
 
 	fn scan_identifier(&mut self) {
-		while let Some(c) = self.peek() {
-			if c == '$' && self.peek_next() == Some('{') {
+		let bytes = self.as_str().as_bytes();
+		let mut idx = 0;
+
+		while idx < bytes.len() {
+			let b = bytes[idx];
+
+			if b == b'$' && idx + 1 < bytes.len() && bytes[idx + 1] == b'{' {
 				break;
 			}
+
+			if b == b'-' {
+				if idx + 1 < bytes.len() {
+					let next = bytes[idx + 1];
+					let is_arrow = next == b'>';
+					let is_alnum = next.is_ascii_alphanumeric();
+					let is_interpolation = next == b'$' && idx + 2 < bytes.len() && bytes[idx + 2] == b'{';
+
+					if is_alnum && !is_arrow || is_interpolation {
+						idx += 1;
+						continue;
+					} else {
+						break;
+					}
+				} else {
+					break;
+				}
+			}
+
+			if b.is_ascii_alphanumeric() || b == b'_' {
+				idx += 1;
+			} else if b >= 128 {
+				if idx == 0 {
+					self.scan_unicode_identifier();
+					return;
+				}
+				for _ in 0..idx {
+					self.advance();
+				}
+				self.scan_unicode_identifier();
+				return;
+			} else {
+				break;
+			}
+		}
+
+		for _ in 0..idx {
+			self.advance();
+		}
+
+		let text = &self.source[self.start..self.current];
+		let t_type = get_keyword_token(text).map_or(TokenKind::Identifier, TokenKind::Keyword);
+
+		let is_start = self.is_at_line_start;
+		if is_start {
+			self.is_at_line_start = false;
+		}
+
+		let has_ws = self.had_whitespace;
+		self.had_whitespace = false;
+
+		self.tokens.push(Token::new(t_type, is_start, has_ws, text, None, self.start_position, text.len()));
+	}
+
+	fn scan_unicode_identifier(&mut self) {
+		while !self.is_at_end() {
+			let c = self.first();
+
+			if c == '$' && self.second() == '{' {
+				break;
+			}
+
 			if c == '-' {
-				let next = self.peek_next();
-				let next_next = self.peek_at(2);
-				let is_normal_id_part = next.map_or(false, |n| n.is_alphanumeric()) && next != Some('>');
-				let is_link_to_interpolation = next == Some('$') && next_next == Some('{');
-				if is_normal_id_part || is_link_to_interpolation {
+				let next = self.second();
+				if (next.is_alphanumeric() && next != '>') || (next == '$' && self.third() == '{') {
 					self.advance();
 					continue;
 				} else {
 					break;
 				}
 			}
+
 			if c.is_alphanumeric() || c == '_' {
 				self.advance();
 			} else {
 				break;
 			}
 		}
-		let text = self.get_lexeme();
-		let t_type = get_keyword_token(&text).map_or(TokenKind::Identifier, TokenKind::Keyword);
+
+		let text = &self.source[self.start..self.current];
+		let t_type = get_keyword_token(text).map_or(TokenKind::Identifier, TokenKind::Keyword);
 
 		self.add_token(t_type);
 	}
 
 	fn scan_number(&mut self) {
 		let mut radix: u32 = 10;
+		let bytes = self.as_str().as_bytes();
 
-		let bytes = self.source.as_bytes();
+		#[cfg(debug_assertions)]
+		let prev = self.prev;
+		#[cfg(not(debug_assertions))]
+		let prev = '0';
 
-		if bytes[self.start] == b'0' {
-			if let Some(second) = self.peek() {
-				match second.to_ascii_lowercase() {
-					'x' => {
-						radix = 16;
-						self.advance();
-					}
-					'b' => {
-						radix = 2;
-						self.advance();
-					}
-					'o' => {
-						radix = 8;
-						self.advance();
-					}
-					't' => {
-						radix = 32;
-						self.advance();
-					}
-					'c' => {
-						radix = 33;
-						self.advance();
-					}
-					_ => {}
+		if prev == '0' && !bytes.is_empty() {
+			let second = bytes[0] as char;
+			match second.to_ascii_lowercase() {
+				'x' => {
+					radix = 16;
+					self.advance();
 				}
+				'b' => {
+					radix = 2;
+					self.advance();
+				}
+				'o' => {
+					radix = 8;
+					self.advance();
+				}
+				't' => {
+					radix = 32;
+					self.advance();
+				}
+				'c' => {
+					radix = 33;
+					self.advance();
+				}
+				_ => {}
 			}
 		}
 
 		self.consume_digits_with_underscore(radix);
 
-		if radix == 10 && self.peek() == Some('.') {
-			if let Some(next) = self.peek_next() {
-				if next.is_digit(10) {
-					self.advance();
-					self.consume_digits_with_underscore(10);
-				}
+		if radix == 10 && self.first() == '.' {
+			let next = self.second();
+			if next.is_ascii_digit() {
+				self.advance();
+				self.consume_digits_with_underscore(10);
 			}
 		}
 
-		let value_literal = self.get_slice_str(self.start, self.current);
+		let value_literal = &self.source[self.start..self.current];
 		self.process_unit_suffix(value_literal);
 	}
 
 	fn process_unit_suffix(&mut self, value_literal: &'a str) {
 		let initial_current = self.current;
 		let initial_position = self.position;
+		let initial_chars = self.chars.clone();
 		let is_n_placeholder = value_literal == "n";
 
-		while let Some(b) = self.source.as_bytes().get(self.current) {
-			if *b == b' ' || *b == b'\t' {
-				self.advance();
+		let bytes = self.as_str().as_bytes();
+		let mut ws_byte_count = 0;
+		while ws_byte_count < bytes.len() {
+			let b = bytes[ws_byte_count];
+			if b == b' ' || b == b'\t' {
+				ws_byte_count += 1;
 			} else {
 				break;
 			}
 		}
 
-		let lookahead = &self.source[self.current..];
-		let count = UNITS_TREE.longest_match(lookahead);
+		let lookahead = &self.as_str()[ws_byte_count..];
+		let unit_match_len = UNITS_TREE.longest_match(lookahead);
 
-		if count > 0 {
-			let is_valid_boundary = if let Some(nc) = lookahead[count..].chars().next() { !(nc.is_alphanumeric() && nc != '/') } else { true };
+		if unit_match_len > 0 {
+			let is_valid_boundary = if let Some(nc) = lookahead[unit_match_len..].chars().next() { !(nc.is_alphanumeric() && nc != '/') } else { true };
 
 			if is_valid_boundary {
-				let unit_lexeme = &lookahead[..count];
-				let unit_kind = UNIT_LOOKUP.get(unit_lexeme).cloned().unwrap_or(UnitKind::None);
-				let final_value = if is_n_placeholder { "1" } else { value_literal };
+				let is_start = self.is_at_line_start;
+				let has_ws = self.had_whitespace;
+				self.had_whitespace = false;
+				if is_start {
+					self.is_at_line_start = false;
+				}
 
-				self.add_token_with_literal(TokenKind::Number, final_value);
+				let final_value = if is_n_placeholder { "1" } else { value_literal };
+				self.tokens.push(Token::new(TokenKind::Number, is_start, has_ws, value_literal, Some(final_value), self.start_position, value_literal.len()));
+
+				for _ in 0..ws_byte_count {
+					self.advance();
+				}
 
 				self.start = self.current;
 				self.start_position = self.position;
 
-				let target_end = self.current + count;
-				while self.current < target_end {
-					if self.is_at_end() {
-						break;
-					}
-					self.advance();
+				let unit_lexeme = &lookahead[..unit_match_len];
+				let unit_kind = UNIT_LOOKUP.get(unit_lexeme).cloned().unwrap_or(UnitKind::None);
+
+				let mut bytes_to_consume = unit_match_len;
+				while bytes_to_consume > 0 {
+					let c = self.advance();
+					bytes_to_consume -= c.len_utf8();
 				}
 
 				self.add_token(TokenKind::Unit(unit_kind));
@@ -340,14 +492,17 @@ impl<'a> Scanner<'a> {
 			}
 		}
 
+		self.current = initial_current;
+		self.position = initial_position;
+		self.chars = initial_chars;
+
 		if is_n_placeholder {
-			self.current = initial_current - 1;
-			self.position = initial_position;
+			self.current -= 1;
+			self.position.column -= 1;
+			self.chars = self.source[self.current..].chars();
 			self.start = self.current;
 			self.scan_identifier();
 		} else {
-			self.current = initial_current;
-			self.position = initial_position;
 			self.add_token_with_literal(TokenKind::Number, value_literal);
 		}
 	}
@@ -361,33 +516,110 @@ impl<'a> Scanner<'a> {
 	}
 
 	fn consume_digits_with_underscore(&mut self, radix: u32) {
-		while let Some(c) = self.peek() {
-			if c == '_' {
-				self.advance();
-				continue;
-			}
-			let is_valid = match radix {
-				2 => c == '0' || c == '1',
-				8 => c >= '0' && c <= '7',
-				10 => c.is_digit(10),
-				16 => c.is_digit(16),
-				32 => c.is_digit(10) || (c.to_ascii_lowercase() >= 'a' && c.to_ascii_lowercase() <= 'v'),
-				33 => {
-					let lower = c.to_ascii_lowercase();
-					c.is_digit(10) || (lower >= 'a' && lower <= 'z' && !"ilou".contains(lower))
+		match radix {
+			10 => {
+				let bytes = self.as_str().as_bytes();
+				let mut idx = 0;
+				while idx < bytes.len() {
+					let b = bytes[idx];
+					if b.is_ascii_digit() || b == b'_' {
+						idx += 1;
+					} else {
+						break;
+					}
 				}
-				_ => false,
-			};
-			if is_valid {
-				self.advance();
-			} else {
-				break;
+				for _ in 0..idx {
+					self.advance();
+				}
+			}
+			16 => {
+				let bytes = self.as_str().as_bytes();
+				let mut idx = 0;
+				while idx < bytes.len() {
+					let b = bytes[idx];
+					if b.is_ascii_hexdigit() || b == b'_' {
+						idx += 1;
+					} else {
+						break;
+					}
+				}
+				for _ in 0..idx {
+					self.advance();
+				}
+			}
+			2 => {
+				let bytes = self.as_str().as_bytes();
+				let mut idx = 0;
+				while idx < bytes.len() {
+					let b = bytes[idx];
+					if b == b'0' || b == b'1' || b == b'_' {
+						idx += 1;
+					} else {
+						break;
+					}
+				}
+				for _ in 0..idx {
+					self.advance();
+				}
+			}
+			8 => {
+				let bytes = self.as_str().as_bytes();
+				let mut idx = 0;
+				while idx < bytes.len() {
+					let b = bytes[idx];
+					if (b >= b'0' && b <= b'7') || b == b'_' {
+						idx += 1;
+					} else {
+						break;
+					}
+				}
+				for _ in 0..idx {
+					self.advance();
+				}
+			}
+			32 => {
+				while !self.is_at_end() {
+					let c = self.first();
+					let lower = c.to_ascii_lowercase();
+					if c.is_ascii_digit() || (lower >= 'a' && lower <= 'v') || c == '_' {
+						self.advance();
+					} else {
+						break;
+					}
+				}
+			}
+			33 => {
+				while !self.is_at_end() {
+					let c = self.first();
+					let lower = c.to_ascii_lowercase();
+					let is_valid = c.is_ascii_digit() || (lower >= 'a' && lower <= 'z' && !"ilou".contains(lower)) || c == '_';
+					if is_valid {
+						self.advance();
+					} else {
+						break;
+					}
+				}
+			}
+			_ => {
+				while !self.is_at_end() {
+					let c = self.first();
+					if c.is_digit(radix) || c == '_' {
+						self.advance();
+					} else {
+						break;
+					}
+				}
 			}
 		}
 	}
 
 	fn scan_string(&mut self, quote: char) {
-		let is_multiline = quote == '"' && self.match_char('"') && self.match_char('"');
+		let is_multiline = quote == '"' && self.first() == '"' && self.second() == '"';
+
+		if is_multiline {
+			self.advance();
+			self.advance();
+		}
 
 		let syntax_kind = match quote {
 			'"' => SyntaxKind::DoubleQuote,
@@ -406,9 +638,18 @@ impl<'a> Scanner<'a> {
 	fn continue_string_scan(&mut self, quote: char, is_multiline: bool) {
 		let content_start = self.current;
 
-		while !self.is_at_end() {
-			if self.peek() == Some('$') && self.peek_next() == Some('{') {
-				let text = self.get_slice_str(content_start, self.current);
+		loop {
+			if self.is_at_end() {
+				let text = &self.source[content_start..self.current];
+				if !text.is_empty() {
+					self.add_token_with_literal(TokenKind::String, text);
+				}
+				self.report_error(LexicalError::UnterminatedString);
+				return;
+			}
+
+			if self.first() == '$' && self.second() == '{' {
+				let text = &self.source[content_start..self.current];
 				if !text.is_empty() {
 					self.add_token_with_literal(TokenKind::String, text);
 				}
@@ -428,17 +669,13 @@ impl<'a> Scanner<'a> {
 				return;
 			}
 
-			let is_closing = if is_multiline {
-				self.peek() == Some('"') && self.peek_next() == Some('"') && self.peek_at(2) == Some('"')
-			} else {
-				self.peek() == Some(quote)
-			};
+			let is_closing = if is_multiline { self.first() == '"' && self.second() == '"' && self.third() == '"' } else { self.first() == quote };
 
 			if is_closing {
 				break;
 			}
 
-			if self.peek() == Some('\n') && !is_multiline {
+			if self.first() == '\n' && !is_multiline {
 				break;
 			}
 
@@ -448,12 +685,12 @@ impl<'a> Scanner<'a> {
 			}
 		}
 
-		if self.is_at_end() || (self.peek() == Some('\n') && !is_multiline) {
+		if self.is_at_end() || (self.first() == '\n' && !is_multiline) {
 			self.report_error(LexicalError::UnterminatedString);
 			return;
 		}
 
-		let text = self.get_slice_str(content_start, self.current);
+		let text = &self.source[content_start..self.current];
 		if !text.is_empty() {
 			self.add_token_with_literal(TokenKind::String, text);
 		}
@@ -479,27 +716,30 @@ impl<'a> Scanner<'a> {
 	}
 
 	fn handle_indentation(&mut self) {
-		let mut current_weight = 0;
+		let bytes = self.as_str().as_bytes();
+		let mut weight = 0;
+		let mut idx = 0;
 
-		while let Some(c) = self.peek() {
-			match c {
-				' ' => {
-					current_weight += 1;
-					self.advance();
-				}
-				'\t' => {
+		while idx < bytes.len() {
+			match bytes[idx] {
+				b' ' => weight += 1,
+				b'\t' => {
 					let last_weight = *self.indent_stack.last().unwrap_or(&0);
-					current_weight += if last_weight == 0 { 4 } else { last_weight };
-					self.advance();
+					weight += if last_weight == 0 { 4 } else { last_weight };
 				}
 				_ => break,
 			}
+			idx += 1;
 		}
 
-		if matches!(self.peek(), Some('\n') | Some('\r')) {
+		for _ in 0..idx {
+			self.advance();
+		}
+
+		if matches!(self.first(), '\n' | '\r') {
 			return;
 		}
-		if self.peek() == Some('/') && (self.peek_next() == Some('|') || self.peek_next() == Some('*')) {
+		if self.first() == '/' && (self.second() == '|' || self.second() == '*') {
 			return;
 		}
 
@@ -511,16 +751,16 @@ impl<'a> Scanner<'a> {
 
 		let last_weight = *self.indent_stack.last().unwrap();
 
-		if current_weight > last_weight {
-			self.indent_stack.push(current_weight);
+		if weight > last_weight {
+			self.indent_stack.push(weight);
 			let level = (self.indent_stack.len() - 1) as u8;
 			self.add_token_raw(TokenKind::Indent(level));
-		} else if current_weight < last_weight {
-			if !self.indent_stack.contains(&current_weight) {
+		} else if weight < last_weight {
+			if !self.indent_stack.contains(&weight) {
 				self.report_error(LexicalError::InvalidIndentation);
 			}
 
-			while current_weight < *self.indent_stack.last().unwrap() {
+			while weight < *self.indent_stack.last().unwrap() {
 				self.indent_stack.pop();
 				let level = (self.indent_stack.len() - 1) as u8;
 				self.add_token_raw(TokenKind::Dedent(level));
@@ -532,7 +772,9 @@ impl<'a> Scanner<'a> {
 	}
 
 	fn handle_operator(&mut self, c: char) {
-		let op = match_operator(c, self.peek(), self.peek_next());
+		let first = self.first();
+		let second = self.second();
+		let op = match_operator(c, Some(first), Some(second));
 
 		for _ in 0..op.consume_count {
 			self.advance();
@@ -540,17 +782,12 @@ impl<'a> Scanner<'a> {
 
 		match op.token_kind {
 			TokenKind::LineComment => {
-				while let Some(next) = self.peek() {
-					if next == '\n' {
-						break;
-					}
-					self.advance();
-				}
+				self.eat_until(b'\n');
 			}
 
 			TokenKind::BlockComment => {
 				while !self.is_at_end() {
-					if self.peek() == Some('*') && self.peek_next() == Some('/') {
+					if self.first() == '*' && self.second() == '/' {
 						self.advance();
 						self.advance();
 						break;
@@ -567,59 +804,27 @@ impl<'a> Scanner<'a> {
 		}
 	}
 
-	fn advance(&mut self) -> char {
-		let rest = &self.source[self.current..];
-		let c = rest.chars().next().expect("Unexpected EOF");
-		self.current += c.len_utf8();
-		self.position.advance(c);
-		c
-	}
-
-	fn peek(&self) -> Option<char> {
-		self.source[self.current..].chars().next()
-	}
-	fn peek_next(&self) -> Option<char> {
-		let mut iter = self.source[self.current..].chars();
-		iter.next(); // Пропускаем текущий
-		iter.next() // Берем следующий
-	}
-	fn peek_at(&self, distance: usize) -> Option<char> {
-		self.source[self.current..].chars().nth(distance)
-	}
+	#[inline]
 	fn is_at_end(&self) -> bool {
-		self.current >= self.source.len()
-	}
-	fn match_char(&mut self, expected: char) -> bool {
-		if self.peek() == Some(expected) {
-			self.advance();
-			true
-		} else {
-			false
-		}
-	}
-	fn get_lexeme(&self) -> &'a str {
-		&self.source[self.start..self.current]
-	}
-	fn get_slice_str(&self, start: usize, end: usize) -> &'a str {
-		&self.source[start..end]
+		self.chars.as_str().is_empty()
 	}
 
-	fn check_infinity(&self, offset_bytes: usize) -> bool {
-		let expected = "nfinity";
-		let start_pos = self.current + offset_bytes;
+	fn check_infinity(&self, offset: usize) -> bool {
+		let rest = self.as_str();
+		let bytes = rest.as_bytes();
 
-		if start_pos + expected.len() > self.source.len() {
+		if offset + 7 > bytes.len() {
 			return false;
 		}
 
-		&self.source[start_pos..start_pos + expected.len()] == expected
+		let expected = b"nfinity";
+		&bytes[offset..offset + 7] == expected
 	}
 
 	fn report_error(&mut self, error_type: LexicalError) {
 		let err = Error::new(ErrorType::Lexical(error_type), Some(self.start_position), Some(self.position));
 
 		self.errors.push(err);
-
 		self.add_token(TokenKind::Error);
 	}
 
