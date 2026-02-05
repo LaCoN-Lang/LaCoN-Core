@@ -7,9 +7,9 @@ use crate::shared::unit::{UNIT_LOOKUP, UNITS_TREE, UnitKind};
 
 use std::path::Path;
 
-pub struct Scanner {
-	source: Vec<char>,
-	tokens: Vec<Token>,
+pub struct Scanner<'a> {
+	source: &'a str,
+	tokens: Vec<Token<'a>>,
 	start: usize,
 	current: usize,
 	position: Position,
@@ -22,11 +22,11 @@ pub struct Scanner {
 	pub errors: Vec<Error>,
 }
 
-impl Scanner {
-	pub fn new(source: String) -> Self {
+impl<'a> Scanner<'a> {
+	pub fn new(source: &'a str) -> Self {
 		let start_pos = Position::start();
 		Self {
-			source: source.chars().collect(),
+			source,
 			tokens: Vec::new(),
 			start: 0,
 			current: 0,
@@ -41,7 +41,7 @@ impl Scanner {
 		}
 	}
 
-	pub fn scan_tokens(&mut self) -> &Vec<Token> {
+	pub fn scan_tokens(&mut self) -> &Vec<Token<'_>> {
 		self.tokens.push(Token::bare(TokenKind::SOF, self.position));
 
 		while !self.is_at_end() {
@@ -156,7 +156,7 @@ impl Scanner {
 				} else if (c == 'I' || c == 'i') && self.check_infinity(0) {
 					self.scan_infinity_as_number();
 				} else if c == 'n' {
-					self.process_unit_suffix("n".to_string());
+					self.process_unit_suffix("n");
 				} else if c == '_' && !self.peek().map_or(false, |next| next.is_alphanumeric() || next == '_') {
 					self.handle_operator(c);
 				} else if c.is_alphabetic() || c == '_' {
@@ -205,7 +205,7 @@ impl Scanner {
 		self.tokens.push(Token::new(t_type, is_start, has_ws, text, None, self.start_position, len));
 	}
 
-	fn add_token_with_literal(&mut self, t_type: TokenKind, literal: String) {
+	fn add_token_with_literal(&mut self, t_type: TokenKind, literal: &'a str) {
 		let text = self.get_lexeme();
 		let len = text.len();
 
@@ -251,7 +251,10 @@ impl Scanner {
 
 	fn scan_number(&mut self) {
 		let mut radix: u32 = 10;
-		if self.source[self.start] == '0' {
+
+		let bytes = self.source.as_bytes();
+
+		if bytes[self.start] == b'0' {
 			if let Some(second) = self.peek() {
 				match second.to_ascii_lowercase() {
 					'x' => {
@@ -278,7 +281,9 @@ impl Scanner {
 				}
 			}
 		}
+
 		self.consume_digits_with_underscore(radix);
+
 		if radix == 10 && self.peek() == Some('.') {
 			if let Some(next) = self.peek_next() {
 				if next.is_digit(10) {
@@ -287,17 +292,18 @@ impl Scanner {
 				}
 			}
 		}
-		let value_literal = self.get_slice(self.start, self.current);
+
+		let value_literal = self.get_slice_str(self.start, self.current);
 		self.process_unit_suffix(value_literal);
 	}
 
-	fn process_unit_suffix(&mut self, value_literal: String) {
+	fn process_unit_suffix(&mut self, value_literal: &'a str) {
 		let initial_current = self.current;
 		let initial_position = self.position;
 		let is_n_placeholder = value_literal == "n";
 
-		while let Some(&c) = self.source.get(self.current) {
-			if c == ' ' || c == '\t' {
+		while let Some(b) = self.source.as_bytes().get(self.current) {
+			if *b == b' ' || *b == b'\t' {
 				self.advance();
 			} else {
 				break;
@@ -308,20 +314,23 @@ impl Scanner {
 		let count = UNITS_TREE.longest_match(lookahead);
 
 		if count > 0 {
-			let is_valid_boundary = if let Some(&nc) = lookahead.get(count) { !(nc.is_alphanumeric() && nc != '/') } else { true };
+			let is_valid_boundary = if let Some(nc) = lookahead[count..].chars().next() { !(nc.is_alphanumeric() && nc != '/') } else { true };
 
 			if is_valid_boundary {
-				let lexeme: String = lookahead.iter().take(count).collect();
+				let unit_lexeme = &lookahead[..count];
+				let unit_kind = UNIT_LOOKUP.get(unit_lexeme).cloned().unwrap_or(UnitKind::None);
+				let final_value = if is_n_placeholder { "1" } else { value_literal };
 
-				let unit_kind = UNIT_LOOKUP.get(&lexeme).cloned().unwrap_or(UnitKind::None);
-
-				let final_value = if is_n_placeholder { "1".to_string() } else { value_literal };
 				self.add_token_with_literal(TokenKind::Number, final_value);
 
 				self.start = self.current;
 				self.start_position = self.position;
 
-				for _ in 0..count {
+				let target_end = self.current + count;
+				while self.current < target_end {
+					if self.is_at_end() {
+						break;
+					}
 					self.advance();
 				}
 
@@ -330,13 +339,14 @@ impl Scanner {
 			}
 		}
 
-		self.current = initial_current;
-		self.position = initial_position;
-
 		if is_n_placeholder {
-			self.start = self.current - 1;
+			self.current = initial_current - 1;
+			self.position = initial_position;
+			self.start = self.current;
 			self.scan_identifier();
 		} else {
+			self.current = initial_current;
+			self.position = initial_position;
 			self.add_token_with_literal(TokenKind::Number, value_literal);
 		}
 	}
@@ -345,7 +355,7 @@ impl Scanner {
 		for _ in 0..7 {
 			self.advance();
 		}
-		let value_literal = "Infinity".to_string();
+		let value_literal: &'static str = "Infinity";
 		self.process_unit_suffix(value_literal);
 	}
 
@@ -397,7 +407,7 @@ impl Scanner {
 
 		while !self.is_at_end() {
 			if self.peek() == Some('$') && self.peek_next() == Some('{') {
-				let text = self.get_slice(content_start, self.current);
+				let text = self.get_slice_str(content_start, self.current);
 				if !text.is_empty() {
 					self.add_token_with_literal(TokenKind::String, text);
 				}
@@ -442,7 +452,7 @@ impl Scanner {
 			return;
 		}
 
-		let text = self.get_slice(content_start, self.current);
+		let text = self.get_slice_str(content_start, self.current);
 		if !text.is_empty() {
 			self.add_token_with_literal(TokenKind::String, text);
 		}
@@ -557,20 +567,23 @@ impl Scanner {
 	}
 
 	fn advance(&mut self) -> char {
-		let c = self.source[self.current];
-		self.current += 1;
+		let rest = &self.source[self.current..];
+		let c = rest.chars().next().expect("Unexpected EOF");
+		self.current += c.len_utf8();
 		self.position.advance(c);
 		c
 	}
 
 	fn peek(&self) -> Option<char> {
-		self.source.get(self.current).copied()
+		self.source[self.current..].chars().next()
 	}
 	fn peek_next(&self) -> Option<char> {
-		self.source.get(self.current + 1).copied()
+		let mut iter = self.source[self.current..].chars();
+		iter.next(); // Пропускаем текущий
+		iter.next() // Берем следующий
 	}
 	fn peek_at(&self, distance: usize) -> Option<char> {
-		self.source.get(self.current + distance).copied()
+		self.source[self.current..].chars().nth(distance)
 	}
 	fn is_at_end(&self) -> bool {
 		self.current >= self.source.len()
@@ -583,21 +596,22 @@ impl Scanner {
 			false
 		}
 	}
-	fn get_lexeme(&self) -> String {
-		self.source[self.start..self.current].iter().collect()
+	fn get_lexeme(&self) -> &'a str {
+		&self.source[self.start..self.current]
 	}
-	fn get_slice(&self, start: usize, end: usize) -> String {
-		self.source[start..end].iter().collect()
+	fn get_slice_str(&self, start: usize, end: usize) -> &'a str {
+		&self.source[start..end]
 	}
 
-	fn check_infinity(&self, offset: usize) -> bool {
+	fn check_infinity(&self, offset_bytes: usize) -> bool {
 		let expected = "nfinity";
-		for (i, ch) in expected.chars().enumerate() {
-			if self.peek_at(i + offset).map(|c| c.to_ascii_lowercase()) != Some(ch) {
-				return false;
-			}
+		let start_pos = self.current + offset_bytes;
+
+		if start_pos + expected.len() > self.source.len() {
+			return false;
 		}
-		true
+
+		&self.source[start_pos..start_pos + expected.len()] == expected
 	}
 
 	fn report_error(&mut self, error_type: LexicalError) {

@@ -11,9 +11,9 @@ bitflags! {
 }
 
 #[derive(Debug, Clone, PartialEq)]
-pub struct Token {
-	pub lexeme: String,
-	pub literal: Option<String>,
+pub struct Token<'a> {
+	pub lexeme: &'a str,
+	pub literal: Option<&'a str>,
 	pub position: Position,
 
 	pub token_kind: TokenKind,

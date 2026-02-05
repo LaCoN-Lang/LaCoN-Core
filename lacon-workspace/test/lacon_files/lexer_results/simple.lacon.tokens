@@ -44,7 +44,7 @@ Identifier                                              | c                     
 Operator(Multiplication)                                | ×                                        |                                | 5:8:108         |            | WS        
 Syntax(LeftParenthesis)                                 | (                                        |                                | 5:10:111        |            | WS        
 Identifier                                              | c                                        |                                | 5:11:112        |            |           
-Operator(Obelos)                                        | ÷                                        |                                | 5:13:114        |            | WS        
+Operator(Obelus)                                        | ÷                                        |                                | 5:13:114        |            | WS        
 Number                                                  | 2                                        | 2                              | 5:15:117        |            | WS        
 Syntax(RightParenthesis)                                | )                                        |                                | 5:16:118        |            |           
 Newline                                                 |                                          |                                | 5:17:119        |            |           

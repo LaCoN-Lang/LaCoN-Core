@@ -846,14 +846,24 @@ pub static UNITS: &[UnitDef] = units_array![
 pub static UNITS_TREE: LazyLock<UnitTree> = LazyLock::new(|| build_unit_tree(UNITS));
 pub static UNIT_LOOKUP: LazyLock<BTreeMap<String, UnitKind>> = LazyLock::new(|| {
 	let mut map = BTreeMap::new();
+
+	// Предварительно готовим префиксы, чтобы не фильтровать PREFIXES в каждом цикле
+	let mut grouped_p: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
+	for (p_sym, _, p_group) in PREFIXES {
+		grouped_p.entry(*p_group).or_default().push(*p_sym);
+	}
+
 	for unit in UNITS {
+		// Базовый символ
 		map.insert(unit.symbol.to_string(), unit.dimension);
 
-		if unit.numerator_group != PrefixGroup::None {
-			for (p_sym, _, p_group) in PREFIXES {
-				if *p_group == unit.numerator_group {
-					map.insert(format!("{}{}", p_sym, unit.symbol), unit.dimension);
-				}
+		// Символы с префиксами
+		if let Some(prefixes) = grouped_p.get(&unit.numerator_group) {
+			for p_sym in prefixes {
+				let mut full_sym = String::with_capacity(p_sym.len() + unit.symbol.len());
+				full_sym.push_str(p_sym);
+				full_sym.push_str(unit.symbol);
+				map.insert(full_sym, unit.dimension);
 			}
 		}
 	}
@@ -862,51 +872,62 @@ pub static UNIT_LOOKUP: LazyLock<BTreeMap<String, UnitKind>> = LazyLock::new(|| 
 
 pub fn build_unit_tree(units: &[UnitDef]) -> UnitTree {
 	let mut tree = UnitTree::default();
-
-	// Поддерживаемые разделители для составных единиц
 	const SEPARATORS: &[&str] = &["/", "*", "⋅"];
+
+	let mut gp: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
+	for (s, _, g) in PREFIXES {
+		gp.entry(*g).or_default().push(*s);
+	}
+
+	for list in gp.values_mut() {
+		list.push("");
+	}
+
+	let default_prefix = vec![""];
+
+	let mut buf = String::with_capacity(64);
 
 	for unit in units {
 		if unit.symbol.is_empty() {
 			continue;
 		}
 
-		// 1. Всегда вставляем базовый символ (напр. "g/m2")
 		tree.insert(unit.symbol);
 
-		// 2. Если есть части (числитель/знаменатель), строим комбинации
 		if let Some((n_base, d_base)) = unit.parts {
-			// Собираем доступные префиксы для числителя и знаменателя
-			// Включаем пустую строку "", чтобы учесть случаи без префикса
-			let n_prefixes: Vec<&str> = PREFIXES.iter().filter(|(_, _, g)| *g == unit.numerator_group).map(|(s, _, _)| *s).chain(std::iter::once("")).collect();
+			let n_prefixes = gp.get(&unit.numerator_group).unwrap_or(&default_prefix);
+			let d_prefixes = gp.get(&unit.denominator_group).unwrap_or(&default_prefix);
 
-			let d_prefixes: Vec<&str> = PREFIXES.iter().filter(|(_, _, g)| *g == unit.denominator_group).map(|(s, _, _)| *s).chain(std::iter::once("")).collect();
-
-			for p_n in &n_prefixes {
-				for p_d in &d_prefixes {
-					// Пропускаем случай, когда оба префикса пустые (уже вставили unit.symbol)
+			for p_n in n_prefixes {
+				for p_d in d_prefixes {
 					if p_n.is_empty() && p_d.is_empty() {
 						continue;
 					}
 
-					// Генерируем варианты со всеми разделителями
-					for separator in SEPARATORS {
-						let full_unit = format!("{}{}{}{}{}", p_n, n_base, separator, p_d, d_base);
-						tree.insert(&full_unit);
+					for sep in SEPARATORS {
+						buf.clear();
+						buf.push_str(p_n);
+						buf.push_str(n_base);
+						buf.push_str(sep);
+						buf.push_str(p_d);
+						buf.push_str(d_base);
+						tree.insert(&buf);
 					}
 				}
 			}
 		} else {
-			// 3. Логика для атомарных юнитов (как была)
-			if unit.numerator_group != PrefixGroup::None {
-				for (p_sym, _val, p_group) in PREFIXES {
-					if *p_group == unit.numerator_group {
-						tree.insert(&format!("{}{}", p_sym, unit.symbol));
+			if let Some(prefixes) = gp.get(&unit.numerator_group) {
+				for p_sym in prefixes {
+					if p_sym.is_empty() {
+						continue;
 					}
+					buf.clear();
+					buf.push_str(p_sym);
+					buf.push_str(unit.symbol);
+					tree.insert(&buf);
 				}
 			}
 		}
 	}
-
 	tree
 }

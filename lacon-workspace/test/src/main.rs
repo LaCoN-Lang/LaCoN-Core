@@ -1,15 +1,20 @@
+mod strings;
+use strings::*;
 fn main() {
 	println!("Hello, world!");
 }
 
 #[cfg(test)]
 mod lexer_tests {
+	use super::*;
 	use lacon_core::frontend::lexer::Scanner;
 	use lacon_core::frontend::lexer::TokenFlags;
+	use memory_stats::memory_stats;
 	use std::fs::{self, File};
 	use std::io::Write;
 	use std::path::Path;
 	use std::sync::LazyLock;
+	use std::time::Instant;
 
 	static LACON_FILES_DIR: LazyLock<String> = LazyLock::new(|| {
 		let manifest_dir = env!("CARGO_MANIFEST_DIR");
@@ -19,6 +24,9 @@ mod lexer_tests {
 
 	#[test]
 	fn lexer_check() {
+		let start_time = Instant::now();
+		let mem_before = memory_stats().map_or(0, |m| m.physical_mem);
+
 		fs::create_dir_all(LEXER_RESULTS_DIR.as_str()).expect("Не удалось создать директорию для результатов");
 
 		let lacon_dir = Path::new(LACON_FILES_DIR.as_str());
@@ -43,7 +51,16 @@ mod lexer_tests {
 			}
 		}
 
+		let duration = start_time.elapsed();
+		let mem_after = memory_stats().map_or(0, |m| m.physical_mem);
+		let mem_diff = (mem_after as f64 - mem_before as f64) / 1024.0 / 1024.0;
+
+		println!("\n========================================");
 		println!("Обработано файлов: {}", processed_count);
+		println!("Время выполнения: {:.2}ms", duration.as_secs_f64() * 1000.0);
+		println!("Использование памяти: {:.2}MB", mem_diff);
+		println!("========================================\n");
+
 		assert!(processed_count > 0, "Не найдено ни одного .lacon/.llacon/.slacon файла");
 	}
 
@@ -52,7 +69,7 @@ mod lexer_tests {
 
 		let source = fs::read_to_string(file_path).unwrap_or_else(|_| panic!("Не удалось прочитать файл {:?}", file_path));
 
-		let mut scanner = Scanner::new(source);
+		let mut scanner = Scanner::new(&source);
 		let tokens = scanner.scan_tokens();
 
 		let file_name = file_path.file_name().unwrap().to_str().unwrap();
@@ -66,8 +83,8 @@ mod lexer_tests {
 
 		for token in tokens {
 			let literal_str = match &token.literal {
-				Some(l) => l.clone(),
-				None => "".to_string(),
+				Some(l) => *l,
+				None => "",
 			};
 
 			writeln!(
@@ -84,5 +101,60 @@ mod lexer_tests {
 		}
 
 		println!("Результат сохранён в: {:?}", output_path);
+	}
+
+	#[test]
+	fn lexer_speed_test() {
+		let source_str = *FILE_STRINGS;
+		let iterations = 100000; // Увеличим до 1000 для более стабильной статистики
+		let warmup_iterations = 10;
+
+		println!("\n Запуск оптимизированного теста скорости...");
+
+		// 1. Предварительная подготовка (Warmup)
+		// Позволяет CPU "разогреться", а кэшам заполниться
+		for _ in 0..warmup_iterations {
+			let mut scanner = Scanner::new(source_str);
+			let _ = scanner.scan_tokens();
+		}
+
+		// 2. Подготовка данных
+		// Если Scanner требует String, мы создаем одну строку заранее.
+		// Если Scanner поддерживает &str, используй source_str напрямую.
+		let source_owned = source_str;
+
+		let mem_before = memory_stats().map_or(0, |m| m.physical_mem);
+		let start_time = Instant::now();
+
+		let mut total_tokens = 0;
+
+		for _ in 0..iterations {
+			// Мы используем clone(), так как это минимальная задержка
+			// по сравнению с парсингом, если лексер забирает владение.
+			let mut scanner = Scanner::new(&source_owned);
+			let tokens = scanner.scan_tokens();
+			total_tokens += tokens.len();
+
+			// Предотвращаем оптимизацию "пустого цикла" компилятором
+			std::hint::black_box(&tokens);
+		}
+
+		let duration = start_time.elapsed();
+		let mem_after = memory_stats().map_or(0, |m| m.physical_mem);
+
+		let total_chars = source_str.len() * iterations;
+		let avg_duration_ns = duration.as_nanos() as f64 / iterations as f64;
+		let mem_diff = (mem_after as f64 - mem_before as f64) / 1024.0 / 1024.0;
+
+		println!("========================================");
+		println!("Итераций (после разогрева): {}", iterations);
+		println!("Всего токенов (Σ):          {}", total_tokens);
+		println!("Всего символов (Σ):         {}", total_chars);
+		println!("----------------------------------------");
+		println!("Общее время:                {:.3}ms", duration.as_secs_f64() * 1000.0);
+		println!("Среднее на прогон:          {:.3}µs", avg_duration_ns / 1000.0);
+		println!("Память (diff):              {:.2}MB", mem_diff);
+		println!("РЕАЛЬНАЯ СКОРОСТЬ:          {:.2} млн симв/сек", (total_chars as f64 / 1_000_000.0) / duration.as_secs_f64());
+		println!("========================================\n");
 	}
 }

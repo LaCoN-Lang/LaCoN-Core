@@ -4,7 +4,7 @@ use super::UnitKind;
 use super::{CalcMode, UnitProps};
 use std::collections::BTreeMap;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, EnumIter)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, EnumIter, Ord, PartialOrd)]
 pub enum PrefixGroup {
 	SI,
 	Thermal, // Temperature
@@ -102,8 +102,8 @@ impl UnitDef {
 
 #[derive(Debug, Default)]
 pub struct UnitNode {
+	pub children: BTreeMap<u8, UnitNode>,
 	pub is_final: bool,
-	pub children: BTreeMap<char, UnitNode>,
 }
 
 #[derive(Debug, Default)]
@@ -118,33 +118,31 @@ impl UnitTree {
 		}
 
 		let mut current_node = &mut self.root;
-		for ch in word.chars() {
-			// Заходим в BTreeMap и либо берем существующий узел, либо создаем новый
-			current_node = current_node.children.entry(ch).or_default();
+		for &b in word.as_bytes() {
+			current_node = current_node.children.entry(b).or_default();
 		}
-		// Последний узел в цепочке помечаем как валидный юнит
 		current_node.is_final = true;
 	}
 
-	pub fn longest_match(&self, input: &[char]) -> usize {
+	pub fn longest_match(&self, input: &str) -> usize {
 		let mut current_node = &self.root;
-		let mut last_final_idx = 0;
-		let mut current_idx = 0;
+		let mut last_final_byte_idx = 0;
+		let mut current_byte_idx = 0;
 
-		for &ch in input {
-			if let Some(next_node) = current_node.children.get(&ch) {
+		for &b in input.as_bytes() {
+			if let Some(next_node) = current_node.children.get(&b) {
 				current_node = next_node;
-				current_idx += 1;
+				current_byte_idx += 1;
 
 				if current_node.is_final {
-					last_final_idx = current_idx;
+					last_final_byte_idx = current_byte_idx;
 				}
 			} else {
 				break;
 			}
 		}
 
-		last_final_idx
+		last_final_byte_idx
 	}
 }
 

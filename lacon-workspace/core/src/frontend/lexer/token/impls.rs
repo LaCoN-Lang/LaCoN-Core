@@ -4,8 +4,8 @@ use crate::shared::position::Position;
 use crate::shared::unit::UnitKind;
 use std::fmt;
 
-impl Token {
-	pub fn new(token_kind: TokenKind, is_at_line_start: bool, has_whitespace: bool, lexeme: String, literal: Option<String>, position: Position, length: usize) -> Self {
+impl<'a> Token<'a> {
+	pub fn new(token_kind: TokenKind, is_at_line_start: bool, has_whitespace: bool, lexeme: &'a str, literal: Option<&'a str>, position: Position, length: usize) -> Self {
 		let mut flags = TokenFlags::empty();
 		if is_at_line_start {
 			flags.insert(TokenFlags::AT_LINE_START);
@@ -27,7 +27,7 @@ impl Token {
 	pub fn bare(token_kind: TokenKind, position: Position) -> Self {
 		Self {
 			token_kind,
-			lexeme: String::new(),
+			lexeme: "",
 			literal: None,
 			position,
 			length: 0,
@@ -35,7 +35,7 @@ impl Token {
 		}
 	}
 
-	pub fn error(message: String, position: Position) -> Self {
+	pub fn error(message: &'a str, position: Position) -> Self {
 		Self {
 			token_kind: TokenKind::Error,
 			lexeme: message,
@@ -77,7 +77,7 @@ impl TokenKind {
 	}
 }
 
-impl fmt::Display for Token {
+impl<'a> fmt::Display for Token<'a> {
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
 		let literal_str = match &self.literal {
 			Some(l) => format!(" (value: {})", l),

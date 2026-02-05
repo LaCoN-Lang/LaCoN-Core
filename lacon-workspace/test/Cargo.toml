@@ -8,3 +8,6 @@ license = "MIT"
 anyhow.workspace = true
 clap.workspace = true
 lacon-core = { workspace = true }
+
+[dev-dependencies]
+memory-stats = "1.2.0"
