@@ -191,19 +191,19 @@ impl<'src, 'ctx> Scanner<'src, 'ctx> {
 
 	#[inline]
 	fn as_str(&self) -> &'src str {
-		self.chars.as_str()
+		&self.source[self.current..]
 	}
 
 	#[inline]
 	fn first(&self) -> char {
-		self.chars.clone().next().unwrap_or(EOF_CHAR)
+		self.as_str().chars().next().unwrap_or(EOF_CHAR)
 	}
 
 	#[inline]
 	fn second(&self) -> char {
-		let mut iter = self.chars.clone();
-		iter.next();
-		iter.next().unwrap_or(EOF_CHAR)
+		let mut chars = self.as_str().chars();
+		chars.next();
+		chars.next().unwrap_or(EOF_CHAR)
 	}
 
 	#[inline]
@@ -214,11 +214,13 @@ impl<'src, 'ctx> Scanner<'src, 'ctx> {
 		iter.next().unwrap_or(EOF_CHAR)
 	}
 
+	#[inline]
 	fn advance(&mut self) -> char {
 		let c = self.chars.next().unwrap_or(EOF_CHAR);
 
 		if c != EOF_CHAR {
 			self.current += c.len_utf8();
+			self.position.advance(c);
 		}
 
 		#[cfg(debug_assertions)]
@@ -226,7 +228,6 @@ impl<'src, 'ctx> Scanner<'src, 'ctx> {
 			self.prev = c;
 		}
 
-		self.position.advance(c);
 		c
 	}
 

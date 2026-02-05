@@ -112,7 +112,7 @@ mod lexer_tests {
 		let ctx = UnitContext::new(&arena);
 
 		let source_str = *FILE_STRINGS_CYR;
-		let iterations = 100000; // Увеличим до 1000 для более стабильной статистики
+		let iterations = 1000000; // Увеличим до 1000 для более стабильной статистики
 		let warmup_iterations = 10;
 
 		println!("\n Запуск оптимизированного теста скорости...");
