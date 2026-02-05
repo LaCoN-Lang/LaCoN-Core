@@ -9,14 +9,6 @@ pub fn match_operator(c1: char, c2: Option<char>, c3: Option<char>) -> OpMatch {
 	// 1. Проверяем, является ли первый символ оператором вообще
 	if !OperatorKind::is_op_char(c1) {
 		return match c1 {
-			'(' => simple(TokenKind::LeftParen),
-			')' => simple(TokenKind::RightParen),
-			'{' => simple(TokenKind::LeftBrace),
-			'}' => simple(TokenKind::RightBrace),
-			'[' => simple(TokenKind::LeftBracket),
-			']' => simple(TokenKind::RightBracket),
-			',' => simple(TokenKind::Comma),
-			';' => simple(TokenKind::Semicolon),
 			_ => simple(TokenKind::Unknown),
 		};
 	}

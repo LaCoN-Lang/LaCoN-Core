@@ -1,6 +1,4 @@
-use super::token::{Token, TokenKind};
-use crate::frontend::lexer::keyword::get_keyword_token;
-use crate::frontend::lexer::operators::match_operator;
+use super::{SyntaxKind, Token, TokenKind, get_keyword_token, match_operator};
 use crate::shared::errors::error::Error;
 use crate::shared::errors::error_type::ErrorType;
 use crate::shared::errors::error_type::LexicalError;
@@ -84,7 +82,7 @@ impl Scanner {
 			'\n' => {
 				self.add_token_raw(TokenKind::Newline);
 				self.is_at_line_start = true;
-				self.had_whitespace = false; // После новой строки пробел сбрасываем (его учтет Indent)
+				self.had_whitespace = false;
 				self.start = self.current;
 				self.start_position = self.position;
 			}
@@ -93,23 +91,40 @@ impl Scanner {
 				self.scan_string(c);
 			}
 
-			'(' | '[' | '{' => {
-				let t_type = match c {
-					'(' => TokenKind::LeftParen,
-					'[' => TokenKind::LeftBracket,
-					_ => TokenKind::LeftBrace,
+			';' | ',' | '$' | '@' | '#' | '\\' => {
+				let kind = match c {
+					';' => SyntaxKind::Semicolon,
+					',' => SyntaxKind::Comma,
+					'$' => SyntaxKind::Dollar,
+					'@' => SyntaxKind::At,
+					'#' => SyntaxKind::Hash,
+					_ => SyntaxKind::Backslash,
 				};
-				self.context_stack.push(t_type);
-				self.handle_operator(c);
+				self.add_token(TokenKind::Syntax(kind));
+			}
+
+			'(' | '[' | '{' => {
+				let s_kind = match c {
+					'(' => SyntaxKind::LeftParenthesis,
+					'[' => SyntaxKind::LeftBracket,
+					_ => SyntaxKind::LeftBrace,
+				};
+				self.context_stack.push(TokenKind::Syntax(s_kind));
+				self.add_token(TokenKind::Syntax(s_kind));
 			}
 
 			')' | ']' | '}' => {
 				if !self.context_stack.is_empty() {
 					self.context_stack.pop();
 				}
-				self.handle_operator(c);
 
-				#[allow(clippy::collapsible_if)]
+				let s_kind = match c {
+					')' => SyntaxKind::RightParenthesis,
+					']' => SyntaxKind::RightBracket,
+					_ => SyntaxKind::RightBrace,
+				};
+				self.add_token(TokenKind::Syntax(s_kind));
+
 				if c == '}' {
 					if let Some((quote, is_multiline)) = self.string_stack.pop() {
 						self.start = self.current;
@@ -151,10 +166,7 @@ impl Scanner {
 		}
 	}
 
-	// --- Методы добавления токенов с поддержкой флагов ---
-
 	fn add_token_raw(&mut self, t_type: TokenKind) {
-		// Системные токены не сбрасывают флаг начала строки и не используют had_whitespace
 		let is_start = if matches!(t_type, TokenKind::Indent | TokenKind::Dedent | TokenKind::Newline) {
 			false
 		} else {
@@ -165,7 +177,6 @@ impl Scanner {
 			res
 		};
 
-		// Для системных токенов обычно не важен предшествующий пробел
 		let has_ws = if matches!(t_type, TokenKind::Indent | TokenKind::Dedent | TokenKind::Newline) {
 			false
 		} else {
@@ -189,15 +200,7 @@ impl Scanner {
 		let has_ws = self.had_whitespace;
 		self.had_whitespace = false;
 
-		self.tokens.push(Token::new(
-			t_type,
-			is_start,
-			has_ws,
-			text,
-			None, // literal
-			self.start_position,
-			len,
-		));
+		self.tokens.push(Token::new(t_type, is_start, has_ws, text, None, self.start_position, len));
 	}
 
 	fn add_token_with_literal(&mut self, t_type: TokenKind, literal: String) {
@@ -291,7 +294,6 @@ impl Scanner {
 		let initial_position = self.position;
 		let is_n_placeholder = value_literal == "n";
 
-		// 1. Пропускаем пробелы
 		while let Some(&c) = self.source.get(self.current) {
 			if c == ' ' || c == '\t' {
 				self.advance();
@@ -300,7 +302,6 @@ impl Scanner {
 			}
 		}
 
-		// 2. Ищем юнит в дереве
 		let lookahead = &self.source[self.current..];
 		let count = UNITS_TREE.longest_match(lookahead);
 
@@ -310,35 +311,28 @@ impl Scanner {
 			if is_valid_boundary {
 				let lexeme: String = lookahead.iter().take(count).collect();
 
-				// --- НОВАЯ ЛОГИКА ОПРЕДЕЛЕНИЯ UnitKind ---
-				// Пытаемся найти конкретный вид юнита по лексеме
 				let unit_kind = UNIT_LOOKUP.get(&lexeme).cloned().unwrap_or(UnitKind::None);
 
-				// Добавляем число (превращаем 'n' в '1')
 				let final_value = if is_n_placeholder { "1".to_string() } else { value_literal };
 				self.add_token_with_literal(TokenKind::Number, final_value);
 
-				// Настраиваем координаты для токена юнита
 				self.start = self.current;
 				self.start_position = self.position;
 
-				// Поглощаем символы юнита
 				for _ in 0..count {
 					self.advance();
 				}
 
-				// Добавляем токен юнита с его типом
 				self.add_token(TokenKind::Unit(unit_kind));
-				return; // Успешно выходим
+				return;
 			}
 		}
 
-		// 3. ОТКАТ (если юнит не найден)
 		self.current = initial_current;
 		self.position = initial_position;
 
 		if is_n_placeholder {
-			self.start = self.current - 1; // Возврат к 'n'
+			self.start = self.current - 1;
 			self.scan_identifier();
 		} else {
 			self.add_token_with_literal(TokenKind::Number, value_literal);
@@ -381,65 +375,94 @@ impl Scanner {
 
 	fn scan_string(&mut self, quote: char) {
 		let is_multiline = quote == '"' && self.match_char('"') && self.match_char('"');
+
+		let syntax_kind = match quote {
+			'"' => SyntaxKind::DoubleQuote,
+			'\'' => SyntaxKind::SingleQuote,
+			_ => SyntaxKind::GraveAccent,
+		};
+
+		self.add_token(TokenKind::Syntax(syntax_kind));
+
+		self.start = self.current;
+		self.start_position = self.position;
+
 		self.continue_string_scan(quote, is_multiline);
 	}
 
 	fn continue_string_scan(&mut self, quote: char, is_multiline: bool) {
-		let quote_len = if is_multiline { 3 } else { 1 };
 		let content_start = self.current;
 
 		while !self.is_at_end() {
-			if self.peek() == Some('\\') && self.peek_next() == Some('$') {
-				self.advance();
-				self.advance();
-				continue;
-			}
 			if self.peek() == Some('$') && self.peek_next() == Some('{') {
-				let literal = self.get_slice(content_start, self.current);
-				let t_type = self.get_string_token_type(quote, is_multiline);
-				self.add_token_with_literal(t_type, literal);
-				self.string_stack.push((quote, is_multiline));
+				let text = self.get_slice(content_start, self.current);
+				if !text.is_empty() {
+					self.add_token_with_literal(TokenKind::String, text);
+				}
+
 				self.start = self.current;
 				self.start_position = self.position;
 				self.advance();
+				self.add_token(TokenKind::Syntax(SyntaxKind::Dollar));
+
+				self.start = self.current;
+				self.start_position = self.position;
 				self.advance();
-				self.add_token(TokenKind::DollarLeftBrace);
+				self.context_stack.push(TokenKind::Syntax(SyntaxKind::LeftBrace));
+				self.add_token(TokenKind::Syntax(SyntaxKind::LeftBrace));
+
+				self.string_stack.push((quote, is_multiline));
 				return;
 			}
-			if is_multiline {
-				if self.peek() == Some('"') && self.peek_next() == Some('"') && self.peek_at(2) == Some('"') {
-					break;
-				}
-			} else if self.peek() == Some(quote) || self.peek() == Some('\n') {
+
+			let is_closing = if is_multiline {
+				self.peek() == Some('"') && self.peek_next() == Some('"') && self.peek_at(2) == Some('"')
+			} else {
+				self.peek() == Some(quote)
+			};
+
+			if is_closing {
 				break;
 			}
+
+			if self.peek() == Some('\n') && !is_multiline {
+				break;
+			}
+
 			let c = self.advance();
 			if c == '\\' && !self.is_at_end() {
 				self.advance();
 			}
 		}
 
-		if self.is_at_end() || (!is_multiline && self.peek() == Some('\n')) {
+		if self.is_at_end() || (self.peek() == Some('\n') && !is_multiline) {
 			self.report_error(LexicalError::UnterminatedString);
 			return;
 		}
 
-		let literal = self.get_slice(content_start, self.current);
+		let text = self.get_slice(content_start, self.current);
+		if !text.is_empty() {
+			self.add_token_with_literal(TokenKind::String, text);
+		}
+
+		self.start = self.current;
+		self.start_position = self.position;
+
+		let quote_len = if is_multiline { 3 } else { 1 };
 		for _ in 0..quote_len {
 			self.advance();
 		}
-		let t_type = self.get_string_token_type(quote, is_multiline);
-		self.add_token_with_literal(t_type, literal);
-	}
 
-	fn get_string_token_type(&self, quote: char, is_multiline: bool) -> TokenKind {
-		match quote {
-			'"' if is_multiline => TokenKind::MultilineString,
-			'"' => TokenKind::String,
-			'\'' => TokenKind::SingleQuotedString,
-			'`' => TokenKind::GraveQuotedString,
-			_ => TokenKind::String,
-		}
+		let syntax_kind = match quote {
+			'"' => SyntaxKind::DoubleQuote,
+			'\'' => SyntaxKind::SingleQuote,
+			_ => SyntaxKind::GraveAccent,
+		};
+
+		self.add_token(TokenKind::Syntax(syntax_kind));
+
+		self.start = self.current;
+		self.start_position = self.position;
 	}
 
 	fn handle_indentation(&mut self) {
@@ -486,19 +509,22 @@ impl Scanner {
 
 	fn handle_operator(&mut self, c: char) {
 		let op = match_operator(c, self.peek(), self.peek_next());
-		match op.token_type {
+
+		for _ in 0..op.consume_count {
+			self.advance();
+		}
+
+		match op.token_kind {
 			TokenKind::LineComment => {
-				for _ in 0..op.consume_count {
-					self.advance();
-				}
-				while self.peek() != Some('\n') && !self.is_at_end() {
+				while let Some(next) = self.peek() {
+					if next == '\n' {
+						break;
+					}
 					self.advance();
 				}
 			}
+
 			TokenKind::BlockComment => {
-				for _ in 0..op.consume_count {
-					self.advance();
-				}
 				while !self.is_at_end() {
 					if self.peek() == Some('*') && self.peek_next() == Some('/') {
 						self.advance();
@@ -508,11 +534,11 @@ impl Scanner {
 					self.advance();
 				}
 			}
+
+			TokenKind::Unknown => {}
+
 			_ => {
-				for _ in 0..op.consume_count {
-					self.advance();
-				}
-				self.add_token(op.token_type);
+				self.add_token(op.token_kind);
 			}
 		}
 	}

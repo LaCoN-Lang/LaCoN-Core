@@ -1,11 +1,11 @@
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub enum SyntaxKind {
-	LeftParenthesis,  // (
-	RightParenthesis, // )
-	LeftBracket,      // [
-	RightBracket,     // ]
-	LeftBrace,        // {
-	RightBrace,       // }
+	LeftParenthesis,  // (  \\ GroupStart
+	RightParenthesis, // )  \\ GroupEnd
+	LeftBracket,      // [  \\ IndexStart
+	RightBracket,     // ]  \\ IndexEnd
+	LeftBrace,        // {  \\ BlockStart
+	RightBrace,       // }  \\ BlockEnd
 
 	SingleQuote, // '
 	DoubleQuote, // "
@@ -13,4 +13,10 @@ pub enum SyntaxKind {
 
 	Semicolon, // ;
 	Comma,     // ,
+
+	Backslash, // \  \\ Escape or Difference
+
+	Dollar, // $
+	At,     // @
+	Hash,   // #
 }

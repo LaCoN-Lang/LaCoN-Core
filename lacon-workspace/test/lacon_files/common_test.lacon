@@ -1,3 +1,6 @@
+a = "literal ${identifier} literal"
+module::exported
+a := ssing
 _
 __
 na_me
