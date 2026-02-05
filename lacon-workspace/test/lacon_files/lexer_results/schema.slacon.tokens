@@ -1,48 +1,48 @@
-TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
-------------------------------------------------------------------------------------------------------------------------------------------------------
-SOF                            |                                          |                      | 1:1:0      |            |           
-Identifier                     | entity_type                              |                      | 1:1:0      | True       |           
-Colon                          | :                                        |                      | 1:12:11    |            |           
-Less                           | <                                        |                      | 1:14:13    |            | WS        
-Identifier                     | String                                   |                      | 1:15:14    |            |           
-Greater                        | >                                        |                      | 1:21:20    |            |           
-Newline                        |                                          |                      | 1:22:21    |            |           
-Identifier                     | power_reproduction                       |                      | 2:1:22     | True       |           
-Colon                          | :                                        |                      | 2:19:40    |            |           
-Less                           | <                                        |                      | 2:21:42    |            | WS        
-Identifier                     | Power                                    |                      | 2:22:43    |            |           
-Greater                        | >                                        |                      | 2:27:48    |            |           
-Newline                        |                                          |                      | 2:28:49    |            |           
-Identifier                     | fuel                                     |                      | 3:1:50     | True       |           
-At                             | @                                        |                      | 3:5:54     |            |           
-LeftBracket                    | [                                        |                      | 3:6:55     |            |           
-Identifier                     | value                                    |                      | 3:7:56     |            |           
-In                             | in                                       |                      | 3:13:62    |            | WS        
-LeftBracket                    | [                                        |                      | 3:16:65    |            | WS        
-String                         | "solid"                                  | solid                | 3:17:66    |            |           
-Comma                          | ,                                        |                      | 3:24:73    |            |           
-String                         | "liquid"                                 | liquid               | 3:26:75    |            | WS        
-Comma                          | ,                                        |                      | 3:34:83    |            |           
-String                         | "gas"                                    | gas                  | 3:36:85    |            | WS        
-RightBracket                   | ]                                        |                      | 3:41:90    |            |           
-RightBracket                   | ]                                        |                      | 3:42:91    |            |           
-Colon                          | :                                        |                      | 3:43:92    |            |           
-Less                           | <                                        |                      | 3:45:94    |            | WS        
-Identifier                     | String                                   |                      | 3:46:95    |            |           
-Greater                        | >                                        |                      | 3:52:101   |            |           
-Newline                        |                                          |                      | 3:53:102   |            |           
-Identifier                     | fuel_consumption                         |                      | 4:1:103    | True       |           
-Less                           | <                                        |                      | 4:17:119   |            |           
-Identifier                     | Expr                                     |                      | 4:18:120   |            |           
-Greater                        | >                                        |                      | 4:22:124   |            |           
-Colon                          | :                                        |                      | 4:23:125   |            |           
-Less                           | <                                        |                      | 4:25:127   |            | WS        
-Identifier                     | Mass                                     |                      | 4:26:128   |            |           
-Greater                        | >                                        |                      | 4:30:132   |            |           
-Slash                          | /                                        |                      | 4:32:134   |            | WS        
-Delta                          | delta                                    |                      | 4:34:136   |            | WS        
-Less                           | <                                        |                      | 4:40:142   |            | WS        
-Identifier                     | Time                                     |                      | 4:41:143   |            |           
-Greater                        | >                                        |                      | 4:45:147   |            |           
-Newline                        |                                          |                      | 4:46:148   |            |           
-EOF                            |                                          |                      | 5:1:149    |            |           
+TYPE                                | LEXEME                                   | LITERAL                        | POSITION        | LINE START | WHITESPACE
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                                 |                                          |                                | 1:1:0           |            |           
+Identifier                          | entity_type                              |                                | 1:1:0           | True       |           
+Colon                               | :                                        |                                | 1:12:11         |            |           
+Less                                | <                                        |                                | 1:14:13         |            | WS        
+Identifier                          | String                                   |                                | 1:15:14         |            |           
+Greater                             | >                                        |                                | 1:21:20         |            |           
+Newline                             |                                          |                                | 1:22:21         |            |           
+Identifier                          | power_reproduction                       |                                | 2:1:22          | True       |           
+Colon                               | :                                        |                                | 2:19:40         |            |           
+Less                                | <                                        |                                | 2:21:42         |            | WS        
+Identifier                          | Power                                    |                                | 2:22:43         |            |           
+Greater                             | >                                        |                                | 2:27:48         |            |           
+Newline                             |                                          |                                | 2:28:49         |            |           
+Identifier                          | fuel                                     |                                | 3:1:50          | True       |           
+At                                  | @                                        |                                | 3:5:54          |            |           
+LeftBracket                         | [                                        |                                | 3:6:55          |            |           
+Identifier                          | value                                    |                                | 3:7:56          |            |           
+Keyword(In)                         | in                                       |                                | 3:13:62         |            | WS        
+LeftBracket                         | [                                        |                                | 3:16:65         |            | WS        
+String                              | "solid"                                  | solid                          | 3:17:66         |            |           
+Comma                               | ,                                        |                                | 3:24:73         |            |           
+String                              | "liquid"                                 | liquid                         | 3:26:75         |            | WS        
+Comma                               | ,                                        |                                | 3:34:83         |            |           
+String                              | "gas"                                    | gas                            | 3:36:85         |            | WS        
+RightBracket                        | ]                                        |                                | 3:41:90         |            |           
+RightBracket                        | ]                                        |                                | 3:42:91         |            |           
+Colon                               | :                                        |                                | 3:43:92         |            |           
+Less                                | <                                        |                                | 3:45:94         |            | WS        
+Identifier                          | String                                   |                                | 3:46:95         |            |           
+Greater                             | >                                        |                                | 3:52:101        |            |           
+Newline                             |                                          |                                | 3:53:102        |            |           
+Identifier                          | fuel_consumption                         |                                | 4:1:103         | True       |           
+Less                                | <                                        |                                | 4:17:119        |            |           
+Identifier                          | Expr                                     |                                | 4:18:120        |            |           
+Greater                             | >                                        |                                | 4:22:124        |            |           
+Colon                               | :                                        |                                | 4:23:125        |            |           
+Less                                | <                                        |                                | 4:25:127        |            | WS        
+Identifier                          | Mass                                     |                                | 4:26:128        |            |           
+Greater                             | >                                        |                                | 4:30:132        |            |           
+Slash                               | /                                        |                                | 4:32:134        |            | WS        
+Keyword(Delta)                      | delta                                    |                                | 4:34:136        |            | WS        
+Less                                | <                                        |                                | 4:40:142        |            | WS        
+Identifier                          | Time                                     |                                | 4:41:143        |            |           
+Greater                             | >                                        |                                | 4:45:147        |            |           
+Newline                             |                                          |                                | 4:46:148        |            |           
+EOF                                 |                                          |                                | 5:1:149         |            |           

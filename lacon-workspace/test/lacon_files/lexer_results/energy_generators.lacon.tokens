@@ -1,124 +1,124 @@
-TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
-------------------------------------------------------------------------------------------------------------------------------------------------------
-SOF                            |                                          |                      | 1:1:0      |            |           
-Constant                       | const                                    |                      | 1:1:0      | True       |           
-Identifier                     | generatorsData                           |                      | 1:7:6      |            | WS        
-Equal                          | =                                        |                      | 1:22:21    |            | WS        
-Identifier                     | readData                                 |                      | 1:24:23    |            | WS        
-LeftParen                      | (                                        |                      | 1:32:31    |            |           
-String                         | "./energy_generators.llacon"             | ./energy_generators.llacon | 1:33:32    |            |           
-RightParen                     | )                                        |                      | 1:61:60    |            |           
-Newline                        |                                          |                      | 1:62:61    |            |           
-Newline                        |                                          |                      | 2:1:62     |            |           
-Public                         | public                                   |                      | 3:1:63     | True       |           
-Function                       | function                                 |                      | 3:8:70     |            | WS        
-Identifier                     | registerGenerator                        |                      | 3:17:79    |            | WS        
-LeftParen                      | (                                        |                      | 3:34:96    |            |           
-Identifier                     | generator                                |                      | 3:35:97    |            |           
-Less                           | <                                        |                      | 3:44:106   |            |           
-Identifier                     | Dictionary                               |                      | 3:45:107   |            |           
-Greater                        | >                                        |                      | 3:55:117   |            |           
-RightParen                     | )                                        |                      | 3:56:118   |            |           
-LeftBrace                      | {                                        |                      | 3:58:120   |            | WS        
-Newline                        |                                          |                      | 3:59:121   |            |           
-Identifier                     | GameAPI                                  |                      | 4:2:123    | True       |           
-Dot                            | .                                        |                      | 4:9:130    |            |           
-Identifier                     | registerEntity                           |                      | 4:10:131   |            |           
-LeftParen                      | (                                        |                      | 4:24:145   |            |           
-LeftBrace                      | {                                        |                      | 4:25:146   |            |           
-Newline                        |                                          |                      | 4:26:147   |            |           
-Type                           | type                                     |                      | 5:3:150    | True       |           
-Colon                          | :                                        |                      | 5:7:154    |            |           
-Identifier                     | generator                                |                      | 5:9:156    |            | WS        
-LeftBracket                    | [                                        |                      | 5:18:165   |            |           
-String                         | "entity-type"                            | entity-type          | 5:19:166   |            |           
-RightBracket                   | ]                                        |                      | 5:32:179   |            |           
-Comma                          | ,                                        |                      | 5:33:180   |            |           
-Newline                        |                                          |                      | 5:34:181   |            |           
-Identifier                     | name                                     |                      | 6:3:184    | True       |           
-Colon                          | :                                        |                      | 6:7:188    |            |           
-Identifier                     | generator                                |                      | 6:9:190    |            | WS        
-LeftBracket                    | [                                        |                      | 6:18:199   |            |           
-String                         | "entity-name"                            | entity-name          | 6:19:200   |            |           
-RightBracket                   | ]                                        |                      | 6:32:213   |            |           
-Comma                          | ,                                        |                      | 6:33:214   |            |           
-Newline                        |                                          |                      | 6:34:215   |            |           
-Identifier                     | description                              |                      | 7:3:218    | True       |           
-Colon                          | :                                        |                      | 7:14:229   |            |           
-Identifier                     | generator                                |                      | 7:16:231   |            | WS        
-LeftBracket                    | [                                        |                      | 7:25:240   |            |           
-String                         | "entity-description"                     | entity-description   | 7:26:241   |            |           
-RightBracket                   | ]                                        |                      | 7:46:261   |            |           
-QuestionQuestion               | ??                                       |                      | 7:48:263   |            | WS        
-String                         | "Описание отсутствует"                   | Описание отсутствует | 7:51:266   |            | WS        
-Comma                          | ,                                        |                      | 7:73:307   |            |           
-Newline                        |                                          |                      | 7:74:308   |            |           
-Identifier                     | energy                                   |                      | 8:3:311    | True       |           
-Colon                          | :                                        |                      | 8:9:317    |            |           
-Identifier                     | generator                                |                      | 8:11:319   |            | WS        
-Dot                            | .                                        |                      | 8:20:328   |            |           
-Identifier                     | energy                                   |                      | 8:21:329   |            |           
-Comma                          | ,                                        |                      | 8:27:335   |            |           
-Newline                        |                                          |                      | 8:28:336   |            |           
-Identifier                     | craft                                    |                      | 9:3:339    | True       |           
-Colon                          | :                                        |                      | 9:8:344    |            |           
-Identifier                     | generator                                |                      | 9:10:346   |            | WS        
-Dot                            | .                                        |                      | 9:19:355   |            |           
-Identifier                     | craft                                    |                      | 9:20:356   |            |           
-Comma                          | ,                                        |                      | 9:25:361   |            |           
-Newline                        |                                          |                      | 9:26:362   |            |           
-Identifier                     | craftTime                                |                      | 10:3:365   | True       |           
-Colon                          | :                                        |                      | 10:12:374  |            |           
-Identifier                     | generator                                |                      | 10:14:376  |            | WS        
-LeftBracket                    | [                                        |                      | 10:23:385  |            |           
-String                         | "craft-time"                             | craft-time           | 10:24:386  |            |           
-RightBracket                   | ]                                        |                      | 10:36:398  |            |           
-Comma                          | ,                                        |                      | 10:37:399  |            |           
-Newline                        |                                          |                      | 10:38:400  |            |           
-Identifier                     | cost                                     |                      | 11:3:403   | True       |           
-Colon                          | :                                        |                      | 11:7:407   |            |           
-Identifier                     | generator                                |                      | 11:9:409   |            | WS        
-Dot                            | .                                        |                      | 11:18:418  |            |           
-Identifier                     | cost                                     |                      | 11:19:419  |            |           
-Comma                          | ,                                        |                      | 11:23:423  |            |           
-Newline                        |                                          |                      | 11:24:424  |            |           
-Identifier                     | size                                     |                      | 12:3:427   | True       |           
-Colon                          | :                                        |                      | 12:7:431   |            |           
-Identifier                     | generator                                |                      | 12:9:433   |            | WS        
-Dot                            | .                                        |                      | 12:18:442  |            |           
-Identifier                     | size                                     |                      | 12:19:443  |            |           
-Comma                          | ,                                        |                      | 12:23:447  |            |           
-Newline                        |                                          |                      | 12:24:448  |            |           
-Identifier                     | weight                                   |                      | 13:3:451   | True       |           
-Colon                          | :                                        |                      | 13:9:457   |            |           
-Identifier                     | generator                                |                      | 13:11:459  |            | WS        
-Dot                            | .                                        |                      | 13:20:468  |            |           
-Identifier                     | weight                                   |                      | 13:21:469  |            |           
-Comma                          | ,                                        |                      | 13:27:475  |            |           
-Newline                        |                                          |                      | 13:28:476  |            |           
-Identifier                     | durability                               |                      | 14:3:479   | True       |           
-Colon                          | :                                        |                      | 14:13:489  |            |           
-Identifier                     | generator                                |                      | 14:15:491  |            | WS        
-Dot                            | .                                        |                      | 14:24:500  |            |           
-Identifier                     | durability                               |                      | 14:25:501  |            |           
-Newline                        |                                          |                      | 14:35:511  |            |           
-RightBrace                     | }                                        |                      | 15:2:513   | True       |           
-RightParen                     | )                                        |                      | 15:3:514   |            |           
-Newline                        |                                          |                      | 15:4:515   |            |           
-RightBrace                     | }                                        |                      | 16:1:516   | True       |           
-Newline                        |                                          |                      | 16:2:517   |            |           
-Newline                        |                                          |                      | 17:1:518   |            |           
-For                            | for                                      |                      | 18:1:519   | True       |           
-Identifier                     | gen                                      |                      | 18:5:523   |            | WS        
-In                             | in                                       |                      | 18:9:527   |            | WS        
-Identifier                     | generatorsData                           |                      | 18:12:530  |            | WS        
-LeftBrace                      | {                                        |                      | 18:27:545  |            | WS        
-Newline                        |                                          |                      | 18:28:546  |            |           
-Identifier                     | registerGenerator                        |                      | 19:2:548   | True       |           
-LeftParen                      | (                                        |                      | 19:19:565  |            |           
-Identifier                     | gen                                      |                      | 19:20:566  |            |           
-RightParen                     | )                                        |                      | 19:23:569  |            |           
-Newline                        |                                          |                      | 19:24:570  |            |           
-RightBrace                     | }                                        |                      | 20:1:571   | True       |           
-Newline                        |                                          |                      | 20:2:572   |            |           
-EOF                            |                                          |                      | 21:1:573   |            |           
+TYPE                                | LEXEME                                   | LITERAL                        | POSITION        | LINE START | WHITESPACE
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                                 |                                          |                                | 1:1:0           |            |           
+Keyword(Constant)                   | const                                    |                                | 1:1:0           | True       |           
+Identifier                          | generatorsData                           |                                | 1:7:6           |            | WS        
+Equal                               | =                                        |                                | 1:22:21         |            | WS        
+Identifier                          | readData                                 |                                | 1:24:23         |            | WS        
+LeftParen                           | (                                        |                                | 1:32:31         |            |           
+String                              | "./energy_generators.llacon"             | ./energy_generators.llacon     | 1:33:32         |            |           
+RightParen                          | )                                        |                                | 1:61:60         |            |           
+Newline                             |                                          |                                | 1:62:61         |            |           
+Newline                             |                                          |                                | 2:1:62          |            |           
+Keyword(Public)                     | public                                   |                                | 3:1:63          | True       |           
+Keyword(Function)                   | function                                 |                                | 3:8:70          |            | WS        
+Identifier                          | registerGenerator                        |                                | 3:17:79         |            | WS        
+LeftParen                           | (                                        |                                | 3:34:96         |            |           
+Identifier                          | generator                                |                                | 3:35:97         |            |           
+Less                                | <                                        |                                | 3:44:106        |            |           
+Identifier                          | Dictionary                               |                                | 3:45:107        |            |           
+Greater                             | >                                        |                                | 3:55:117        |            |           
+RightParen                          | )                                        |                                | 3:56:118        |            |           
+LeftBrace                           | {                                        |                                | 3:58:120        |            | WS        
+Newline                             |                                          |                                | 3:59:121        |            |           
+Identifier                          | GameAPI                                  |                                | 4:2:123         | True       |           
+Dot                                 | .                                        |                                | 4:9:130         |            |           
+Identifier                          | registerEntity                           |                                | 4:10:131        |            |           
+LeftParen                           | (                                        |                                | 4:24:145        |            |           
+LeftBrace                           | {                                        |                                | 4:25:146        |            |           
+Newline                             |                                          |                                | 4:26:147        |            |           
+Keyword(Type)                       | type                                     |                                | 5:3:150         | True       |           
+Colon                               | :                                        |                                | 5:7:154         |            |           
+Identifier                          | generator                                |                                | 5:9:156         |            | WS        
+LeftBracket                         | [                                        |                                | 5:18:165        |            |           
+String                              | "entity-type"                            | entity-type                    | 5:19:166        |            |           
+RightBracket                        | ]                                        |                                | 5:32:179        |            |           
+Comma                               | ,                                        |                                | 5:33:180        |            |           
+Newline                             |                                          |                                | 5:34:181        |            |           
+Identifier                          | name                                     |                                | 6:3:184         | True       |           
+Colon                               | :                                        |                                | 6:7:188         |            |           
+Identifier                          | generator                                |                                | 6:9:190         |            | WS        
+LeftBracket                         | [                                        |                                | 6:18:199        |            |           
+String                              | "entity-name"                            | entity-name                    | 6:19:200        |            |           
+RightBracket                        | ]                                        |                                | 6:32:213        |            |           
+Comma                               | ,                                        |                                | 6:33:214        |            |           
+Newline                             |                                          |                                | 6:34:215        |            |           
+Identifier                          | description                              |                                | 7:3:218         | True       |           
+Colon                               | :                                        |                                | 7:14:229        |            |           
+Identifier                          | generator                                |                                | 7:16:231        |            | WS        
+LeftBracket                         | [                                        |                                | 7:25:240        |            |           
+String                              | "entity-description"                     | entity-description             | 7:26:241        |            |           
+RightBracket                        | ]                                        |                                | 7:46:261        |            |           
+QuestionQuestion                    | ??                                       |                                | 7:48:263        |            | WS        
+String                              | "Описание отсутствует"                   | Описание отсутствует           | 7:51:266        |            | WS        
+Comma                               | ,                                        |                                | 7:73:307        |            |           
+Newline                             |                                          |                                | 7:74:308        |            |           
+Identifier                          | energy                                   |                                | 8:3:311         | True       |           
+Colon                               | :                                        |                                | 8:9:317         |            |           
+Identifier                          | generator                                |                                | 8:11:319        |            | WS        
+Dot                                 | .                                        |                                | 8:20:328        |            |           
+Identifier                          | energy                                   |                                | 8:21:329        |            |           
+Comma                               | ,                                        |                                | 8:27:335        |            |           
+Newline                             |                                          |                                | 8:28:336        |            |           
+Identifier                          | craft                                    |                                | 9:3:339         | True       |           
+Colon                               | :                                        |                                | 9:8:344         |            |           
+Identifier                          | generator                                |                                | 9:10:346        |            | WS        
+Dot                                 | .                                        |                                | 9:19:355        |            |           
+Identifier                          | craft                                    |                                | 9:20:356        |            |           
+Comma                               | ,                                        |                                | 9:25:361        |            |           
+Newline                             |                                          |                                | 9:26:362        |            |           
+Identifier                          | craftTime                                |                                | 10:3:365        | True       |           
+Colon                               | :                                        |                                | 10:12:374       |            |           
+Identifier                          | generator                                |                                | 10:14:376       |            | WS        
+LeftBracket                         | [                                        |                                | 10:23:385       |            |           
+String                              | "craft-time"                             | craft-time                     | 10:24:386       |            |           
+RightBracket                        | ]                                        |                                | 10:36:398       |            |           
+Comma                               | ,                                        |                                | 10:37:399       |            |           
+Newline                             |                                          |                                | 10:38:400       |            |           
+Identifier                          | cost                                     |                                | 11:3:403        | True       |           
+Colon                               | :                                        |                                | 11:7:407        |            |           
+Identifier                          | generator                                |                                | 11:9:409        |            | WS        
+Dot                                 | .                                        |                                | 11:18:418       |            |           
+Identifier                          | cost                                     |                                | 11:19:419       |            |           
+Comma                               | ,                                        |                                | 11:23:423       |            |           
+Newline                             |                                          |                                | 11:24:424       |            |           
+Identifier                          | size                                     |                                | 12:3:427        | True       |           
+Colon                               | :                                        |                                | 12:7:431        |            |           
+Identifier                          | generator                                |                                | 12:9:433        |            | WS        
+Dot                                 | .                                        |                                | 12:18:442       |            |           
+Identifier                          | size                                     |                                | 12:19:443       |            |           
+Comma                               | ,                                        |                                | 12:23:447       |            |           
+Newline                             |                                          |                                | 12:24:448       |            |           
+Identifier                          | weight                                   |                                | 13:3:451        | True       |           
+Colon                               | :                                        |                                | 13:9:457        |            |           
+Identifier                          | generator                                |                                | 13:11:459       |            | WS        
+Dot                                 | .                                        |                                | 13:20:468       |            |           
+Identifier                          | weight                                   |                                | 13:21:469       |            |           
+Comma                               | ,                                        |                                | 13:27:475       |            |           
+Newline                             |                                          |                                | 13:28:476       |            |           
+Identifier                          | durability                               |                                | 14:3:479        | True       |           
+Colon                               | :                                        |                                | 14:13:489       |            |           
+Identifier                          | generator                                |                                | 14:15:491       |            | WS        
+Dot                                 | .                                        |                                | 14:24:500       |            |           
+Identifier                          | durability                               |                                | 14:25:501       |            |           
+Newline                             |                                          |                                | 14:35:511       |            |           
+RightBrace                          | }                                        |                                | 15:2:513        | True       |           
+RightParen                          | )                                        |                                | 15:3:514        |            |           
+Newline                             |                                          |                                | 15:4:515        |            |           
+RightBrace                          | }                                        |                                | 16:1:516        | True       |           
+Newline                             |                                          |                                | 16:2:517        |            |           
+Newline                             |                                          |                                | 17:1:518        |            |           
+Keyword(For)                        | for                                      |                                | 18:1:519        | True       |           
+Identifier                          | gen                                      |                                | 18:5:523        |            | WS        
+Keyword(In)                         | in                                       |                                | 18:9:527        |            | WS        
+Identifier                          | generatorsData                           |                                | 18:12:530       |            | WS        
+LeftBrace                           | {                                        |                                | 18:27:545       |            | WS        
+Newline                             |                                          |                                | 18:28:546       |            |           
+Identifier                          | registerGenerator                        |                                | 19:2:548        | True       |           
+LeftParen                           | (                                        |                                | 19:19:565       |            |           
+Identifier                          | gen                                      |                                | 19:20:566       |            |           
+RightParen                          | )                                        |                                | 19:23:569       |            |           
+Newline                             |                                          |                                | 19:24:570       |            |           
+RightBrace                          | }                                        |                                | 20:1:571        | True       |           
+Newline                             |                                          |                                | 20:2:572        |            |           
+EOF                                 |                                          |                                | 21:1:573        |            |           

@@ -1,7 +1,7 @@
 use strum_macros::EnumIter;
 
-use super::dimensions::Dimension;
-use super::props::{CalcMode, UnitProps};
+use super::UnitKind;
+use super::{CalcMode, UnitProps};
 use std::collections::BTreeMap;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, EnumIter)]
@@ -16,7 +16,7 @@ pub enum PrefixGroup {
 #[derive(Debug, Clone)]
 pub struct UnitDef {
 	pub symbol: &'static str,
-	pub dimension: Dimension,
+	pub dimension: UnitKind,
 	pub parts: Option<(&'static str, &'static str)>,
 	pub props: UnitProps,
 	pub numerator_group: PrefixGroup,
@@ -26,7 +26,7 @@ pub struct UnitDef {
 impl UnitDef {
 	pub const DEFAULT: Self = Self {
 		symbol: "",
-		dimension: Dimension::None,
+		dimension: UnitKind::None,
 		parts: None,
 		numerator_group: PrefixGroup::None,
 		denominator_group: PrefixGroup::None,
@@ -35,14 +35,14 @@ impl UnitDef {
 
 	pub const SI: Self = Self {
 		symbol: "",
-		dimension: Dimension::None,
+		dimension: UnitKind::None,
 		parts: None,
 		numerator_group: PrefixGroup::SI,
 		denominator_group: PrefixGroup::SI,
 		props: UnitProps::DEFAULT,
 	};
 
-	pub const fn new(symbol: &'static str, dimension: Dimension, parts: Option<(&'static str, &'static str)>, n_grp: PrefixGroup, d_grp: PrefixGroup, props: UnitProps) -> Self {
+	pub const fn new(symbol: &'static str, dimension: UnitKind, parts: Option<(&'static str, &'static str)>, n_grp: PrefixGroup, d_grp: PrefixGroup, props: UnitProps) -> Self {
 		Self {
 			symbol,
 			dimension,

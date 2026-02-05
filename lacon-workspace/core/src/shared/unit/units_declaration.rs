@@ -1,14 +1,16 @@
+use super::UnitKind;
 use super::definition::{PrefixGroup, UnitDef, UnitTree};
-use super::dimensions::Dimension;
 use super::prefixes::PREFIXES;
-use super::props::{CalcMode, UnitProps};
+use super::{CalcMode, UnitProps};
+
+use std::collections::BTreeMap;
 use std::sync::LazyLock;
 
 pub static UNITS: &[UnitDef] = units_array![
 				[]
 				UnitDef::new(
 								"Hz",
-								Dimension::Frequency,
+								UnitKind::Frequency,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -16,7 +18,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"g",
-								Dimension::Mass,
+								UnitKind::Mass,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -24,7 +26,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -32,7 +34,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"Å",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -40,7 +42,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m2",
-								Dimension::Area,
+								UnitKind::Area,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -48,7 +50,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m3",
-								Dimension::Volume,
+								UnitKind::Volume,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -56,7 +58,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"L",
-								Dimension::Volume,
+								UnitKind::Volume,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -64,7 +66,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"s",
-								Dimension::Time,
+								UnitKind::Time,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -72,7 +74,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"sec",
-								Dimension::Time,
+								UnitKind::Time,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -80,7 +82,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"mol",
-								Dimension::AmountOfSubstance,
+								UnitKind::AmountOfSubstance,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -88,7 +90,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"mol/m3",
-								Dimension::MolarConcentration,
+								UnitKind::MolarConcentration,
 								Some(("mol", "m3")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -96,7 +98,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"mol/L",
-								Dimension::MolarConcentration,
+								UnitKind::MolarConcentration,
 								Some(("mol", "L")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -104,7 +106,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"g/mol",
-								Dimension::MolarConcentration,
+								UnitKind::MolarConcentration,
 								Some(("g", "mol")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -112,7 +114,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m3/g",
-								Dimension::SpecificVolume,
+								UnitKind::SpecificVolume,
 								Some(("m3", "g")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -120,7 +122,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m3/mol",
-								Dimension::MolarVolume,
+								UnitKind::MolarVolume,
 								Some(("m3", "mol")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -128,7 +130,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"Da", // Атомная единица массы
-								Dimension::Mass,
+								UnitKind::Mass,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -136,7 +138,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"J/mol",
-								Dimension::MolarEnergy,
+								UnitKind::MolarEnergy,
 								Some(("J", "mol")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -144,7 +146,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"J/mol⋅K",
-								Dimension::MolarEntropy,
+								UnitKind::MolarEntropy,
 								Some(("J", "mol⋅K")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -152,7 +154,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"J/mol*K",
-								Dimension::MolarEntropy,
+								UnitKind::MolarEntropy,
 								Some(("J", "mol*K")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -160,7 +162,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"g⋅m/s",
-								Dimension::Momentum,
+								UnitKind::Momentum,
 								Some(("g⋅m", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -168,7 +170,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"g*m/s",
-								Dimension::Momentum,
+								UnitKind::Momentum,
 								Some(("g*m", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -178,7 +180,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"g/m2",
-								Dimension::AreaDensity,
+								UnitKind::AreaDensity,
 								Some(("g", "m2")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -186,7 +188,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"g/m3",
-								Dimension::Density,
+								UnitKind::Density,
 								Some(("g", "m3")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -195,7 +197,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"m/s",
-								Dimension::Velocity,
+								UnitKind::Velocity,
 								Some(("m", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -203,7 +205,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m/h",
-								Dimension::Velocity,
+								UnitKind::Velocity,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -211,7 +213,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m/s2",
-								Dimension::Acceleration,
+								UnitKind::Acceleration,
 								Some(("m", "s2")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -219,7 +221,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m/s3",
-								Dimension::Jerk,
+								UnitKind::Jerk,
 								Some(("m", "s3")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -227,7 +229,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m/s4",
-								Dimension::Snap,
+								UnitKind::Snap,
 								Some(("m", "s4")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -235,7 +237,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m/s5",
-								Dimension::Crackle,
+								UnitKind::Crackle,
 								Some(("m", "s5")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -243,7 +245,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"m/s6",
-								Dimension::Pop,
+								UnitKind::Pop,
 								Some(("m", "s6")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -252,7 +254,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"bit",
-								Dimension::Information,
+								UnitKind::Information,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -260,7 +262,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"Byte",
-								Dimension::Information,
+								UnitKind::Information,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -268,7 +270,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"bit/s",
-								Dimension::BitRate,
+								UnitKind::BitRate,
 								Some(("bit", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -276,7 +278,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"Byte/s",
-								Dimension::BitRate,
+								UnitKind::BitRate,
 								Some(("B", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -285,7 +287,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"Bel",
-								Dimension::LogarithmicRatio,
+								UnitKind::LogarithmicRatio,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -294,7 +296,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"pH",
-								Dimension::Acidity,
+								UnitKind::Acidity,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -303,7 +305,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"t",
-								Dimension::Mass,
+								UnitKind::Mass,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -315,7 +317,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"ft",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -326,7 +328,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"mi",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -337,7 +339,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"in",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -348,7 +350,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"em",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -356,7 +358,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"rem",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -364,7 +366,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"pt",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -375,7 +377,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"pc",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -386,7 +388,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"px",
-								Dimension::Length,
+								UnitKind::Length,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -395,7 +397,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"min",
-								Dimension::Time,
+								UnitKind::Time,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -406,7 +408,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"hour",
-								Dimension::Time,
+								UnitKind::Time,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -417,7 +419,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"day",
-								Dimension::Time,
+								UnitKind::Time,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -428,7 +430,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"week",
-								Dimension::Time,
+								UnitKind::Time,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -439,7 +441,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"month",
-								Dimension::Time,
+								UnitKind::Time,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -450,7 +452,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"year",
-								Dimension::Time,
+								UnitKind::Time,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -462,7 +464,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"ft/s",
-								Dimension::Velocity,
+								UnitKind::Velocity,
 								Some(("m", "s")),
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -470,7 +472,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"mi/h",
-								Dimension::Velocity,
+								UnitKind::Velocity,
 								Some(("m", "s")),
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -478,7 +480,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"kn",
-								Dimension::Velocity,
+								UnitKind::Velocity,
 								Some(("m", "s")),
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -487,60 +489,60 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"K",
-								Dimension::Temperature,
+								UnitKind::Temperature,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
 								UnitProps::DEFAULT,
 				),
-				@multi ["deg", "\u{00B0}"] "C", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "C", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								offset: 273.15,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "F", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "F", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: 5.0 / 9.0,
 								offset: 255.3722222222222,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "De", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "De", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: -2.0 / 3.0,
 								offset: 373.15,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "Ra", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "Ra", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: 5.0 / 9.0,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "N", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "N", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: 100.0 / 33.0,
 								offset: 273.15,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "D", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "D", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: -2.0 / 3.0,
 								offset: 373.15,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "Re", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "Re", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: 1.25,
 								offset: 273.15,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "Ro", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "Ro", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: 40.0 / 21.0,
 								offset: 258.864286,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "L", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "L", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								offset: 20.15,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "W", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "W", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: 24.857191,
 								offset: 542.15,
 								..UnitProps::DEFAULT
 				},
-				@multi ["deg", "\u{00B0}"] "Da", Dimension::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
+				@multi ["deg", "\u{00B0}"] "Da", UnitKind::Temperature, (PrefixGroup::None, PrefixGroup::None), UnitProps {
 								scale: 373.15,
 								offset: 273.15,
 								mode: CalcMode::Exponential,
@@ -549,7 +551,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"V",
-								Dimension::ElectricVoltage,
+								UnitKind::ElectricVoltage,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -557,7 +559,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"A",
-								Dimension::ElectricCurrent,
+								UnitKind::ElectricCurrent,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -565,7 +567,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"W",
-								Dimension::Power,
+								UnitKind::Power,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -573,7 +575,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"J/s",
-								Dimension::Power,
+								UnitKind::Power,
 								Some(("J", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -581,7 +583,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"Ω",
-								Dimension::ElectricResistance,
+								UnitKind::ElectricResistance,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -589,7 +591,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"ohm",
-								Dimension::ElectricResistance,
+								UnitKind::ElectricResistance,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -597,7 +599,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"S",
-								Dimension::ElectricConductance,
+								UnitKind::ElectricConductance,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -605,7 +607,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"siemens",
-								Dimension::ElectricConductance,
+								UnitKind::ElectricConductance,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -613,7 +615,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"C",
-								Dimension::ElectricCharge,
+								UnitKind::ElectricCharge,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -621,7 +623,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"F",
-								Dimension::ElectricCapacitance,
+								UnitKind::ElectricCapacitance,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -630,7 +632,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"J",
-								Dimension::Energy,
+								UnitKind::Energy,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -638,7 +640,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"W*s",
-								Dimension::Energy,
+								UnitKind::Energy,
 								Some(("W", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -646,7 +648,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"W⋅s",
-								Dimension::Energy,
+								UnitKind::Energy,
 								Some(("W", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -654,7 +656,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"W*s",
-								Dimension::Energy,
+								UnitKind::Energy,
 								Some(("W", "s")),
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -662,7 +664,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"Wh",
-								Dimension::Energy,
+								UnitKind::Energy,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -670,7 +672,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"eV",
-								Dimension::Energy,
+								UnitKind::Energy,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -678,7 +680,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"erg",
-								Dimension::Energy,
+								UnitKind::Energy,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -687,7 +689,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"Pa",
-								Dimension::Pressure,
+								UnitKind::Pressure,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -695,7 +697,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"N",
-								Dimension::Force,
+								UnitKind::Force,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -704,7 +706,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"lm",
-								Dimension::LuminousIntensity,
+								UnitKind::LuminousIntensity,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -712,7 +714,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"lx",
-								Dimension::LuminousIntensity,
+								UnitKind::LuminousIntensity,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -720,7 +722,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"cd",
-								Dimension::LuminousFlux,
+								UnitKind::LuminousFlux,
 								None,
 								PrefixGroup::SI,
 								PrefixGroup::SI,
@@ -729,7 +731,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				//
 				UnitDef::new(
 								"%",
-								Dimension::Percent,
+								UnitKind::Percent,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -740,7 +742,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"‰",
-								Dimension::Permille,
+								UnitKind::Permille,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -751,7 +753,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"‱",
-								Dimension::PerTenThousand,
+								UnitKind::PerTenThousand,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -762,7 +764,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"ppm",
-								Dimension::PartPerMillion,
+								UnitKind::PartPerMillion,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -773,7 +775,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"ppb",
-								Dimension::PartPerBillion,
+								UnitKind::PartPerBillion,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -784,7 +786,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"ppt",
-								Dimension::PartPerTrillion,
+								UnitKind::PartPerTrillion,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -795,7 +797,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"fr",
-								Dimension::Fraction,
+								UnitKind::Fraction,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -803,7 +805,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"deg",
-								Dimension::Degree,
+								UnitKind::Degree,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -814,7 +816,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"\u{00B0}",
-								Dimension::Degree,
+								UnitKind::Degree,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -825,7 +827,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"rad",
-								Dimension::Radian,
+								UnitKind::Radian,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -833,7 +835,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 				UnitDef::new(
 								"D",
-								Dimension::SpaceDimension,
+								UnitKind::SpaceDimension,
 								None,
 								PrefixGroup::None,
 								PrefixGroup::None,
@@ -842,6 +844,21 @@ pub static UNITS: &[UnitDef] = units_array![
 ];
 
 pub static UNITS_TREE: LazyLock<UnitTree> = LazyLock::new(|| build_unit_tree(UNITS));
+pub static UNIT_LOOKUP: LazyLock<BTreeMap<String, UnitKind>> = LazyLock::new(|| {
+	let mut map = BTreeMap::new();
+	for unit in UNITS {
+		map.insert(unit.symbol.to_string(), unit.dimension);
+
+		if unit.numerator_group != PrefixGroup::None {
+			for (p_sym, _, p_group) in PREFIXES {
+				if *p_group == unit.numerator_group {
+					map.insert(format!("{}{}", p_sym, unit.symbol), unit.dimension);
+				}
+			}
+		}
+	}
+	map
+});
 
 pub fn build_unit_tree(units: &[UnitDef]) -> UnitTree {
 	let mut tree = UnitTree::default();

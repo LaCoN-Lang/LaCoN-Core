@@ -1,12 +1,12 @@
-use crate::frontend::lexer::keywords::get_keyword_token;
+use super::token::{Token, TokenKind};
+use crate::frontend::lexer::keyword::get_keyword_token;
 use crate::frontend::lexer::operators::match_operator;
-use crate::frontend::lexer::token::Token;
-use crate::frontend::lexer::token_type::TokenType;
 use crate::shared::errors::error::Error;
 use crate::shared::errors::error_type::ErrorType;
 use crate::shared::errors::error_type::LexicalError;
 use crate::shared::position::Position;
-use crate::shared::unit::units::UNITS_TREE;
+use crate::shared::unit::{UNIT_LOOKUP, UNITS_TREE, UnitKind};
+
 use std::path::Path;
 
 pub struct Scanner {
@@ -17,7 +17,7 @@ pub struct Scanner {
 	position: Position,
 	start_position: Position,
 	indent_stack: Vec<usize>,
-	context_stack: Vec<TokenType>,
+	context_stack: Vec<TokenKind>,
 	string_stack: Vec<(char, bool)>,
 	is_at_line_start: bool,
 	had_whitespace: bool,
@@ -44,7 +44,7 @@ impl Scanner {
 	}
 
 	pub fn scan_tokens(&mut self) -> &Vec<Token> {
-		self.tokens.push(Token::bare(TokenType::SOF, self.position));
+		self.tokens.push(Token::bare(TokenKind::SOF, self.position));
 
 		while !self.is_at_end() {
 			self.start = self.current;
@@ -60,10 +60,10 @@ impl Scanner {
 
 		while self.indent_stack.len() > 1 {
 			self.indent_stack.pop();
-			self.add_token_raw(TokenType::Dedent);
+			self.add_token_raw(TokenKind::Dedent);
 		}
 
-		self.tokens.push(Token::bare(TokenType::EOF, self.position));
+		self.tokens.push(Token::bare(TokenKind::EOF, self.position));
 
 		if self.errors_exist() {
 			self.write_errors();
@@ -82,7 +82,7 @@ impl Scanner {
 				self.start_position = self.position;
 			}
 			'\n' => {
-				self.add_token_raw(TokenType::Newline);
+				self.add_token_raw(TokenKind::Newline);
 				self.is_at_line_start = true;
 				self.had_whitespace = false; // После новой строки пробел сбрасываем (его учтет Indent)
 				self.start = self.current;
@@ -95,9 +95,9 @@ impl Scanner {
 
 			'(' | '[' | '{' => {
 				let t_type = match c {
-					'(' => TokenType::LeftParen,
-					'[' => TokenType::LeftBracket,
-					_ => TokenType::LeftBrace,
+					'(' => TokenKind::LeftParen,
+					'[' => TokenKind::LeftBracket,
+					_ => TokenKind::LeftBrace,
 				};
 				self.context_stack.push(t_type);
 				self.handle_operator(c);
@@ -153,9 +153,9 @@ impl Scanner {
 
 	// --- Методы добавления токенов с поддержкой флагов ---
 
-	fn add_token_raw(&mut self, t_type: TokenType) {
+	fn add_token_raw(&mut self, t_type: TokenKind) {
 		// Системные токены не сбрасывают флаг начала строки и не используют had_whitespace
-		let is_start = if matches!(t_type, TokenType::Indent | TokenType::Dedent | TokenType::Newline) {
+		let is_start = if matches!(t_type, TokenKind::Indent | TokenKind::Dedent | TokenKind::Newline) {
 			false
 		} else {
 			let res = self.is_at_line_start;
@@ -166,7 +166,7 @@ impl Scanner {
 		};
 
 		// Для системных токенов обычно не важен предшествующий пробел
-		let has_ws = if matches!(t_type, TokenType::Indent | TokenType::Dedent | TokenType::Newline) {
+		let has_ws = if matches!(t_type, TokenKind::Indent | TokenKind::Dedent | TokenKind::Newline) {
 			false
 		} else {
 			let res = self.had_whitespace;
@@ -177,7 +177,7 @@ impl Scanner {
 		self.tokens.push(Token::new(t_type, is_start, has_ws, "".into(), None, self.start_position, 0));
 	}
 
-	fn add_token(&mut self, t_type: TokenType) {
+	fn add_token(&mut self, t_type: TokenKind) {
 		let text = self.get_lexeme();
 		let len = text.len();
 
@@ -189,10 +189,18 @@ impl Scanner {
 		let has_ws = self.had_whitespace;
 		self.had_whitespace = false;
 
-		self.tokens.push(Token::new(t_type, is_start, has_ws, text, None, self.start_position, len));
+		self.tokens.push(Token::new(
+			t_type,
+			is_start,
+			has_ws,
+			text,
+			None, // literal
+			self.start_position,
+			len,
+		));
 	}
 
-	fn add_token_with_literal(&mut self, t_type: TokenType, literal: String) {
+	fn add_token_with_literal(&mut self, t_type: TokenKind, literal: String) {
 		let text = self.get_lexeme();
 		let len = text.len();
 
@@ -231,7 +239,8 @@ impl Scanner {
 			}
 		}
 		let text = self.get_lexeme();
-		let t_type = get_keyword_token(&text).unwrap_or(TokenType::Identifier);
+		let t_type = get_keyword_token(&text).map_or(TokenKind::Identifier, TokenKind::Keyword);
+
 		self.add_token(t_type);
 	}
 
@@ -278,14 +287,11 @@ impl Scanner {
 	}
 
 	fn process_unit_suffix(&mut self, value_literal: String) {
-		// 1. Сохраняем состояние для возможного отката.
-		// initial_current должен указывать на позицию СРАЗУ ПОСЛЕ числа или 'n'.
 		let initial_current = self.current;
 		let initial_position = self.position;
-
 		let is_n_placeholder = value_literal == "n";
 
-		// 2. Пропускаем пробелы/табы
+		// 1. Пропускаем пробелы
 		while let Some(&c) = self.source.get(self.current) {
 			if c == ' ' || c == '\t' {
 				self.advance();
@@ -294,62 +300,48 @@ impl Scanner {
 			}
 		}
 
-		// 3. Пытаемся найти юнит в дереве
-		let (unit_char_count, unit_lexeme) = {
-			let lookahead = &self.source[self.current..];
-			let count = UNITS_TREE.longest_match(lookahead);
+		// 2. Ищем юнит в дереве
+		let lookahead = &self.source[self.current..];
+		let count = UNITS_TREE.longest_match(lookahead);
 
-			if count > 0 {
-				// Проверка границы (чтобы не откусить кусок от длинного слова)
-				let is_valid_boundary = if let Some(&nc) = lookahead.get(count) { !(nc.is_alphanumeric() && nc != '/') } else { true };
+		if count > 0 {
+			let is_valid_boundary = if let Some(&nc) = lookahead.get(count) { !(nc.is_alphanumeric() && nc != '/') } else { true };
 
-				if is_valid_boundary {
-					let lexeme: String = lookahead.iter().take(count).collect();
-					(count, Some(lexeme))
-				} else {
-					(0, None)
+			if is_valid_boundary {
+				let lexeme: String = lookahead.iter().take(count).collect();
+
+				// --- НОВАЯ ЛОГИКА ОПРЕДЕЛЕНИЯ UnitKind ---
+				// Пытаемся найти конкретный вид юнита по лексеме
+				let unit_kind = UNIT_LOOKUP.get(&lexeme).cloned().unwrap_or(UnitKind::None);
+
+				// Добавляем число (превращаем 'n' в '1')
+				let final_value = if is_n_placeholder { "1".to_string() } else { value_literal };
+				self.add_token_with_literal(TokenKind::Number, final_value);
+
+				// Настраиваем координаты для токена юнита
+				self.start = self.current;
+				self.start_position = self.position;
+
+				// Поглощаем символы юнита
+				for _ in 0..count {
+					self.advance();
 				}
-			} else {
-				(0, None)
+
+				// Добавляем токен юнита с его типом
+				self.add_token(TokenKind::Unit(unit_kind));
+				return; // Успешно выходим
 			}
-		};
+		}
 
-		// 4. Принимаем решение на основе того, найден ли юнит
-		if let Some(lexeme) = unit_lexeme {
-			// --- ВЕТКА: ЮНИТ НАЙДЕН ---
+		// 3. ОТКАТ (если юнит не найден)
+		self.current = initial_current;
+		self.position = initial_position;
 
-			// Если это 'n', мы «превращаем» её в "1".
-			// Парсер увидит обычное число и юнит.
-			let final_value = if is_n_placeholder { "1".to_string() } else { value_literal };
-
-			self.add_token_with_literal(TokenType::Number, final_value);
-
-			// Настраиваем координаты для токена юнита
-			self.start = self.current;
-			self.start_position = self.position;
-
-			// Поглощаем символы юнита
-			for _ in 0..unit_char_count {
-				self.advance();
-			}
-
-			self.add_token_with_literal(TokenType::Unit, lexeme);
+		if is_n_placeholder {
+			self.start = self.current - 1; // Возврат к 'n'
+			self.scan_identifier();
 		} else {
-			// --- ВЕТКА: ЮНИТА НЕТ ---
-
-			// Откатываем указатель текущей позиции назад (убираем пропущенные пробелы)
-			self.current = initial_current;
-			self.position = initial_position;
-
-			if is_n_placeholder {
-				// Если это была 'n', но за ней нет юнита — это НЕ число.
-				// Мы должны откатить 'self.start', чтобы scan_identifier подхватил букву 'n'.
-				self.start = self.current - 1; // Возвращаемся к началу буквы 'n'
-				self.scan_identifier();
-			} else {
-				// Обычное число без юнита. Просто добавляем его как Number.
-				self.add_token_with_literal(TokenType::Number, value_literal);
-			}
+			self.add_token_with_literal(TokenKind::Number, value_literal);
 		}
 	}
 
@@ -411,7 +403,7 @@ impl Scanner {
 				self.start_position = self.position;
 				self.advance();
 				self.advance();
-				self.add_token(TokenType::DollarLeftBrace);
+				self.add_token(TokenKind::DollarLeftBrace);
 				return;
 			}
 			if is_multiline {
@@ -440,13 +432,13 @@ impl Scanner {
 		self.add_token_with_literal(t_type, literal);
 	}
 
-	fn get_string_token_type(&self, quote: char, is_multiline: bool) -> TokenType {
+	fn get_string_token_type(&self, quote: char, is_multiline: bool) -> TokenKind {
 		match quote {
-			'"' if is_multiline => TokenType::MultilineString,
-			'"' => TokenType::String,
-			'\'' => TokenType::SingleQuotedString,
-			'`' => TokenType::GraveQuotedString,
-			_ => TokenType::String,
+			'"' if is_multiline => TokenKind::MultilineString,
+			'"' => TokenKind::String,
+			'\'' => TokenKind::SingleQuotedString,
+			'`' => TokenKind::GraveQuotedString,
+			_ => TokenKind::String,
 		}
 	}
 
@@ -481,11 +473,11 @@ impl Scanner {
 		let last_indent = *self.indent_stack.last().unwrap();
 		if spaces > last_indent {
 			self.indent_stack.push(spaces);
-			self.add_token_raw(TokenType::Indent);
+			self.add_token_raw(TokenKind::Indent);
 		} else if spaces < last_indent {
 			while spaces < *self.indent_stack.last().unwrap() {
 				self.indent_stack.pop();
-				self.add_token_raw(TokenType::Dedent);
+				self.add_token_raw(TokenKind::Dedent);
 			}
 		}
 		self.start = self.current;
@@ -495,7 +487,7 @@ impl Scanner {
 	fn handle_operator(&mut self, c: char) {
 		let op = match_operator(c, self.peek(), self.peek_next());
 		match op.token_type {
-			TokenType::LineComment => {
+			TokenKind::LineComment => {
 				for _ in 0..op.consume_count {
 					self.advance();
 				}
@@ -503,7 +495,7 @@ impl Scanner {
 					self.advance();
 				}
 			}
-			TokenType::BlockComment => {
+			TokenKind::BlockComment => {
 				for _ in 0..op.consume_count {
 					self.advance();
 				}
@@ -574,7 +566,7 @@ impl Scanner {
 
 		self.errors.push(err);
 
-		self.add_token(TokenType::Error);
+		self.add_token(TokenKind::Error);
 	}
 
 	fn write_errors(&self) {

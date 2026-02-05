@@ -1,8 +1,8 @@
 mod server;
 mod types;
 
-use lacon_core::frontend::lexer::scanner::Scanner;
-use lacon_core::frontend::lexer::token_type::TokenType;
+use lacon_core::frontend::lexer::Scanner;
+use lacon_core::frontend::lexer::TokenKind;
 use serde_json::{Value, json};
 use std::io::{self, BufRead, Read, Write};
 
@@ -70,12 +70,12 @@ fn main() -> io::Result<()> {
 						let mut dimension = None;
 
 						// Используем твой метод is_unit() из TokenType
-						if t.token_type.is_unit() {
+						if t.token_kind.is_unit() {
 							dimension = Some(server::get_unit_formula(&t.lexeme));
 						}
 
 						json!({
-										"token_type": format!("{:?}", t.token_type),
+										"token_type": format!("{:?}", t.token_kind),
 										"lexeme": t.lexeme,
 										"literal": t.literal,
 										"position": t.position.to_string(),

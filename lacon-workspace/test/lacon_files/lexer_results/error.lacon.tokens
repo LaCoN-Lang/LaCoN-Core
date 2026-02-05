@@ -1,15 +1,15 @@
-TYPE                           | LEXEME                                   | LITERAL              | POSITION   | LINE START | WHITESPACE
-------------------------------------------------------------------------------------------------------------------------------------------------------
-SOF                            |                                          |                      | 1:1:0      |            |           
-Variable                       | let                                      |                      | 1:1:0      | True       |           
-Identifier                     | a                                        |                      | 1:5:4      |            | WS        
-Equal                          | =                                        |                      | 1:7:6      |            | WS        
-Error                          | "unterminated string                     |                      | 1:9:8      |            | WS        
-Newline                        |                                          |                      | 1:29:28    |            |           
-Newline                        |                                          |                      | 2:1:29     |            |           
-Variable                       | let                                      |                      | 3:1:30     | True       |           
-Identifier                     | a                                        |                      | 3:5:34     |            | WS        
-Equal                          | =                                        |                      | 3:7:36     |            | WS        
-Error                          | "unterminated string                     |                      | 3:9:38     |            | WS        
-Newline                        |                                          |                      | 3:29:58    |            |           
-EOF                            |                                          |                      | 4:1:59     |            |           
+TYPE                                | LEXEME                                   | LITERAL                        | POSITION        | LINE START | WHITESPACE
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                                 |                                          |                                | 1:1:0           |            |           
+Keyword(Variable)                   | let                                      |                                | 1:1:0           | True       |           
+Identifier                          | a                                        |                                | 1:5:4           |            | WS        
+Equal                               | =                                        |                                | 1:7:6           |            | WS        
+Error                               | "unterminated string                     |                                | 1:9:8           |            | WS        
+Newline                             |                                          |                                | 1:29:28         |            |           
+Newline                             |                                          |                                | 2:1:29          |            |           
+Keyword(Variable)                   | let                                      |                                | 3:1:30          | True       |           
+Identifier                          | a                                        |                                | 3:5:34          |            | WS        
+Equal                               | =                                        |                                | 3:7:36          |            | WS        
+Error                               | "unterminated string                     |                                | 3:9:38          |            | WS        
+Newline                             |                                          |                                | 3:29:58         |            |           
+EOF                                 |                                          |                                | 4:1:59          |            |           

@@ -1,29 +1,11 @@
-use crate::frontend::lexer::token_type::TokenType;
+use super::super::keyword::KeywordKind;
+use super::{Token, TokenFlags, TokenKind};
 use crate::shared::position::Position;
-use bitflags::bitflags;
+use crate::shared::unit::UnitKind;
 use std::fmt;
 
-bitflags! {
-	#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-	pub struct TokenFlags: u8 {
-		const AT_LINE_START = 0b0000_0001;
-		const HAS_PRECEDING_WHITESPACE = 0b0000_0010;
-	}
-}
-
-#[derive(Debug, Clone, PartialEq)]
-pub struct Token {
-	pub lexeme: String,
-	pub literal: Option<String>,
-	pub position: Position,
-
-	pub token_type: TokenType,
-	pub length: u32,
-	pub flags: TokenFlags,
-}
-
 impl Token {
-	pub fn new(token_type: TokenType, is_at_line_start: bool, has_whitespace: bool, lexeme: String, literal: Option<String>, position: Position, length: usize) -> Self {
+	pub fn new(token_kind: TokenKind, is_at_line_start: bool, has_whitespace: bool, lexeme: String, literal: Option<String>, position: Position, length: usize) -> Self {
 		let mut flags = TokenFlags::empty();
 		if is_at_line_start {
 			flags.insert(TokenFlags::AT_LINE_START);
@@ -33,7 +15,7 @@ impl Token {
 		}
 
 		Self {
-			token_type,
+			token_kind,
 			lexeme,
 			literal,
 			position,
@@ -42,9 +24,9 @@ impl Token {
 		}
 	}
 
-	pub fn bare(token_type: TokenType, position: Position) -> Self {
+	pub fn bare(token_kind: TokenKind, position: Position) -> Self {
 		Self {
-			token_type,
+			token_kind,
 			lexeme: String::new(),
 			literal: None,
 			position,
@@ -55,12 +37,42 @@ impl Token {
 
 	pub fn error(message: String, position: Position) -> Self {
 		Self {
-			token_type: TokenType::Error,
+			token_kind: TokenKind::Error,
 			lexeme: message,
 			literal: None,
 			position,
 			length: 0,
 			flags: TokenFlags::empty(),
+		}
+	}
+}
+
+impl TokenKind {
+	pub fn is_unit(&self) -> bool {
+		match self {
+			TokenKind::Unit(_) => true,
+			_ => false,
+		}
+	}
+
+	pub fn unit(&self) -> Option<UnitKind> {
+		match self {
+			TokenKind::Unit(s) => Some(*s),
+			_ => None,
+		}
+	}
+
+	pub fn is_keyword(&self) -> bool {
+		match self {
+			TokenKind::Keyword(_) => true,
+			_ => false,
+		}
+	}
+
+	pub fn keyword(&self) -> Option<KeywordKind> {
+		match self {
+			TokenKind::Keyword(k) => Some(*k),
+			_ => None,
 		}
 	}
 }
@@ -80,11 +92,11 @@ impl fmt::Display for Token {
 			markers.push_str(" [WS]"); // Whitespace
 		}
 
-		write!(f, "[{:?}{}] '{}'{} at {}", self.token_type, markers, self.lexeme, literal_str, self.position)
+		write!(f, "[{:?}{}] '{}'{} at {}", self.token_kind, markers, self.lexeme, literal_str, self.position)
 	}
 }
 
-impl fmt::Display for TokenType {
+impl fmt::Display for TokenKind {
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
 		write!(f, "{:?}", self)
 	}

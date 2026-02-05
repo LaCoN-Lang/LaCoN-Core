@@ -1,10 +1,11 @@
 fn main() {
 	println!("Hello, world!");
 }
+
 #[cfg(test)]
 mod lexer_tests {
-	use lacon_core::frontend::lexer::scanner::Scanner;
-	use lacon_core::frontend::lexer::token::TokenFlags;
+	use lacon_core::frontend::lexer::Scanner;
+	use lacon_core::frontend::lexer::TokenFlags;
 	use std::fs::{self, File};
 	use std::io::Write;
 	use std::path::Path;
@@ -60,8 +61,9 @@ mod lexer_tests {
 
 		let mut file = File::create(&output_path).unwrap_or_else(|_| panic!("Не удалось создать файл {:?}", output_path));
 
-		writeln!(file, "{:<30} | {:<40} | {:<20} | {:<10} | {:<10} | {:<10}", "TYPE", "LEXEME", "LITERAL", "POSITION", "LINE START", "WHITESPACE").unwrap();
-		writeln!(file, "{}", "-".repeat(150)).unwrap();
+		// Возвращаем компактную шапку. TYPE теперь будет содержать и вложенную информацию.
+		writeln!(file, "{:<35} | {:<40} | {:<30} | {:<15} | {:<10} | {:<10}", "TYPE", "LEXEME", "LITERAL", "POSITION", "LINE START", "WHITESPACE").unwrap();
+		writeln!(file, "{}", "-".repeat(160)).unwrap();
 
 		for token in tokens {
 			let literal_str = match &token.literal {
@@ -71,8 +73,8 @@ mod lexer_tests {
 
 			writeln!(
 				file,
-				"{:<30} | {:<40} | {:<20} | {:<10} | {:<10} | {:<10}",
-				format!("{:?}", token.token_type),
+				"{:<35} | {:<40} | {:<30} | {:<15} | {:<10} | {:<10}",
+				format!("{:?}", token.token_kind), // Здесь будет "Keyword(If)" или "Unit(Mass)"
 				token.lexeme.replace("\n", "\\n"),
 				literal_str,
 				token.position.to_string(),
