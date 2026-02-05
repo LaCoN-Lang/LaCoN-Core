@@ -96,6 +96,12 @@ define_operators! {
 		StrictEqual    => STRICT_EQUAL_SIGN,
 		LessEqual      => LESS_EQUAL_SIGN,
 		GreaterEqual   => GREATER_EQUAL_SIGN,
+
+		// Unicode paired operators
+		FloorStart     => FLOOR_START_SIGN,
+		FloorEnd       => FLOOR_END_SIGN,
+		CeilStart      => CEIL_START_SIGN,
+		CeilEnd        => CEIL_END_SIGN,
 }
 
 // .  \\ MemberAccess
@@ -160,3 +166,8 @@ define_operators! {
 // => \\ Lambda / CaseArrow
 // |> \\ PipeForward / ForwardApply
 // <| \\ PipeBackward / BackwardApply
+
+// ⌊  \\ FloorStart
+// ⌋  \\ FloorEnd
+// ⌈  \\ CeilStart
+// ⌉  \\ CeilEnd

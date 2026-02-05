@@ -29,6 +29,11 @@ unicode_chars! {
 				ANGSTROM = 'Å';
 				SECTION = '§';
 
+				FLOOR_START = '⌊';
+				FLOOR_END = '⌋';
+				CEIL_START = '⌈';
+				CEIL_END = '⌉';
+
 				ARROW_LEFT = '←';
 				ARROW_RIGHT = '→';
 				ARROW_UP = '↑';

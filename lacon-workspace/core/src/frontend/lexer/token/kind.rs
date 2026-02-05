@@ -22,11 +22,6 @@ pub enum TokenKind {
 	Dedent(u8),     // ←  \\ IndentDecrease
 	SectionMaker,   // §  \\ Scope
 
-	FloorStart, // ⌊  \\ FloorStart
-	FloorEnd,   // ⌋  \\ FloorEnd
-	CeilStart,  // ⌈  \\ CeilStart
-	CeilEnd,    // ⌉  \\ CeilEnd
-
 	Underscore, // _  \\ Wildcard
 
 	//

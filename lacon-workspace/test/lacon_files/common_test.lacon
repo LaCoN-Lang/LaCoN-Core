@@ -2,14 +2,7 @@ a = "literal ${identifier} literal"
 module::exported
 a := ssing
 
-test {
-	key value
-}
-test
-	key value
-	key
-					key value
-						key value
+floor-ceil = ⌊170.75 ÷ 13.38⌋ × ⌈5.55 − (13 ∸ argument + 1 × 7)⌉
 
 
 _
