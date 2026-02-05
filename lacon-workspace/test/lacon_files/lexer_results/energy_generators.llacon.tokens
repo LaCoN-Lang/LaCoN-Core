@@ -506,19 +506,19 @@ Syntax(RightBracket)                                    | ]                     
 Syntax(Comma)                                           | ,                                        |                                | 76:100:2050     |            |           
 Syntax(LeftBracket)                                     | [                                        |                                | 76:102:2052     |            | WS        
 Syntax(LeftBrace)                                       | {                                        |                                | 76:103:2053     |            |           
-Operator(Dot Dot Dot)                                   | ...                                      |                                | 76:105:2055     |            | WS        
+Operator(DotDotDot)                                     | ...                                      |                                | 76:105:2055     |            | WS        
 Syntax(RightBrace)                                      | }                                        |                                | 76:109:2059     |            | WS        
 Syntax(Comma)                                           | ,                                        |                                | 76:110:2060     |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 76:112:2062     |            | WS        
-Operator(Dot Dot Dot)                                   | ...                                      |                                | 76:114:2064     |            | WS        
+Operator(DotDotDot)                                     | ...                                      |                                | 76:114:2064     |            | WS        
 Syntax(RightBrace)                                      | }                                        |                                | 76:118:2068     |            | WS        
 Syntax(Comma)                                           | ,                                        |                                | 76:119:2069     |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 76:121:2071     |            | WS        
-Operator(Dot Dot Dot)                                   | ...                                      |                                | 76:123:2073     |            | WS        
+Operator(DotDotDot)                                     | ...                                      |                                | 76:123:2073     |            | WS        
 Syntax(RightBrace)                                      | }                                        |                                | 76:127:2077     |            | WS        
 Syntax(Comma)                                           | ,                                        |                                | 76:128:2078     |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 76:130:2080     |            | WS        
-Operator(Dot Dot Dot)                                   | ...                                      |                                | 76:132:2082     |            | WS        
+Operator(DotDotDot)                                     | ...                                      |                                | 76:132:2082     |            | WS        
 Syntax(RightBrace)                                      | }                                        |                                | 76:136:2086     |            | WS        
 Syntax(RightBracket)                                    | ]                                        |                                | 76:137:2087     |            |           
 Syntax(RightParenthesis)                                | )                                        |                                | 76:138:2088     |            |           
@@ -581,7 +581,7 @@ Syntax(RightBrace)                                      | }                     
 Newline                                                 |                                          |                                | 84:30:2316      |            |           
 Syntax(RightBrace)                                      | }                                        |                                | 85:3:2319       | True       |           
 Newline                                                 |                                          |                                | 85:4:2320       |            |           
-Operator(Dot Dot Dot)                                   | ...                                      |                                | 86:3:2323       | True       |           
+Operator(DotDotDot)                                     | ...                                      |                                | 86:3:2323       | True       |           
 Identifier                                              | data                                     |                                | 86:6:2326       |            |           
 Newline                                                 |                                          |                                | 86:10:2330      |            |           
 Syntax(RightBrace)                                      | }                                        |                                | 87:2:2332       | True       |           

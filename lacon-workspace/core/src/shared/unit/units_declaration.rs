@@ -844,26 +844,22 @@ pub static UNITS: &[UnitDef] = units_array![
 ];
 
 pub static UNITS_TREE: LazyLock<UnitTree> = LazyLock::new(|| build_unit_tree(UNITS));
-pub static UNIT_LOOKUP: LazyLock<BTreeMap<String, UnitKind>> = LazyLock::new(|| {
+pub static UNIT_LOOKUP: LazyLock<BTreeMap<&'static str, UnitKind>> = LazyLock::new(|| {
 	let mut map = BTreeMap::new();
 
-	// Предварительно готовим префиксы, чтобы не фильтровать PREFIXES в каждом цикле
 	let mut grouped_p: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
 	for (p_sym, _, p_group) in PREFIXES {
 		grouped_p.entry(*p_group).or_default().push(*p_sym);
 	}
 
 	for unit in UNITS {
-		// Базовый символ
-		map.insert(unit.symbol.to_string(), unit.dimension);
+		map.insert(unit.symbol, unit.dimension);
 
-		// Символы с префиксами
 		if let Some(prefixes) = grouped_p.get(&unit.numerator_group) {
 			for p_sym in prefixes {
-				let mut full_sym = String::with_capacity(p_sym.len() + unit.symbol.len());
-				full_sym.push_str(p_sym);
-				full_sym.push_str(unit.symbol);
-				map.insert(full_sym, unit.dimension);
+				let full_sym = format!("{}{}", p_sym, unit.symbol);
+				let leaked: &'static str = Box::leak(full_sym.into_boxed_str());
+				map.insert(leaked, unit.dimension);
 			}
 		}
 	}
@@ -885,8 +881,6 @@ pub fn build_unit_tree(units: &[UnitDef]) -> UnitTree {
 
 	let default_prefix = vec![""];
 
-	let mut buf = String::with_capacity(64);
-
 	for unit in units {
 		if unit.symbol.is_empty() {
 			continue;
@@ -905,13 +899,9 @@ pub fn build_unit_tree(units: &[UnitDef]) -> UnitTree {
 					}
 
 					for sep in SEPARATORS {
-						buf.clear();
-						buf.push_str(p_n);
-						buf.push_str(n_base);
-						buf.push_str(sep);
-						buf.push_str(p_d);
-						buf.push_str(d_base);
-						tree.insert(&buf);
+						let full = format!("{}{}{}{}{}", p_n, n_base, sep, p_d, d_base);
+						let leaked: &'static str = Box::leak(full.into_boxed_str());
+						tree.insert(leaked);
 					}
 				}
 			}
@@ -921,10 +911,9 @@ pub fn build_unit_tree(units: &[UnitDef]) -> UnitTree {
 					if p_sym.is_empty() {
 						continue;
 					}
-					buf.clear();
-					buf.push_str(p_sym);
-					buf.push_str(unit.symbol);
-					tree.insert(&buf);
+					let full = format!("{}{}", p_sym, unit.symbol);
+					let leaked: &'static str = Box::leak(full.into_boxed_str());
+					tree.insert(leaked);
 				}
 			}
 		}

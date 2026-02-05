@@ -13,11 +13,11 @@ String                                                  |  literal              
 Syntax(DoubleQuote)                                     | "                                        |                                | 1:35:34         |            |           
 Newline                                                 |                                          |                                | 1:36:35         |            |           
 Identifier                                              | module                                   |                                | 2:1:36          | True       |           
-Operator(Colon Colon)                                   | ::                                       |                                | 2:7:42          |            |           
+Operator(ColonColon)                                    | ::                                       |                                | 2:7:42          |            |           
 Identifier                                              | exported                                 |                                | 2:9:44          |            |           
 Newline                                                 |                                          |                                | 2:17:52         |            |           
 Identifier                                              | a                                        |                                | 3:1:53          | True       |           
-Operator(Colon Equal)                                   | :=                                       |                                | 3:3:55          |            | WS        
+Operator(ColonEqual)                                    | :=                                       |                                | 3:3:55          |            | WS        
 Identifier                                              | ssing                                    |                                | 3:6:58          |            | WS        
 Newline                                                 |                                          |                                | 3:11:63         |            |           
 Newline                                                 |                                          |                                | 4:1:64          |            |           
@@ -53,19 +53,22 @@ Newline                                                 |                       
 Identifier                                              | __na_me                                  |                                | 11:1:159        | True       |           
 Newline                                                 |                                          |                                | 11:8:166        |            |           
 Number                                                  | 1                                        | 1                              | 12:1:167        | True       |           
-Operator(Multiplication Multiplication)                 | ××                                       |                                | 12:3:169        |            | WS        
+Operator(Multiplication)                                | ×                                        |                                | 12:3:169        |            | WS        
+Operator(Multiplication)                                | ×                                        |                                | 12:4:171        |            |           
 Number                                                  | 2                                        | 2                              | 12:6:174        |            | WS        
 Newline                                                 |                                          |                                | 12:7:175        |            |           
 Number                                                  | 1                                        | 1                              | 13:1:176        | True       |           
-Operator(Asterisk Asterisk)                             | **                                       |                                | 13:3:178        |            | WS        
+Operator(AsteriskAsterisk)                              | **                                       |                                | 13:3:178        |            | WS        
 Number                                                  | 2                                        | 2                              | 13:6:181        |            | WS        
 Newline                                                 |                                          |                                | 13:7:182        |            |           
 Number                                                  | 1                                        | 1                              | 14:1:183        | True       |           
-Operator(Multiplication Asterisk)                       | ×*                                       |                                | 14:3:185        |            | WS        
+Operator(Multiplication)                                | ×                                        |                                | 14:3:185        |            | WS        
+Operator(Asterisk)                                      | *                                        |                                | 14:4:187        |            |           
 Number                                                  | 2                                        | 2                              | 14:6:189        |            | WS        
 Newline                                                 |                                          |                                | 14:7:190        |            |           
 Number                                                  | 1                                        | 1                              | 15:1:191        | True       |           
-Operator(Asterisk Multiplication)                       | *×                                       |                                | 15:3:193        |            | WS        
+Operator(Asterisk)                                      | *                                        |                                | 15:3:193        |            | WS        
+Operator(Multiplication)                                | ×                                        |                                | 15:4:194        |            |           
 Number                                                  | 2                                        | 2                              | 15:6:197        |            | WS        
 Newline                                                 |                                          |                                | 15:7:198        |            |           
 Number                                                  | 10                                       | 10                             | 16:1:199        | True       |           
@@ -82,36 +85,36 @@ Unit(None)                                              | kW⋅fs               
 Newline                                                 |                                          |                                | 19:9:235        |            |           
 Number                                                  | 10                                       | 10                             | 20:1:236        | True       |           
 Unit(Volume)                                            | m3                                       |                                | 20:4:239        |            |           
-Operator(Minus Greater)                                 | ->                                       |                                | 20:7:242        |            | WS        
+Operator(DashGreater)                                   | ->                                       |                                | 20:7:242        |            | WS        
 Number                                                  | n                                        | 1                              | 20:10:245       |            | WS        
 Unit(Volume)                                            | L                                        |                                | 20:11:246       |            |           
 Newline                                                 |                                          |                                | 20:12:247       |            |           
 Number                                                  | 10                                       | 10                             | 21:1:248        | True       |           
 Unit(Volume)                                            | m3                                       |                                | 21:4:251        |            |           
-Operator(Minus Greater)                                 | ->                                       |                                | 21:7:254        |            | WS        
+Operator(DashGreater)                                   | ->                                       |                                | 21:7:254        |            | WS        
 Identifier                                              | n                                        |                                | 21:10:257       |            | WS        
 Newline                                                 |                                          |                                | 21:12:259       |            |           
 Number                                                  | 10                                       | 10                             | 22:1:260        | True       |           
 Unit(Volume)                                            | m3                                       |                                | 22:4:263        |            |           
-Operator(Minus Greater)                                 | ->                                       |                                | 22:7:266        |            | WS        
+Operator(DashGreater)                                   | ->                                       |                                | 22:7:266        |            | WS        
 Identifier                                              | n                                        |                                | 22:10:269       |            | WS        
 Number                                                  | 1                                        | 1                              | 22:13:272       |            | WS        
 Newline                                                 |                                          |                                | 22:14:273       |            |           
 Number                                                  | 10                                       | 10                             | 23:1:274        | True       |           
 Unit(Volume)                                            | m3                                       |                                | 23:4:277        |            |           
-Operator(Minus Greater)                                 | ->                                       |                                | 23:7:280        |            | WS        
+Operator(DashGreater)                                   | ->                                       |                                | 23:7:280        |            | WS        
 Number                                                  | 1                                        | 1                              | 23:10:283       |            | WS        
 Unit(Volume)                                            | L                                        |                                | 23:11:284       |            |           
 Newline                                                 |                                          |                                | 23:12:285       |            |           
 Number                                                  | 10                                       | 10                             | 24:1:286        | True       |           
 Unit(Volume)                                            | m3                                       |                                | 24:4:289        |            |           
-Operator(Minus Greater)                                 | ->                                       |                                | 24:7:292        |            | WS        
+Operator(DashGreater)                                   | ->                                       |                                | 24:7:292        |            | WS        
 Number                                                  | n                                        | 1                              | 24:10:295       |            | WS        
 Unit(Volume)                                            | nL                                       |                                | 24:11:296       |            |           
 Newline                                                 |                                          |                                | 24:13:298       |            |           
 Number                                                  | 10                                       | 10                             | 25:1:299        | True       |           
 Unit(Volume)                                            | m3                                       |                                | 25:4:302        |            |           
-Operator(Minus Greater)                                 | ->                                       |                                | 25:7:305        |            | WS        
+Operator(DashGreater)                                   | ->                                       |                                | 25:7:305        |            | WS        
 Number                                                  | 10                                       | 10                             | 25:10:308       |            | WS        
 Unit(Volume)                                            | nL                                       |                                | 25:12:310       |            |           
 Newline                                                 |                                          |                                | 25:14:312       |            |           
@@ -193,7 +196,7 @@ Operator(Monus)                                         | ∸                   
 Number                                                  | 100                                      | 100                            | 42:6:515        |            | WS        
 Newline                                                 |                                          |                                | 42:9:518        |            |           
 Identifier                                              | string                                   |                                | 43:1:519        | True       |           
-Operator(StrictEqual)                                   | ≣                                        |                                | 43:8:526        |            | WS        
+Operator(StrictEqualUni)                                | ≣                                        |                                | 43:8:526        |            | WS        
 Identifier                                              | string                                   |                                | 43:10:530       |            | WS        
 Newline                                                 |                                          |                                | 43:16:536       |            |           
 Newline                                                 |                                          |                                | 44:1:537        |            |           
@@ -322,18 +325,6 @@ Operator(Equal)                                         | =                     
 Number                                                  | 170_141_183_460_469_231_731_687_303_715_884_105_727.875 | 170_141_183_460_469_231_731_687_303_715_884_105_727.875 | 61:27:1136      |            | WS        
 Unit(Mass)                                              | kg                                       |                                | 61:82:1191      |            |           
 Newline                                                 |                                          |                                | 61:84:1193      |            |           
-Operator(Slash Pipe)                                    | /|                                       |                                | 62:1:1194       | True       |           
-Syntax(Backslash)                                       | \                                        |                                | 62:3:1196       |            |           
-Identifier                                              | Default                                  |                                | 62:5:1198       |            | WS        
-Operator(Less)                                          | <                                        |                                | 62:13:1206      |            | WS        
-Identifier                                              | Mass                                     |                                | 62:14:1207      |            |           
-Operator(Greater)                                       | >                                        |                                | 62:18:1211      |            |           
-Operator(Equal Equal Equal)                             | ===                                      |                                | 62:20:1213      |            | WS        
-Operator(Less)                                          | <                                        |                                | 62:24:1217      |            | WS        
-Identifier                                              | Mass                                     |                                | 62:25:1218      |            |           
-Operator(Colon)                                         | :                                        |                                | 62:29:1222      |            |           
-Identifier                                              | Number                                   |                                | 62:31:1224      |            | WS        
-Operator(Greater)                                       | >                                        |                                | 62:37:1230      |            |           
 Newline                                                 |                                          |                                | 62:38:1231      |            |           
 Newline                                                 |                                          |                                | 63:1:1232       |            |           
 Keyword(Constant)                                       | const                                    |                                | 64:1:1233       | True       |           
@@ -349,22 +340,6 @@ Indent(1)                                               |                       
 Syntax(LeftParenthesis)                                 | (                                        |                                | 65:2:1254       | True       |           
 Number                                                  | 3                                        | 3                              | 65:3:1255       |            |           
 Syntax(RightParenthesis)                                | )                                        |                                | 65:4:1256       |            |           
-Operator(Slash Pipe)                                    | /|                                       |                                | 65:6:1258       |            | WS        
-Syntax(Backslash)                                       | \                                        |                                | 65:8:1260       |            |           
-Identifier                                              | Явно                                     |                                | 65:10:1262      |            | WS        
-Identifier                                              | задаёт                                   |                                | 65:15:1271      |            | WS        
-Identifier                                              | количество                               |                                | 65:22:1284      |            | WS        
-Identifier                                              | колонок                                  |                                | 65:33:1305      |            | WS        
-Syntax(Comma)                                           | ,                                        |                                | 65:40:1319      |            |           
-Identifier                                              | может                                    |                                | 65:42:1321      |            | WS        
-Identifier                                              | быть                                     |                                | 65:48:1332      |            | WS        
-Identifier                                              | использовано                             |                                | 65:53:1341      |            | WS        
-Identifier                                              | вместо                                   |                                | 65:66:1366      |            | WS        
-Identifier                                              | или                                      |                                | 65:73:1379      |            | WS        
-Identifier                                              | вместе                                   |                                | 65:77:1386      |            | WS        
-Identifier                                              | с                                        |                                | 65:84:1399      |            | WS        
-Identifier                                              | именованными                             |                                | 65:86:1402      |            | WS        
-Identifier                                              | заголовками                              |                                | 65:99:1427      |            | WS        
 Newline                                                 |                                          |                                | 65:110:1449     |            |           
 Syntax(LeftParenthesis)                                 | (                                        |                                | 66:2:1451       | True       |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 66:3:1452       |            |           
@@ -379,11 +354,6 @@ Syntax(DoubleQuote)                                     | "                     
 String                                                  | Attributes                               | Attributes                     | 66:24:1473      |            |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 66:34:1483      |            |           
 Syntax(RightParenthesis)                                | )                                        |                                | 66:35:1484      |            |           
-Operator(Slash Pipe)                                    | /|                                       |                                | 66:37:1486      |            | WS        
-Syntax(Backslash)                                       | \                                        |                                | 66:39:1488      |            |           
-Identifier                                              | Именованные                              |                                | 66:41:1490      |            | WS        
-Identifier                                              | заголовки                                |                                | 66:53:1513      |            | WS        
-Identifier                                              | колонок                                  |                                | 66:63:1532      |            | WS        
 Newline                                                 |                                          |                                | 66:70:1546      |            |           
 Syntax(LeftParenthesis)                                 | (                                        |                                | 67:2:1548       | True       |           
 Operator(Less)                                          | <                                        |                                | 67:3:1549       |            |           
@@ -398,11 +368,6 @@ Operator(Less)                                          | <                     
 Identifier                                              | Dictionary                               |                                | 67:24:1570      |            |           
 Operator(Greater)                                       | >                                        |                                | 67:34:1580      |            |           
 Syntax(RightParenthesis)                                | )                                        |                                | 67:35:1581      |            |           
-Operator(Slash Pipe)                                    | /|                                       |                                | 67:37:1583      |            | WS        
-Syntax(Backslash)                                       | \                                        |                                | 67:39:1585      |            |           
-Identifier                                              | Типы                                     |                                | 67:41:1587      |            | WS        
-Identifier                                              | данных                                   |                                | 67:46:1596      |            | WS        
-Identifier                                              | колонок                                  |                                | 67:53:1609      |            | WS        
 Newline                                                 |                                          |                                | 67:60:1623      |            |           
 Syntax(LeftBracket)                                     | [                                        |                                | 68:2:1625       | True       |           
 Newline                                                 |                                          |                                | 68:3:1626       |            |           
@@ -498,14 +463,14 @@ Operator(Dot)                                           | .                     
 Identifier                                              | findRow                                  |                                | 76:15:1827      |            |           
 Syntax(LeftParenthesis)                                 | (                                        |                                | 76:22:1834      |            |           
 Identifier                                              | row                                      |                                | 76:23:1835      |            |           
-Operator(Equal Greater)                                 | =>                                       |                                | 76:27:1839      |            | WS        
+Operator(EqualGreater)                                  | =>                                       |                                | 76:27:1839      |            | WS        
 Identifier                                              | row                                      |                                | 76:30:1842      |            | WS        
 Syntax(LeftBracket)                                     | [                                        |                                | 76:33:1845      |            |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 76:34:1846      |            |           
 String                                                  | User Name                                | User Name                      | 76:35:1847      |            |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 76:44:1856      |            |           
 Syntax(RightBracket)                                    | ]                                        |                                | 76:45:1857      |            |           
-Operator(Equal Equal)                                   | ==                                       |                                | 76:47:1859      |            | WS        
+Operator(EqualEqual)                                    | ==                                       |                                | 76:47:1859      |            | WS        
 Syntax(DoubleQuote)                                     | "                                        |                                | 76:50:1862      |            | WS        
 String                                                  | Alice                                    | Alice                          | 76:51:1863      |            |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 76:56:1868      |            |           
@@ -527,19 +492,19 @@ Identifier                                              | rowIndex              
 Syntax(Comma)                                           | ,                                        |                                | 77:48:1918      |            |           
 Identifier                                              | colIndex                                 |                                | 77:50:1920      |            | WS        
 Syntax(RightParenthesis)                                | )                                        |                                | 77:58:1928      |            |           
-Operator(Equal Greater)                                 | =>                                       |                                | 77:60:1930      |            | WS        
+Operator(EqualGreater)                                  | =>                                       |                                | 77:60:1930      |            | WS        
 Identifier                                              | row                                      |                                | 77:63:1933      |            | WS        
 Syntax(LeftBracket)                                     | [                                        |                                | 77:66:1936      |            |           
 Identifier                                              | colName                                  |                                | 77:67:1937      |            |           
 Syntax(RightBracket)                                    | ]                                        |                                | 77:74:1944      |            |           
 Keyword(Is)                                             | is                                       |                                | 77:76:1946      |            | WS        
 Identifier                                              | String                                   |                                | 77:79:1949      |            | WS        
-Operator(Ampersand Ampersand)                           | &&                                       |                                | 77:86:1956      |            | WS        
+Operator(AmpersandAmpersand)                            | &&                                       |                                | 77:86:1956      |            | WS        
 Identifier                                              | row                                      |                                | 77:89:1959      |            | WS        
 Syntax(LeftBracket)                                     | [                                        |                                | 77:92:1962      |            |           
 Identifier                                              | colName                                  |                                | 77:93:1963      |            |           
 Syntax(RightBracket)                                    | ]                                        |                                | 77:100:1970     |            |           
-Operator(Tilde Equal)                                   | ~=                                       |                                | 77:102:1972     |            | WS        
+Operator(TildeEqual)                                    | ~=                                       |                                | 77:102:1972     |            | WS        
 Syntax(DoubleQuote)                                     | "                                        |                                | 77:105:1975     |            | WS        
 String                                                  | i)ar?l                                   | i)ar?l                         | 77:106:1976     |            |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 77:112:1982     |            |           
@@ -550,7 +515,7 @@ Newline                                                 |                       
 Keyword(Generate)                                       | generate                                 |                                | 80:1:1988       | True       |           
 Syntax(LeftParenthesis)                                 | (                                        |                                | 80:10:1997      |            | WS        
 Number                                                  | 0x4E3                                    | 0x4E3                          | 80:11:1998      |            |           
-Operator(Dot Dot)                                       | ..                                       |                                | 80:17:2004      |            | WS        
+Operator(DotDot)                                        | ..                                       |                                | 80:17:2004      |            | WS        
 Operator(Minus)                                         | -                                        |                                | 80:20:2007      |            | WS        
 Number                                                  | 10                                       | 10                             | 80:21:2008      |            |           
 Syntax(RightParenthesis)                                | )                                        |                                | 80:23:2010      |            |           

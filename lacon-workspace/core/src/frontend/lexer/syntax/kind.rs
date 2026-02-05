@@ -1,3 +1,4 @@
+#[repr(u8)]
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum SyntaxKind {
 	LeftParenthesis,  // (  \\ GroupStart

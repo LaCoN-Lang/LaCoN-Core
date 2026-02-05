@@ -7,7 +7,7 @@ pub use kind::*;
 
 use phf::phf_map;
 use std::collections::HashMap;
-use std::sync::RwLock;
+use std::sync::OnceLock;
 
 static KEYWORDS: phf::Map<&'static str, KeywordKind> = phf_map! {
 	// --- Управление потоком (Control Flow) ---
@@ -143,20 +143,40 @@ static KEYWORDS: phf::Map<&'static str, KeywordKind> = phf_map! {
 };
 
 pub fn get_keyword_token(identifier: &str) -> Option<KeywordKind> {
+	let len = identifier.len();
+	if !(2..=11).contains(&len) {
+		return None;
+	}
 	KEYWORDS.get(identifier).cloned()
 }
 
-lazy_static::lazy_static! {
-	pub static ref ALIAS_KEYWORDS: RwLock<HashMap<String, &'static str>> = RwLock::new(HashMap::new());
+pub static ALIAS_KEYWORDS: OnceLock<HashMap<&'static str, KeywordKind>> = OnceLock::new();
+
+pub fn init_aliases(temp_map: HashMap<String, KeywordKind>) {
+	let mut final_map = HashMap::with_capacity(temp_map.len());
+
+	for (name, kind) in temp_map {
+		let static_name: &'static str = Box::leak(name.into_boxed_str());
+		final_map.insert(static_name, kind);
+	}
+
+	let _ = ALIAS_KEYWORDS.set(final_map);
 }
 
-pub fn add_alias(alias: &str, target_keyword: &'static str) {
-	let mut map = ALIAS_KEYWORDS.write().unwrap();
-	map.insert(alias.to_string(), target_keyword);
-}
+#[inline]
+pub fn resolve_identifier(identifier: &str, local_aliases: Option<&HashMap<&str, KeywordKind>>) -> Option<KeywordKind> {
+	let len = identifier.len();
+	if len >= 2 && len <= 10 {
+		if let Some(k) = KEYWORDS.get(identifier) {
+			return Some(*k);
+		}
+	}
 
-pub fn resolve_identifier(identifier: &str) -> Option<KeywordKind> {
-	let map = ALIAS_KEYWORDS.read().unwrap();
-	let key = map.get(identifier).unwrap_or(&identifier);
-	KEYWORDS.get(key).cloned()
+	if let Some(aliases) = local_aliases {
+		if let Some(k) = aliases.get(identifier) {
+			return Some(*k);
+		}
+	}
+
+	ALIAS_KEYWORDS.get()?.get(identifier).copied()
 }

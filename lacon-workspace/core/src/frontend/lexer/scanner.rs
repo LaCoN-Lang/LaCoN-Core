@@ -38,6 +38,7 @@ impl<'a> Scanner<'a> {
 			is_at_line_start: true,
 			had_whitespace: false,
 			errors: Vec::new(),
+			// aliases: Option<&'a HashMap<String, KeywordKind>>,
 		}
 	}
 

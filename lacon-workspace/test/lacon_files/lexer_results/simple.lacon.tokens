@@ -36,10 +36,10 @@ Number                                                  | 18                    
 Unit(Mass)                                              | kg                                       |                                | 3:11:94         |            |           
 Newline                                                 |                                          |                                | 3:13:96         |            |           
 Identifier                                              | c                                        |                                | 4:1:97          | True       |           
-Operator(Plus Plus)                                     | ++                                       |                                | 4:2:98          |            |           
+Operator(PlusPlus)                                      | ++                                       |                                | 4:2:98          |            |           
 Newline                                                 |                                          |                                | 4:4:100         |            |           
 Identifier                                              | c                                        |                                | 5:1:101         | True       |           
-Operator(Asterisk Equal)                                | *=                                       |                                | 5:3:103         |            | WS        
+Operator(AsteriskEqual)                                 | *=                                       |                                | 5:3:103         |            | WS        
 Identifier                                              | c                                        |                                | 5:6:106         |            | WS        
 Operator(Multiplication)                                | ×                                        |                                | 5:8:108         |            | WS        
 Syntax(LeftParenthesis)                                 | (                                        |                                | 5:10:111        |            | WS        

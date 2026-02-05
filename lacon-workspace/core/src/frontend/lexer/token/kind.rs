@@ -41,7 +41,6 @@ pub enum TokenKind {
 	Keyword(KeywordKind),   // let \\ Keyword
 	Operator(OperatorKind), // + \\ Operator
 	Syntax(SyntaxKind),     // ( \\ Syntax
-	Literal(String),        // \\ Literal
 	Number,                 // 123  \\ NumericLiteral
 	String,                 // " "  \\ StringLiteral
 	Placeholder,            // _    \\ Placeholder / PartialApply

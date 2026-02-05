@@ -12,7 +12,7 @@ Identifier                                              | String                
 Operator(Greater)                                       | >                                        |                                | 2:21:50         |            |           
 Newline                                                 |                                          |                                | 2:22:51         |            |           
 Identifier                                              | entity-description                       |                                | 3:1:52          | True       |           
-Operator(Question Colon)                                | ?:                                       |                                | 3:19:70         |            |           
+Operator(QuestionColon)                                 | ?:                                       |                                | 3:19:70         |            |           
 Operator(Less)                                          | <                                        |                                | 3:22:73         |            | WS        
 Identifier                                              | String                                   |                                | 3:23:74         |            |           
 Operator(Greater)                                       | >                                        |                                | 3:29:80         |            |           
@@ -20,7 +20,8 @@ Newline                                                 |                       
 Identifier                                              | energy                                   |                                | 4:1:82          | True       |           
 Operator(Less)                                          | <                                        |                                | 4:7:88          |            |           
 Identifier                                              | Dictionary                               |                                | 4:8:89          |            |           
-Operator(Greater Colon)                                 | >:                                       |                                | 4:18:99         |            |           
+Operator(Greater)                                       | >                                        |                                | 4:18:99         |            |           
+Operator(Colon)                                         | :                                        |                                | 4:19:100        |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 4:21:102        |            | WS        
 Newline                                                 |                                          |                                | 4:22:103        |            |           
 Identifier                                              | power-reproduction                       |                                | 5:2:105         | True       |           
@@ -30,13 +31,15 @@ Identifier                                              | Power                 
 Operator(Greater)                                       | >                                        |                                | 5:28:131        |            |           
 Newline                                                 |                                          |                                | 5:29:132        |            |           
 Identifier                                              | fuel                                     |                                | 6:2:134         | True       |           
-Operator(Question Less)                                 | ?<                                       |                                | 6:6:138         |            |           
+Operator(Question)                                      | ?                                        |                                | 6:6:138         |            |           
+Operator(Less)                                          | <                                        |                                | 6:7:139         |            |           
 Identifier                                              | Dictionary                               |                                | 6:8:140         |            |           
-Operator(Greater Colon)                                 | >:                                       |                                | 6:18:150        |            |           
+Operator(Greater)                                       | >                                        |                                | 6:18:150        |            |           
+Operator(Colon)                                         | :                                        |                                | 6:19:151        |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 6:21:153        |            | WS        
 Newline                                                 |                                          |                                | 6:22:154        |            |           
 Keyword(Type)                                           | type                                     |                                | 7:3:157         | True       |           
-Operator(Question Colon)                                | ?:                                       |                                | 7:7:161         |            |           
+Operator(QuestionColon)                                 | ?:                                       |                                | 7:7:161         |            |           
 Operator(Less)                                          | <                                        |                                | 7:10:164        |            | WS        
 Identifier                                              | String                                   |                                | 7:11:165        |            |           
 Operator(Greater)                                       | >                                        |                                | 7:17:171        |            |           
@@ -58,7 +61,8 @@ Newline                                                 |                       
 Identifier                                              | consumption                              |                                | 8:3:207         | True       |           
 Operator(Less)                                          | <                                        |                                | 8:14:218        |            |           
 Identifier                                              | Expr                                     |                                | 8:15:219        |            |           
-Operator(Greater Question Colon)                        | >?:                                      |                                | 8:19:223        |            |           
+Operator(Greater)                                       | >                                        |                                | 8:19:223        |            |           
+Operator(QuestionColon)                                 | ?:                                       |                                | 8:20:224        |            |           
 Operator(Less)                                          | <                                        |                                | 8:23:227        |            | WS        
 Identifier                                              | Mass                                     |                                | 8:24:228        |            |           
 Operator(Greater)                                       | >                                        |                                | 8:28:232        |            |           
@@ -73,7 +77,8 @@ Operator(Less)                                          | <                     
 Identifier                                              | Dictionary                               |                                | 9:12:261        |            |           
 Syntax(LeftBracket)                                     | [                                        |                                | 9:22:271        |            |           
 Syntax(RightBracket)                                    | ]                                        |                                | 9:23:272        |            |           
-Operator(Greater Question Colon)                        | >?:                                      |                                | 9:24:273        |            |           
+Operator(Greater)                                       | >                                        |                                | 9:24:273        |            |           
+Operator(QuestionColon)                                 | ?:                                       |                                | 9:25:274        |            |           
 Syntax(LeftBracket)                                     | [                                        |                                | 9:28:277        |            | WS        
 Newline                                                 |                                          |                                | 9:29:278        |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 10:4:282        | True       |           
@@ -98,7 +103,8 @@ Newline                                                 |                       
 Identifier                                              | heat-generation                          |                                | 13:2:337        | True       |           
 Operator(Less)                                          | <                                        |                                | 13:17:352       |            |           
 Identifier                                              | Expr                                     |                                | 13:18:353       |            |           
-Operator(Greater Question Colon)                        | >?:                                      |                                | 13:22:357       |            |           
+Operator(Greater)                                       | >                                        |                                | 13:22:357       |            |           
+Operator(QuestionColon)                                 | ?:                                       |                                | 13:23:358       |            |           
 Operator(Less)                                          | <                                        |                                | 13:26:361       |            | WS        
 Identifier                                              | Energy                                   |                                | 13:27:362       |            |           
 Operator(Greater)                                       | >                                        |                                | 13:33:368       |            |           
@@ -115,7 +121,8 @@ Operator(Less)                                          | <                     
 Identifier                                              | Dictionary                               |                                | 15:7:394        |            |           
 Syntax(LeftBracket)                                     | [                                        |                                | 15:17:404       |            |           
 Syntax(RightBracket)                                    | ]                                        |                                | 15:18:405       |            |           
-Operator(Greater Colon)                                 | >:                                       |                                | 15:19:406       |            |           
+Operator(Greater)                                       | >                                        |                                | 15:19:406       |            |           
+Operator(Colon)                                         | :                                        |                                | 15:20:407       |            |           
 Syntax(LeftBracket)                                     | [                                        |                                | 15:22:409       |            | WS        
 Newline                                                 |                                          |                                | 15:23:410       |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 16:2:412        | True       |           
@@ -144,7 +151,8 @@ Newline                                                 |                       
 Identifier                                              | cost                                     |                                | 19:1:470        | True       |           
 Operator(Less)                                          | <                                        |                                | 19:5:474        |            |           
 Identifier                                              | Dictionary                               |                                | 19:6:475        |            |           
-Operator(Greater Colon)                                 | >:                                       |                                | 19:16:485       |            |           
+Operator(Greater)                                       | >                                        |                                | 19:16:485       |            |           
+Operator(Colon)                                         | :                                        |                                | 19:17:486       |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 19:19:488       |            | WS        
 Identifier                                              | requisition                              |                                | 19:20:489       |            |           
 Operator(Colon)                                         | :                                        |                                | 19:31:500       |            |           
@@ -162,7 +170,8 @@ Newline                                                 |                       
 Identifier                                              | size                                     |                                | 20:1:530        | True       |           
 Operator(Less)                                          | <                                        |                                | 20:5:534        |            |           
 Identifier                                              | Dictionary                               |                                | 20:6:535        |            |           
-Operator(Greater Colon)                                 | >:                                       |                                | 20:16:545       |            |           
+Operator(Greater)                                       | >                                        |                                | 20:16:545       |            |           
+Operator(Colon)                                         | :                                        |                                | 20:17:546       |            |           
 Syntax(LeftBrace)                                       | {                                        |                                | 20:19:548       |            | WS        
 Identifier                                              | L                                        |                                | 20:20:549       |            |           
 Operator(Colon)                                         | :                                        |                                | 20:21:550       |            |           

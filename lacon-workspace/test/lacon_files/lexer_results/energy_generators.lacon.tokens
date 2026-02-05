@@ -57,7 +57,7 @@ Syntax(DoubleQuote)                                     | "                     
 String                                                  | entity-description                       | entity-description             | 7:27:243        |            |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 7:45:261        |            |           
 Syntax(RightBracket)                                    | ]                                        |                                | 7:46:262        |            |           
-Operator(Question Question)                             | ??                                       |                                | 7:48:264        |            | WS        
+Operator(QuestionQuestion)                              | ??                                       |                                | 7:48:264        |            | WS        
 Syntax(DoubleQuote)                                     | "                                        |                                | 7:51:267        |            | WS        
 String                                                  | Описание отсутствует                     | Описание отсутствует           | 7:52:268        |            |           
 Syntax(DoubleQuote)                                     | "                                        |                                | 7:72:307        |            |           

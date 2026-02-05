@@ -40,7 +40,8 @@ Newline                                                 |                       
 Identifier                                              | fuel_consumption                         |                                | 4:1:103         | True       |           
 Operator(Less)                                          | <                                        |                                | 4:17:119        |            |           
 Identifier                                              | Expr                                     |                                | 4:18:120        |            |           
-Operator(Greater Colon)                                 | >:                                       |                                | 4:22:124        |            |           
+Operator(Greater)                                       | >                                        |                                | 4:22:124        |            |           
+Operator(Colon)                                         | :                                        |                                | 4:23:125        |            |           
 Operator(Less)                                          | <                                        |                                | 4:25:127        |            | WS        
 Identifier                                              | Mass                                     |                                | 4:26:128        |            |           
 Operator(Greater)                                       | >                                        |                                | 4:30:132        |            |           

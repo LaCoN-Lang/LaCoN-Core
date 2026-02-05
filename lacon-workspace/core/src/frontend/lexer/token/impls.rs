@@ -79,20 +79,23 @@ impl TokenKind {
 
 impl<'a> fmt::Display for Token<'a> {
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		let literal_str = match &self.literal {
-			Some(l) => format!(" (value: {})", l),
-			None => String::new(),
-		};
+		write!(f, "[{:?}", self.token_kind)?;
 
-		let mut markers = String::new();
 		if self.flags.contains(TokenFlags::AT_LINE_START) {
-			markers.push_str(" [SOL]"); // Start of Line
+			f.write_str(" [SOL]")?;
 		}
 		if self.flags.contains(TokenFlags::HAS_PRECEDING_WHITESPACE) {
-			markers.push_str(" [WS]"); // Whitespace
+			f.write_str(" [WS]")?;
+		}
+		f.write_str("] ")?;
+
+		write!(f, "'{}'", self.lexeme)?;
+
+		if let Some(literal) = &self.literal {
+			write!(f, " (value: {})", literal)?;
 		}
 
-		write!(f, "[{:?}{}] '{}'{} at {}", self.token_kind, markers, self.lexeme, literal_str, self.position)
+		write!(f, " at {}", self.position)
 	}
 }
 

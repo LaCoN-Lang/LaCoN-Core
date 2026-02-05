@@ -1,119 +1,181 @@
-use crate::shared::common::characters::*;
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[repr(u8)]
+pub enum OperatorKind {
+	Plus,
+	Minus,
+	Asterisk,
+	Slash,
+	Equal,
+	Exclamation,
+	Question,
+	Percent,
+	Ampersand,
+	Pipe,
+	Greater,
+	Less,
+	Dot,
+	Colon,
+	Tilde,
+	Circumflex,
 
-macro_rules! define_operators {
-		($($name:ident => $($ch:tt)|+),* $(,)?) => {
-				#[derive(Clone, PartialEq, Eq)]
-				pub enum OperatorKind {
-						$($name(Option<Box<OperatorKind>>)),*
-				}
+	PlusPlus,
+	PlusEqual,
+	MinusMinus,
+	MinusEqual,
+	PercentPercent,
+	PercentEqual,
+	CircumflexCircumflex,
+	CircumflexEqual,
+	QuestionQuestion,
+	QuestionEqual,
+	QuestionColon,
+	QuestionDot,
+	AsteriskAsterisk,
+	AsteriskEqual,
+	SlashSlash,
+	SlashEqual,
+	TildeEqual,
+	AmpersandAmpersand,
+	AmpersandEqual,
+	LessMinus,
+	LessEqual,
+	LessLess,
+	LessMinusLess,
+	LessLessEqual,
+	GreaterGreater,
+	GreaterEqual,
+	EqualGreater,
+	GreaterGreaterEqual,
+	DashGreater,
+	DashGreaterGreater,
+	GreaterDashGreater,
+	GreaterGreaterDash,
+	GreaterGreaterGreater,
+	EqualEqualGreater,
+	LessDashGreater,
+	PipePipe,
+	PipeEqual,
+	LessPipe,
+	PipeGreater,
+	EqualEqual,
+	NotEqual,
+	DotDot,
+	DotPlus,
+	DotMinus,
+	DotEqual,
+	ColonColon,
+	ColonEqual,
+	NotColon,
+	PipePipeEqual,
 
-				impl OperatorKind {
-						pub fn from_char(c: char) -> Option<fn(Option<Box<OperatorKind>>) -> Self> {
-								match c {
-										$($($ch)|+ => Some(OperatorKind::$name),)*
-										_ => None,
-								}
-						}
+	AsteriskAsteriskEqual,
+	SlashSlashEqual,
+	AmpersandAmpersandEqual,
+	LessLessDash,
+	LessLessLess,
+	LessEqualEqual,
+	GreaterGreaterDashEqual,
+	EqualEqualEqual,
+	NotEqualEqual,
+	DotDotDot,
+	DotDotEqual,
+	LessDotDot,
+	DotDotLess,
 
-						pub fn is_op_char(c: char) -> bool {
-								Self::from_char(c).is_some()
-						}
-
-						pub fn from_str(s: &str) -> Option<Self> {
-								let mut chars = s.chars().peekable();
-								Self::build_recursive(&mut chars)
-						}
-
-						fn build_recursive(chars: &mut std::iter::Peekable<std::str::Chars<'_>>) -> Option<Self> {
-								let c = chars.next()?;
-								let constructor = Self::from_char(c)?;
-
-								let next_op = if let Some(&next_c) = chars.peek() {
-										if Self::is_op_char(next_c) {
-												Self::build_recursive(chars).map(Box::new)
-										} else {
-												None
-										}
-								} else {
-										None
-								};
-
-								Some(constructor(next_op))
-						}
-				}
-				impl std::fmt::Display for OperatorKind {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                match self {
-                    $(
-                        OperatorKind::$name(next) => {
-                            write!(f, "{}", stringify!($name))?;
-                            if let Some(next_op) = next {
-                                write!(f, " {}", next_op)?;
-                            }
-                            Ok(())
-                        }
-                    ),*
-                }
-            }
-        }
-
-        impl std::fmt::Debug for OperatorKind {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                write!(f, "{}", self)
-						}
-				}
-		};
+	Multiplication,
+	Ellipsis,
+	Obelus,
+	PlusMinus,
+	Monus,
+	DotPlusUni,
+	NotEqualUni,
+	AlmostEqual,
+	IdenticalTo,
+	StrictEqualUni,
+	LessEqualUni,
+	GreaterEqualUni,
+	Xor,
+	Ring,
+	ElementOf,
+	NotAnElementOf,
+	ContainsAsMember,
+	DoesNotContainsAsMember,
+	FloorStart,
+	FloorEnd,
+	CeilStart,
+	CeilEnd,
 }
 
-define_operators! {
-		// ASCII operators
-		Plus             => '+',
-		Minus            => '-' | MINUS_SIGN,
-		Asterisk         => '*',
-		Slash            => '/',
-		Equal            => '=',
-		Exclamation      => '!',
-		Question         => '?',
-		Percent          => '%',
-		Ampersand        => '&',
-		Pipe             => '|',
-		Greater          => '>',
-		Less             => '<',
-		Dot              => '.',
-		Colon            => ':',
-		Tilde            => '~',
-		Circumflex       => '^',
+// define_operators! {
+// 	definitions {
+// 		// ASCII operators
+// 		Plus             => '+',
+// 		Minus            => '-' | MINUS_SIGN,
+// 		Asterisk         => '*',
+// 		Slash            => '/',
+// 		Equal            => '=',
+// 		Exclamation      => '!',
+// 		Question         => '?',
+// 		Percent          => '%',
+// 		Ampersand        => '&',
+// 		Pipe             => '|',
+// 		Greater          => '>',
+// 		Less             => '<',
+// 		Dot              => '.',
+// 		Colon            => ':',
+// 		Tilde            => '~',
+// 		Circumflex       => '^',
 
-		// Unicode operators
-		Multiplication           => MULTIPLICATION_SIGN,
-		Obelus                   => DIVISION_SIGN,
-		PlusMinus                => PLUS_MINUS_SIGN,
-		Monus                    => DOT_MINUS_SIGN,
-		DotPlus                  => DOT_PLUS_SIGN,
-		NotEqual                 => NOT_EQUAL_SIGN,
-		AlmostEqual              => ALMOST_EQUAL_SIGN,
-		IdenticalTo              => IDENTICAL_TO_SIGN,
-		StrictEqual              => STRICT_EQUAL_SIGN,
-		LessEqual                => LESS_EQUAL_SIGN,
-		GreaterEqual             => GREATER_EQUAL_SIGN,
-		Xor                      => XOR_SIGN,
-		Ring                     => RING_OPERATOR_SIGN, // Композиция функций, a(x) = x × 2; b(x) = x + 1; c = a ∘ b ≣ c = b(a(x)) || или без создания переменной → (a ∘ b)(x)
-		ElementOf                => ELEMENT_OF_SIGN, // element ∈ array (element in array); char ∈ string; x ∈ x..x (in range)
-		NotAnElementOf           => NOT_AN_ELEMENT_OF_SIGN,
-		ContainsAsMember         => CONTAINS_AS_MEMBER_SIGN, // array ∋ element (array contains element); string ∋ char
-		DoesNotContainsAsMember  => DOES_NOT_CONTAIN_AS_MEMBER_SIGN,
+// 		// Unicode operators
+// 		Multiplication           => MULTIPLICATION_SIGN,
+// 		Obelus                   => DIVISION_SIGN,
+// 		PlusMinus                => PLUS_MINUS_SIGN,
+// 		Monus                    => DOT_MINUS_SIGN,
+// 		DotPlus                  => DOT_PLUS_SIGN,
+// 		NotEqual                 => NOT_EQUAL_SIGN,
+// 		AlmostEqual              => ALMOST_EQUAL_SIGN,
+// 		IdenticalTo              => IDENTICAL_TO_SIGN,
+// 		StrictEqual              => STRICT_EQUAL_SIGN,
+// 		LessEqual                => LESS_EQUAL_SIGN,
+// 		GreaterEqual             => GREATER_EQUAL_SIGN,
+// 		Xor                      => XOR_SIGN,
+// 		Ring                     => RING_OPERATOR_SIGN, // Композиция функций, a(x) = x × 2; b(x) = x + 1; c = a ∘ b ≣ c = b(a(x)) || или без создания переменной → (a ∘ b)(x)
+// 		ElementOf                => ELEMENT_OF_SIGN, // element ∈ array (element in array); char ∈ string; x ∈ x..x (in range)
+// 		NotAnElementOf           => NOT_AN_ELEMENT_OF_SIGN,
+// 		ContainsAsMember         => CONTAINS_AS_MEMBER_SIGN, // array ∋ element (array contains element); string ∋ char
+// 		DoesNotContainsAsMember  => DOES_NOT_CONTAIN_AS_MEMBER_SIGN,
 
-		// Unicode paired operators
-		FloorStart       => FLOOR_START_SIGN,
-		FloorEnd         => FLOOR_END_SIGN,
-		CeilStart        => CEIL_START_SIGN,
-		CeilEnd          => CEIL_END_SIGN,
-}
+// 		// Unicode paired operators
+// 		FloorStart       => FLOOR_START_SIGN,
+// 		FloorEnd         => FLOOR_END_SIGN,
+// 		CeilStart        => CEIL_START_SIGN,
+// 		CeilEnd          => CEIL_END_SIGN,
+// 	}
+// 	allowed {
+// 		"++", "+=",
+// 		"--", "-=",
+// 		"%%", "%=",
+// 		"^^", "^=",
+// 		"??", "?=", "?:", "?.",
+// 		"**", "*=", "**=",
+// 		"//", "/=", "//=",
+// 		"~=",
+// 		"&&", "&=", "&&=",
+// 		"<-", "<=", "<<", "<<-", "<-<", "<<=", "<<<", "<==",
+// 		"->", ">=", "=>", ">>", "->>", ">->", ">>-", ">>=", ">>>", "==>",
+// 		"<->",
+// 		"||", "|=", "||=", "<|", "|>",
+
+// 		"==", "===",
+// 		"!!", "!=", "!==", "!:",
+// 		"..", "...", ".+", ".-", ".=", "..=", "<..", "..<",
+// 		"::", ":=",
+// 	}
+// }
 
 // .  \\ MemberAccess
 // ..  \\ Range
-// ... \\ Destructuring
-// ;  \\ StatementEnd
+// ... \\ Spread
 // :  \\ TypeOrLabel
 // :: \\ TypeOrLabel
 // := \\ TypeOrLabel

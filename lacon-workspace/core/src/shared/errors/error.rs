@@ -11,9 +11,17 @@ pub struct Error {
 
 impl fmt::Display for Error {
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		let start_str = self.start.as_ref().map_or("".to_string(), |p| format!(" at {}", p));
-		let end_str = self.end.as_ref().map_or("".to_string(), |p| format!(" to {}", p));
-		write!(f, "[{}]{}{}", self.error_type, start_str, end_str)
+		write!(f, "[{}]", self.error_type)?;
+
+		if let Some(start_pos) = &self.start {
+			write!(f, " at {}", start_pos)?;
+		}
+
+		if let Some(end_pos) = &self.end {
+			write!(f, " to {}", end_pos)?;
+		}
+
+		Ok(())
 	}
 }
 
