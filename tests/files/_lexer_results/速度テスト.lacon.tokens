@@ -196,7 +196,7 @@ POSITION        | TYPE                                                    | LEXE
 28:23:959       | Operator(Equal)                                         | =                                        |            | TRUE      
 28:25:961       | Number                                                  | 25                                       |            | TRUE      
 28:27:963       | Unit(Temperature)                                       | °C                                       |            |           
-28:29:966       | Newline                                                 |                                          |            |           
+28:30:966       | Newline                                                 |                                          |            |           
 29:1:967        | Keyword(Constant)                                       | const                                    | TRUE       |           
 29:7:973        | Identifier                                              | 沸点                                       |            | TRUE      
 29:9:979        | Operator(Less)                                          | <                                        |            |           
@@ -205,7 +205,7 @@ POSITION        | TYPE                                                    | LEXE
 29:23:993       | Operator(Equal)                                         | =                                        |            | TRUE      
 29:25:995       | Number                                                  | 100                                      |            | TRUE      
 29:28:998       | Unit(Temperature)                                       | °C                                       |            |           
-29:30:1001      | Newline                                                 |                                          |            |           
+29:31:1001      | Newline                                                 |                                          |            |           
 30:1:1002       | Keyword(Constant)                                       | const                                    | TRUE       |           
 30:7:1008       | Identifier                                              | 融点                                       |            | TRUE      
 30:9:1014       | Operator(Less)                                          | <                                        |            |           
@@ -214,7 +214,7 @@ POSITION        | TYPE                                                    | LEXE
 30:23:1028      | Operator(Equal)                                         | =                                        |            | TRUE      
 30:25:1030      | Number                                                  | 0                                        |            | TRUE      
 30:26:1031      | Unit(Temperature)                                       | °C                                       |            |           
-30:28:1034      | Newline                                                 |                                          |            |           
+30:29:1034      | Newline                                                 |                                          |            |           
 31:1:1035       | Keyword(Constant)                                       | const                                    | TRUE       |           
 31:7:1041       | Identifier                                              | 絶対零度                                     |            | TRUE      
 31:11:1053      | Operator(Less)                                          | <                                        |            |           
@@ -251,7 +251,7 @@ POSITION        | TYPE                                                    | LEXE
 35:31:1179      | Operator(Equal)                                         | =                                        |            | TRUE      
 35:33:1181      | Number                                                  | 10_000                                   |            | TRUE      
 35:39:1187      | Unit(ElectricResistance)                                | MΩ                                       |            |           
-35:41:1190      | Newline                                                 |                                          |            |           
+35:42:1190      | Newline                                                 |                                          |            |           
 36:1:1191       | Keyword(Constant)                                       | const                                    | TRUE       |           
 36:7:1197       | Identifier                                              | 低抵抗                                      |            | TRUE      
 36:10:1206      | Operator(Less)                                          | <                                        |            |           
@@ -260,7 +260,7 @@ POSITION        | TYPE                                                    | LEXE
 36:31:1227      | Operator(Equal)                                         | =                                        |            | TRUE      
 36:33:1229      | Number                                                  | 100                                      |            | TRUE      
 36:36:1232      | Unit(ElectricResistance)                                | kΩ                                       |            |           
-36:38:1235      | Newline                                                 |                                          |            |           
+36:39:1235      | Newline                                                 |                                          |            |           
 37:1:1236       | Keyword(Constant)                                       | const                                    | TRUE       |           
 37:7:1242       | Identifier                                              | 高抵抗                                      |            | TRUE      
 37:10:1251      | Operator(Less)                                          | <                                        |            |           
@@ -269,7 +269,7 @@ POSITION        | TYPE                                                    | LEXE
 37:31:1272      | Operator(Equal)                                         | =                                        |            | TRUE      
 37:33:1274      | Number                                                  | 50000                                    |            | TRUE      
 37:38:1279      | Unit(ElectricResistance)                                | kΩ                                       |            |           
-37:40:1282      | Newline                                                 |                                          |            |           
+37:41:1282      | Newline                                                 |                                          |            |           
 38:1:1283       | Keyword(Constant)                                       | const                                    | TRUE       |           
 38:7:1289       | Identifier                                              | 超抵抗                                      |            | TRUE      
 38:10:1298      | Operator(Less)                                          | <                                        |            |           
@@ -278,7 +278,7 @@ POSITION        | TYPE                                                    | LEXE
 38:31:1319      | Operator(Equal)                                         | =                                        |            | TRUE      
 38:33:1321      | Number                                                  | 100_000                                  |            | TRUE      
 38:40:1328      | Unit(ElectricResistance)                                | MΩ                                       |            |           
-38:42:1331      | Newline                                                 |                                          |            |           
+38:43:1331      | Newline                                                 |                                          |            |           
 39:1:1332       | Newline                                                 |                                          |            |           
 40:1:1333       | Keyword(Constant)                                       | const                                    | TRUE       |           
 40:7:1339       | Identifier                                              | 面積                                       |            | TRUE      

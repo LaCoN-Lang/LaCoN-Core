@@ -87,8 +87,6 @@ impl<'src> Scanner<'src> {
 		&self.tokens
 	}
 
-	// --- SWAR И ОПТИМИЗАЦИИ ---
-
 	#[inline(always)]
 	fn has_byte(chunk: usize, byte: u8) -> bool {
 		let word = chunk ^ (usize::MAX / 255 * byte as usize);
@@ -107,9 +105,12 @@ impl<'src> Scanner<'src> {
 			self.position.offset += word_size;
 			self.position.column += word_size;
 		}
-		while !self.is_at_end() && self.first() != b'\n' {
-			self.advance();
-		}
+		let rest = &self.source[self.current..];
+		let delta = rest.iter().position(|&b| b == b'\n').unwrap_or(rest.len());
+
+		self.current += delta;
+		self.position.offset += delta;
+		self.position.column += delta;
 	}
 
 	fn scan_token(&mut self) {
@@ -117,7 +118,16 @@ impl<'src> Scanner<'src> {
 		match c {
 			b' ' | b'\t' | b'\r' => {
 				self.had_whitespace = true;
-				// КРИТИЧНО: Синхронизируем начало, чтобы следующий токен не захватил эти пробелы
+
+				let rest = &self.source[self.current..];
+				let delta = rest.iter().position(|&b| !matches!(b, b' ' | b'\t' | b'\r')).unwrap_or(rest.len());
+
+				if delta > 0 {
+					self.current += delta;
+					self.position.offset += delta;
+					self.position.column += delta;
+				}
+
 				self.start = self.current;
 				self.start_position = self.position;
 			}
@@ -125,7 +135,6 @@ impl<'src> Scanner<'src> {
 				self.add_token_raw(TokenKind::Newline);
 				self.is_at_line_start = true;
 				self.had_whitespace = false;
-				// Синхронизируем после новой строки
 				self.start = self.current;
 				self.start_position = self.position;
 			}
@@ -185,8 +194,8 @@ impl<'src> Scanner<'src> {
 	}
 
 	#[inline(always)]
-	fn peek(&self, offset: u8) -> u8 {
-		self.source.get(self.current + offset as usize).copied().unwrap_or(EOF_CHAR)
+	fn peek(&self, offset: usize) -> u8 {
+		self.source.get(self.current + offset).copied().unwrap_or(EOF_CHAR)
 	}
 
 	#[inline(always)]
@@ -247,67 +256,86 @@ impl<'src> Scanner<'src> {
 
 	fn add_token(&mut self, t_type: TokenKind) {
 		let text = &self.source[self.start..self.current];
-		let is_start = self.is_at_line_start;
-		if is_start {
+		let is_start = if self.is_at_line_start {
 			self.is_at_line_start = false;
-		}
+			true
+		} else {
+			false
+		};
 		let has_ws = self.had_whitespace;
 		self.had_whitespace = false;
 		self.tokens.push(Token::new(t_type, is_start, has_ws, Some(text), self.start_position));
 	}
 
 	fn scan_identifier(&mut self) {
-		while !self.is_at_end() {
-			let b = self.first();
+		let mut char_count = 0;
+		let mut has_utf8 = false;
+
+		let source_len = self.source.len();
+
+		while self.current < source_len {
+			let b = self.source[self.current];
 
 			if b < 128 {
 				if (ASCII_CONTINUE & (1 << b)) != 0 {
-					self.advance();
-					continue;
-				}
-
-				if b == b'-' {
-					let next = self.second();
-					if next != b'>' && self.is_identifier_continue(next) {
-						self.advance();
-						continue;
+					self.current += 1;
+				} else if b == b'-' {
+					if self.current + 1 < source_len {
+						let next = self.source[self.current + 1];
+						if next != b'>' && self.is_identifier_continue(next) {
+							self.current += 1;
+							continue;
+						}
 					}
+					break;
+				} else {
+					break;
 				}
-				break;
 			} else {
-				self.advance();
+				self.current += 1;
+				has_utf8 = true;
 			}
 		}
 
 		let text = &self.source[self.start..self.current];
-		let t_type = KeywordKind::from_bytes(text).map(TokenKind::Keyword).unwrap_or(TokenKind::Identifier);
-		// let t_type = get_keyword_token(text).map_or(TokenKind::Identifier, TokenKind::Keyword);
 
-		let is_start = self.is_at_line_start;
-		if is_start {
-			self.is_at_line_start = false;
+		if !has_utf8 {
+			char_count = text.len();
+		} else {
+			char_count = text.iter().filter(|&&b| (b & 0xC0) != 0x80).count();
 		}
+
+		self.position.offset = self.start_position.offset + text.len();
+		self.position.column = self.start_position.column + char_count;
+
+		let t_type = KeywordKind::from_bytes(text).map(TokenKind::Keyword).unwrap_or(TokenKind::Identifier);
+
+		let is_start = if self.is_at_line_start {
+			self.is_at_line_start = false;
+			true
+		} else {
+			false
+		};
 
 		let has_ws = self.had_whitespace;
 		self.had_whitespace = false;
 
 		self.tokens.push(Token::new(t_type, is_start, has_ws, Some(text), self.start_position));
 	}
-
 	#[inline(always)]
 	fn is_identifier_continue(&self, b: u8) -> bool {
 		if b < 128 { b != 0 && (ASCII_CONTINUE & (1 << b)) != 0 } else { true }
 	}
+
 	fn scan_number(&mut self) {
 		let mut radix: u32 = 10;
-		let bytes = &self.source[self.current..];
 		#[cfg(debug_assertions)]
 		let prev = self.prev;
 		#[cfg(not(debug_assertions))]
 		let prev = b'0';
 
-		if prev == b'0' && !bytes.is_empty() {
-			match bytes[0].to_ascii_lowercase() {
+		if prev == b'0' {
+			match self.first().to_ascii_lowercase() {
 				b'x' => {
 					radix = 16;
 					self.advance();
@@ -331,13 +359,47 @@ impl<'src> Scanner<'src> {
 				_ => {}
 			}
 		}
+
 		self.consume_digits_with_underscore(radix);
+
 		if radix == 10 && self.first() == b'.' && self.second().is_ascii_digit() {
 			self.advance();
 			self.consume_digits_with_underscore(10);
 		}
+
 		let lexeme = &self.source[self.start..self.current];
 		self.process_unit_suffix(lexeme);
+	}
+
+	fn consume_digits_with_underscore(&mut self, radix: u32) {
+		let rest = &self.source[self.current..];
+
+		let delta = match radix {
+			10 => rest.iter().position(|&b| !(b.is_ascii_digit() || b == b'_')),
+			16 => rest.iter().position(|&b| !(b.is_ascii_hexdigit() || b == b'_')),
+			_ => None,
+		}
+		.unwrap_or(rest.len());
+
+		if radix == 10 || radix == 16 {
+			self.current += delta;
+			self.position.offset += delta;
+			self.position.column += delta;
+		} else {
+			while !self.is_at_end() {
+				let b = self.first();
+				let is_digit = match radix {
+					2 => b == b'0' || b == b'1',
+					8 => b >= b'0' && b <= b'7',
+					_ => b.is_ascii_digit() || b.to_ascii_lowercase().is_ascii_alphabetic(),
+				};
+				if is_digit || b == b'_' {
+					self.advance();
+				} else {
+					break;
+				}
+			}
+		}
 	}
 
 	fn process_unit_suffix(&mut self, lexeme: &'src [u8]) {
@@ -357,16 +419,21 @@ impl<'src> Scanner<'src> {
 			let nc = unit_input.get(unit_match_len).copied().unwrap_or(EOF_CHAR);
 			if !(nc.is_ascii_alphanumeric() || nc == b'_') {
 				self.add_token(TokenKind::Number);
-				for _ in 0..ws_len {
-					self.advance();
-				}
+
+				self.current += ws_len;
+				self.position.offset += ws_len;
+				self.position.column += ws_len;
+
 				self.start = self.current;
 				self.start_position = self.position;
+
 				let unit_lexeme = &unit_input[..unit_match_len];
 				let unit_kind = self.context.lookup.get(unit_lexeme).cloned().unwrap_or(UnitKind::None);
-				for _ in 0..unit_match_len {
-					self.advance();
-				}
+
+				self.current += unit_match_len;
+				self.position.offset += unit_match_len;
+				self.position.column += unit_match_len;
+
 				self.add_token(TokenKind::Unit(unit_kind));
 				return;
 			}
@@ -384,24 +451,6 @@ impl<'src> Scanner<'src> {
 			self.scan_identifier();
 		} else {
 			self.add_token(TokenKind::Number);
-		}
-	}
-
-	fn consume_digits_with_underscore(&mut self, radix: u32) {
-		while !self.is_at_end() {
-			let b = self.first();
-			let is_digit = match radix {
-				16 => b.is_ascii_hexdigit(),
-				10 => b.is_ascii_digit(),
-				2 => b == b'0' || b == b'1',
-				8 => b >= b'0' && b <= b'7',
-				_ => b.is_ascii_digit() || b.to_ascii_lowercase().is_ascii_alphabetic(),
-			};
-			if is_digit || b == b'_' {
-				self.advance();
-			} else {
-				break;
-			}
 		}
 	}
 
@@ -428,6 +477,7 @@ impl<'src> Scanner<'src> {
 			if self.is_at_end() {
 				break;
 			}
+
 			if self.first() == b'$' && self.second() == b'{' {
 				if content_start != self.current {
 					self.start = content_start;
@@ -445,29 +495,36 @@ impl<'src> Scanner<'src> {
 				self.string_stack.push((quote, is_multiline));
 				return;
 			}
+
 			let is_closing = if is_multiline { self.first() == b'"' && self.second() == b'"' && self.third() == b'"' } else { self.first() == quote };
+
 			if is_closing || (self.first() == b'\n' && !is_multiline) {
 				break;
 			}
+
 			let c = self.advance();
 			if c == b'\\' && !self.is_at_end() {
 				self.advance();
 			}
 		}
+
 		if self.is_at_end() || (self.first() == b'\n' && !is_multiline) {
 			self.errors_storage.add(Error::span(ErrorKind::Lexical(LexicalError::UnterminatedString), self.start_position, self.position), ErrorFlag::Critical);
 			return;
 		}
+
 		if content_start != self.current {
 			self.start = content_start;
 			self.add_token(TokenKind::String);
 		}
+
 		self.start = self.current;
 		self.start_position = self.position;
 		let quote_len = if is_multiline { 3 } else { 1 };
 		for _ in 0..quote_len {
 			self.advance();
 		}
+
 		let syntax_kind = match quote {
 			b'"' => SyntaxKind::DoubleQuote,
 			b'\'' => SyntaxKind::SingleQuote,
@@ -494,6 +551,7 @@ impl<'src> Scanner<'src> {
 				_ => break,
 			}
 		}
+
 		if matches!(self.first(), b'\n' | b'\r' | EOF_CHAR) {
 			return;
 		}
@@ -518,13 +576,15 @@ impl<'src> Scanner<'src> {
 		self.start_position = self.position;
 	}
 
-	fn handle_operator(&mut self, character: u8) {
+	fn handle_operator(&mut self, _character: u8) {
 		let tail = &self.source[self.current - 1..];
-
 		let operator = match_operator(tail);
 
-		for _ in 0..operator.consume_count {
-			self.advance();
+		let consume = operator.consume_count;
+		if consume > 0 {
+			self.current += consume;
+			self.position.offset += consume;
+			self.position.column += consume;
 		}
 
 		match operator.token_kind {
@@ -533,7 +593,6 @@ impl<'src> Scanner<'src> {
 				self.start = self.current;
 				self.start_position = self.position;
 			}
-
 			TokenKind::BlockComment => {
 				while !self.is_at_end() {
 					if self.first() == b'*' && self.second() == b'/' {
@@ -546,11 +605,9 @@ impl<'src> Scanner<'src> {
 				self.start = self.current;
 				self.start_position = self.position;
 			}
-
 			TokenKind::Unknown => {
 				self.add_token(TokenKind::Unknown);
 			}
-
 			_ => {
 				self.add_token(operator.token_kind);
 			}

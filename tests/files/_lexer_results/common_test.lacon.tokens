@@ -89,7 +89,7 @@ POSITION        | TYPE                                                    | LEXE
 19:9:225        | Newline                                                 |                                          |            |           
 20:1:226        | Number                                                  | 10                                       | TRUE       |           
 20:4:229        | Unit(None)                                              | kW⋅fs                                    |            |           
-20:9:236        | Newline                                                 |                                          |            |           
+20:11:236       | Newline                                                 |                                          |            |           
 21:1:237        | Number                                                  | 10                                       | TRUE       |           
 21:4:240        | Unit(Volume)                                            | m3                                       |            |           
 21:7:243        | Operator(DashGreater)                                   | ->                                       |            | TRUE      
@@ -127,7 +127,7 @@ POSITION        | TYPE                                                    | LEXE
 26:14:311       | Newline                                                 |                                          |            |           
 27:1:312        | Number                                                  | 10                                       | TRUE       |           
 27:4:315        | Unit(None)                                              | kg⋅m/μs                                  |            |           
-27:11:325       | Newline                                                 |                                          |            |           
+27:14:325       | Newline                                                 |                                          |            |           
 28:1:326        | Number                                                  | 10                                       | TRUE       |           
 28:3:328        | Unit(Mass)                                              | kg                                       |            |           
 28:5:330        | Operator(Slash)                                         | /                                        |            |           
@@ -163,12 +163,12 @@ POSITION        | TYPE                                                    | LEXE
 34:5:396        | Operator(Equal)                                         | =                                        |            | TRUE      
 34:7:398        | Number                                                  | 1                                        |            | TRUE      
 34:8:399        | Unit(None)                                              | Mm/μs6                                   |            |           
-34:14:406       | Newline                                                 |                                          |            |           
+34:15:406       | Newline                                                 |                                          |            |           
 35:1:407        | Identifier                                              | key                                      | TRUE       |           
 35:5:411        | Operator(Equal)                                         | =                                        |            | TRUE      
 35:7:413        | Number                                                  | 1                                        |            | TRUE      
 35:8:414        | Unit(None)                                              | μm/Ms6                                   |            |           
-35:14:421       | Newline                                                 |                                          |            |           
+35:15:421       | Newline                                                 |                                          |            |           
 36:1:422        | Identifier                                              | key                                      | TRUE       |           
 36:5:426        | Operator(Equal)                                         | =                                        |            | TRUE      
 36:7:428        | Number                                                  | 1                                        |            | TRUE      
@@ -188,14 +188,14 @@ POSITION        | TYPE                                                    | LEXE
 39:5:454        | Operator(Equal)                                         | =                                        |            | TRUE      
 39:7:456        | Number                                                  | 1                                        |            | TRUE      
 39:8:457        | Unit(Mass)                                              | μg                                       |            |           
-39:10:460       | Operator(Slash)                                         | /                                        |            |           
-39:11:461       | Identifier                                              | m3                                       |            |           
-39:13:463       | Newline                                                 |                                          |            |           
+39:11:460       | Operator(Slash)                                         | /                                        |            |           
+39:12:461       | Identifier                                              | m3                                       |            |           
+39:14:463       | Newline                                                 |                                          |            |           
 40:1:464        | Identifier                                              | key                                      | TRUE       |           
 40:5:468        | Operator(Equal)                                         | =                                        |            | TRUE      
 40:7:470        | Number                                                  | 1                                        |            | TRUE      
 40:8:471        | Unit(None)                                              | μg/μm3                                   |            |           
-40:14:479       | Newline                                                 |                                          |            |           
+40:16:479       | Newline                                                 |                                          |            |           
 41:1:480        | Identifier                                              | key                                      | TRUE       |           
 41:5:484        | Operator(Equal)                                         | =                                        |            | TRUE      
 41:7:486        | Number                                                  | 1                                        |            | TRUE      
@@ -929,7 +929,7 @@ POSITION        | TYPE                                                    | LEXE
 117:16:3096     | Operator(Equal)                                         | =                                        |            | TRUE      
 117:18:3098     | Number                                                  | 20_000                                   |            | TRUE      
 117:24:3104     | Unit(Power)                                             | μW                                       |            |           
-117:26:3107     | Newline                                                 |                                          |            |           
+117:27:3107     | Newline                                                 |                                          |            |           
 118:1:3108      | Keyword(Variable)                                       | let                                      | TRUE       |           
 118:5:3112      | Identifier                                              | speed                                    |            | TRUE      
 118:10:3117     | Operator(Less)                                          | <                                        |            |           
@@ -947,7 +947,7 @@ POSITION        | TYPE                                                    | LEXE
 119:16:3150     | Operator(Equal)                                         | =                                        |            | TRUE      
 119:18:3152     | Number                                                  | 25                                       |            | TRUE      
 119:20:3154     | Unit(Time)                                              | μs                                       |            |           
-119:22:3157     | Newline                                                 |                                          |            |           
+119:23:3157     | Newline                                                 |                                          |            |           
 120:1:3158      | Keyword(Variable)                                       | let                                      | TRUE       |           
 120:5:3162      | Identifier                                              | length                                   |            | TRUE      
 120:11:3168     | Operator(Less)                                          | <                                        |            |           
@@ -965,7 +965,7 @@ POSITION        | TYPE                                                    | LEXE
 121:20:3203     | Operator(Equal)                                         | =                                        |            | TRUE      
 121:22:3205     | Number                                                  | 45                                       |            | TRUE      
 121:24:3207     | Unit(Degree)                                            | °                                        |            |           
-121:25:3209     | Newline                                                 |                                          |            |           
+121:26:3209     | Newline                                                 |                                          |            |           
 122:1:3210      | Keyword(Constant)                                       | const                                    | TRUE       |           
 122:7:3216      | Identifier                                              | generator-power                          |            | TRUE      
 122:22:3231     | Operator(Less)                                          | <                                        |            |           
@@ -1001,7 +1001,7 @@ POSITION        | TYPE                                                    | LEXE
 125:32:3365     | Operator(Equal)                                         | =                                        |            | TRUE      
 125:34:3367     | Number                                                  | 25                                       |            | TRUE      
 125:36:3369     | Unit(Temperature)                                       | °C                                       |            |           
-125:38:3372     | Newline                                                 |                                          |            |           
+125:39:3372     | Newline                                                 |                                          |            |           
 126:1:3373      | Keyword(Constant)                                       | const                                    | TRUE       |           
 126:7:3379      | Identifier                                              | temperature                              |            | TRUE      
 126:18:3390     | Operator(Less)                                          | <                                        |            |           
@@ -1019,7 +1019,7 @@ POSITION        | TYPE                                                    | LEXE
 127:38:3447     | Operator(Equal)                                         | =                                        |            | TRUE      
 127:40:3449     | Number                                                  | 10_000                                   |            | TRUE      
 127:46:3455     | Unit(ElectricResistance)                                | MΩ                                       |            |           
-127:48:3458     | Newline                                                 |                                          |            |           
+127:49:3458     | Newline                                                 |                                          |            |           
 128:1:3459      | Keyword(Constant)                                       | const                                    | TRUE       |           
 128:7:3465      | Identifier                                              | resistance                               |            | TRUE      
 128:17:3475     | Operator(Less)                                          | <                                        |            |           
@@ -1028,7 +1028,7 @@ POSITION        | TYPE                                                    | LEXE
 128:38:3496     | Operator(Equal)                                         | =                                        |            | TRUE      
 128:40:3498     | Number                                                  | 10000                                    |            | TRUE      
 128:45:3503     | Unit(ElectricResistance)                                | kΩ                                       |            |           
-128:47:3506     | Newline                                                 |                                          |            |           
+128:48:3506     | Newline                                                 |                                          |            |           
 129:1:3507      | Keyword(Constant)                                       | const                                    | TRUE       |           
 129:7:3513      | Identifier                                              | field-area                               |            | TRUE      
 129:17:3523     | Operator(Less)                                          | <                                        |            |           
@@ -1237,9 +1237,9 @@ POSITION        | TYPE                                                    | LEXE
 160:7:4212      | Operator(Equal)                                         | =                                        |            | TRUE      
 160:9:4214      | Number                                                  | 2.5                                      |            | TRUE      
 160:12:4217     | Unit(Length)                                            | μm                                       |            |           
-160:14:4220     | Operator(Slash)                                         | /                                        |            |           
-160:15:4221     | Identifier                                              | s                                        |            |           
-160:16:4222     | Newline                                                 |                                          |            |           
+160:15:4220     | Operator(Slash)                                         | /                                        |            |           
+160:16:4221     | Identifier                                              | s                                        |            |           
+160:17:4222     | Newline                                                 |                                          |            |           
 161:1:4223      | Keyword(Variable)                                       | let                                      | TRUE       |           
 161:5:4227      | Identifier                                              | a                                        |            | TRUE      
 161:7:4229      | Operator(Equal)                                         | =                                        |            | TRUE      
@@ -1273,7 +1273,7 @@ POSITION        | TYPE                                                    | LEXE
 165:7:4287      | Operator(Equal)                                         | =                                        |            | TRUE      
 165:9:4289      | Number                                                  | 25                                       |            | TRUE      
 165:11:4291     | Unit(LuminousIntensity)                                 | μlx                                      |            |           
-165:14:4295     | Newline                                                 |                                          |            |           
+165:15:4295     | Newline                                                 |                                          |            |           
 166:1:4296      | Keyword(Variable)                                       | let                                      | TRUE       |           
 166:5:4300      | Identifier                                              | a                                        |            | TRUE      
 166:7:4302      | Operator(Equal)                                         | =                                        |            | TRUE      
