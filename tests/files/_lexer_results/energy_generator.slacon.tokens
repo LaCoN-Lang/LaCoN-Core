@@ -24,13 +24,13 @@ POSITION        | TYPE                                                    | LEXE
 4:19:101        | Operator(Colon)                                         | :                                        |            |           
 4:21:103        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 4:22:104        | Newline                                                 |                                          |            |           
-5:1:105         | Identifier                                              | 	power-reproduction                      | TRUE       |           
+5:2:106         | Identifier                                              | power-reproduction                       | TRUE       |           
 5:20:124        | Operator(Colon)                                         | :                                        |            |           
 5:22:126        | Operator(Less)                                          | <                                        |            | TRUE      
 5:23:127        | Identifier                                              | Power                                    |            |           
 5:28:132        | Operator(Greater)                                       | >                                        |            |           
 5:29:133        | Newline                                                 |                                          |            |           
-6:1:134         | Identifier                                              | 	fuel                                    | TRUE       |           
+6:2:135         | Identifier                                              | fuel                                     | TRUE       |           
 6:6:139         | Operator(Question)                                      | ?                                        |            |           
 6:7:140         | Operator(Less)                                          | <                                        |            |           
 6:8:141         | Identifier                                              | Dictionary                               |            |           
@@ -38,7 +38,7 @@ POSITION        | TYPE                                                    | LEXE
 6:19:152        | Operator(Colon)                                         | :                                        |            |           
 6:21:154        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 6:22:155        | Newline                                                 |                                          |            |           
-7:1:156         | Identifier                                              | 		type                                   | TRUE       |           
+7:3:158         | Keyword(Type)                                           | type                                     | TRUE       |           
 7:7:162         | Operator(QuestionColon)                                 | ?:                                       |            |           
 7:10:165        | Operator(Less)                                          | <                                        |            | TRUE      
 7:11:166        | Identifier                                              | String                                   |            |           
@@ -58,7 +58,7 @@ POSITION        | TYPE                                                    | LEXE
 7:48:203        | Syntax(DoubleQuote)                                     | "                                        |            |           
 7:49:204        | Syntax(RightParenthesis)                                | )                                        |            |           
 7:50:205        | Newline                                                 |                                          |            |           
-8:1:206         | Identifier                                              | 		consumption                            | TRUE       |           
+8:3:208         | Identifier                                              | consumption                              | TRUE       |           
 8:14:219        | Operator(Less)                                          | <                                        |            |           
 8:15:220        | Identifier                                              | Expr                                     |            |           
 8:19:224        | Operator(Greater)                                       | >                                        |            |           
@@ -72,7 +72,7 @@ POSITION        | TYPE                                                    | LEXE
 8:39:245        | Identifier                                              | Time                                     |            |           
 8:43:249        | Operator(Greater)                                       | >                                        |            |           
 8:44:250        | Newline                                                 |                                          |            |           
-9:1:251         | Identifier                                              | 		emission                               | TRUE       |           
+9:3:253         | Identifier                                              | emission                                 | TRUE       |           
 9:11:261        | Operator(Less)                                          | <                                        |            |           
 9:12:262        | Identifier                                              | Dictionary                               |            |           
 9:22:272        | Syntax(LeftBracket)                                     | [                                        |            |           
@@ -81,7 +81,7 @@ POSITION        | TYPE                                                    | LEXE
 9:25:275        | Operator(QuestionColon)                                 | ?:                                       |            |           
 9:28:278        | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 9:29:279        | Newline                                                 |                                          |            |           
-10:1:280        | Syntax(LeftBrace)                                       | 			{                                     | TRUE       |           
+10:4:283        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 10:5:284        | Identifier                                              | compound                                 |            |           
 10:13:292       | Operator(Colon)                                         | :                                        |            |           
 10:15:294       | Operator(Less)                                          | <                                        |            | TRUE      
@@ -96,11 +96,11 @@ POSITION        | TYPE                                                    | LEXE
 10:48:327       | Syntax(RightBrace)                                      | }                                        |            |           
 10:49:328       | Operator(Asterisk)                                      | *                                        |            |           
 10:50:329       | Newline                                                 |                                          |            |           
-11:1:330        | Syntax(RightBracket)                                    | 		]                                      | TRUE       |           
+11:3:332        | Syntax(RightBracket)                                    | ]                                        | TRUE       |           
 11:4:333        | Newline                                                 |                                          |            |           
-12:1:334        | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+12:2:335        | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 12:3:336        | Newline                                                 |                                          |            |           
-13:1:337        | Identifier                                              | 	heat-generation                         | TRUE       |           
+13:2:338        | Identifier                                              | heat-generation                          | TRUE       |           
 13:17:353       | Operator(Less)                                          | <                                        |            |           
 13:18:354       | Identifier                                              | Expr                                     |            |           
 13:22:358       | Operator(Greater)                                       | >                                        |            |           
@@ -125,7 +125,7 @@ POSITION        | TYPE                                                    | LEXE
 15:20:408       | Operator(Colon)                                         | :                                        |            |           
 15:22:410       | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 15:23:411       | Newline                                                 |                                          |            |           
-16:1:412        | Syntax(LeftBrace)                                       | 	{                                       | TRUE       |           
+16:2:413        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 16:3:414        | Identifier                                              | component                                |            |           
 16:12:423       | Operator(Colon)                                         | :                                        |            |           
 16:14:425       | Operator(Less)                                          | <                                        |            | TRUE      

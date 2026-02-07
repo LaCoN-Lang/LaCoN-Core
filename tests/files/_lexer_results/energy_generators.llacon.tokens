@@ -20,15 +20,15 @@ POSITION        | TYPE                                                    | LEXE
 2:39:69         | Newline                                                 |                                          |            |           
 3:1:70          | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 3:2:71          | Newline                                                 |                                          |            |           
-4:1:72          | Identifier                                              | 	entity-type                             | TRUE       |           
+4:2:73          | Identifier                                              | entity-type                              | TRUE       |           
 4:13:84         | Operator(Colon)                                         | :                                        |            |           
 4:15:86         | Identifier                                              | energy-generator                         |            | TRUE      
 4:31:102        | Newline                                                 |                                          |            |           
-5:1:103         | Identifier                                              | 	entity-name                             | TRUE       |           
+5:2:104         | Identifier                                              | entity-name                              | TRUE       |           
 5:13:115        | Operator(Colon)                                         | :                                        |            |           
 5:15:117        | Identifier                                              | solar-generator-mk1                      |            | TRUE      
 5:34:136        | Newline                                                 |                                          |            |           
-6:1:137         | Identifier                                              | 	entity-description                      | TRUE       |           
+6:2:138         | Identifier                                              | entity-description                       | TRUE       |           
 6:20:156        | Operator(Colon)                                         | :                                        |            |           
 6:22:158        | Identifier                                              | Базовый                                  |            | TRUE      
 6:30:173        | Identifier                                              | солнечный                                |            | TRUE      
@@ -37,16 +37,16 @@ POSITION        | TYPE                                                    | LEXE
 6:54:218        | Identifier                                              | малых                                    |            | TRUE      
 6:60:229        | Identifier                                              | станций                                  |            | TRUE      
 6:67:243        | Newline                                                 |                                          |            |           
-7:1:244         | Identifier                                              | 	energy                                  | TRUE       |           
+7:2:245         | Identifier                                              | energy                                   | TRUE       |           
 7:8:251         | Operator(Colon)                                         | :                                        |            |           
 7:10:253        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 7:11:254        | Newline                                                 |                                          |            |           
-8:1:255         | Identifier                                              | 		power-reproduction                     | TRUE       |           
+8:3:257         | Identifier                                              | power-reproduction                       | TRUE       |           
 8:21:275        | Operator(Colon)                                         | :                                        |            |           
 8:23:277        | Number                                                  | 50                                       |            | TRUE      
 8:25:279        | Unit(Power)                                             | W                                        |            |           
 8:26:280        | Newline                                                 |                                          |            |           
-9:1:281         | Identifier                                              | 		heat-generation                        | TRUE       |           
+9:3:283         | Identifier                                              | heat-generation                          | TRUE       |           
 9:18:298        | Operator(Colon)                                         | :                                        |            |           
 9:20:300        | Number                                                  | 1                                        |            | TRUE      
 9:21:301        | Unit(Energy)                                            | kJ                                       |            |           
@@ -54,13 +54,13 @@ POSITION        | TYPE                                                    | LEXE
 9:26:306        | Number                                                  | 1                                        |            | TRUE      
 9:28:308        | Unit(Time)                                              | min                                      |            |           
 9:31:311        | Newline                                                 |                                          |            |           
-10:1:312        | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+10:2:313        | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 10:3:314        | Newline                                                 |                                          |            |           
-11:1:315        | Identifier                                              | 	craft                                   | TRUE       |           
+11:2:316        | Identifier                                              | craft                                    | TRUE       |           
 11:7:321        | Operator(Colon)                                         | :                                        |            |           
 11:9:323        | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 11:10:324       | Newline                                                 |                                          |            |           
-12:1:325        | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+12:3:327        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 12:4:328        | Identifier                                              | component                                |            |           
 12:13:337       | Operator(Colon)                                         | :                                        |            |           
 12:15:339       | Identifier                                              | metal-plate                              |            | TRUE      
@@ -71,7 +71,7 @@ POSITION        | TYPE                                                    | LEXE
 12:37:361       | Syntax(RightBrace)                                      | }                                        |            |           
 12:38:362       | Syntax(Comma)                                           | ,                                        |            |           
 12:39:363       | Newline                                                 |                                          |            |           
-13:1:364        | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+13:3:366        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 13:4:367        | Identifier                                              | component                                |            |           
 13:13:376       | Operator(Colon)                                         | :                                        |            |           
 13:15:378       | Identifier                                              | solar-cell                               |            | TRUE      
@@ -82,7 +82,7 @@ POSITION        | TYPE                                                    | LEXE
 13:35:398       | Syntax(RightBrace)                                      | }                                        |            |           
 13:36:399       | Syntax(Comma)                                           | ,                                        |            |           
 13:37:400       | Newline                                                 |                                          |            |           
-14:1:401        | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+14:3:403        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 14:4:404        | Identifier                                              | component                                |            |           
 14:13:413       | Operator(Colon)                                         | :                                        |            |           
 14:15:415       | Identifier                                              | circuit-board                            |            | TRUE      
@@ -92,14 +92,14 @@ POSITION        | TYPE                                                    | LEXE
 14:37:437       | Number                                                  | 5                                        |            | TRUE      
 14:38:438       | Syntax(RightBrace)                                      | }                                        |            |           
 14:39:439       | Newline                                                 |                                          |            |           
-15:1:440        | Syntax(RightBracket)                                    | 	]                                       | TRUE       |           
+15:2:441        | Syntax(RightBracket)                                    | ]                                        | TRUE       |           
 15:3:442        | Newline                                                 |                                          |            |           
-16:1:443        | Identifier                                              | 	craft-time                              | TRUE       |           
+16:2:444        | Identifier                                              | craft-time                               | TRUE       |           
 16:12:454       | Operator(Colon)                                         | :                                        |            |           
 16:14:456       | Number                                                  | 30                                       |            | TRUE      
 16:16:458       | Unit(Time)                                              | s                                        |            |           
 16:17:459       | Newline                                                 |                                          |            |           
-17:1:460        | Identifier                                              | 	cost                                    | TRUE       |           
+17:2:461        | Identifier                                              | cost                                     | TRUE       |           
 17:6:465        | Operator(Colon)                                         | :                                        |            |           
 17:8:467        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 17:9:468        | Identifier                                              | requisition                              |            |           
@@ -111,7 +111,7 @@ POSITION        | TYPE                                                    | LEXE
 17:35:494       | Number                                                  | 50                                       |            | TRUE      
 17:37:496       | Syntax(RightBrace)                                      | }                                        |            |           
 17:38:497       | Newline                                                 |                                          |            |           
-18:1:498        | Identifier                                              | 	size                                    | TRUE       |           
+18:2:499        | Identifier                                              | size                                     | TRUE       |           
 18:6:503        | Operator(Colon)                                         | :                                        |            |           
 18:8:505        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 18:9:506        | Identifier                                              | L                                        |            |           
@@ -130,12 +130,12 @@ POSITION        | TYPE                                                    | LEXE
 18:27:524       | Unit(Length)                                            | m                                        |            |           
 18:28:525       | Syntax(RightBrace)                                      | }                                        |            |           
 18:29:526       | Newline                                                 |                                          |            |           
-19:1:527        | Identifier                                              | 	weight                                  | TRUE       |           
+19:2:528        | Identifier                                              | weight                                   | TRUE       |           
 19:8:534        | Operator(Colon)                                         | :                                        |            |           
 19:10:536       | Number                                                  | 150                                      |            | TRUE      
 19:13:539       | Unit(Mass)                                              | kg                                       |            |           
 19:15:541       | Newline                                                 |                                          |            |           
-20:1:542        | Identifier                                              | 	durability                              | TRUE       |           
+20:2:543        | Identifier                                              | durability                               | TRUE       |           
 20:12:553       | Operator(Colon)                                         | :                                        |            |           
 20:14:555       | Number                                                  | 100                                      |            | TRUE      
 20:17:558       | Newline                                                 |                                          |            |           
@@ -143,15 +143,15 @@ POSITION        | TYPE                                                    | LEXE
 21:2:560        | Newline                                                 |                                          |            |           
 22:1:561        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 22:2:562        | Newline                                                 |                                          |            |           
-23:1:563        | Identifier                                              | 	entity-type                             | TRUE       |           
+23:2:564        | Identifier                                              | entity-type                              | TRUE       |           
 23:13:575       | Operator(Colon)                                         | :                                        |            |           
 23:15:577       | Identifier                                              | energy-generator                         |            | TRUE      
 23:31:593       | Newline                                                 |                                          |            |           
-24:1:594        | Identifier                                              | 	entity-name                             | TRUE       |           
+24:2:595        | Identifier                                              | entity-name                              | TRUE       |           
 24:13:606       | Operator(Colon)                                         | :                                        |            |           
 24:15:608       | Identifier                                              | coal-generator                           |            | TRUE      
 24:29:622       | Newline                                                 |                                          |            |           
-25:1:623        | Identifier                                              | 	entity-description                      | TRUE       |           
+25:2:624        | Identifier                                              | entity-description                       | TRUE       |           
 25:20:642       | Operator(Colon)                                         | :                                        |            |           
 25:22:644       | Identifier                                              | Угольный                                 |            | TRUE      
 25:31:661       | Identifier                                              | генератор                                |            | TRUE      
@@ -161,24 +161,24 @@ POSITION        | TYPE                                                    | LEXE
 25:62:719       | Identifier                                              | промышленного                            |            | TRUE      
 25:76:746       | Identifier                                              | использования                            |            | TRUE      
 25:89:772       | Newline                                                 |                                          |            |           
-26:1:773        | Identifier                                              | 	energy                                  | TRUE       |           
+26:2:774        | Identifier                                              | energy                                   | TRUE       |           
 26:8:780        | Operator(Colon)                                         | :                                        |            |           
 26:10:782       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 26:11:783       | Newline                                                 |                                          |            |           
-27:1:784        | Identifier                                              | 		power-reproduction                     | TRUE       |           
+27:3:786        | Identifier                                              | power-reproduction                       | TRUE       |           
 27:21:804       | Operator(Colon)                                         | :                                        |            |           
 27:23:806       | Number                                                  | 200                                      |            | TRUE      
 27:26:809       | Unit(Power)                                             | W                                        |            |           
 27:27:810       | Newline                                                 |                                          |            |           
-28:1:811        | Identifier                                              | 		fuel                                   | TRUE       |           
+28:3:813        | Identifier                                              | fuel                                     | TRUE       |           
 28:7:817        | Operator(Colon)                                         | :                                        |            |           
 28:9:819        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 28:10:820       | Newline                                                 |                                          |            |           
-29:1:821        | Identifier                                              | 			type                                  | TRUE       |           
+29:4:824        | Keyword(Type)                                           | type                                     | TRUE       |           
 29:8:828        | Operator(Colon)                                         | :                                        |            |           
 29:10:830       | Identifier                                              | solid                                    |            | TRUE      
 29:15:835       | Newline                                                 |                                          |            |           
-30:1:836        | Identifier                                              | 			consumption                           | TRUE       |           
+30:4:839        | Identifier                                              | consumption                              | TRUE       |           
 30:15:850       | Operator(Colon)                                         | :                                        |            |           
 30:17:852       | Number                                                  | 5                                        |            | TRUE      
 30:18:853       | Unit(Mass)                                              | kg                                       |            |           
@@ -186,11 +186,11 @@ POSITION        | TYPE                                                    | LEXE
 30:23:859       | Number                                                  | 1                                        |            | TRUE      
 30:24:860       | Unit(Time)                                              | min                                      |            |           
 30:27:863       | Newline                                                 |                                          |            |           
-31:1:864        | Identifier                                              | 			emission                              | TRUE       |           
+31:4:867        | Identifier                                              | emission                                 | TRUE       |           
 31:12:875       | Operator(Colon)                                         | :                                        |            |           
 31:14:877       | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 31:15:878       | Newline                                                 |                                          |            |           
-32:1:879        | Syntax(LeftBrace)                                       | 				{                                    | TRUE       |           
+32:5:883        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 32:6:884        | Identifier                                              | compound                                 |            |           
 32:14:892       | Operator(Colon)                                         | :                                        |            |           
 32:16:894       | Identifier                                              | CO2                                      |            | TRUE      
@@ -202,7 +202,7 @@ POSITION        | TYPE                                                    | LEXE
 32:43:921       | Syntax(RightBrace)                                      | }                                        |            |           
 32:44:922       | Syntax(Comma)                                           | ,                                        |            |           
 32:45:923       | Newline                                                 |                                          |            |           
-33:1:924        | Syntax(LeftBrace)                                       | 				{                                    | TRUE       |           
+33:5:928        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 33:6:929        | Identifier                                              | compound                                 |            |           
 33:14:937       | Operator(Colon)                                         | :                                        |            |           
 33:16:939       | Identifier                                              | SO2                                      |            | TRUE      
@@ -213,11 +213,11 @@ POSITION        | TYPE                                                    | LEXE
 33:41:964       | Unit(Mass)                                              | kg                                       |            |           
 33:43:966       | Syntax(RightBrace)                                      | }                                        |            |           
 33:44:967       | Newline                                                 |                                          |            |           
-34:1:968        | Syntax(RightBracket)                                    | 			]                                     | TRUE       |           
+34:4:971        | Syntax(RightBracket)                                    | ]                                        | TRUE       |           
 34:5:972        | Newline                                                 |                                          |            |           
-35:1:973        | Syntax(RightBrace)                                      | 		}                                      | TRUE       |           
+35:3:975        | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 35:4:976        | Newline                                                 |                                          |            |           
-36:1:977        | Identifier                                              | 		heat-generation                        | TRUE       |           
+36:3:979        | Identifier                                              | heat-generation                          | TRUE       |           
 36:18:994       | Operator(Colon)                                         | :                                        |            |           
 36:20:996       | Number                                                  | 150                                      |            | TRUE      
 36:23:999       | Unit(Energy)                                            | kJ                                       |            |           
@@ -225,13 +225,13 @@ POSITION        | TYPE                                                    | LEXE
 36:28:1004      | Number                                                  | 1                                        |            | TRUE      
 36:30:1006      | Unit(Time)                                              | min                                      |            |           
 36:33:1009      | Newline                                                 |                                          |            |           
-37:1:1010       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+37:2:1011       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 37:3:1012       | Newline                                                 |                                          |            |           
-38:1:1013       | Identifier                                              | 	craft                                   | TRUE       |           
+38:2:1014       | Identifier                                              | craft                                    | TRUE       |           
 38:7:1019       | Operator(Colon)                                         | :                                        |            |           
 38:9:1021       | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 38:10:1022      | Newline                                                 |                                          |            |           
-39:1:1023       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+39:3:1025       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 39:4:1026       | Identifier                                              | component                                |            |           
 39:13:1035      | Operator(Colon)                                         | :                                        |            |           
 39:15:1037      | Identifier                                              | steel-plate                              |            | TRUE      
@@ -242,7 +242,7 @@ POSITION        | TYPE                                                    | LEXE
 39:37:1059      | Syntax(RightBrace)                                      | }                                        |            |           
 39:38:1060      | Syntax(Comma)                                           | ,                                        |            |           
 39:39:1061      | Newline                                                 |                                          |            |           
-40:1:1062       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+40:3:1064       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 40:4:1065       | Identifier                                              | component                                |            |           
 40:13:1074      | Operator(Colon)                                         | :                                        |            |           
 40:15:1076      | Identifier                                              | combustion-chamber                       |            | TRUE      
@@ -253,7 +253,7 @@ POSITION        | TYPE                                                    | LEXE
 40:43:1104      | Syntax(RightBrace)                                      | }                                        |            |           
 40:44:1105      | Syntax(Comma)                                           | ,                                        |            |           
 40:45:1106      | Newline                                                 |                                          |            |           
-41:1:1107       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+41:3:1109       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 41:4:1110       | Identifier                                              | component                                |            |           
 41:13:1119      | Operator(Colon)                                         | :                                        |            |           
 41:15:1121      | Identifier                                              | coolant-pipe                             |            | TRUE      
@@ -263,14 +263,14 @@ POSITION        | TYPE                                                    | LEXE
 41:36:1142      | Number                                                  | 5                                        |            | TRUE      
 41:37:1143      | Syntax(RightBrace)                                      | }                                        |            |           
 41:38:1144      | Newline                                                 |                                          |            |           
-42:1:1145       | Syntax(RightBracket)                                    | 	]                                       | TRUE       |           
+42:2:1146       | Syntax(RightBracket)                                    | ]                                        | TRUE       |           
 42:3:1147       | Newline                                                 |                                          |            |           
-43:1:1148       | Identifier                                              | 	craft-time                              | TRUE       |           
+43:2:1149       | Identifier                                              | craft-time                               | TRUE       |           
 43:12:1159      | Operator(Colon)                                         | :                                        |            |           
 43:14:1161      | Number                                                  | 120                                      |            | TRUE      
 43:17:1164      | Unit(Time)                                              | s                                        |            |           
 43:18:1165      | Newline                                                 |                                          |            |           
-44:1:1166       | Identifier                                              | 	cost                                    | TRUE       |           
+44:2:1167       | Identifier                                              | cost                                     | TRUE       |           
 44:6:1171       | Operator(Colon)                                         | :                                        |            |           
 44:8:1173       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 44:9:1174       | Identifier                                              | requisition                              |            |           
@@ -282,7 +282,7 @@ POSITION        | TYPE                                                    | LEXE
 44:36:1201      | Number                                                  | 200                                      |            | TRUE      
 44:39:1204      | Syntax(RightBrace)                                      | }                                        |            |           
 44:40:1205      | Newline                                                 |                                          |            |           
-45:1:1206       | Identifier                                              | 	size                                    | TRUE       |           
+45:2:1207       | Identifier                                              | size                                     | TRUE       |           
 45:6:1211       | Operator(Colon)                                         | :                                        |            |           
 45:8:1213       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 45:9:1214       | Identifier                                              | L                                        |            |           
@@ -301,12 +301,12 @@ POSITION        | TYPE                                                    | LEXE
 45:27:1232      | Unit(Length)                                            | m                                        |            |           
 45:28:1233      | Syntax(RightBrace)                                      | }                                        |            |           
 45:29:1234      | Newline                                                 |                                          |            |           
-46:1:1235       | Identifier                                              | 	weight                                  | TRUE       |           
+46:2:1236       | Identifier                                              | weight                                   | TRUE       |           
 46:8:1242       | Operator(Colon)                                         | :                                        |            |           
 46:10:1244      | Number                                                  | 1200                                     |            | TRUE      
 46:14:1248      | Unit(Mass)                                              | kg                                       |            |           
 46:16:1250      | Newline                                                 |                                          |            |           
-47:1:1251       | Identifier                                              | 	durability                              | TRUE       |           
+47:2:1252       | Identifier                                              | durability                               | TRUE       |           
 47:12:1262      | Operator(Colon)                                         | :                                        |            |           
 47:14:1264      | Number                                                  | 500                                      |            | TRUE      
 47:17:1267      | Newline                                                 |                                          |            |           
@@ -314,15 +314,15 @@ POSITION        | TYPE                                                    | LEXE
 48:2:1269       | Newline                                                 |                                          |            |           
 49:1:1270       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 49:2:1271       | Newline                                                 |                                          |            |           
-50:1:1272       | Identifier                                              | 	entity-type                             | TRUE       |           
+50:2:1273       | Identifier                                              | entity-type                              | TRUE       |           
 50:13:1284      | Operator(Colon)                                         | :                                        |            |           
 50:15:1286      | Identifier                                              | energy-generator                         |            | TRUE      
 50:31:1302      | Newline                                                 |                                          |            |           
-51:1:1303       | Identifier                                              | 	entity-name                             | TRUE       |           
+51:2:1304       | Identifier                                              | entity-name                              | TRUE       |           
 51:13:1315      | Operator(Colon)                                         | :                                        |            |           
 51:15:1317      | Identifier                                              | steam-generator                          |            | TRUE      
 51:30:1332      | Newline                                                 |                                          |            |           
-52:1:1333       | Identifier                                              | 	entity-description                      | TRUE       |           
+52:2:1334       | Identifier                                              | entity-description                       | TRUE       |           
 52:20:1352      | Operator(Colon)                                         | :                                        |            |           
 52:22:1354      | Identifier                                              | Паровой                                  |            | TRUE      
 52:30:1369      | Identifier                                              | генератор                                |            | TRUE      
@@ -334,24 +334,24 @@ POSITION        | TYPE                                                    | LEXE
 52:76:1455      | Identifier                                              | энергетических                           |            | TRUE      
 52:91:1484      | Identifier                                              | нужд                                     |            | TRUE      
 52:95:1492      | Newline                                                 |                                          |            |           
-53:1:1493       | Identifier                                              | 	energy                                  | TRUE       |           
+53:2:1494       | Identifier                                              | energy                                   | TRUE       |           
 53:8:1500       | Operator(Colon)                                         | :                                        |            |           
 53:10:1502      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 53:11:1503      | Newline                                                 |                                          |            |           
-54:1:1504       | Identifier                                              | 		power-reproduction                     | TRUE       |           
+54:3:1506       | Identifier                                              | power-reproduction                       | TRUE       |           
 54:21:1524      | Operator(Colon)                                         | :                                        |            |           
 54:23:1526      | Number                                                  | 150                                      |            | TRUE      
 54:26:1529      | Unit(Power)                                             | W                                        |            |           
 54:27:1530      | Newline                                                 |                                          |            |           
-55:1:1531       | Identifier                                              | 		fuel                                   | TRUE       |           
+55:3:1533       | Identifier                                              | fuel                                     | TRUE       |           
 55:7:1537       | Operator(Colon)                                         | :                                        |            |           
 55:9:1539       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 55:10:1540      | Newline                                                 |                                          |            |           
-56:1:1541       | Identifier                                              | 			type                                  | TRUE       |           
+56:4:1544       | Keyword(Type)                                           | type                                     | TRUE       |           
 56:8:1548       | Operator(Colon)                                         | :                                        |            |           
 56:10:1550      | Identifier                                              | liquid                                   |            | TRUE      
 56:16:1556      | Newline                                                 |                                          |            |           
-57:1:1557       | Identifier                                              | 			consumption                           | TRUE       |           
+57:4:1560       | Identifier                                              | consumption                              | TRUE       |           
 57:15:1571      | Operator(Colon)                                         | :                                        |            |           
 57:17:1573      | Number                                                  | 3                                        |            | TRUE      
 57:18:1574      | Unit(Volume)                                            | L                                        |            |           
@@ -359,11 +359,11 @@ POSITION        | TYPE                                                    | LEXE
 57:22:1579      | Number                                                  | 1                                        |            | TRUE      
 57:23:1580      | Unit(Time)                                              | min                                      |            |           
 57:26:1583      | Newline                                                 |                                          |            |           
-58:1:1584       | Identifier                                              | 			emission                              | TRUE       |           
+58:4:1587       | Identifier                                              | emission                                 | TRUE       |           
 58:12:1595      | Operator(Colon)                                         | :                                        |            |           
 58:14:1597      | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 58:15:1598      | Newline                                                 |                                          |            |           
-59:1:1599       | Syntax(LeftBrace)                                       | 				{                                    | TRUE       |           
+59:5:1603       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 59:6:1604       | Identifier                                              | compound                                 |            |           
 59:14:1612      | Operator(Colon)                                         | :                                        |            |           
 59:16:1614      | Identifier                                              | H2O                                      |            | TRUE      
@@ -374,11 +374,11 @@ POSITION        | TYPE                                                    | LEXE
 59:39:1637      | Unit(Volume)                                            | L                                        |            |           
 59:40:1638      | Syntax(RightBrace)                                      | }                                        |            |           
 59:41:1639      | Newline                                                 |                                          |            |           
-60:1:1640       | Syntax(RightBracket)                                    | 			]                                     | TRUE       |           
+60:4:1643       | Syntax(RightBracket)                                    | ]                                        | TRUE       |           
 60:5:1644       | Newline                                                 |                                          |            |           
-61:1:1645       | Syntax(RightBrace)                                      | 		}                                      | TRUE       |           
+61:3:1647       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 61:4:1648       | Newline                                                 |                                          |            |           
-62:1:1649       | Identifier                                              | 		heat-generation                        | TRUE       |           
+62:3:1651       | Identifier                                              | heat-generation                          | TRUE       |           
 62:18:1666      | Operator(Colon)                                         | :                                        |            |           
 62:20:1668      | Number                                                  | 120                                      |            | TRUE      
 62:23:1671      | Unit(Energy)                                            | kJ                                       |            |           
@@ -386,13 +386,13 @@ POSITION        | TYPE                                                    | LEXE
 62:28:1676      | Number                                                  | 1                                        |            | TRUE      
 62:30:1678      | Unit(Time)                                              | min                                      |            |           
 62:33:1681      | Newline                                                 |                                          |            |           
-63:1:1682       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+63:2:1683       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 63:3:1684       | Newline                                                 |                                          |            |           
-64:1:1685       | Identifier                                              | 	craft                                   | TRUE       |           
+64:2:1686       | Identifier                                              | craft                                    | TRUE       |           
 64:7:1691       | Operator(Colon)                                         | :                                        |            |           
 64:9:1693       | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 64:10:1694      | Newline                                                 |                                          |            |           
-65:1:1695       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+65:3:1697       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 65:4:1698       | Identifier                                              | component                                |            |           
 65:13:1707      | Operator(Colon)                                         | :                                        |            |           
 65:15:1709      | Identifier                                              | steel-plate                              |            | TRUE      
@@ -403,7 +403,7 @@ POSITION        | TYPE                                                    | LEXE
 65:37:1731      | Syntax(RightBrace)                                      | }                                        |            |           
 65:38:1732      | Syntax(Comma)                                           | ,                                        |            |           
 65:39:1733      | Newline                                                 |                                          |            |           
-66:1:1734       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+66:3:1736       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 66:4:1737       | Identifier                                              | component                                |            |           
 66:13:1746      | Operator(Colon)                                         | :                                        |            |           
 66:15:1748      | Identifier                                              | boiler                                   |            | TRUE      
@@ -414,7 +414,7 @@ POSITION        | TYPE                                                    | LEXE
 66:31:1764      | Syntax(RightBrace)                                      | }                                        |            |           
 66:32:1765      | Syntax(Comma)                                           | ,                                        |            |           
 66:33:1766      | Newline                                                 |                                          |            |           
-67:1:1767       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+67:3:1769       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 67:4:1770       | Identifier                                              | component                                |            |           
 67:13:1779      | Operator(Colon)                                         | :                                        |            |           
 67:15:1781      | Identifier                                              | pipe                                     |            | TRUE      
@@ -425,7 +425,7 @@ POSITION        | TYPE                                                    | LEXE
 67:30:1796      | Syntax(RightBrace)                                      | }                                        |            |           
 67:31:1797      | Syntax(Comma)                                           | ,                                        |            |           
 67:32:1798      | Newline                                                 |                                          |            |           
-68:1:1799       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+68:3:1801       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
 68:4:1802       | Identifier                                              | component                                |            |           
 68:13:1811      | Operator(Colon)                                         | :                                        |            |           
 68:15:1813      | Identifier                                              | valve                                    |            | TRUE      
@@ -435,14 +435,14 @@ POSITION        | TYPE                                                    | LEXE
 68:29:1827      | Number                                                  | 4                                        |            | TRUE      
 68:30:1828      | Syntax(RightBrace)                                      | }                                        |            |           
 68:31:1829      | Newline                                                 |                                          |            |           
-69:1:1830       | Syntax(RightBracket)                                    | 	]                                       | TRUE       |           
+69:2:1831       | Syntax(RightBracket)                                    | ]                                        | TRUE       |           
 69:3:1832       | Newline                                                 |                                          |            |           
-70:1:1833       | Identifier                                              | 	craft-time                              | TRUE       |           
+70:2:1834       | Identifier                                              | craft-time                               | TRUE       |           
 70:12:1844      | Operator(Colon)                                         | :                                        |            |           
 70:14:1846      | Number                                                  | 90                                       |            | TRUE      
 70:16:1848      | Unit(Time)                                              | s                                        |            |           
 70:17:1849      | Newline                                                 |                                          |            |           
-71:1:1850       | Identifier                                              | 	cost                                    | TRUE       |           
+71:2:1851       | Identifier                                              | cost                                     | TRUE       |           
 71:6:1855       | Operator(Colon)                                         | :                                        |            |           
 71:8:1857       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 71:9:1858       | Identifier                                              | requisition                              |            |           
@@ -454,7 +454,7 @@ POSITION        | TYPE                                                    | LEXE
 71:35:1884      | Number                                                  | 150                                      |            | TRUE      
 71:38:1887      | Syntax(RightBrace)                                      | }                                        |            |           
 71:39:1888      | Newline                                                 |                                          |            |           
-72:1:1889       | Identifier                                              | 	size                                    | TRUE       |           
+72:2:1890       | Identifier                                              | size                                     | TRUE       |           
 72:6:1894       | Operator(Colon)                                         | :                                        |            |           
 72:8:1896       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 72:9:1897       | Identifier                                              | L                                        |            |           
@@ -473,12 +473,12 @@ POSITION        | TYPE                                                    | LEXE
 72:27:1915      | Unit(Length)                                            | m                                        |            |           
 72:28:1916      | Syntax(RightBrace)                                      | }                                        |            |           
 72:29:1917      | Newline                                                 |                                          |            |           
-73:1:1918       | Identifier                                              | 	weight                                  | TRUE       |           
+73:2:1919       | Identifier                                              | weight                                   | TRUE       |           
 73:8:1925       | Operator(Colon)                                         | :                                        |            |           
 73:10:1927      | Number                                                  | 900                                      |            | TRUE      
 73:13:1930      | Unit(Mass)                                              | kg                                       |            |           
 73:15:1932      | Newline                                                 |                                          |            |           
-74:1:1933       | Identifier                                              | 	durability                              | TRUE       |           
+74:2:1934       | Identifier                                              | durability                               | TRUE       |           
 74:12:1944      | Operator(Colon)                                         | :                                        |            |           
 74:14:1946      | Number                                                  | 400                                      |            | TRUE      
 74:17:1949      | Newline                                                 |                                          |            |           
@@ -530,21 +530,21 @@ POSITION        | TYPE                                                    | LEXE
 76:159:2110     | Syntax(RightParenthesis)                                | )                                        |            |           
 76:160:2111     | Syntax(LeftBrace)                                       | {                                        |            |           
 76:161:2112     | Newline                                                 |                                          |            |           
-77:1:2113       | Identifier                                              | 	yield                                   | TRUE       |           
+77:2:2114       | Keyword(Yield)                                          | yield                                    | TRUE       |           
 77:8:2120       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 77:9:2121       | Newline                                                 |                                          |            |           
-78:1:2122       | Identifier                                              | 		entity-type                            | TRUE       |           
+78:3:2124       | Identifier                                              | entity-type                              | TRUE       |           
 78:14:2135      | Operator(Colon)                                         | :                                        |            |           
 78:16:2137      | Identifier                                              | energy-generator                         |            | TRUE      
 78:32:2153      | Newline                                                 |                                          |            |           
-79:1:2154       | Identifier                                              | 		entity-name                            | TRUE       |           
+79:3:2156       | Identifier                                              | entity-name                              | TRUE       |           
 79:14:2167      | Operator(Colon)                                         | :                                        |            |           
 79:16:2169      | Syntax(Dollar)                                          | $                                        |            | TRUE      
 79:17:2170      | Syntax(LeftBrace)                                       | {                                        |            |           
 79:18:2171      | Identifier                                              | generator                                |            |           
 79:27:2180      | Syntax(RightBrace)                                      | }                                        |            |           
 79:28:2181      | Newline                                                 |                                          |            |           
-80:1:2182       | Identifier                                              | 		entity-description                     | TRUE       |           
+80:3:2184       | Identifier                                              | entity-description                       | TRUE       |           
 80:21:2202      | Operator(Colon)                                         | :                                        |            |           
 80:23:2204      | Syntax(Dollar)                                          | $                                        |            | TRUE      
 80:24:2205      | Syntax(LeftBrace)                                       | {                                        |            |           
@@ -553,15 +553,15 @@ POSITION        | TYPE                                                    | LEXE
 80:30:2211      | Identifier                                              | description                              |            |           
 80:41:2222      | Syntax(RightBrace)                                      | }                                        |            |           
 80:42:2223      | Newline                                                 |                                          |            |           
-81:1:2224       | Identifier                                              | 		energy                                 | TRUE       |           
+81:3:2226       | Identifier                                              | energy                                   | TRUE       |           
 81:9:2232       | Operator(Colon)                                         | :                                        |            |           
 81:11:2234      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 81:12:2235      | Newline                                                 |                                          |            |           
-82:1:2236       | Identifier                                              | 			type                                  | TRUE       |           
+82:4:2239       | Keyword(Type)                                           | type                                     | TRUE       |           
 82:8:2243       | Operator(Colon)                                         | :                                        |            |           
 82:10:2245      | Identifier                                              | liquid                                   |            | TRUE      
 82:16:2251      | Newline                                                 |                                          |            |           
-83:1:2252       | Identifier                                              | 			consumption                           | TRUE       |           
+83:4:2255       | Identifier                                              | consumption                              | TRUE       |           
 83:15:2266      | Operator(Colon)                                         | :                                        |            |           
 83:17:2268      | Syntax(Dollar)                                          | $                                        |            | TRUE      
 83:18:2269      | Syntax(LeftBrace)                                       | {                                        |            |           
@@ -570,7 +570,7 @@ POSITION        | TYPE                                                    | LEXE
 83:24:2275      | Identifier                                              | consumption                              |            |           
 83:35:2286      | Syntax(RightBrace)                                      | }                                        |            |           
 83:36:2287      | Newline                                                 |                                          |            |           
-84:1:2288       | Identifier                                              | 			emission                              | TRUE       |           
+84:4:2291       | Identifier                                              | emission                                 | TRUE       |           
 84:12:2299      | Operator(Colon)                                         | :                                        |            |           
 84:14:2301      | Syntax(Dollar)                                          | $                                        |            | TRUE      
 84:15:2302      | Syntax(LeftBrace)                                       | {                                        |            |           
@@ -579,12 +579,12 @@ POSITION        | TYPE                                                    | LEXE
 84:21:2308      | Identifier                                              | emission                                 |            |           
 84:29:2316      | Syntax(RightBrace)                                      | }                                        |            |           
 84:30:2317      | Newline                                                 |                                          |            |           
-85:1:2318       | Syntax(RightBrace)                                      | 		}                                      | TRUE       |           
+85:3:2320       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 85:4:2321       | Newline                                                 |                                          |            |           
-86:1:2322       | Operator(DotDotDot)                                     | 		...                                    | TRUE       |           
+86:3:2324       | Operator(DotDotDot)                                     | ...                                      | TRUE       |           
 86:6:2327       | Identifier                                              | data                                     |            |           
 86:10:2331      | Newline                                                 |                                          |            |           
-87:1:2332       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+87:2:2333       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 87:3:2334       | Newline                                                 |                                          |            |           
 88:1:2335       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 88:2:2336       | Newline                                                 |                                          |            |           

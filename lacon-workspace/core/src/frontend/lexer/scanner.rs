@@ -69,12 +69,12 @@ impl<'src> Scanner<'src> {
 		self.tokens.push(Token::bare(TokenKind::SOF, self.position));
 		self.position.offset += 1;
 		while !self.is_at_end() {
-			self.start = self.current;
-			self.start_position = self.position;
 			if self.is_at_line_start {
 				self.handle_indentation();
 			}
 			if !self.is_at_end() {
+				self.start = self.current;
+				self.start_position = self.position;
 				self.scan_token();
 			}
 		}
@@ -578,8 +578,6 @@ impl<'src> Scanner<'src> {
 				self.add_token_raw(TokenKind::Dedent((self.indent_stack.len() - 1) as u8));
 			}
 		}
-		self.start = self.current;
-		self.start_position = self.position;
 	}
 
 	fn handle_operator(&mut self, _character: u8) {

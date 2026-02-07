@@ -23,13 +23,13 @@ POSITION        | TYPE                                                    | LEXE
 3:56:119        | Syntax(RightParenthesis)                                | )                                        |            |           
 3:58:121        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 3:59:122        | Newline                                                 |                                          |            |           
-4:1:123         | Identifier                                              | 	GameAPI                                 | TRUE       |           
+4:2:124         | Identifier                                              | GameAPI                                  | TRUE       |           
 4:9:131         | Operator(Dot)                                           | .                                        |            |           
 4:10:132        | Identifier                                              | registerEntity                           |            |           
 4:24:146        | Syntax(LeftParenthesis)                                 | (                                        |            |           
 4:25:147        | Syntax(LeftBrace)                                       | {                                        |            |           
 4:26:148        | Newline                                                 |                                          |            |           
-5:1:149         | Identifier                                              | 		type                                   | TRUE       |           
+5:3:151         | Keyword(Type)                                           | type                                     | TRUE       |           
 5:7:155         | Operator(Colon)                                         | :                                        |            |           
 5:9:157         | Identifier                                              | generator                                |            | TRUE      
 5:18:166        | Syntax(LeftBracket)                                     | [                                        |            |           
@@ -49,7 +49,7 @@ POSITION        | TYPE                                                    | LEXE
 6:32:214        | Syntax(RightBracket)                                    | ]                                        |            |           
 6:33:215        | Syntax(Comma)                                           | ,                                        |            |           
 6:34:216        | Newline                                                 |                                          |            |           
-7:1:217         | Identifier                                              | 		description                            | TRUE       |           
+7:3:219         | Identifier                                              | description                              | TRUE       |           
 7:14:230        | Operator(Colon)                                         | :                                        |            |           
 7:16:232        | Identifier                                              | generator                                |            | TRUE      
 7:25:241        | Syntax(LeftBracket)                                     | [                                        |            |           
@@ -63,21 +63,21 @@ POSITION        | TYPE                                                    | LEXE
 7:72:307        | Syntax(DoubleQuote)                                     | "                                        |            |           
 7:73:308        | Syntax(Comma)                                           | ,                                        |            |           
 7:74:309        | Newline                                                 |                                          |            |           
-8:1:310         | Identifier                                              | 		energy                                 | TRUE       |           
+8:3:312         | Identifier                                              | energy                                   | TRUE       |           
 8:9:318         | Operator(Colon)                                         | :                                        |            |           
 8:11:320        | Identifier                                              | generator                                |            | TRUE      
 8:20:329        | Operator(Dot)                                           | .                                        |            |           
 8:21:330        | Identifier                                              | energy                                   |            |           
 8:27:336        | Syntax(Comma)                                           | ,                                        |            |           
 8:28:337        | Newline                                                 |                                          |            |           
-9:1:338         | Identifier                                              | 		craft                                  | TRUE       |           
+9:3:340         | Identifier                                              | craft                                    | TRUE       |           
 9:8:345         | Operator(Colon)                                         | :                                        |            |           
 9:10:347        | Identifier                                              | generator                                |            | TRUE      
 9:19:356        | Operator(Dot)                                           | .                                        |            |           
 9:20:357        | Identifier                                              | craft                                    |            |           
 9:25:362        | Syntax(Comma)                                           | ,                                        |            |           
 9:26:363        | Newline                                                 |                                          |            |           
-10:1:364        | Identifier                                              | 		craftTime                              | TRUE       |           
+10:3:366        | Identifier                                              | craftTime                                | TRUE       |           
 10:12:375       | Operator(Colon)                                         | :                                        |            |           
 10:14:377       | Identifier                                              | generator                                |            | TRUE      
 10:23:386       | Syntax(LeftBracket)                                     | [                                        |            |           
@@ -87,34 +87,34 @@ POSITION        | TYPE                                                    | LEXE
 10:36:399       | Syntax(RightBracket)                                    | ]                                        |            |           
 10:37:400       | Syntax(Comma)                                           | ,                                        |            |           
 10:38:401       | Newline                                                 |                                          |            |           
-11:1:402        | Identifier                                              | 		cost                                   | TRUE       |           
+11:3:404        | Identifier                                              | cost                                     | TRUE       |           
 11:7:408        | Operator(Colon)                                         | :                                        |            |           
 11:9:410        | Identifier                                              | generator                                |            | TRUE      
 11:18:419       | Operator(Dot)                                           | .                                        |            |           
 11:19:420       | Identifier                                              | cost                                     |            |           
 11:23:424       | Syntax(Comma)                                           | ,                                        |            |           
 11:24:425       | Newline                                                 |                                          |            |           
-12:1:426        | Identifier                                              | 		size                                   | TRUE       |           
+12:3:428        | Identifier                                              | size                                     | TRUE       |           
 12:7:432        | Operator(Colon)                                         | :                                        |            |           
 12:9:434        | Identifier                                              | generator                                |            | TRUE      
 12:18:443       | Operator(Dot)                                           | .                                        |            |           
 12:19:444       | Identifier                                              | size                                     |            |           
 12:23:448       | Syntax(Comma)                                           | ,                                        |            |           
 12:24:449       | Newline                                                 |                                          |            |           
-13:1:450        | Identifier                                              | 		weight                                 | TRUE       |           
+13:3:452        | Identifier                                              | weight                                   | TRUE       |           
 13:9:458        | Operator(Colon)                                         | :                                        |            |           
 13:11:460       | Identifier                                              | generator                                |            | TRUE      
 13:20:469       | Operator(Dot)                                           | .                                        |            |           
 13:21:470       | Identifier                                              | weight                                   |            |           
 13:27:476       | Syntax(Comma)                                           | ,                                        |            |           
 13:28:477       | Newline                                                 |                                          |            |           
-14:1:478        | Identifier                                              | 		durability                             | TRUE       |           
+14:3:480        | Identifier                                              | durability                               | TRUE       |           
 14:13:490       | Operator(Colon)                                         | :                                        |            |           
 14:15:492       | Identifier                                              | generator                                |            | TRUE      
 14:24:501       | Operator(Dot)                                           | .                                        |            |           
 14:25:502       | Identifier                                              | durability                               |            |           
 14:35:512       | Newline                                                 |                                          |            |           
-15:1:513        | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+15:2:514        | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 15:3:515        | Syntax(RightParenthesis)                                | )                                        |            |           
 15:4:516        | Newline                                                 |                                          |            |           
 16:1:517        | Syntax(RightBrace)                                      | }                                        | TRUE       |           
@@ -126,7 +126,7 @@ POSITION        | TYPE                                                    | LEXE
 18:12:531       | Identifier                                              | generatorsData                           |            | TRUE      
 18:27:546       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 18:28:547       | Newline                                                 |                                          |            |           
-19:1:548        | Identifier                                              | 	registerGenerator                       | TRUE       |           
+19:2:549        | Identifier                                              | registerGenerator                        | TRUE       |           
 19:19:566       | Syntax(LeftParenthesis)                                 | (                                        |            |           
 19:20:567       | Identifier                                              | gen                                      |            |           
 19:23:570       | Syntax(RightParenthesis)                                | )                                        |            |           

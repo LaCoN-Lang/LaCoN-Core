@@ -432,7 +432,7 @@ POSITION        | TYPE                                                    | LEXE
 70:60:1638      | Newline                                                 |                                          |            |           
 71:2:1640       | Syntax(LeftBracket)                                     | [                                        | TRUE       |           
 71:3:1641       | Newline                                                 |                                          |            |           
-72:1:1642       | Syntax(LeftParenthesis)                                 | 		(                                      | TRUE       |           
+72:3:1644       | Syntax(LeftParenthesis)                                 | (                                        | TRUE       |           
 72:4:1645       | Syntax(DoubleQuote)                                     | "                                        |            |           
 72:5:1646       | String                                                  | Alice                                    |            |           
 72:10:1651      | Syntax(DoubleQuote)                                     | "                                        |            |           
@@ -453,7 +453,7 @@ POSITION        | TYPE                                                    | LEXE
 72:47:1688      | Syntax(RightParenthesis)                                | )                                        |            |           
 72:48:1689      | Syntax(Comma)                                           | ,                                        |            |           
 72:49:1690      | Newline                                                 |                                          |            |           
-73:1:1691       | Syntax(LeftParenthesis)                                 | 		(                                      | TRUE       |           
+73:3:1693       | Syntax(LeftParenthesis)                                 | (                                        | TRUE       |           
 73:4:1694       | Syntax(DoubleQuote)                                     | "                                        |            |           
 73:5:1695       | String                                                  | Bob                                      |            |           
 73:8:1698       | Syntax(DoubleQuote)                                     | "                                        |            |           
@@ -474,7 +474,7 @@ POSITION        | TYPE                                                    | LEXE
 73:43:1733      | Syntax(RightParenthesis)                                | )                                        |            |           
 73:44:1734      | Syntax(Comma)                                           | ,                                        |            |           
 73:45:1735      | Newline                                                 |                                          |            |           
-74:1:1736       | Syntax(LeftParenthesis)                                 | 		(                                      | TRUE       |           
+74:3:1738       | Syntax(LeftParenthesis)                                 | (                                        | TRUE       |           
 74:4:1739       | Syntax(DoubleQuote)                                     | "                                        |            |           
 74:5:1740       | String                                                  | Charlie                                  |            |           
 74:12:1747      | Syntax(DoubleQuote)                                     | "                                        |            |           
@@ -494,7 +494,7 @@ POSITION        | TYPE                                                    | LEXE
 74:48:1783      | Syntax(RightBrace)                                      | }                                        |            |           
 74:49:1784      | Syntax(RightParenthesis)                                | )                                        |            |           
 74:50:1785      | Newline                                                 |                                          |            |           
-75:1:1786       | Syntax(RightBracket)                                    | 	]                                       | TRUE       |           
+75:2:1787       | Syntax(RightBracket)                                    | ]                                        | TRUE       |           
 75:3:1788       | Newline                                                 |                                          |            |           
 76:1:1789       | Dedent(0)                                               |                                          |            |           
 76:1:1789       | Operator(Pipe)                                          | |                                        | TRUE       |           
@@ -585,7 +585,7 @@ POSITION        | TYPE                                                    | LEXE
 83:38:2040      | Identifier                                              | code-point                               |            | TRUE      
 83:49:2051      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 83:50:2052      | Newline                                                 |                                          |            |           
-84:1:2053       | Identifier                                              | 	yield                                   | TRUE       |           
+84:2:2054       | Keyword(Yield)                                          | yield                                    | TRUE       |           
 84:8:2060       | Identifier                                              | unicode                                  |            | TRUE      
 84:15:2067      | Operator(Minus)                                         | -                                        |            |           
 84:16:2068      | Syntax(Dollar)                                          | $                                        |            |           
@@ -594,7 +594,7 @@ POSITION        | TYPE                                                    | LEXE
 84:28:2080      | Syntax(RightBrace)                                      | }                                        |            |           
 84:30:2082      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 84:31:2083      | Newline                                                 |                                          |            |           
-85:1:2084       | Identifier                                              | 		char                                   | TRUE       |           
+85:3:2086       | Identifier                                              | char                                     | TRUE       |           
 85:8:2091       | Syntax(Backslash)                                       | \                                        |            | TRUE      
 85:9:2092       | Identifier                                              | u                                        |            |           
 85:10:2093      | Syntax(LeftBrace)                                       | {                                        |            |           
@@ -604,7 +604,7 @@ POSITION        | TYPE                                                    | LEXE
 85:23:2106      | Syntax(RightBrace)                                      | }                                        |            |           
 85:24:2107      | Syntax(RightBrace)                                      | }                                        |            |           
 85:25:2108      | Newline                                                 |                                          |            |           
-86:1:2109       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+86:2:2110       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 86:3:2111       | Newline                                                 |                                          |            |           
 87:1:2112       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 87:2:2113       | Newline                                                 |                                          |            |           
@@ -634,7 +634,7 @@ POSITION        | TYPE                                                    | LEXE
 88:51:2164      | Identifier                                              | name                                     |            | TRUE      
 88:56:2169      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 88:57:2170      | Newline                                                 |                                          |            |           
-89:1:2171       | Identifier                                              | 	yield                                   | TRUE       |           
+89:2:2172       | Keyword(Yield)                                          | yield                                    | TRUE       |           
 89:8:2178       | Identifier                                              | digit                                    |            | TRUE      
 89:13:2183      | Operator(Minus)                                         | -                                        |            |           
 89:14:2184      | Syntax(Dollar)                                          | $                                        |            |           
@@ -647,7 +647,7 @@ POSITION        | TYPE                                                    | LEXE
 90:15:2208      | Operator(Colon)                                         | :                                        |            |           
 90:17:2210      | Identifier                                              | index                                    |            | TRUE      
 90:22:2215      | Newline                                                 |                                          |            |           
-91:1:2216       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+91:2:2217       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 91:3:2218       | Newline                                                 |                                          |            |           
 92:1:2219       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 92:2:2220       | Newline                                                 |                                          |            |           
@@ -710,7 +710,7 @@ POSITION        | TYPE                                                    | LEXE
 93:154:2374     | Identifier                                              | name                                     |            | TRUE      
 93:159:2379     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 93:160:2380     | Newline                                                 |                                          |            |           
-94:1:2381       | Identifier                                              | 	local                                   | TRUE       |           
+94:2:2382       | Keyword(Local)                                          | local                                    | TRUE       |           
 94:8:2388       | Identifier                                              | code-point                               |            | TRUE      
 94:19:2399      | Operator(Equal)                                         | =                                        |            | TRUE      
 94:21:2401      | Identifier                                              | format                                   |            | TRUE      
@@ -724,7 +724,7 @@ POSITION        | TYPE                                                    | LEXE
 94:47:2427      | Identifier                                              | index                                    |            | TRUE      
 94:52:2432      | Syntax(RightParenthesis)                                | )                                        |            |           
 94:53:2433      | Newline                                                 |                                          |            |           
-95:1:2434       | Identifier                                              | 	yield                                   | TRUE       |           
+95:2:2435       | Keyword(Yield)                                          | yield                                    | TRUE       |           
 95:8:2441       | Identifier                                              | astrological-zodiacal-sign               |            | TRUE      
 95:34:2467      | Operator(Minus)                                         | -                                        |            |           
 95:35:2468      | Syntax(LeftBrace)                                       | {                                        |            |           
@@ -733,7 +733,7 @@ POSITION        | TYPE                                                    | LEXE
 95:41:2474      | Identifier                                              | -text                                    |            |           
 95:47:2480      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 95:48:2481      | Newline                                                 |                                          |            |           
-96:1:2482       | Identifier                                              | 		code-point                             | TRUE       |           
+96:3:2484       | Identifier                                              | code-point                               | TRUE       |           
 96:13:2494      | Operator(Colon)                                         | :                                        |            |           
 96:15:2496      | Syntax(GraveAccent)                                     | `                                        |            | TRUE      
 96:16:2497      | String                                                  | U+                                       |            |           
@@ -743,7 +743,7 @@ POSITION        | TYPE                                                    | LEXE
 96:30:2511      | Syntax(RightBrace)                                      | }                                        |            |           
 96:31:2512      | Syntax(GraveAccent)                                     | `                                        |            |           
 96:32:2513      | Newline                                                 |                                          |            |           
-97:1:2514       | Identifier                                              | 		sequence                               | TRUE       |           
+97:3:2516       | Identifier                                              | sequence                                 | TRUE       |           
 97:11:2524      | Operator(Colon)                                         | :                                        |            |           
 97:13:2526      | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 97:14:2527      | Identifier                                              | code-point                               |            |           
@@ -753,11 +753,11 @@ POSITION        | TYPE                                                    | LEXE
 97:31:2544      | Syntax(GraveAccent)                                     | `                                        |            |           
 97:32:2545      | Syntax(RightBracket)                                    | ]                                        |            |           
 97:33:2546      | Newline                                                 |                                          |            |           
-98:1:2547       | Identifier                                              | 		pos                                    | TRUE       |           
+98:3:2549       | Identifier                                              | pos                                      | TRUE       |           
 98:6:2552       | Operator(Colon)                                         | :                                        |            |           
 98:8:2554       | Identifier                                              | index                                    |            | TRUE      
 98:13:2559      | Newline                                                 |                                          |            |           
-99:1:2560       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+99:2:2561       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 99:3:2562       | Newline                                                 |                                          |            |           
 100:1:2563      | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 100:2:2564      | Newline                                                 |                                          |            |           
@@ -792,7 +792,7 @@ POSITION        | TYPE                                                    | LEXE
 101:85:2649     | Syntax(RightParenthesis)                                | )                                        |            |           
 101:87:2651     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 101:88:2652     | Newline                                                 |                                          |            |           
-102:1:2653      | Identifier                                              | 	local                                   | TRUE       |           
+102:2:2654      | Keyword(Local)                                          | local                                    | TRUE       |           
 102:8:2660      | Keyword(Constant)                                       | const                                    |            | TRUE      
 102:14:2666     | Identifier                                              | code-points                              |            | TRUE      
 102:26:2678     | Operator(Equal)                                         | =                                        |            | TRUE      
@@ -804,7 +804,7 @@ POSITION        | TYPE                                                    | LEXE
 102:36:2688     | Identifier                                              | FB3                                      |            |           
 102:39:2691     | Syntax(RightBracket)                                    | ]                                        |            |           
 102:40:2692     | Newline                                                 |                                          |            |           
-103:1:2693      | Identifier                                              | 	yield                                   | TRUE       |           
+103:2:2694      | Keyword(Yield)                                          | yield                                    | TRUE       |           
 103:8:2700      | Identifier                                              | hel_                                     |            | TRUE      
 103:12:2704     | Syntax(Dollar)                                          | $                                        |            |           
 103:13:2705     | Syntax(LeftBrace)                                       | {                                        |            |           
@@ -817,17 +817,17 @@ POSITION        | TYPE                                                    | LEXE
 103:48:2740     | Syntax(RightBrace)                                      | }                                        |            |           
 103:50:2742     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 103:51:2743     | Newline                                                 |                                          |            |           
-104:1:2744      | Identifier                                              | 		unicode                                | TRUE       |           
+104:3:2746      | Identifier                                              | unicode                                  | TRUE       |           
 104:10:2753     | Operator(Colon)                                         | :                                        |            |           
 104:12:2755     | Identifier                                              | select                                   |            | TRUE      
 104:18:2761     | Syntax(LeftParenthesis)                                 | (                                        |            |           
 104:19:2762     | Identifier                                              | code-points                              |            |           
 104:30:2773     | Syntax(RightParenthesis)                                | )                                        |            |           
 104:31:2774     | Newline                                                 |                                          |            |           
-105:1:2775      | Identifier                                              | 		symbol                                 | TRUE       |           
+105:3:2777      | Identifier                                              | symbol                                   | TRUE       |           
 105:10:2784     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 105:11:2785     | Newline                                                 |                                          |            |           
-106:1:2786      | Identifier                                              | 			letter                                | TRUE       |           
+106:4:2789      | Identifier                                              | letter                                   | TRUE       |           
 106:10:2795     | Operator(Colon)                                         | :                                        |            |           
 106:12:2797     | Identifier                                              | hel_                                     |            | TRUE      
 106:16:2801     | Syntax(Dollar)                                          | $                                        |            |           
@@ -836,9 +836,9 @@ POSITION        | TYPE                                                    | LEXE
 106:29:2814     | Syntax(RightBrace)                                      | }                                        |            |           
 106:30:2815     | Identifier                                              | _let_a_alpha                             |            |           
 106:42:2827     | Newline                                                 |                                          |            |           
-107:1:2828      | Syntax(RightBrace)                                      | 		}                                      | TRUE       |           
+107:3:2830      | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 107:4:2831      | Newline                                                 |                                          |            |           
-108:1:2832      | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+108:2:2833      | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 108:3:2834      | Newline                                                 |                                          |            |           
 109:1:2835      | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 109:2:2836      | Newline                                                 |                                          |            |           
@@ -883,7 +883,7 @@ POSITION        | TYPE                                                    | LEXE
 110:111:2947    | Syntax(RightParenthesis)                                | )                                        |            |           
 110:113:2949    | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 110:114:2950    | Newline                                                 |                                          |            |           
-111:1:2951      | Identifier                                              | 	yield                                   | TRUE       |           
+111:2:2952      | Keyword(Yield)                                          | yield                                    | TRUE       |           
 111:8:2958      | Identifier                                              | hel_                                     |            | TRUE      
 111:12:2962     | Syntax(Dollar)                                          | $                                        |            |           
 111:13:2963     | Syntax(LeftBrace)                                       | {                                        |            |           
@@ -896,14 +896,14 @@ POSITION        | TYPE                                                    | LEXE
 111:48:2998     | Syntax(RightBrace)                                      | }                                        |            |           
 111:50:3000     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 111:51:3001     | Newline                                                 |                                          |            |           
-112:1:3002      | Identifier                                              | 		unicode                                | TRUE       |           
+112:3:3004      | Identifier                                              | unicode                                  | TRUE       |           
 112:10:3011     | Operator(Colon)                                         | :                                        |            |           
 112:12:3013     | Identifier                                              | code-point                               |            | TRUE      
 112:22:3023     | Newline                                                 |                                          |            |           
-113:1:3024      | Identifier                                              | 		symbol                                 | TRUE       |           
+113:3:3026      | Identifier                                              | symbol                                   | TRUE       |           
 113:10:3033     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 113:11:3034     | Newline                                                 |                                          |            |           
-114:1:3035      | Identifier                                              | 			letter                                | TRUE       |           
+114:4:3038      | Identifier                                              | letter                                   | TRUE       |           
 114:10:3044     | Operator(Colon)                                         | :                                        |            |           
 114:12:3046     | Syntax(GraveAccent)                                     | `                                        |            | TRUE      
 114:13:3047     | String                                                  | hel_                                     |            |           
@@ -914,9 +914,9 @@ POSITION        | TYPE                                                    | LEXE
 114:31:3065     | String                                                  | _let_a_alpha                             |            |           
 114:43:3077     | Syntax(GraveAccent)                                     | `                                        |            |           
 114:44:3078     | Newline                                                 |                                          |            |           
-115:1:3079      | Syntax(RightBrace)                                      | 		}                                      | TRUE       |           
+115:3:3081      | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 115:4:3082      | Newline                                                 |                                          |            |           
-116:1:3083      | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+116:2:3084      | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 116:3:3085      | Newline                                                 |                                          |            |           
 117:1:3086      | Syntax(RightBrace)                                      | }                                        | TRUE       |           
 117:2:3087      | Newline                                                 |                                          |            |           
