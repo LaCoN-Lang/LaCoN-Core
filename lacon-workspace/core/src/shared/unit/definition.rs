@@ -112,15 +112,13 @@ pub struct UnitTree {
 }
 
 impl UnitTree {
-	pub fn insert(&mut self, word: &str) {
-		if word.is_empty() {
-			return;
+	pub fn insert(&mut self, key: &str) {
+		let mut current_node = &mut self.root;
+
+		for byte in key.as_bytes() {
+			current_node = current_node.children.entry(*byte).or_default();
 		}
 
-		let mut current_node = &mut self.root;
-		for &b in word.as_bytes() {
-			current_node = current_node.children.entry(b).or_default();
-		}
 		current_node.is_final = true;
 	}
 

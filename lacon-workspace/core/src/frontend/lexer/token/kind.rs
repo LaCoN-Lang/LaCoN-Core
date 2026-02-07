@@ -1,5 +1,5 @@
 use super::super::{KeywordKind, OperatorKind, SyntaxKind};
-use crate::shared::unit::UnitKind;
+use crate::shared::UnitKind;
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum TokenKind {

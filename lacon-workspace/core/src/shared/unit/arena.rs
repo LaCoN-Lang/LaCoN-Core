@@ -1,5 +1,6 @@
 use bumpalo::Bump;
 
+#[derive(Debug)]
 pub struct UnitArena {
 	bump: Bump,
 }

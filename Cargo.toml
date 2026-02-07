@@ -2,9 +2,10 @@
 members = [
   "lacon-workspace/core",
   "lacon-workspace/cli",
-  "lacon-workspace/test",
   "lacon-workspace/wasm",
   "lacon-workspace/lsp",
+  "tests/lexer",
+  "tests/parser",
 ]
 resolver = "2"
 

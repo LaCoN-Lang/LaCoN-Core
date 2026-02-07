@@ -1,0 +1,32 @@
+TYPE                                                    | LEXEME                                   | POSITION        | LINE START | WHITESPACE
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                                                     |                                          | 1:1:0           |            |           
+Keyword(Use)                                            | use                                      | 1:1:0           | TRUE       |           
+Keyword(Schema)                                         | schema                                   | 1:5:4           |            | TRUE      
+Syntax(DoubleQuote)                                     | "                                        | 1:12:11         |            | TRUE      
+String                                                  | ./schema.slacon                          | 1:13:12         |            |           
+Syntax(DoubleQuote)                                     | "                                        | 1:28:27         |            |           
+Newline                                                 |                                          | 1:29:28         |            |           
+Newline                                                 |                                          | 2:1:29          |            |           
+Identifier                                              | entity_type                              | 3:1:30          | TRUE       |           
+Syntax(DoubleQuote)                                     | "                                        | 3:13:42         |            | TRUE      
+String                                                  | steam-engine                             | 3:14:43         |            |           
+Syntax(DoubleQuote)                                     | "                                        | 3:26:55         |            |           
+Newline                                                 |                                          | 3:27:56         |            |           
+Identifier                                              | power_reproduction                       | 4:1:57          | TRUE       |           
+Number                                                  | 15                                       | 4:20:76         |            | TRUE      
+Unit(Power)                                             | kW                                       | 4:22:78         |            |           
+Newline                                                 |                                          | 4:24:80         |            |           
+Identifier                                              | fuel                                     | 5:1:81          | TRUE       |           
+Syntax(DoubleQuote)                                     | "                                        | 5:6:86          |            | TRUE      
+String                                                  | solid                                    | 5:7:87          |            |           
+Syntax(DoubleQuote)                                     | "                                        | 5:12:92         |            |           
+Newline                                                 |                                          | 5:13:93         |            |           
+Identifier                                              | fuel_consumption                         | 6:1:94          | TRUE       |           
+Number                                                  | 100                                      | 6:18:111        |            | TRUE      
+Unit(Mass)                                              | g                                        | 6:21:114        |            |           
+Operator(Slash)                                         | /                                        | 6:23:116        |            | TRUE      
+Number                                                  | 1                                        | 6:25:118        |            | TRUE      
+Unit(Time)                                              | min                                      | 6:26:119        |            |           
+Newline                                                 |                                          | 6:29:122        |            |           
+EOF                                                     |                                          | 7:1:123         |            |           

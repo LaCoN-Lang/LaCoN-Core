@@ -1,5 +1,5 @@
 use super::TokenKind;
-use crate::shared::position::Position;
+use crate::shared::Position;
 use bitflags::bitflags;
 
 bitflags! {
@@ -12,8 +12,7 @@ bitflags! {
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Token<'a> {
-	pub lexeme: &'a str,
-	pub literal: Option<&'a str>,
+	pub lexeme: Option<&'a str>,
 	pub position: Position,
 
 	pub token_kind: TokenKind,

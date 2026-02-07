@@ -1,11 +1,11 @@
 use super::super::KeywordKind;
 use super::{Token, TokenFlags, TokenKind};
-use crate::shared::position::Position;
-use crate::shared::unit::UnitKind;
+use crate::shared::Position;
+use crate::shared::UnitKind;
 use std::fmt;
 
 impl<'a> Token<'a> {
-	pub fn new(token_kind: TokenKind, is_at_line_start: bool, has_whitespace: bool, lexeme: &'a str, literal: Option<&'a str>, position: Position, length: usize) -> Self {
+	pub fn new(token_kind: TokenKind, is_at_line_start: bool, has_whitespace: bool, lexeme: Option<&'a str>, position: Position, length: usize) -> Self {
 		let mut flags = TokenFlags::empty();
 		if is_at_line_start {
 			flags.insert(TokenFlags::AT_LINE_START);
@@ -16,8 +16,8 @@ impl<'a> Token<'a> {
 
 		Self {
 			token_kind,
+			// lexeme,
 			lexeme,
-			literal,
 			position,
 			length: length as u32,
 			flags,
@@ -27,8 +27,8 @@ impl<'a> Token<'a> {
 	pub fn bare(token_kind: TokenKind, position: Position) -> Self {
 		Self {
 			token_kind,
-			lexeme: "",
-			literal: None,
+			// lexeme: "",
+			lexeme: None,
 			position,
 			length: 0,
 			flags: TokenFlags::empty(),
@@ -38,8 +38,8 @@ impl<'a> Token<'a> {
 	pub fn error(message: &'a str, position: Position) -> Self {
 		Self {
 			token_kind: TokenKind::Error,
-			lexeme: message,
-			literal: None,
+			// lexeme: message,
+			lexeme: Some(&message),
 			position,
 			length: 0,
 			flags: TokenFlags::empty(),
@@ -89,9 +89,9 @@ impl<'a> fmt::Display for Token<'a> {
 		}
 		f.write_str("] ")?;
 
-		write!(f, "'{}'", self.lexeme)?;
+		// write!(f, "'{}'", self.lexeme)?;
 
-		if let Some(literal) = &self.literal {
+		if let Some(literal) = &self.lexeme {
 			write!(f, " (value: {})", literal)?;
 		}
 

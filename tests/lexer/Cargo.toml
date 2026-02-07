@@ -1,13 +1,16 @@
 [package]
-name = "lacon-test"
+name = "lexer"
 version = "0.1.0"
 edition = "2024"
-license = "MIT"
 
 [dependencies]
-anyhow.workspace = true
-clap.workspace = true
 lacon-core = { workspace = true }
+
+flame = "0.2"
+flamer = "0.5"
+
+[lints]
+workspace = true
 
 [dev-dependencies]
 memory-stats = "1.2.0"

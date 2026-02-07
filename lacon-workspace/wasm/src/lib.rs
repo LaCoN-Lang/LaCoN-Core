@@ -17,7 +17,7 @@ pub fn lex(source: &str) -> JsValue {
 
 		Reflect::set(&obj, &"token_type".into(), &format!("{:?}", token.token_kind).into()).unwrap();
 		Reflect::set(&obj, &"lexeme".into(), &token.lexeme.clone().into()).unwrap();
-		Reflect::set(&obj, &"literal".into(), &token.literal.clone().into()).unwrap();
+		Reflect::set(&obj, &"literal".into(), &token.lexeme.clone().into()).unwrap();
 		Reflect::set(&obj, &"position".into(), &token.position.to_string().into()).unwrap();
 		Reflect::set(&obj, &"flags".into(), &(token.flags.bits() as u32).into()).unwrap();
 

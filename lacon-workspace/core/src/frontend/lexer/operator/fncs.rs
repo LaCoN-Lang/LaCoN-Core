@@ -1,11 +1,11 @@
 use super::super::TokenKind;
 pub use super::{OpMatch, OperatorKind};
-use crate::shared::common::characters::*;
+use crate::shared::characters::*;
 
 #[inline(always)]
 pub fn match_operator(c1: char, c2: Option<char>, c3: Option<char>) -> OpMatch {
 	use OperatorKind::*;
-	use TokenKind::{LineComment, Operator};
+	use TokenKind::{BlockComment, LineComment, Operator};
 	let (t_kind, consumed) = match c1 {
 		'+' => match c2 {
 			Some('+') => (Operator(PlusPlus), 1),
@@ -32,6 +32,7 @@ pub fn match_operator(c1: char, c2: Option<char>, c3: Option<char>) -> OpMatch {
 				Some('=') => (Operator(SlashSlashEqual), 2),
 				_ => (Operator(SlashSlash), 1),
 			},
+			Some('*') => (BlockComment, 1),
 			Some('=') => (Operator(SlashEqual), 1),
 			_ => (Operator(Slash), 0),
 		},

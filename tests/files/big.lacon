@@ -1,0 +1,491 @@
+/|\\ ==============================================================================
+/|\\ COMPREHENSIVE TEST FILE - COVERING ALL TOKEN CATEGORIES
+/|\\ ==============================================================================
+
+// ─────────────────────────────────────────────
+// Module declarations and imports
+// ─────────────────────────────────────────────
+container Math::Operations::Advanced {
+    import std::collections::{HashMap, HashSet} as Collections
+    import physics::units::{kg, m, s, Hz, J, N, Pa} from "./units.mylang"
+    export {Vector, Matrix, Tensor}
+    provide constants::physical
+
+    // ─────────────────────────────────────────────
+    // Type and class definitions with generics
+    // ─────────────────────────────────────────────
+    public class Vector<T: Numeric>
+        extends LinearAlgebraic
+        implements Serialize, Clone, Debug
+        where T: Add + Mul + Div + Sub {
+
+        private static const MAX_DIMENSIONS: usize = 4096
+        internal let dimensions: usize
+        protected var elements: Array<T>
+
+        // ─────────────────────────────────────────────
+        // Constructor and methods
+        // ─────────────────────────────────────────────
+        public function new(elements: Array<T>) -> Self {
+            this.dimensions = elements.length()
+            this.elements = elements.clone()
+
+            if this.dimensions > MAX_DIMENSIONS {
+                throw Error::new("Vector too large")
+            }
+        }
+
+        public function dot<U>(other: Vector<U>) -> T
+            where U: Numeric, T: From<U> {
+
+            var sum = T::zero()
+            for i in 0..this.dimensions {
+                sum += this.elements[i] * other.elements[i].into()
+            }
+            return sum
+        }
+
+        public function norm() -> T {
+            sqrt(this.dot(this))
+        }
+
+        public operator + (other: Vector<T>) -> Vector<T> {
+            let result_elements = Array::new(this.dimensions)
+            for i in 0..this.dimensions {
+                result_elements[i] = this.elements[i] + other.elements[i]
+            }
+            return Vector::new(result_elements)
+        }
+
+        public operator * (scalar: T) -> Vector<T> {
+            let result_elements = Array::new(this.dimensions)
+            for i in 0..this.dimensions {
+                result_elements[i] = this.elements[i] * scalar
+            }
+            return Vector::new(result_elements)
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Interface and trait definitions
+    // ─────────────────────────────────────────────
+    public interface LinearAlgebraic {
+        function norm() -> Self::Element
+        function transpose() -> Self
+        function is_orthogonal() -> bool
+    }
+
+    public trait Numeric: Add + Sub + Mul + Div + PartialOrd {
+        static function zero() -> Self
+        static function one() -> Self
+        function abs() -> Self
+        function sqrt() -> Self where Self: FloatLike
+    }
+
+    // ─────────────────────────────────────────────
+    // Enum with pattern matching
+    // ─────────────────────────────────────────────
+    public enum Result<T, E> {
+        Ok(T),
+        Err(E),
+        Pending(Option<T>),
+        Partial { value: T, completeness: f64 }
+    }
+
+    public function process_result<T, E>(result: Result<T, E>) -> Option<T> {
+        match result {
+            Result::Ok(value) => Some(value),
+            Result::Err(error) => {
+                log_error(error)
+                None
+            },
+            Result::Pending(maybe_value) => maybe_value,
+            Result::Partial { value, completeness } if completeness >= 0.8 => {
+                Some(value)
+            },
+            _ => None
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Complex expressions with units
+    // ─────────────────────────────────────────────
+    public function calculate_energy(
+        mass: 5.0kg,
+        velocity: 30.0m/s,
+        height: 10.0m
+    ) -> J {
+        // Kinetic energy: ½mv²
+        let kinetic = 0.5 * mass * velocity ** 2
+        // Potential energy: mgh
+        let potential = mass * 9.80665m/s² * height
+
+        kinetic + potential
+    }
+
+    public function quantum_operations() {
+        // Bra-ket notation inspired operations
+        let ψ = |0⟩ + |1⟩ / sqrt(2.0)  // Hadamard |+⟩ state
+        let φ = |0⟩⟨0| - |1⟩⟨1|        // Pauli Z operator
+
+        // Tensor product
+        let bell_state = (|00⟩ + |11⟩) / sqrt(2.0)
+
+        // Measurement
+        match measure(ψ) {
+            |0⟩ => println("Collapsed to |0⟩"),
+            |1⟩ => println("Collapsed to |1⟩"),
+            _   => println("Superposition maintained")
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Advanced control flow
+    // ─────────────────────────────────────────────
+    public function complex_algorithm(input: Array<f64>) -> Result<f64, String> {
+        defer {
+            cleanup_resources()
+            log("Algorithm execution completed")
+        }
+
+        try {
+            // Validate input
+            guard input.length() > 0 else {
+                throw ValidationError::new("Input cannot be empty")
+            }
+
+            // Async computation
+            let future_result = async compute_heavy_task(input)
+            let result = await future_result with timeout=10.0s
+
+            // Generator for progressive results
+            let generator = generate {
+                for chunk in input.chunks(100) {
+                    yield process_chunk(chunk)
+                }
+            }
+
+            // Parallel processing
+            let processed = parallel map generator using |x| x * 2.0
+
+            // Pipeline operations
+            let final_result = input
+                |> filter(|x| x > 0.0)
+                |> map(|x| log(x))
+                |> reduce(0.0, |acc, x| acc + x)
+                |> clamp(0.0..=100.0)
+
+            return Result::Ok(final_result)
+
+        } catch ValidationError as e {
+            return Result::Err(format("Validation failed: {}", e))
+        } catch TimeoutError {
+            return Result::Err("Computation timeout")
+        } finally {
+            release_memory()
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Pattern matching with complex patterns
+    // ─────────────────────────────────────────────
+    public function extract_data(value: Dynamic) -> Option<Data> {
+        match value {
+            // Nested patterns
+            Data::Matrix { rows, cols, data } if rows == cols => {
+                Some(Data::SquareMatrix { size: rows, data })
+            },
+
+            // Range patterns
+            Number(x) where x in 0.0..1.0 => Some(Data::Normalized(x)),
+            Number(x) where x in 1.0.. => Some(Data::Positive(x)),
+
+            // Type patterns with guard
+            String(s) as text if text.starts_with("data:") => {
+                parse_data_uri(text)
+            },
+
+            // List patterns
+            [first, second, ..rest] => {
+                Some(Data::Sequence([first, second] + rest.take(10)))
+            },
+
+            // Dictionary/object patterns
+            { type: "point", x, y, z } => {
+                Some(Data::Point3D(x, y, z))
+            },
+
+            // Wildcard with condition
+            _ if is_special_case(value) => handle_special(value),
+
+            // Default
+            _ => None
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Operator overloading and custom operators
+    // ─────────────────────────────────────────────
+    public operator ∙ (a: Vector<f64>, b: Vector<f64>) -> f64 {
+        // Dot product with custom operator
+        a.dot(b)
+    }
+
+    public operator ⊗ (a: Matrix, b: Matrix) -> Matrix {
+        // Tensor/Kronecker product
+        kronecker_product(a, b)
+    }
+
+    public operator × (a: Vector3D, b: Vector3D) -> Vector3D {
+        // Cross product
+        cross_product(a, b)
+    }
+
+    public operator ≈ (a: f64, b: f64) -> bool {
+        // Approximate equality
+        abs(a - b) < 1e-10
+    }
+
+    // ─────────────────────────────────────────────
+    // Compile-time and meta programming
+    // ─────────────────────────────────────────────
+    #[inline]
+    #[optimize(speed)]
+    #[cache]
+    public function fibonacci(n: usize) -> usize {
+        // Compile-time evaluation for constants
+        const FIB_20: usize = fib(20)  // Evaluated at compile time
+
+        if n <= 1 { return n }
+        return fibonacci(n - 1) + fibonacci(n - 2)
+    }
+
+    // Macro-like generation
+    generate function create_getters(fields: Array<Field>) {
+        for field in fields {
+            emit `public function get_${field.name}() -> ${field.type} {
+                return this.${field.name}
+            }`
+        }
+    }
+
+    // Reflection
+    public function inspect_type<T>() -> TypeInfo {
+        reflect T {
+            name: type_name,
+            size: sizeof,
+            alignment: alignof,
+            methods: get_methods,
+            fields: get_fields
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // String interpolation and templates
+    // ─────────────────────────────────────────────
+    public function generate_report(data: Data) -> String {
+        let timestamp = now()
+        let score = data.quality_score() * 100.0
+
+        return `Report generated at ${timestamp:%Y-%m-%d %H:%M:%S}
+
+        Data Summary:
+        • Size: ${data.size()} elements
+        • Quality: ${score:.1}%
+        • Checksum: ${data.checksum():#08x}
+
+        ${if data.is_valid() {
+            "✓ Data validation passed"
+        } else {
+            "✗ Data validation failed: ${data.errors().join(", ")}"
+        }}
+
+        Processed by: ${System::current_user()}@${System::hostname()}`
+    }
+
+    // ─────────────────────────────────────────────
+    // Complex mathematical expressions
+    // ─────────────────────────────────────────────
+    public function solve_quadratic(a: f64, b: f64, c: f64) -> Array<f64> {
+        let discriminant = b*b - 4.0*a*c
+
+        if discriminant ≈ 0.0 {
+            return [-b / (2.0*a)]
+        } else if discriminant > 0.0 {
+            let sqrt_disc = sqrt(discriminant)
+            return [
+                (-b + sqrt_disc) / (2.0*a),
+                (-b - sqrt_disc) / (2.0*a)
+            ]
+        } else {
+            let real = -b / (2.0*a)
+            let imag = sqrt(-discriminant) / (2.0*a)
+            return [complex(real, imag), complex(real, -imag)]
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Unit conversions and dimensional analysis
+    // ─────────────────────────────────────────────
+    public function convert_units(value: f64, from: Unit, to: Unit) -> f64 {
+        // Automatic dimensional analysis
+        let speed = 100km/h → m/s        // 27.7778 m/s
+        let energy = 500kJ → kWh         // 0.1389 kWh
+        let pressure = 101325Pa → atm    // 1.0 atm
+        let data_size = 1.5GiB → MB      // 1610.61 MB
+
+        return value * from.conversion_factor(to)
+    }
+
+    // ─────────────────────────────────────────────
+    // Async/await and concurrency
+    // ─────────────────────────────────────────────
+    public async function fetch_and_process(urls: Array<String>) -> Map<String, Data> {
+        let tasks = urls.map(|url| async {
+            let response = await http::get(url) with retries=3
+            let data = await response.json()
+            return (url, data)
+        })
+
+        let results = await all tasks concurrently limit=5
+
+        return results
+            |> filter(|(_, data)| data.is_valid())
+            |> map(|(url, data)| (url, transform_data(data)))
+            |> collect::<Map>()
+    }
+
+    // ─────────────────────────────────────────────
+    // Error handling with context
+    // ─────────────────────────────────────────────
+    public function robust_operation() -> Result<Output, Error> {
+        context "Processing critical data" {
+            condition network::is_available()
+                otherwise Error::NetworkUnavailable
+
+            condition filesystem::has_space(1GiB)
+                otherwise Error::InsufficientSpace
+
+            action {
+                let data = load_data()?
+                let processed = process(data)
+                    .map_error(|e| Error::ProcessingFailed(e))?
+
+                validate(processed)?
+                    .ok_or(Error::ValidationFailed)?
+
+                save_result(processed)
+            }
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // DSL and embedded languages
+    // ─────────────────────────────────────────────
+    public function define_workflow() -> Workflow {
+        workflow "Data Pipeline" {
+            stage "Extract" {
+                source: database::query("SELECT * FROM data"),
+                format: CSV,
+                validate: true
+            }
+
+            stage "Transform" {
+                map: |row| {
+                    row.timestamp = parse_time(row.date)
+                    row.value = normalize(row.value)
+                    return row
+                },
+                filter: |row| row.value > 0.0
+            }
+
+            stage "Load" {
+                target: warehouse::table("processed"),
+                mode: Append,
+                batch_size: 1000
+            }
+        }
+    }
+
+    public function define_shader() -> Shader {
+        shader {
+            input position: vec3
+            input normal: vec3
+            uniform model_view_proj: mat4
+
+            vertex {
+                gl_Position = model_view_proj * vec4(position, 1.0)
+                var world_normal = normalize(normal)
+            }
+
+            fragment {
+                let light_dir = normalize(vec3(1.0, 1.0, 1.0))
+                let intensity = max(dot(world_normal, light_dir), 0.0)
+                output_color = vec4(intensity, intensity, intensity, 1.0)
+            }
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Comments of all types
+    // ─────────────────────────────────────────────
+    /*
+     * This is a block comment spanning
+     * multiple lines with various
+     * /* nested */ comments inside
+     */
+
+    /// This is a documentation comment
+    /// for the following function
+    ///
+    /// # Examples
+    ///
+    /// ```mylang
+    /// let result = documented_function(42)
+    /// assert result == 84
+    /// ```
+    public function documented_function(x: i32) -> i32 {
+        // Regular line comment
+        x * 2  // Inline comment
+    }
+}
+
+// ─────────────────────────────────────────────
+// Global constants and type aliases
+// ─────────────────────────────────────────────
+public const MAX_BUFFER_SIZE: usize = 65536
+public const PI: f64 = 3.14159265358979323846
+public const SPEED_OF_LIGHT: f64 = 299792458m/s
+public const PLANCK_CONSTANT: f64 = 6.62607015e-34J⋅s
+
+public alias Matrix3x3 = Matrix<f64, 3, 3>
+public alias StringMap<V> = HashMap<String, V>
+public alias Callback<T> = function(T) -> T
+public alias AsyncResult<T> = Future<Result<T, Error>>
+
+// ─────────────────────────────────────────────
+// Final complex expression testing all operators
+// ─────────────────────────────────────────────
+public function ultimate_expression() -> Complex<f64> {
+    let a = 3.0 + 4.0i
+    let b = (1.0..10.0).sum()
+    let c = [1, 2, 3, 4, 5].map(|x| x ** 2).filter(|x| x % 2 == 0)
+
+    (a * b + c.fold(0, |acc, x| acc ⊕ x))
+        >> 2
+        & 0xFF
+        | 0x80
+        ^ 0x55
+        ~ complement
+        != previous_value
+        <= upper_bound
+        >= lower_bound
+        && condition1
+        || condition2
+        ?? defaultValue
+}
+
+/|\\ END OF TEST FILE
+/|\\ Total tokens: ~2500+
+/|\\ Covers: keywords, operators, literals, comments, strings, units, etc.
+/|\\ ==============================================================================

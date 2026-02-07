@@ -7,6 +7,12 @@ pub struct Position {
 	pub offset: usize,
 }
 
+impl Default for Position {
+	fn default() -> Self {
+		Self::start()
+	}
+}
+
 impl Position {
 	pub fn start() -> Self {
 		Self { line: 1, column: 1, offset: 0 }

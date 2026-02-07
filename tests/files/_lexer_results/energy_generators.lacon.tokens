@@ -1,0 +1,136 @@
+TYPE                                                    | LEXEME                                   | POSITION        | LINE START | WHITESPACE
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                                                     |                                          | 1:1:0           |            |           
+Keyword(Constant)                                       | const                                    | 1:1:0           | TRUE       |           
+Identifier                                              | generatorsData                           | 1:7:6           |            | TRUE      
+Operator(Equal)                                         | =                                        | 1:22:21         |            | TRUE      
+Identifier                                              | readData                                 | 1:24:23         |            | TRUE      
+Syntax(LeftParenthesis)                                 | (                                        | 1:32:31         |            |           
+Syntax(DoubleQuote)                                     | "                                        | 1:33:32         |            |           
+String                                                  | ./energy_generators.llacon               | 1:34:33         |            |           
+Syntax(DoubleQuote)                                     | "                                        | 1:60:59         |            |           
+Syntax(RightParenthesis)                                | )                                        | 1:61:60         |            |           
+Newline                                                 |                                          | 1:62:61         |            |           
+Newline                                                 |                                          | 2:1:62          |            |           
+Keyword(Public)                                         | public                                   | 3:1:63          | TRUE       |           
+Keyword(Function)                                       | function                                 | 3:8:70          |            | TRUE      
+Identifier                                              | registerGenerator                        | 3:17:79         |            | TRUE      
+Syntax(LeftParenthesis)                                 | (                                        | 3:34:96         |            |           
+Identifier                                              | generator                                | 3:35:97         |            |           
+Operator(Less)                                          | <                                        | 3:44:106        |            |           
+Identifier                                              | Dictionary                               | 3:45:107        |            |           
+Operator(Greater)                                       | >                                        | 3:55:117        |            |           
+Syntax(RightParenthesis)                                | )                                        | 3:56:118        |            |           
+Syntax(LeftBrace)                                       | {                                        | 3:58:120        |            | TRUE      
+Newline                                                 |                                          | 3:59:121        |            |           
+Identifier                                              | GameAPI                                  | 4:2:123         | TRUE       |           
+Operator(Dot)                                           | .                                        | 4:9:130         |            |           
+Identifier                                              | registerEntity                           | 4:10:131        |            |           
+Syntax(LeftParenthesis)                                 | (                                        | 4:24:145        |            |           
+Syntax(LeftBrace)                                       | {                                        | 4:25:146        |            |           
+Newline                                                 |                                          | 4:26:147        |            |           
+Keyword(Type)                                           | type                                     | 5:3:150         | TRUE       |           
+Operator(Colon)                                         | :                                        | 5:7:154         |            |           
+Identifier                                              | generator                                | 5:9:156         |            | TRUE      
+Syntax(LeftBracket)                                     | [                                        | 5:18:165        |            |           
+Syntax(DoubleQuote)                                     | "                                        | 5:19:166        |            |           
+String                                                  | entity-type                              | 5:20:167        |            |           
+Syntax(DoubleQuote)                                     | "                                        | 5:31:178        |            |           
+Syntax(RightBracket)                                    | ]                                        | 5:32:179        |            |           
+Syntax(Comma)                                           | ,                                        | 5:33:180        |            |           
+Newline                                                 |                                          | 5:34:181        |            |           
+Identifier                                              | name                                     | 6:3:184         | TRUE       |           
+Operator(Colon)                                         | :                                        | 6:7:188         |            |           
+Identifier                                              | generator                                | 6:9:190         |            | TRUE      
+Syntax(LeftBracket)                                     | [                                        | 6:18:199        |            |           
+Syntax(DoubleQuote)                                     | "                                        | 6:19:200        |            |           
+String                                                  | entity-name                              | 6:20:201        |            |           
+Syntax(DoubleQuote)                                     | "                                        | 6:31:212        |            |           
+Syntax(RightBracket)                                    | ]                                        | 6:32:213        |            |           
+Syntax(Comma)                                           | ,                                        | 6:33:214        |            |           
+Newline                                                 |                                          | 6:34:215        |            |           
+Identifier                                              | description                              | 7:3:218         | TRUE       |           
+Operator(Colon)                                         | :                                        | 7:14:229        |            |           
+Identifier                                              | generator                                | 7:16:231        |            | TRUE      
+Syntax(LeftBracket)                                     | [                                        | 7:25:240        |            |           
+Syntax(DoubleQuote)                                     | "                                        | 7:26:241        |            |           
+String                                                  | entity-description                       | 7:27:242        |            |           
+Syntax(DoubleQuote)                                     | "                                        | 7:45:260        |            |           
+Syntax(RightBracket)                                    | ]                                        | 7:46:261        |            |           
+Operator(QuestionQuestion)                              | ??                                       | 7:48:263        |            | TRUE      
+Syntax(DoubleQuote)                                     | "                                        | 7:51:266        |            | TRUE      
+String                                                  | Описание отсутствует                     | 7:52:267        |            |           
+Syntax(DoubleQuote)                                     | "                                        | 7:72:306        |            |           
+Syntax(Comma)                                           | ,                                        | 7:73:307        |            |           
+Newline                                                 |                                          | 7:74:308        |            |           
+Identifier                                              | energy                                   | 8:3:311         | TRUE       |           
+Operator(Colon)                                         | :                                        | 8:9:317         |            |           
+Identifier                                              | generator                                | 8:11:319        |            | TRUE      
+Operator(Dot)                                           | .                                        | 8:20:328        |            |           
+Identifier                                              | energy                                   | 8:21:329        |            |           
+Syntax(Comma)                                           | ,                                        | 8:27:335        |            |           
+Newline                                                 |                                          | 8:28:336        |            |           
+Identifier                                              | craft                                    | 9:3:339         | TRUE       |           
+Operator(Colon)                                         | :                                        | 9:8:344         |            |           
+Identifier                                              | generator                                | 9:10:346        |            | TRUE      
+Operator(Dot)                                           | .                                        | 9:19:355        |            |           
+Identifier                                              | craft                                    | 9:20:356        |            |           
+Syntax(Comma)                                           | ,                                        | 9:25:361        |            |           
+Newline                                                 |                                          | 9:26:362        |            |           
+Identifier                                              | craftTime                                | 10:3:365        | TRUE       |           
+Operator(Colon)                                         | :                                        | 10:12:374       |            |           
+Identifier                                              | generator                                | 10:14:376       |            | TRUE      
+Syntax(LeftBracket)                                     | [                                        | 10:23:385       |            |           
+Syntax(DoubleQuote)                                     | "                                        | 10:24:386       |            |           
+String                                                  | craft-time                               | 10:25:387       |            |           
+Syntax(DoubleQuote)                                     | "                                        | 10:35:397       |            |           
+Syntax(RightBracket)                                    | ]                                        | 10:36:398       |            |           
+Syntax(Comma)                                           | ,                                        | 10:37:399       |            |           
+Newline                                                 |                                          | 10:38:400       |            |           
+Identifier                                              | cost                                     | 11:3:403        | TRUE       |           
+Operator(Colon)                                         | :                                        | 11:7:407        |            |           
+Identifier                                              | generator                                | 11:9:409        |            | TRUE      
+Operator(Dot)                                           | .                                        | 11:18:418       |            |           
+Identifier                                              | cost                                     | 11:19:419       |            |           
+Syntax(Comma)                                           | ,                                        | 11:23:423       |            |           
+Newline                                                 |                                          | 11:24:424       |            |           
+Identifier                                              | size                                     | 12:3:427        | TRUE       |           
+Operator(Colon)                                         | :                                        | 12:7:431        |            |           
+Identifier                                              | generator                                | 12:9:433        |            | TRUE      
+Operator(Dot)                                           | .                                        | 12:18:442       |            |           
+Identifier                                              | size                                     | 12:19:443       |            |           
+Syntax(Comma)                                           | ,                                        | 12:23:447       |            |           
+Newline                                                 |                                          | 12:24:448       |            |           
+Identifier                                              | weight                                   | 13:3:451        | TRUE       |           
+Operator(Colon)                                         | :                                        | 13:9:457        |            |           
+Identifier                                              | generator                                | 13:11:459       |            | TRUE      
+Operator(Dot)                                           | .                                        | 13:20:468       |            |           
+Identifier                                              | weight                                   | 13:21:469       |            |           
+Syntax(Comma)                                           | ,                                        | 13:27:475       |            |           
+Newline                                                 |                                          | 13:28:476       |            |           
+Identifier                                              | durability                               | 14:3:479        | TRUE       |           
+Operator(Colon)                                         | :                                        | 14:13:489       |            |           
+Identifier                                              | generator                                | 14:15:491       |            | TRUE      
+Operator(Dot)                                           | .                                        | 14:24:500       |            |           
+Identifier                                              | durability                               | 14:25:501       |            |           
+Newline                                                 |                                          | 14:35:511       |            |           
+Syntax(RightBrace)                                      | }                                        | 15:2:513        | TRUE       |           
+Syntax(RightParenthesis)                                | )                                        | 15:3:514        |            |           
+Newline                                                 |                                          | 15:4:515        |            |           
+Syntax(RightBrace)                                      | }                                        | 16:1:516        | TRUE       |           
+Newline                                                 |                                          | 16:2:517        |            |           
+Newline                                                 |                                          | 17:1:518        |            |           
+Keyword(For)                                            | for                                      | 18:1:519        | TRUE       |           
+Identifier                                              | gen                                      | 18:5:523        |            | TRUE      
+Keyword(In)                                             | in                                       | 18:9:527        |            | TRUE      
+Identifier                                              | generatorsData                           | 18:12:530       |            | TRUE      
+Syntax(LeftBrace)                                       | {                                        | 18:27:545       |            | TRUE      
+Newline                                                 |                                          | 18:28:546       |            |           
+Identifier                                              | registerGenerator                        | 19:2:548        | TRUE       |           
+Syntax(LeftParenthesis)                                 | (                                        | 19:19:565       |            |           
+Identifier                                              | gen                                      | 19:20:566       |            |           
+Syntax(RightParenthesis)                                | )                                        | 19:23:569       |            |           
+Newline                                                 |                                          | 19:24:570       |            |           
+Syntax(RightBrace)                                      | }                                        | 20:1:571        | TRUE       |           
+Newline                                                 |                                          | 20:2:572        |            |           
+EOF                                                     |                                          | 21:1:573        |            |           

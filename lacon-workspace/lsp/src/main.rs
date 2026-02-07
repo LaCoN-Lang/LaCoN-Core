@@ -81,7 +81,7 @@ fn main() -> io::Result<()> {
 						json!({
 										"token_type": format!("{:?}", t.token_kind),
 										"lexeme": t.lexeme,
-										"literal": t.literal,
+										"literal": t.lexeme,
 										"position": t.position.to_string(),
 										"flags": t.flags.bits() as u32,
 										"dimension": dimension

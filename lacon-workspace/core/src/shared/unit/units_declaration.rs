@@ -24,6 +24,14 @@ pub static UNITS: &[UnitDef] = units_array![
 								UnitProps::DEFAULT,
 				),
 				UnitDef::new(
+								"lb",
+								UnitKind::Mass,
+								None,
+								PrefixGroup::SI,
+								PrefixGroup::SI,
+								UnitProps { scale: 0.45359237, ..UnitProps::DEFAULT },
+				),
+				UnitDef::new(
 								"m",
 								UnitKind::Length,
 								None,
@@ -842,6 +850,7 @@ pub static UNITS: &[UnitDef] = units_array![
 				),
 ];
 
+#[derive(Debug)]
 pub struct UnitContext<'arena> {
 	pub arena: &'arena UnitArena,
 	pub tree: UnitTree,

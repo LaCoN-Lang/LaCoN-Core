@@ -1,7 +1,7 @@
 use thiserror::Error;
 
 #[derive(Debug, Clone, Error)]
-pub enum ErrorType {
+pub enum ErrorKind {
 	#[error("Unknown error")]
 	Unknown,
 	#[error("Lexical error: {0}")]
@@ -34,8 +34,8 @@ pub enum LexicalError {
 
 #[derive(Debug, Clone, Error)]
 pub enum SyntaxError {
-	#[error("Expected {expected}, found {found:?}")]
-	Expected { expected: String, found: Vec<String> },
+	#[error("Expected {expected}, found {found}")]
+	Expected { expected: &'static str, found: &'static str },
 	// UnexpectedToken,
 	// MissingToken,
 	// InvalidExpression,

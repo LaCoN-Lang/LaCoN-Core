@@ -1,8 +1,8 @@
 #[macro_use]
 mod definition;
 
-pub mod formulas;
-pub mod prefixes;
+mod formulas;
+mod prefixes;
 
 mod arena;
 mod impls;
