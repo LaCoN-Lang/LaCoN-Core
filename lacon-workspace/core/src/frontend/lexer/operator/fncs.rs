@@ -11,7 +11,7 @@ pub fn match_operator(tail: &[u8]) -> OpMatch {
 		};
 	}
 	use OperatorKind::*;
-	use TokenKind::{BlockComment, LineComment, Operator};
+	use TokenKind::{BlockComment, LineComment, Operator, Underscore};
 
 	let c1 = &tail[0..1];
 	let c2 = if tail.len() > 1 { Some(&tail[1..2]) } else { None };
@@ -153,6 +153,7 @@ pub fn match_operator(tail: &[u8]) -> OpMatch {
 			Some(b"=") => (Operator(TildeEqual), 1),
 			_ => (Operator(Tilde), 0),
 		},
+		b"_" => (Underscore, 0),
 
 		// Unicode Single-char Match
 		MULTIPLICATION_SIGN => (Operator(Multiplication), 0),

@@ -182,6 +182,21 @@ impl<'src> Scanner<'src> {
 				}
 			}
 
+			b'-' | b'_' => {
+				let next = self.first();
+				let is_id = if c == b'_' {
+					next == b'_' || (next >= b'0' && next <= b'9') || (next | 32 >= b'a' && next | 32 <= b'z') || next >= 128
+				} else {
+					(next >= b'0' && next <= b'9') || (next | 32 >= b'a' && next | 32 <= b'z') || next >= 128
+				};
+
+				if is_id {
+					self.scan_identifier();
+				} else {
+					self.handle_operator(c);
+				}
+			}
+
 			b'0'..=b'9' => self.scan_number(),
 			b'n' => self.process_unit_suffix(b"n"),
 
@@ -191,6 +206,10 @@ impl<'src> Scanner<'src> {
 
 			_ => self.handle_operator(c),
 		}
+	}
+	#[inline(always)]
+	fn peek(&self, offset: usize) -> u8 {
+		self.source.get(self.current + offset).copied().unwrap_or(EOF_CHAR)
 	}
 
 	#[inline(always)]
@@ -272,7 +291,6 @@ impl<'src> Scanner<'src> {
 		if let Some(rest) = source.get(start_idx..) {
 			for &b in rest {
 				if b < 128 {
-					// Основной путь: ASCII символы
 					if (ASCII_CONTINUE & (1 << b)) != 0 {
 						curr_idx += 1;
 						continue;

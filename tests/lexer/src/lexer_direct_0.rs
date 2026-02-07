@@ -75,6 +75,7 @@ mod lexer_tests {
 		println!("РЕЗУЛЬТАТЫ БЕНЧМАРКА:");
 		println!("Всего токенов (Σ):  {}", total_tokens);
 		println!("Всего байт (Σ):    {}", total_bytes);
+		println!("Всего строк (Σ):   {}", total_lines);
 		println!("Среднее токенов/итерацию: {:.2}", actual_avg_tokens);
 		println!("----------------------------------------");
 		println!("ПРОИЗВОДИТЕЛЬНОСТЬ:");

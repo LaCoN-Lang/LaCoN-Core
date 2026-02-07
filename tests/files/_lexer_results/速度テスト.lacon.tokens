@@ -664,7 +664,7 @@ POSITION        | TYPE                                                    | LEXE
 90:14:2653      | Syntax(LeftBrace)                                       | {                                        |            |           
 90:15:2654      | Identifier                                              | サイズ                                      |            |           
 90:18:2663      | Syntax(RightBrace)                                      | }                                        |            |           
-90:19:2664      | Unknown                                                 | _                                        |            |           
+90:19:2664      | Underscore                                              | _                                        |            |           
 90:20:2665      | Syntax(Dollar)                                          | $                                        |            |           
 90:21:2666      | Syntax(LeftBrace)                                       | {                                        |            |           
 90:22:2667      | Identifier                                              | 種類                                       |            |           
@@ -688,8 +688,7 @@ POSITION        | TYPE                                                    | LEXE
 93:20:2752      | Syntax(LeftBrace)                                       | {                                        |            |           
 93:21:2753      | Identifier                                              | サイズ                                      |            |           
 93:24:2762      | Syntax(RightBrace)                                      | }                                        |            |           
-93:25:2763      | Unknown                                                 | _                                        |            |           
-93:26:2764      | Identifier                                              | 文字                                       |            |           
+93:25:2763      | Identifier                                              | _文字                                      |            |           
 93:28:2770      | Newline                                                 |                                          |            |           
 94:1:2771       | Syntax(RightBrace)                                      |     }                                    | TRUE       |           
 94:6:2776       | Newline                                                 |                                          |            |           
@@ -751,7 +750,7 @@ POSITION        | TYPE                                                    | LEXE
 100:13:2930     | Syntax(LeftBrace)                                       | {                                        |            |           
 100:14:2931     | Identifier                                              | 色                                        |            |           
 100:15:2934     | Syntax(RightBrace)                                      | }                                        |            |           
-100:16:2935     | Unknown                                                 | _                                        |            |           
+100:16:2935     | Underscore                                              | _                                        |            |           
 100:17:2936     | Syntax(Dollar)                                          | $                                        |            |           
 100:18:2937     | Syntax(LeftBrace)                                       | {                                        |            |           
 100:19:2938     | Identifier                                              | 明度                                       |            |           
@@ -828,7 +827,7 @@ POSITION        | TYPE                                                    | LEXE
 109:13:3135     | Syntax(LeftBrace)                                       | {                                        |            |           
 109:14:3136     | Identifier                                              | 方向                                       |            |           
 109:16:3142     | Syntax(RightBrace)                                      | }                                        |            |           
-109:17:3143     | Unknown                                                 | _                                        |            |           
+109:17:3143     | Underscore                                              | _                                        |            |           
 109:18:3144     | Syntax(Dollar)                                          | $                                        |            |           
 109:19:3145     | Syntax(LeftBrace)                                       | {                                        |            |           
 109:20:3146     | Identifier                                              | 位置                                       |            |           
@@ -6610,7 +6609,7 @@ POSITION        | TYPE                                                    | LEXE
 1017:15:29294   | Syntax(LeftBrace)                                       | {                                        |            |           
 1017:16:29295   | Identifier                                              | 方向                                       |            |           
 1017:18:29301   | Syntax(RightBrace)                                      | }                                        |            |           
-1017:19:29302   | Unknown                                                 | _                                        |            |           
+1017:19:29302   | Underscore                                              | _                                        |            |           
 1017:20:29303   | Syntax(Dollar)                                          | $                                        |            |           
 1017:21:29304   | Syntax(LeftBrace)                                       | {                                        |            |           
 1017:22:29305   | Identifier                                              | 兵器                                       |            |           
