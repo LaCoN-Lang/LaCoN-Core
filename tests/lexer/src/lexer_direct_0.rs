@@ -1,65 +1,16 @@
-use std::path::PathBuf;
-
-fn workspace_root() -> PathBuf {
-	let mut dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-
-	loop {
-		let cargo = dir.join("Cargo.toml");
-		if cargo.exists() {
-			if std::fs::read_to_string(&cargo).map(|s| s.contains("[workspace]")).unwrap_or(false) {
-				return dir;
-			}
-		}
-		dir.pop();
-	}
-}
-
 const FILE_STRINGS_BIG: &str = include_str!("../../files/big.lacon");
-
-// #[cfg(test)]
-// mod single_test {
-// 	use super::{FILE_STRINGS_BIG, workspace_root};
-// 	use lacon_core::frontend::lexer::Scanner;
-// 	use lacon_core::shared::{ErrorStorage, UnitArena, UnitContext};
-
-// 	#[allow(dead_code, unused_imports)]
-// 	use flame as f;
-// 	use flamer::flame;
-// 	use std::fs::File;
-
-// 	#[test]
-// 	fn compare_simple_vs_complex() {
-// 		let mut error_store = ErrorStorage::new();
-// 		let source_str = FILE_STRINGS_BIG;
-// 		let arena = UnitArena::new();
-// 		let ctx = UnitContext::new(&arena);
-// 		flame::start("profile performance");
-// 		let mut scanner = Scanner::new(&source_str, &ctx, &mut error_store);
-// 		scanner.scan_tokens();
-// 		flame::end("profile performance");
-// 		let path = workspace_root().join("tests").join("_logs").join("single.json");
-// 		flame::dump_json(&mut File::create(path).unwrap()).unwrap();
-// 	}
-// }
 
 #[cfg(test)]
 mod lexer_tests {
 	// use super::super::big_strings::FILE_STRINGS_BIG;
 	use super::FILE_STRINGS_BIG;
-	use super::workspace_root;
-	use lacon_core::frontend::lexer::Scanner;
+	use lacon_core::frontend::lexer::{Scanner, TokenKind};
 	use lacon_core::shared::{ErrorReporter, ErrorStorage, UnitArena, UnitContext};
 	use memory_stats::memory_stats;
 	use std::time::Instant;
 
-	#[allow(dead_code, unused_imports)]
-	use flame as f;
-	use flamer::flame;
-	use std::fs::File;
-
 	#[test]
 	fn lexer_speed_test_full() {
-		flame::start("profile performance");
 		let mut error_store = ErrorStorage::new();
 
 		let arena = UnitArena::new();
@@ -91,12 +42,14 @@ mod lexer_tests {
 		let mem_before = memory_stats().map_or(0, |m| m.physical_mem);
 		let start_time = Instant::now();
 		let mut total_tokens = 0;
+		let mut total_lines = 0;
 
 		for _ in 0..iters_to_run {
 			scanner.reset(source_bytes);
 
 			let tokens = scanner.scan_tokens();
 			total_tokens += tokens.len();
+			total_lines += tokens.iter().filter(|t| t.kind == TokenKind::Newline).count();
 
 			std::hint::black_box(tokens);
 		}
@@ -109,8 +62,9 @@ mod lexer_tests {
 		let actual_avg_tokens = total_tokens as f64 / iters_to_run as f64;
 		let duration_secs = duration.as_secs_f64();
 
-		let byte_speed = if duration_secs > 0.0 { (total_bytes as f64 / 1_000_000.0) / duration_secs } else { 0.0 };
+		let byte_speed = if duration_secs > 0.0 { (total_bytes as f64 / 1_048_576.0) / duration_secs } else { 0.0 };
 		let token_speed = if duration_secs > 0.0 { (total_tokens as f64 / 1_000_000.0) / duration_secs } else { 0.0 };
+		let lines_speed = if duration_secs > 0.0 { (total_lines as f64 / 1_000_000.0) / duration_secs } else { 0.0 };
 
 		println!("========================================");
 		println!("ТЕСТОВЫЕ ДАННЫЕ (u8 MODE):");
@@ -129,6 +83,7 @@ mod lexer_tests {
 		println!("Память (diff):      {:.2}MB", (mem_after as f64 - mem_before as f64) / 1024.0 / 1024.0);
 		println!("СКОРОСТЬ (MiB/s):   {:.2} млн байт/сек", byte_speed);
 		println!("СКОРОСТЬ (токены):  {:.2} млн/сек", token_speed);
+		println!("СКОРОСТЬ (строки):  {:.2} млн/сек", lines_speed);
 		println!("========================================\n");
 
 		for (index, error) in error_store.all().iter().enumerate() {
@@ -136,12 +91,6 @@ mod lexer_tests {
 				break;
 			}
 			ErrorReporter::Console.report(&error.error);
-		}
-
-		flame::end("profile performance");
-		let path = workspace_root().join("tests").join("_logs").join("full.json");
-		if let Ok(mut file) = File::create(path) {
-			let _ = flame::dump_json(&mut file);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-use super::{SyntaxKind, Token, TokenKind, get_keyword_token, match_operator};
+use super::{KeywordKind, SyntaxKind, Token, TokenKind, match_operator};
 use crate::shared::{Error, ErrorFlag, ErrorKind, ErrorStorage, LexicalError, Position, UnitContext, UnitKind};
 
 const ASCII_START: u128 = 0x7fffffe07fffffe0000000000000000;
@@ -280,7 +280,8 @@ impl<'src> Scanner<'src> {
 		}
 
 		let text = &self.source[self.start..self.current];
-		let t_type = get_keyword_token(text).map_or(TokenKind::Identifier, TokenKind::Keyword);
+		let t_type = KeywordKind::from_bytes(text).map(TokenKind::Keyword).unwrap_or(TokenKind::Identifier);
+		// let t_type = get_keyword_token(text).map_or(TokenKind::Identifier, TokenKind::Keyword);
 
 		let is_start = self.is_at_line_start;
 		if is_start {
