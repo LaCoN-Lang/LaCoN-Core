@@ -194,11 +194,6 @@ impl<'src> Scanner<'src> {
 	}
 
 	#[inline(always)]
-	fn peek(&self, offset: usize) -> u8 {
-		self.source.get(self.current + offset).copied().unwrap_or(EOF_CHAR)
-	}
-
-	#[inline(always)]
 	fn first(&self) -> u8 {
 		self.source.get(self.current).copied().unwrap_or(EOF_CHAR)
 	}
@@ -268,63 +263,56 @@ impl<'src> Scanner<'src> {
 	}
 
 	fn scan_identifier(&mut self) {
-		let mut char_count = 0;
-		let mut has_utf8 = false;
+		let source = self.source;
+		let total_len = source.len();
+		let start_idx = self.current;
+		let mut curr_idx = start_idx;
+		let mut utf8_check = 0u8;
 
-		let source_len = self.source.len();
+		if let Some(rest) = source.get(start_idx..) {
+			for &b in rest {
+				if b < 128 {
+					// Основной путь: ASCII символы
+					if (ASCII_CONTINUE & (1 << b)) != 0 {
+						curr_idx += 1;
+						continue;
+					}
 
-		while self.current < source_len {
-			let b = self.source[self.current];
-
-			if b < 128 {
-				if (ASCII_CONTINUE & (1 << b)) != 0 {
-					self.current += 1;
-				} else if b == b'-' {
-					if self.current + 1 < source_len {
-						let next = self.source[self.current + 1];
-						if next != b'>' && self.is_identifier_continue(next) {
-							self.current += 1;
-							continue;
+					if b == b'-' {
+						let next_idx = curr_idx + 1;
+						if next_idx < total_len {
+							let next = unsafe { *source.get_unchecked(next_idx) };
+							if next != b'>' && (next >= 128 || (ASCII_CONTINUE & (1 << next)) != 0) {
+								curr_idx += 1;
+								continue;
+							}
 						}
 					}
 					break;
 				} else {
-					break;
+					utf8_check |= b;
+					curr_idx += 1;
 				}
-			} else {
-				self.current += 1;
-				has_utf8 = true;
 			}
 		}
 
-		let text = &self.source[self.start..self.current];
+		let text_len = curr_idx - self.start;
+		let text = &source[self.start..curr_idx];
+		self.current = curr_idx;
 
-		if !has_utf8 {
-			char_count = text.len();
-		} else {
-			char_count = text.iter().filter(|&&b| (b & 0xC0) != 0x80).count();
-		}
+		let char_count = if utf8_check < 128 { text.len() } else { text.iter().filter(|&&b| (b & 0xC0) != 0x80).count() };
 
-		self.position.offset = self.start_position.offset + text.len();
+		self.position.offset = self.start_position.offset + text_len;
 		self.position.column = self.start_position.column + char_count;
 
 		let t_type = KeywordKind::from_bytes(text).map(TokenKind::Keyword).unwrap_or(TokenKind::Identifier);
 
-		let is_start = if self.is_at_line_start {
-			self.is_at_line_start = false;
-			true
-		} else {
-			false
-		};
-
+		let is_start = self.is_at_line_start;
 		let has_ws = self.had_whitespace;
+		self.is_at_line_start = false;
 		self.had_whitespace = false;
 
 		self.tokens.push(Token::new(t_type, is_start, has_ws, Some(text), self.start_position));
-	}
-	#[inline(always)]
-	fn is_identifier_continue(&self, b: u8) -> bool {
-		if b < 128 { b != 0 && (ASCII_CONTINUE & (1 << b)) != 0 } else { true }
 	}
 
 	fn scan_number(&mut self) {
