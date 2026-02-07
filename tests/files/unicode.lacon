@@ -1,0 +1,4 @@
+let カタカナ = 'Katakana';
+let ひらがな = 'Hiragana';
+let 漢字 = 'Kanji';
+let ᠮᠥᠨᠭᠥᠯᠢᠠ = 'Mongolian';

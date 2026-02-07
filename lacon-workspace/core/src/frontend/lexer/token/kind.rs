@@ -37,7 +37,8 @@ pub enum TokenKind {
 	// ─────────────────────────────────────────────
 	// Литералы и идентификаторы
 	// ─────────────────────────────────────────────
-	Identifier,             // name \\ Identifier
+	Identifier,
+	// Identifier(crate::frontend::lexer::Symbol), // name \\ Identifier
 	Keyword(KeywordKind),   // let \\ Keyword
 	Operator(OperatorKind), // + \\ Operator
 	Syntax(SyntaxKind),     // ( \\ Syntax

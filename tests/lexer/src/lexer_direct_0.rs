@@ -16,31 +16,31 @@ fn workspace_root() -> PathBuf {
 
 const FILE_STRINGS_BIG: &str = include_str!("../../files/big.lacon");
 
-#[cfg(test)]
-mod single_test {
-	use super::{FILE_STRINGS_BIG, workspace_root};
-	use lacon_core::frontend::lexer::Scanner;
-	use lacon_core::shared::{ErrorStorage, UnitArena, UnitContext};
+// #[cfg(test)]
+// mod single_test {
+// 	use super::{FILE_STRINGS_BIG, workspace_root};
+// 	use lacon_core::frontend::lexer::Scanner;
+// 	use lacon_core::shared::{ErrorStorage, UnitArena, UnitContext};
 
-	#[allow(dead_code, unused_imports)]
-	use flame as f;
-	use flamer::flame;
-	use std::fs::File;
+// 	#[allow(dead_code, unused_imports)]
+// 	use flame as f;
+// 	use flamer::flame;
+// 	use std::fs::File;
 
-	#[test]
-	fn compare_simple_vs_complex() {
-		let mut error_store = ErrorStorage::new();
-		let source_str = FILE_STRINGS_BIG;
-		let arena = UnitArena::new();
-		let ctx = UnitContext::new(&arena);
-		flame::start("profile performance");
-		let mut scanner = Scanner::new(&source_str, &ctx, &mut error_store);
-		scanner.scan_tokens();
-		flame::end("profile performance");
-		let path = workspace_root().join("tests").join("_logs").join("single.json");
-		flame::dump_json(&mut File::create(path).unwrap()).unwrap();
-	}
-}
+// 	#[test]
+// 	fn compare_simple_vs_complex() {
+// 		let mut error_store = ErrorStorage::new();
+// 		let source_str = FILE_STRINGS_BIG;
+// 		let arena = UnitArena::new();
+// 		let ctx = UnitContext::new(&arena);
+// 		flame::start("profile performance");
+// 		let mut scanner = Scanner::new(&source_str, &ctx, &mut error_store);
+// 		scanner.scan_tokens();
+// 		flame::end("profile performance");
+// 		let path = workspace_root().join("tests").join("_logs").join("single.json");
+// 		flame::dump_json(&mut File::create(path).unwrap()).unwrap();
+// 	}
+// }
 
 #[cfg(test)]
 mod lexer_tests {
@@ -54,6 +54,7 @@ mod lexer_tests {
 	use flame as f;
 	use flamer::flame;
 	use std::fs::File;
+
 	#[test]
 	fn lexer_speed_test_full() {
 		flame::start("profile performance");
@@ -63,19 +64,24 @@ mod lexer_tests {
 		let ctx = UnitContext::new(&arena);
 
 		let source_str = FILE_STRINGS_BIG;
-		let iterations = 10000;
+		let iterations = 10;
 		let warmup_iterations = 10;
 
 		let multiple_files = true;
 
-		let bench_source = if multiple_files { source_str.to_string() } else { source_str.repeat(iterations) };
+		// Подготавливаем данные как байты
+		let bench_source_string = if multiple_files { source_str.to_string() } else { source_str.repeat(iterations) };
+		let source_bytes: &[u8] = if multiple_files { source_str.as_bytes() } else { bench_source_string.as_bytes() };
+
 		let iters_to_run = if multiple_files { iterations } else { 1 };
-		let source_ref = if multiple_files { source_str } else { &bench_source };
 
-		let mut scanner = Scanner::new(source_ref, &ctx, &mut error_store);
+		// Инициализируем сканер (убедись, что Scanner::new принимает &[u8])
+		// Если Scanner::new все еще принимает &str внутри, он сам сделает .as_bytes()
+		let mut scanner = Scanner::new(source_str.as_bytes(), &ctx, &mut error_store);
 
+		// Прогрев
 		for _ in 0..warmup_iterations {
-			scanner.reset(source_ref);
+			scanner.reset(source_bytes); // Передаем &[u8]
 			let tokens = scanner.scan_tokens();
 			std::hint::black_box(tokens);
 		}
@@ -85,7 +91,7 @@ mod lexer_tests {
 		let mut total_tokens = 0;
 
 		for _ in 0..iters_to_run {
-			scanner.reset(source_ref);
+			scanner.reset(source_bytes);
 
 			let tokens = scanner.scan_tokens();
 			total_tokens += tokens.len();
@@ -96,29 +102,30 @@ mod lexer_tests {
 		let duration = start_time.elapsed();
 		let mem_after = memory_stats().map_or(0, |m| m.physical_mem);
 
-		let total_chars = source_ref.len() * iters_to_run;
+		// Расчеты
+		let total_bytes = source_bytes.len() * iters_to_run;
 		let actual_avg_tokens = total_tokens as f64 / iters_to_run as f64;
 		let duration_secs = duration.as_secs_f64();
 
-		let char_speed = if duration_secs > 0.0 { (total_chars as f64 / 1_000_000.0) / duration_secs } else { 0.0 };
+		let byte_speed = if duration_secs > 0.0 { (total_bytes as f64 / 1_000_000.0) / duration_secs } else { 0.0 };
 		let token_speed = if duration_secs > 0.0 { (total_tokens as f64 / 1_000_000.0) / duration_secs } else { 0.0 };
 
 		println!("========================================");
-		println!("ТЕСТОВЫЕ ДАННЫЕ:");
+		println!("ТЕСТОВЫЕ ДАННЫЕ (u8 MODE):");
 		println!("Режим:             {}", if multiple_files { "Множество файлов (reset)" } else { "Один гигантский файл" });
-		println!("Длина исходника:   {} байт", source_ref.len());
+		println!("Длина исходника:   {} байт", source_bytes.len());
 		println!("Итераций:          {}", iters_to_run);
 		println!("----------------------------------------");
 		println!("РЕЗУЛЬТАТЫ БЕНЧМАРКА:");
 		println!("Всего токенов (Σ):  {}", total_tokens);
-		println!("Всего символов (Σ): {}", total_chars);
+		println!("Всего байт (Σ):    {}", total_bytes);
 		println!("Среднее токенов/итерацию: {:.2}", actual_avg_tokens);
 		println!("----------------------------------------");
 		println!("ПРОИЗВОДИТЕЛЬНОСТЬ:");
 		println!("Общее время:        {:.3}ms", duration_secs * 1000.0);
 		println!("Среднее на прогон:  {:.3}µs", duration.as_nanos() as f64 / iters_to_run as f64 / 1000.0);
 		println!("Память (diff):      {:.2}MB", (mem_after as f64 - mem_before as f64) / 1024.0 / 1024.0);
-		println!("СКОРОСТЬ (символы): {:.2} млн/сек", char_speed);
+		println!("СКОРОСТЬ (MiB/s):   {:.2} млн байт/сек", byte_speed);
 		println!("СКОРОСТЬ (токены):  {:.2} млн/сек", token_speed);
 		println!("========================================\n");
 

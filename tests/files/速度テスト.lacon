@@ -1,0 +1,1037 @@
+// 速度テストファイル - パーサーのベンチマーク用
+// 日本語識別子とストリングのみを使用
+
+const 最小整数値<Int8> = 127
+const 最大符号無整数<UInt8> = 255
+const 最大整数値<Int16> = 32767
+const 符号無最大値<UInt16> = 65535
+const 通常整数<Int32> = 2147483647
+const 長整数値<Int64> = 9223372036854775807
+
+const 電力量<ElectricPower> = 150kW
+const 発電機出力<ElectricPower> = 250kW
+const 補助電源<ElectricPower> = 50kW
+const 予備電力<ElectricPower> = 75kW
+const 最大電力<ElectricPower> = 500kW
+
+const 次元数<Dimension> = 3D
+const 平面次元<Dimension> = 2D
+const 空間次元<Dimension> = 4D
+const 時空次元<Dimension> = 5D
+
+const 燃料エネルギー<Energy> = 2.5MJ
+const 運動エネルギー<Energy> = 1.8MJ
+const 位置エネルギー<Energy> = 3.2MJ
+const 熱エネルギー<Energy> = 4.1MJ
+const 化学エネルギー<Energy> = 5.7MJ
+
+const 室温<Temperature> = 25°C
+const 沸点<Temperature> = 100°C
+const 融点<Temperature> = 0°C
+const 絶対零度<Temperature> = 0K
+const 高温<Temperature> = 500K
+const 超高温<Temperature> = 1000K
+
+const 抵抗値<ElectricResistance> = 10_000MΩ
+const 低抵抗<ElectricResistance> = 100kΩ
+const 高抵抗<ElectricResistance> = 50000kΩ
+const 超抵抗<ElectricResistance> = 100_000MΩ
+
+const 面積<Area> = 73.14m2
+const 小面積<Area> = 25.5m2
+const 大面積<Area> = 150.75m2
+const 超大面積<Area> = 500.0m2
+
+const 体積<Volume> = 15m3
+const 小体積<Volume> = 5m3
+const 大体積<Volume> = 50m3
+const 超大体積<Volume> = 200m3
+
+const 質量<Mass> = 100kg
+const 軽量<Mass> = 10kg
+const 重量<Mass> = 500kg
+const 超重量<Mass> = 2000kg
+
+const 長さ<Length> = 10m
+const 幅<Length> = 5m
+const 高さ<Length> = 3m
+const 奥行き<Length> = 7m
+
+const 時間間隔<Time> = 60s
+const 短時間<Time> = 10s
+const 長時間<Time> = 300s
+const 超長時間<Time> = 3600s
+
+const 速度<Velocity> = 100m/s
+const 低速<Velocity> = 10m/s
+const 高速<Velocity> = 500m/s
+const 超高速<Velocity> = 1000m/s
+
+generate (0x3042 .. 0x3093) as local let 文字コード {
+  yield 平仮名_${文字コード} {
+    char \u{${文字コード}}
+  }
+}
+
+generate (0x30A2 .. 0x30F3) as local let 片仮名コード {
+  yield 片仮名_${片仮名コード} {
+    char \u{${片仮名コード}}
+  }
+}
+
+generate (0x4E00 .. 0x4E50) as local let 漢字コード {
+  yield 漢字_${漢字コード} {
+    char \u{${漢字コード}}
+  }
+}
+
+spread (['大', '小'], ['文字', '数字', '記号']) as let (サイズ, 種類) {
+  local const コード配列 = [0x3042, 0x3044, 0x3046, 0x3048, 0x304A]
+  yield 日本語_${サイズ}_${種類} {
+    unicode: select(コード配列)
+    symbol {
+      letter: 日本語_${サイズ}_文字
+    }
+  }
+}
+
+spread (['赤', '青', '緑'], ['明', '暗']) as let (色, 明度) {
+  local const 色コード = [0xFF0000, 0x00FF00, 0x0000FF]
+  yield 色彩_${色}_${明度} {
+    code: select(色コード)
+    brightness {
+      level: 色彩_${明度}
+    }
+  }
+}
+
+spread (['東', '西', '南', '北'], ['上', '下']) as let (方向, 位置) {
+  yield 座標_${方向}_${位置} {
+    direction: 方向_${方向}
+    position: 位置_${位置}
+  }
+}
+
+entity-type: エネルギー発電機
+entity-name: <String>
+entity-description?: <String>
+エネルギー設定<Dictionary>: {
+    出力電力: <Power>
+    燃料設定?<Dictionary>: {
+        燃料種類?: <String> of ("固体" | "液体" | "気体" | "プラズマ")
+        消費量<Expr>?: <Mass> ÷ delta <Time>
+        排出物質<Dictionary[]>?: [
+            {化合物: <String>, 消費量当たり: <Mass>}*
+        ]
+    }
+    発熱量<Expr>?: <Energy> ÷ delta <Time>
+}
+製作材料<Dictionary[]>: [
+    {部品名: <String>, 個数: <Int>}*
+]
+製作時間: <Time>
+コスト<Dictionary>: {徴発値: <Number>, エネルギー: <Number>}
+寸法<Dictionary>: {長さ: <Length>, 幅: <Length>, 高さ: <Length>}
+重量: <Mass>
+耐久度: <UInt16>
+
+entity-type: 武器システム
+entity-name: <String>
+entity-description?: <String>
+武器性能<Dictionary>: {
+    攻撃力: <Number>
+    射程距離: <Length>
+    発射速度: <Number>
+    弾薬種類?: <String> of ("実弾" | "エネルギー" | "ミサイル" | "レーザー")
+    弾薬容量?: <Int>
+    リロード時間?: <Time>
+    精度: <Number>
+}
+製作材料<Dictionary[]>: [
+    {部品名: <String>, 個数: <Int>}*
+]
+製作時間: <Time>
+コスト<Dictionary>: {徴発値: <Number>, 技術点: <Number>}
+寸法<Dictionary>: {長さ: <Length>, 幅: <Length>, 高さ: <Length>}
+重量: <Mass>
+
+entity-type: 防御装置
+entity-name: <String>
+entity-description?: <String>
+防御性能<Dictionary>: {
+    装甲値: <Number>
+    シールド容量?: <Energy>
+    回復速度?<Expr>?: <Energy> ÷ delta <Time>
+    防御種類: <String> of ("物理" | "エネルギー" | "複合")
+    耐久力: <Number>
+}
+製作材料<Dictionary[]>: [
+    {部品名: <String>, 個数: <Int>}*
+]
+製作時間: <Time>
+コスト<Dictionary>: {徴発値: <Number>, 資源: <Number>}
+重量: <Mass>
+
+entity-type: 推進装置
+entity-name: <String>
+entity-description?: <String>
+推進性能<Dictionary>: {
+    最大推力: <Force>
+    燃費<Expr>?: <Mass> ÷ delta <Time>
+    最大速度: <Velocity>
+    加速度: <Acceleration>
+    推進剤種類?: <String> of ("化学" | "イオン" | "核融合" | "反物質")
+}
+製作材料<Dictionary[]>: [
+    {部品名: <String>, 個数: <Int>}*
+]
+製作時間: <Time>
+コスト<Dictionary>: {徴発値: <Number>, 燃料: <Number>}
+寸法<Dictionary>: {長さ: <Length>, 直径: <Length>}
+重量: <Mass>
+
+const 発電機データ = readData("./エネルギー発電機.llacon")
+const 武器データ = readData("./武器システム.llacon")
+const 防御データ = readData("./防御装置.llacon")
+const 推進データ = readData("./推進装置.llacon")
+const 資源データ = readData("./資源管理.llacon")
+const 建設データ = readData("./建設物.llacon")
+const 研究データ = readData("./研究項目.llacon")
+const 乗員データ = readData("./乗員管理.llacon")
+
+public function 発電機登録(発電機<Dictionary>) {
+  ゲームAPI.エンティティ登録({
+    種類: 発電機["entity-type"],
+    名前: 発電機["entity-name"],
+    説明: 発電機["entity-description"] ?? "説明なし",
+    エネルギー: 発電機.エネルギー設定,
+    製作: 発電機.製作材料,
+    製作時間: 発電機.製作時間,
+    コスト: 発電機.コスト,
+    寸法: 発電機.寸法,
+    重量: 発電機.重量,
+    耐久度: 発電機.耐久度
+  })
+}
+
+public function 武器登録(武器<Dictionary>) {
+  ゲームAPI.エンティティ登録({
+    種類: 武器["entity-type"],
+    名前: 武器["entity-name"],
+    説明: 武器["entity-description"] ?? "説明なし",
+    性能: 武器.武器性能,
+    製作: 武器.製作材料,
+    製作時間: 武器.製作時間,
+    コスト: 武器.コスト,
+    寸法: 武器.寸法,
+    重量: 武器.重量
+  })
+}
+
+public function 防御装置登録(防御<Dictionary>) {
+  ゲームAPI.エンティティ登録({
+    種類: 防御["entity-type"],
+    名前: 防御["entity-name"],
+    説明: 防御["entity-description"] ?? "説明なし",
+    性能: 防御.防御性能,
+    製作: 防御.製作材料,
+    製作時間: 防御.製作時間,
+    コスト: 防御.コスト,
+    重量: 防御.重量
+  })
+}
+
+public function 推進装置登録(推進器<Dictionary>) {
+  ゲームAPI.エンティティ登録({
+    種類: 推進器["entity-type"],
+    名前: 推進器["entity-name"],
+    説明: 推進器["entity-description"] ?? "説明なし",
+    性能: 推進器.推進性能,
+    製作: 推進器.製作材料,
+    製作時間: 推進器.製作時間,
+    コスト: 推進器.コスト,
+    寸法: 推進器.寸法,
+    重量: 推進器.重量
+  })
+}
+
+for 発電機 in 発電機データ {
+  発電機登録(発電機)
+}
+
+for 武器 in 武器データ {
+  武器登録(武器)
+}
+
+for 防御装置 in 防御データ {
+  防御装置登録(防御装置)
+}
+
+for 推進器 in 推進データ {
+  推進装置登録(推進器)
+}
+
+class 宇宙船基本クラス {
+  private 識別子: <String>
+  private 名称: <String>
+  private 船級: <String>
+  private 全長: <Length>
+  private 全幅: <Length>
+  private 全高: <Length>
+  private 質量: <Mass>
+  private 乗員数: <Int>
+  private 最大速度: <Velocity>
+  
+  public function 初期化(設定<Dictionary>) {
+    this.識別子 = 設定.識別子
+    this.名称 = 設定.名称
+    this.船級 = 設定.船級 ?? "不明"
+    this.全長 = 設定.寸法.長さ
+    this.全幅 = 設定.寸法.幅
+    this.全高 = 設定.寸法.高さ
+    this.質量 = 設定.質量
+    this.乗員数 = 設定.乗員数 ?? 0
+    this.最大速度 = 設定.最大速度 ?? 0m/s
+  }
+  
+  public function 情報取得() -> <Dictionary> {
+    return {
+      識別子: this.識別子,
+      名称: this.名称,
+      船級: this.船級,
+      寸法: {長さ: this.全長, 幅: this.全幅, 高さ: this.全高},
+      質量: this.質量,
+      乗員数: this.乗員数,
+      最大速度: this.最大速度
+    }
+  }
+  
+  public function 名称変更(新名称<String>) {
+    this.名称 = 新名称
+  }
+  
+  public function 質量更新(新質量<Mass>) {
+    this.質量 = 新質量
+  }
+}
+
+class 戦闘艦 extends 宇宙船基本クラス {
+  private 武装配列: <Array>
+  private 装甲値: <Number>
+  private シールド容量: <Energy>
+  private 弾薬庫容量: <Volume>
+  
+  public function 初期化(設定<Dictionary>) {
+    super.初期化(設定)
+    this.武装配列 = 設定.武装 ?? []
+    this.装甲値 = 設定.装甲値 ?? 0
+    this.シールド容量 = 設定.シールド容量 ?? 0MJ
+    this.弾薬庫容量 = 設定.弾薬庫容量 ?? 0m3
+  }
+  
+  public function 武器追加(武器<Dictionary>) {
+    this.武装配列.push(武器)
+  }
+  
+  public function 武器削除(武器索引<Int>) {
+    if 武器索引 >= 0 and 武器索引 < this.武装配列.length {
+      this.武装配列.splice(武器索引, 1)
+    }
+  }
+  
+  public function 戦闘力計算() -> <Number> {
+    local let 合計火力 = 0
+    for 武器 in this.武装配列 {
+      合計火力 = 合計火力 + 武器.攻撃力
+    }
+    return 合計火力 * (this.装甲値 / 100)
+  }
+}
+
+class 輸送艦 extends 宇宙船基本クラス {
+  private 貨物容量: <Volume>
+  private 現在貨物量: <Volume>
+  private 貨物リスト: <Array>
+  
+  public function 初期化(設定<Dictionary>) {
+    super.初期化(設定)
+    this.貨物容量 = 設定.貨物容量 ?? 0m3
+    this.現在貨物量 = 0m3
+    this.貨物リスト = []
+  }
+  
+  public function 貨物積載(貨物<Dictionary>) -> <Boolean> {
+    local let 必要容量 = 貨物.体積
+    if (this.現在貨物量 + 必要容量) <= this.貨物容量 {
+      this.貨物リスト.push(貨物)
+      this.現在貨物量 = this.現在貨物量 + 必要容量
+      return true
+    }
+    return false
+  }
+  
+  public function 貨物降載(貨物索引<Int>) -> <Boolean> {
+    if 貨物索引 >= 0 and 貨物索引 < this.貨物リスト.length {
+      local let 降載貨物 = this.貨物リスト[貨物索引]
+      this.現在貨物量 = this.現在貨物量 - 降載貨物.体積
+      this.貨物リスト.splice(貨物索引, 1)
+      return true
+    }
+    return false
+  }
+  
+  public function 空き容量取得() -> <Volume> {
+    return this.貨物容量 - this.現在貨物量
+  }
+}
+
+class 採掘艦 extends 宇宙船基本クラス {
+  private 採掘装置配列: <Array>
+  private 精製装置配列: <Array>
+  private 貯蔵容量: <Volume>
+  private 採掘速度: <Number>
+  
+  public function 初期化(設定<Dictionary>) {
+    super.初期化(設定)
+    this.採掘装置配列 = 設定.採掘装置 ?? []
+    this.精製装置配列 = 設定.精製装置 ?? []
+    this.貯蔵容量 = 設定.貯蔵容量 ?? 0m3
+    this.採掘速度 = 設定.採掘速度 ?? 0
+  }
+  
+  public function 資源採掘(対象天体<Dictionary>, 時間<Time>) -> <Dictionary> {
+    local let 採掘量 = this.採掘速度 * 時間
+    local let 資源種類 = 対象天体.資源種類
+    return {
+      資源: 資源種類,
+      量: 採掘量,
+      純度: 対象天体.純度 ?? 50
+    }
+  }
+  
+  public function 資源精製(原料<Dictionary>) -> <Dictionary> {
+    local let 精製効率 = 0.85
+    local let 精製量 = 原料.量 * 精製効率
+    return {
+      資源: 原料.資源,
+      量: 精製量,
+      純度: 99.9
+    }
+  }
+}
+
+interface 兵器システム {
+  function 発射準備() -> <Boolean>
+  function 目標設定(座標<Dictionary>) -> <Boolean>
+  function 発射() -> <Boolean>
+  function 命中判定(目標<Dictionary>) -> <Number>
+  function 損傷計算(目標<Dictionary>) -> <Number>
+}
+
+interface 防御システム {
+  function シールド展開() -> <Boolean>
+  function シールド充電(エネルギー<Energy>) -> <Boolean>
+  function 損傷吸収(攻撃力<Number>) -> <Number>
+  function 修理(部位<String>) -> <Boolean>
+}
+
+interface 航法システム {
+  function 座標設定(目標座標<Dictionary>) -> <Boolean>
+  function 航路計算() -> <Array>
+  function 自動操縦開始() -> <Boolean>
+  function 自動操縦停止() -> <Boolean>
+  function 現在位置取得() -> <Dictionary>
+}
+
+class レーザー砲 implements 兵器システム {
+  private 出力: <Power>
+  private 射程: <Length>
+  private 充電状態: <Boolean>
+  private 冷却時間: <Time>
+  
+  public function 初期化(設定<Dictionary>) {
+    this.出力 = 設定.出力 ?? 100kW
+    this.射程 = 設定.射程 ?? 10000m
+    this.充電状態 = false
+    this.冷却時間 = 設定.冷却時間 ?? 5s
+  }
+  
+  public function 発射準備() -> <Boolean> {
+    this.充電状態 = true
+    return true
+  }
+  
+  public function 目標設定(座標<Dictionary>) -> <Boolean> {
+    return true
+  }
+  
+  public function 発射() -> <Boolean> {
+    if this.充電状態 {
+      this.充電状態 = false
+      return true
+    }
+    return false
+  }
+  
+  public function 命中判定(目標<Dictionary>) -> <Number> {
+    local let 距離 = 目標.距離
+    local let 命中率 = 100 - (距離 / this.射程 * 50)
+    return 命中率
+  }
+  
+  public function 損傷計算(目標<Dictionary>) -> <Number> {
+    local let 基礎威力 = this.出力 / 1kW
+    local let 装甲減衰 = 目標.装甲値 ?? 0
+    return 基礎威力 - 装甲減衰
+  }
+}
+
+class ミサイル発射機 implements 兵器システム {
+  private 弾薬数: <Int>
+  private 最大弾薬数: <Int>
+  private 誘導方式: <String>
+  private ミサイル威力: <Number>
+  
+  public function 初期化(設定<Dictionary>) {
+    this.最大弾薬数 = 設定.最大弾薬数 ?? 20
+    this.弾薬数 = this.最大弾薬数
+    this.誘導方式 = 設定.誘導方式 ?? "赤外線"
+    this.ミサイル威力 = 設定.威力 ?? 1000
+  }
+  
+  public function 発射準備() -> <Boolean> {
+    return this.弾薬数 > 0
+  }
+  
+  public function 目標設定(座標<Dictionary>) -> <Boolean> {
+    return this.弾薬数 > 0
+  }
+  
+  public function 発射() -> <Boolean> {
+    if this.弾薬数 > 0 {
+      this.弾薬数 = this.弾薬数 - 1
+      return true
+    }
+    return false
+  }
+  
+  public function 命中判定(目標<Dictionary>) -> <Number> {
+    local let 回避性能 = 目標.回避性能 ?? 0
+    local let 基礎命中率 = 85
+    return 基礎命中率 - 回避性能
+  }
+  
+  public function 損傷計算(目標<Dictionary>) -> <Number> {
+    return this.ミサイル威力
+  }
+  
+  public function 再装填(補給量<Int>) {
+    local let 新弾薬数 = this.弾薬数 + 補給量
+    if 新弾薬数 > this.最大弾薬数 {
+      this.弾薬数 = this.最大弾薬数
+    } else {
+      this.弾薬数 = 新弾薬数
+    }
+  }
+}
+
+enum 艦種 {
+  戦艦,
+  巡洋艦,
+  駆逐艦,
+  空母,
+  輸送艦,
+  採掘艦,
+  工作艦,
+  偵察艦,
+  補給艦
+}
+
+enum 資源種類 {
+  鉄鉱石,
+  銅鉱石,
+  アルミニウム,
+  チタン,
+  プラチナ,
+  ウラン,
+  希土類元素,
+  水素,
+  ヘリウム3,
+  氷
+}
+
+enum 推進方式 {
+  化学ロケット,
+  イオンエンジン,
+  核融合エンジン,
+  反物質エンジン,
+  ワープドライブ
+}
+
+enum 兵器種類 {
+  レーザー砲,
+  粒子ビーム砲,
+  レールガン,
+  ミサイル,
+  魚雷,
+  機雷,
+  プラズマ砲
+}
+
+function 距離計算(座標A<Dictionary>, 座標B<Dictionary>) -> <Length> {
+  local let X差分 = 座標B.X - 座標A.X
+  local let Y差分 = 座標B.Y - 座標A.Y
+  local let Z差分 = 座標B.Z - 座標A.Z
+  
+  local let 距離二乗 = X差分 * X差分 + Y差分 * Y差分 + Z差分 * Z差分
+  return sqrt(距離二乗)
+}
+
+function 速度計算(初速度<Velocity>, 加速度<Acceleration>, 時間<Time>) -> <Velocity> {
+  return 初速度 + 加速度 * 時間
+}
+
+function 運動エネルギー計算(質量<Mass>, 速度<Velocity>) -> <Energy> {
+  return 0.5 * 質量 * 速度 * 速度
+}
+
+function 重力計算(質量1<Mass>, 質量2<Mass>, 距離<Length>) -> <Force> {
+  const 重力定数 = 6.674e-11
+  return 重力定数 * 質量1 * 質量2 / (距離 * 距離)
+}
+
+function 軌道速度計算(中心天体質量<Mass>, 軌道半径<Length>) -> <Velocity> {
+  const 重力定数 = 6.674e-11
+  return sqrt(重力定数 * 中心天体質量 / 軌道半径)
+}
+
+function 脱出速度計算(天体質量<Mass>, 天体半径<Length>) -> <Velocity> {
+  const 重力定数 = 6.674e-11
+  return sqrt(2 * 重力定数 * 天体質量 / 天体半径)
+}
+
+function 時間膨張計算(速度<Velocity>) -> <Number> {
+  const 光速 = 299792458m/s
+  local let ベータ = 速度 / 光速
+  return 1 / sqrt(1 - ベータ * ベータ)
+}
+
+function ローレンツ収縮計算(速度<Velocity>) -> <Number> {
+  const 光速 = 299792458m/s
+  local let ベータ = 速度 / 光速
+  return sqrt(1 - ベータ * ベータ)
+}
+
+procedure 戦闘シミュレーション(攻撃側<Dictionary>, 防御側<Dictionary>) {
+  local let 攻撃力 = 攻撃側.火力
+  local let 防御力 = 防御側.装甲値
+  local let シールド = 防御側.シールド容量
+  
+  if シールド > 0 {
+    local let シールド減少 = min(攻撃力, シールド)
+    防御側.シールド容量 = シールド - シールド減少
+    攻撃力 = 攻撃力 - シールド減少
+  }
+  
+  if 攻撃力 > 0 {
+    local let 装甲貫通 = 攻撃力 - 防御力
+    if 装甲貫通 > 0 {
+      防御側.耐久値 = 防御側.耐久値 - 装甲貫通
+    }
+  }
+  
+  if 防御側.耐久値 <= 0 {
+    防御側.状態 = "破壊"
+  }
+}
+
+procedure 資源採掘処理(採掘艦<Dictionary>, 天体<Dictionary>, 時間<Time>) {
+  local let 採掘速度 = 採掘艦.採掘速度
+  local let 採掘量 = 採掘速度 * 時間
+  local let 資源 = 天体.資源種類
+  
+  if 天体.資源残量 >= 採掘量 {
+    天体.資源残量 = 天体.資源残量 - 採掘量
+    採掘艦.貯蔵量 = 採掘艦.貯蔵量 + 採掘量
+  } else {
+    採掘艦.貯蔵量 = 採掘艦.貯蔵量 + 天体.資源残量
+    天体.資源残量 = 0
+  }
+}
+
+procedure 修理処理(対象艦<Dictionary>, 修理時間<Time>) {
+  local let 修理速度 = 10
+  local let 修理量 = 修理速度 * 修理時間
+  local let 最大耐久値 = 対象艦.最大耐久値
+  local let 現在耐久値 = 対象艦.耐久値
+  
+  local let 新耐久値 = 現在耐久値 + 修理量
+  if 新耐久値 > 最大耐久値 {
+    対象艦.耐久値 = 最大耐久値
+  } else {
+    対象艦.耐久値 = 新耐久値
+  }
+}
+
+procedure 補給処理(対象艦<Dictionary>, 補給艦<Dictionary>) {
+  if 補給艦.燃料 >= 対象艦.燃料タンク容量 - 対象艦.燃料 {
+    local let 必要燃料 = 対象艦.燃料タンク容量 - 対象艦.燃料
+    補給艦.燃料 = 補給艦.燃料 - 必要燃料
+    対象艦.燃料 = 対象艦.燃料タンク容量
+  } else {
+    対象艦.燃料 = 対象艦.燃料 + 補給艦.燃料
+    補給艦.燃料 = 0
+  }
+  
+  if 補給艦.弾薬 >= 対象艦.弾薬庫容量 - 対象艦.弾薬 {
+    local let 必要弾薬 = 対象艦.弾薬庫容量 - 対象艦.弾薬
+    補給艦.弾薬 = 補給艦.弾薬 - 必要弾薬
+    対象艦.弾薬 = 対象艦.弾薬庫容量
+  } else {
+    対象艦.弾薬 = 対象艦.弾薬 + 補給艦.弾薬
+    補給艦.弾薬 = 0
+  }
+}
+
+container 艦隊管理システム {
+  private 艦隊リスト: <Array>
+  private 総司令官: <String>
+  private 艦隊規模: <Int>
+  
+  public function 艦隊作成(艦隊名<String>, 司令官<String>) -> <Dictionary> {
+    local let 新艦隊 = {
+      名称: 艦隊名,
+      司令官: 司令官,
+      所属艦: [],
+      総火力: 0,
+      総質量: 0kg,
+      状態: "待機中"
+    }
+    this.艦隊リスト.push(新艦隊)
+    return 新艦隊
+  }
+  
+  public function 艦追加(艦隊索引<Int>, 艦<Dictionary>) {
+    local let 艦隊 = this.艦隊リスト[艦隊索引]
+    艦隊.所属艦.push(艦)
+    艦隊.総火力 = 艦隊.総火力 + 艦.火力
+    艦隊.総質量 = 艦隊.総質量 + 艦.質量
+  }
+  
+  public function 艦隊移動(艦隊索引<Int>, 目標座標<Dictionary>) {
+    local let 艦隊 = this.艦隊リスト[艦隊索引]
+    艦隊.状態 = "移動中"
+    艦隊.目標座標 = 目標座標
+    
+    for 艦 in 艦隊.所属艦 {
+      艦.目標座標 = 目標座標
+      艦.状態 = "移動中"
+    }
+  }
+  
+  public function 艦隊戦闘(攻撃艦隊索引<Int>, 防御艦隊索引<Int>) {
+    local let 攻撃艦隊 = this.艦隊リスト[攻撃艦隊索引]
+    local let 防御艦隊 = this.艦隊リスト[防御艦隊索引]
+    
+    攻撃艦隊.状態 = "交戦中"
+    防御艦隊.状態 = "交戦中"
+    
+    for 攻撃艦 in 攻撃艦隊.所属艦 {
+      for 防御艦 in 防御艦隊.所属艦 {
+        if 防御艦.状態 != "破壊" {
+          戦闘シミュレーション(攻撃艦, 防御艦)
+        }
+      }
+    }
+  }
+}
+
+container 経済管理システム {
+  private 資源在庫: <Dictionary>
+  private 生産施設: <Array>
+  private 取引記録: <Array>
+  
+  public function 資源追加(資源名<String>, 数量<Number>) {
+    if 資源名 in this.資源在庫 {
+      this.資源在庫[資源名] = this.資源在庫[資源名] + 数量
+    } else {
+      this.資源在庫[資源名] = 数量
+    }
+  }
+  
+  public function 資源消費(資源名<String>, 数量<Number>) -> <Boolean> {
+    if 資源名 in this.資源在庫 and this.資源在庫[資源名] >= 数量 {
+      this.資源在庫[資源名] = this.資源在庫[資源名] - 数量
+      return true
+    }
+    return false
+  }
+  
+  public function 生産開始(製品名<String>, 数量<Int>) -> <Boolean> {
+    local let レシピ = this.レシピ取得(製品名)
+    if レシピ == none {
+      return false
+    }
+    
+    for 材料 in レシピ.必要材料 {
+      if not this.資源消費(材料.名称, 材料.数量 * 数量) {
+        return false
+      }
+    }
+    
+    local let 生産タスク = {
+      製品: 製品名,
+      数量: 数量,
+      開始時刻: 現在時刻(),
+      完了予定: 現在時刻() + レシピ.生産時間 * 数量,
+      状態: "生産中"
+    }
+    this.生産施設.push(生産タスク)
+    return true
+  }
+  
+  private function レシピ取得(製品名<String>) -> <Dictionary> {
+    // レシピデータベースから検索
+    return {
+      名称: 製品名,
+      必要材料: [],
+      生産時間: 60s
+    }
+  }
+}
+
+container 研究開発システム {
+  private 研究項目: <Array>
+  private 完了済研究: <Array>
+  private 研究ポイント: <Number>
+  
+  public function 研究開始(項目名<String>) -> <Boolean> {
+    local let 研究データ = this.研究データ取得(項目名)
+    if 研究データ == none {
+      return false
+    }
+    
+    if not this.前提条件確認(研究データ.前提条件) {
+      return false
+    }
+    
+    local let 研究タスク = {
+      名称: 項目名,
+      必要ポイント: 研究データ.必要ポイント,
+      現在ポイント: 0,
+      状態: "研究中",
+      効果: 研究データ.効果
+    }
+    this.研究項目.push(研究タスク)
+    return true
+  }
+  
+  public function 研究進行(時間<Time>) {
+    local let ポイント増加量 = 時間 * 10
+    this.研究ポイント = this.研究ポイント + ポイント増加量
+    
+    for 研究 in this.研究項目 {
+      if 研究.状態 == "研究中" {
+        研究.現在ポイント = 研究.現在ポイント + ポイント増加量
+        if 研究.現在ポイント >= 研究.必要ポイント {
+          研究.状態 = "完了"
+          this.完了済研究.push(研究)
+          this.効果適用(研究.効果)
+        }
+      }
+    }
+  }
+  
+  private function 前提条件確認(前提条件<Array>) -> <Boolean> {
+    for 条件 in 前提条件 {
+      local let 完了済み = false
+      for 完了研究 in this.完了済研究 {
+        if 完了研究.名称 == 条件 {
+          完了済み = true
+          break
+        }
+      }
+      if not 完了済み {
+        return false
+      }
+    }
+    return true
+  }
+  
+  private function 研究データ取得(項目名<String>) -> <Dictionary> {
+    return {
+      名称: 項目名,
+      必要ポイント: 1000,
+      前提条件: [],
+      効果: {}
+    }
+  }
+  
+  private function 効果適用(効果<Dictionary>) {
+    // 研究効果をゲームに適用
+  }
+}
+
+async function 非同期データ読込(ファイルパス<String>) -> <Dictionary> {
+  try {
+    local let データ = await ファイルシステム.読込(ファイルパス)
+    return JSON.parse(データ)
+  } catch エラー {
+    console.log("データ読込エラー: " + エラー.message)
+    return {}
+  }
+}
+
+async function 非同期データ保存(ファイルパス<String>, データ<Dictionary>) {
+  try {
+    local let JSON文字列 = JSON.stringify(データ)
+    await ファイルシステム.書込(ファイルパス, JSON文字列)
+  } catch エラー {
+    console.log("データ保存エラー: " + エラー.message)
+  }
+}
+
+coroutine 定期自動保存(間隔<Time>) {
+  loop {
+    await 遅延(間隔)
+    local let 全データ = {
+      艦隊: 艦隊管理システム.艦隊リスト,
+      資源: 経済管理システム.資源在庫,
+      研究: 研究開発システム.研究項目
+    }
+    await 非同期データ保存("./自動保存.json", 全データ)
+    console.log("自動保存完了")
+  }
+}
+
+match 艦種別処理(艦<Dictionary>) {
+  case 艦種.戦艦: {
+    return "戦闘力: " + 艦.戦闘力計算()
+  }
+  case 艦種.輸送艦: {
+    return "貨物容量: " + 艦.空き容量取得()
+  }
+  case 艦種.採掘艦: {
+    return "採掘速度: " + 艦.採掘速度
+  }
+  default: {
+    return "不明な艦種"
+  }
+}
+
+if 艦隊管理システム.艦隊リスト.length > 0 {
+  console.log("艦隊数: " + 艦隊管理システム.艦隊リスト.length)
+} else {
+  console.log("艦隊なし")
+}
+
+while 経済管理システム.資源在庫["鉄鉱石"] < 1000 {
+  経済管理システム.資源追加("鉄鉱石", 100)
+  console.log("鉄鉱石採掘中...")
+}
+
+for 資源名 in 経済管理システム.資源在庫 {
+  console.log(資源名 + ": " + 経済管理システム.資源在庫[資源名])
+}
+
+const 天体データベース = {
+  地球: {
+    質量: 5.972e24kg,
+    半径: 6371000m,
+    衛星: ["月"],
+    資源: {
+      水: 無限大,
+      鉄: 10000000,
+      銅: 5000000
+    }
+  },
+  火星: {
+    質量: 6.39e23kg,
+    半径: 3389500m,
+    衛星: ["フォボス", "ダイモス"],
+    資源: {
+      鉄: 50000000,
+      氷: 20000000,
+      レアメタル: 1000000
+    }
+  },
+  木星: {
+    質量: 1.898e27kg,
+    半径: 69911000m,
+    衛星: ["イオ", "エウロパ", "ガニメデ", "カリスト"],
+    資源: {
+      水素: 無限大,
+      ヘリウム: 無限大
+    }
+  }
+}
+
+const 艦船テンプレート = {
+  戦艦型甲: {
+    艦種: 艦種.戦艦,
+    全長: 500m,
+    全幅: 100m,
+    全高: 80m,
+    質量: 50000kg,
+    乗員: 200,
+    武装: [
+      {種類: 兵器種類.レーザー砲, 数量: 4},
+      {種類: 兵器種類.ミサイル, 数量: 20}
+    ],
+    推進: 推進方式.核融合エンジン
+  },
+  巡洋艦型: {
+    艦種: 艦種.巡洋艦,
+    全長: 300m,
+    全幅: 60m,
+    全高: 50m,
+    質量: 20000kg,
+    乗員: 100,
+    武装: [
+      {種類: 兵器種類.レーザー砲, 数量: 2},
+      {種類: 兵器種類.ミサイル, 数量: 10}
+    ],
+    推進: 推進方式.イオンエンジン
+  }
+}
+
+generate (1 .. 100) as let 艦番号 {
+  yield 戦艦_${艦番号} {
+    識別子: "BB-" + 艦番号,
+    名称: "戦艦第" + 艦番号 + "号",
+    艦種: 艦種.戦艦,
+    状態: "待機中"
+  }
+}
+
+generate (1 .. 50) as let 艦番号 {
+  yield 巡洋艦_${艦番号} {
+    識別子: "CA-" + 艦番号,
+    名称: "巡洋艦第" + 艦番号 + "号",
+    艦種: 艦種.巡洋艦,
+    状態: "待機中"
+  }
+}
+
+spread (['前方', '後方', '左舷', '右舷', '上部', '下部'], ['主砲', '副砲', 'ミサイル']) as let (方向, 兵器) {
+  yield 武装配置_${方向}_${兵器} {
+    位置: 方向,
+    種類: 兵器,
+    状態: "正常"
+  }
+}
+
+enumerate (["小型", "中型", "大型", "超大型"]) as let (索引, サイズ) {
+  yield 艦サイズ_${索引} {
+    分類: サイズ,
+    番号: 索引
+  }
+}
+
+filter (艦隊管理システム.艦隊リスト) where (艦隊.状態 == "交戦中") as let 交戦艦隊 {
+  console.log("交戦中の艦隊: " + 交戦艦隊.名称)
+}
+
+const 複雑計算結果 = ((100 + 50) * 3 - 75) / 5 + sqrt(144) * 2
+const 論理演算結果 = (true and false) or (not false)
+const ビット演算結果 = (0xFF and 0x0F) xor 0xAA

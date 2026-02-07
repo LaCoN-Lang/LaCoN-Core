@@ -122,12 +122,12 @@ impl UnitTree {
 		current_node.is_final = true;
 	}
 
-	pub fn longest_match(&self, input: &str) -> usize {
+	pub fn longest_match(&self, input: &[u8]) -> usize {
 		let mut current_node = &self.root;
 		let mut last_final_byte_idx = 0;
 		let mut current_byte_idx = 0;
 
-		for &b in input.as_bytes() {
+		for &b in input {
 			if let Some(next_node) = current_node.children.get(&b) {
 				current_node = next_node;
 				current_byte_idx += 1;

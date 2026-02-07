@@ -66,7 +66,7 @@ Operator(QuestionColon)                                 | ?:                    
 Operator(Less)                                          | <                                        | 8:23:227        |            | TRUE      
 Identifier                                              | Mass                                     | 8:24:228        |            |           
 Operator(Greater)                                       | >                                        | 8:28:232        |            |           
-Operator(Obelus)                                        | ÷                                        | 8:30:234        |            | TRUE      
+Identifier                                              | ÷                                        | 8:30:234        |            | TRUE      
 Keyword(Delta)                                          | delta                                    | 8:32:237        |            | TRUE      
 Operator(Less)                                          | <                                        | 8:38:243        |            | TRUE      
 Identifier                                              | Time                                     | 8:39:244        |            |           
@@ -108,7 +108,7 @@ Operator(QuestionColon)                                 | ?:                    
 Operator(Less)                                          | <                                        | 13:26:361       |            | TRUE      
 Identifier                                              | Energy                                   | 13:27:362       |            |           
 Operator(Greater)                                       | >                                        | 13:33:368       |            |           
-Operator(Obelus)                                        | ÷                                        | 13:35:370       |            | TRUE      
+Identifier                                              | ÷                                        | 13:35:370       |            | TRUE      
 Keyword(Delta)                                          | delta                                    | 13:37:373       |            | TRUE      
 Operator(Less)                                          | <                                        | 13:43:379       |            | TRUE      
 Identifier                                              | Time                                     | 13:44:380       |            |           

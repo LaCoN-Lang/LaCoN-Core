@@ -74,12 +74,12 @@ fn main() -> io::Result<()> {
 						let mut dimension = None;
 
 						// Используем твой метод is_unit() из TokenType
-						if t.token_kind.is_unit() {
+						if t.kind.is_unit() {
 							dimension = Some(server::get_unit_formula(&t.lexeme));
 						}
 
 						json!({
-										"token_type": format!("{:?}", t.token_kind),
+										"token_type": format!("{:?}", t.kind),
 										"lexeme": t.lexeme,
 										"literal": t.lexeme,
 										"position": t.position.to_string(),

@@ -12,10 +12,9 @@ bitflags! {
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Token<'a> {
-	pub lexeme: Option<&'a str>,
+	pub lexeme: Option<&'a [u8]>,
 	pub position: Position,
 
-	pub token_kind: TokenKind,
-	pub length: u32,
+	pub kind: TokenKind,
 	pub flags: TokenFlags,
 }

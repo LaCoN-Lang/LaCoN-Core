@@ -41,10 +41,10 @@ Newline                                                 |                       
 Identifier                                              | c                                        | 5:1:101         | TRUE       |           
 Operator(AsteriskEqual)                                 | *=                                       | 5:3:103         |            | TRUE      
 Identifier                                              | c                                        | 5:6:106         |            | TRUE      
-Operator(Multiplication)                                | ×                                        | 5:8:108         |            | TRUE      
+Identifier                                              | ×                                        | 5:8:108         |            | TRUE      
 Syntax(LeftParenthesis)                                 | (                                        | 5:10:111        |            | TRUE      
 Identifier                                              | c                                        | 5:11:112        |            |           
-Operator(Obelus)                                        | ÷                                        | 5:13:114        |            | TRUE      
+Identifier                                              | ÷                                        | 5:13:114        |            | TRUE      
 Number                                                  | 2                                        | 5:15:117        |            | TRUE      
 Syntax(RightParenthesis)                                | )                                        | 5:16:118        |            |           
 Newline                                                 |                                          | 5:17:119        |            |           

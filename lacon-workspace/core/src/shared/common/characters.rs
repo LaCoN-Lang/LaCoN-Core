@@ -1,7 +1,7 @@
 macro_rules! unicode_chars {
     ($($name:ident = $char:literal;)*) => {
         paste::paste! {
-            $(pub const [<$name _SIGN>]: char = $char;)*
+            $(pub const [<$name _SIGN>]: u8 = $char as u8;)*
         }
     };
 }

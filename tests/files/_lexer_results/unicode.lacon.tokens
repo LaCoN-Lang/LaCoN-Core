@@ -1,0 +1,36 @@
+TYPE                                                    | LEXEME                                   | POSITION        | LINE START | WHITESPACE
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SOF                                                     |                                          | 1:1:0           |            |           
+Keyword(Variable)                                       | let                                      | 1:1:0           | TRUE       |           
+Identifier                                              | カタカナ                                     | 1:5:4           |            | TRUE      
+Operator(Equal)                                         | =                                        | 1:10:17         |            | TRUE      
+Syntax(SingleQuote)                                     | '                                        | 1:12:19         |            | TRUE      
+String                                                  | Katakana                                 | 1:13:20         |            |           
+Syntax(SingleQuote)                                     | '                                        | 1:21:28         |            |           
+Syntax(Semicolon)                                       | ;                                        | 1:22:29         |            |           
+Newline                                                 |                                          | 1:23:30         |            |           
+Keyword(Variable)                                       | let                                      | 2:1:31          | TRUE       |           
+Identifier                                              | ひらがな                                     | 2:5:35          |            | TRUE      
+Operator(Equal)                                         | =                                        | 2:10:48         |            | TRUE      
+Syntax(SingleQuote)                                     | '                                        | 2:12:50         |            | TRUE      
+String                                                  | Hiragana                                 | 2:13:51         |            |           
+Syntax(SingleQuote)                                     | '                                        | 2:21:59         |            |           
+Syntax(Semicolon)                                       | ;                                        | 2:22:60         |            |           
+Newline                                                 |                                          | 2:23:61         |            |           
+Keyword(Variable)                                       | let                                      | 3:1:62          | TRUE       |           
+Identifier                                              | 漢字                                       | 3:5:66          |            | TRUE      
+Operator(Equal)                                         | =                                        | 3:8:73          |            | TRUE      
+Syntax(SingleQuote)                                     | '                                        | 3:10:75         |            | TRUE      
+String                                                  | Kanji                                    | 3:11:76         |            |           
+Syntax(SingleQuote)                                     | '                                        | 3:16:81         |            |           
+Syntax(Semicolon)                                       | ;                                        | 3:17:82         |            |           
+Newline                                                 |                                          | 3:18:83         |            |           
+Keyword(Variable)                                       | let                                      | 4:1:84          | TRUE       |           
+Identifier                                              | ᠮᠥᠨᠭᠥᠯᠢᠠ                                 | 4:5:88          |            | TRUE      
+Operator(Equal)                                         | =                                        | 4:14:113        |            | TRUE      
+Syntax(SingleQuote)                                     | '                                        | 4:16:115        |            | TRUE      
+String                                                  | Mongolian                                | 4:17:116        |            |           
+Syntax(SingleQuote)                                     | '                                        | 4:26:125        |            |           
+Syntax(Semicolon)                                       | ;                                        | 4:27:126        |            |           
+Newline                                                 |                                          | 4:28:127        |            |           
+EOF                                                     |                                          | 5:1:128         |            |           

@@ -5,7 +5,7 @@ use crate::shared::UnitKind;
 use std::fmt;
 
 impl<'a> Token<'a> {
-	pub fn new(token_kind: TokenKind, is_at_line_start: bool, has_whitespace: bool, lexeme: Option<&'a str>, position: Position, length: usize) -> Self {
+	pub fn new(kind: TokenKind, is_at_line_start: bool, has_whitespace: bool, lexeme: Option<&'a [u8]>, position: Position) -> Self {
 		let mut flags = TokenFlags::empty();
 		if is_at_line_start {
 			flags.insert(TokenFlags::AT_LINE_START);
@@ -14,34 +14,23 @@ impl<'a> Token<'a> {
 			flags.insert(TokenFlags::HAS_PRECEDING_WHITESPACE);
 		}
 
-		Self {
-			token_kind,
-			// lexeme,
-			lexeme,
-			position,
-			length: length as u32,
-			flags,
-		}
+		Self { kind, lexeme, position, flags }
 	}
 
-	pub fn bare(token_kind: TokenKind, position: Position) -> Self {
+	pub fn bare(kind: TokenKind, position: Position) -> Self {
 		Self {
-			token_kind,
-			// lexeme: "",
+			kind,
 			lexeme: None,
 			position,
-			length: 0,
 			flags: TokenFlags::empty(),
 		}
 	}
 
-	pub fn error(message: &'a str, position: Position) -> Self {
+	pub fn error(message: &'a [u8], position: Position) -> Self {
 		Self {
-			token_kind: TokenKind::Error,
-			// lexeme: message,
+			kind: TokenKind::Error,
 			lexeme: Some(&message),
 			position,
-			length: 0,
 			flags: TokenFlags::empty(),
 		}
 	}
@@ -79,7 +68,7 @@ impl TokenKind {
 
 impl<'a> fmt::Display for Token<'a> {
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-		write!(f, "[{:?}", self.token_kind)?;
+		write!(f, "[{:?}", self.kind)?;
 
 		if self.flags.contains(TokenFlags::AT_LINE_START) {
 			f.write_str(" [SOL]")?;
@@ -92,7 +81,7 @@ impl<'a> fmt::Display for Token<'a> {
 		// write!(f, "'{}'", self.lexeme)?;
 
 		if let Some(literal) = &self.lexeme {
-			write!(f, " (value: {})", literal)?;
+			write!(f, " (value: {:?})", literal)?;
 		}
 
 		write!(f, " at {}", self.position)

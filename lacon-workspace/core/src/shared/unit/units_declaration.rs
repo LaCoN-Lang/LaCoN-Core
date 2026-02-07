@@ -854,11 +854,13 @@ pub static UNITS: &[UnitDef] = units_array![
 pub struct UnitContext<'arena> {
 	pub arena: &'arena UnitArena,
 	pub tree: UnitTree,
-	pub lookup: BTreeMap<&'arena str, UnitKind>,
+	// Теперь lookup использует байты, чтобы Scanner мог делать lookup.get(slice_u8)
+	pub lookup: BTreeMap<&'arena [u8], UnitKind>,
 }
 
 impl<'arena> UnitContext<'arena> {
 	pub fn new(arena: &'arena UnitArena) -> Self {
+		// Дерево обычно работает со строками внутри, оставляем как есть
 		let tree = build_unit_tree(UNITS, arena);
 
 		let mut lookup = BTreeMap::new();
@@ -869,13 +871,14 @@ impl<'arena> UnitContext<'arena> {
 		}
 
 		for unit in UNITS {
-			let sym = arena.alloc_str(unit.symbol);
+			// Аллоцируем строку и сразу берем её как &[u8] для мапы
+			let sym = arena.alloc_str(unit.symbol).as_bytes();
 			lookup.insert(sym, unit.dimension);
 
 			if let Some(prefixes) = grouped_p.get(&unit.numerator_group) {
 				for p_sym in prefixes {
 					let full = format!("{}{}", p_sym, unit.symbol);
-					let interned = arena.alloc_str(&full);
+					let interned = arena.alloc_str(&full).as_bytes();
 					lookup.insert(interned, unit.dimension);
 				}
 			}
@@ -887,15 +890,14 @@ impl<'arena> UnitContext<'arena> {
 
 pub fn build_unit_tree<'arena>(units: &[UnitDef], arena: &'arena UnitArena) -> UnitTree {
 	let mut tree = UnitTree::default();
+	// Оставляем как &str, так как это просто части для сборки имен
 	const SEPARATORS: &[&str] = &["/", "*", "⋅"];
 
 	let mut gp: BTreeMap<PrefixGroup, Vec<&str>> = BTreeMap::new();
 	for (s, _, g) in PREFIXES {
 		gp.entry(*g).or_default().push(*s);
 	}
-	for list in gp.values_mut() {
-		list.push("");
-	}
+
 	let default_prefix = vec![""];
 
 	for unit in units {

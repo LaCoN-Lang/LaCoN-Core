@@ -182,7 +182,7 @@ Identifier                                              | consumption           
 Operator(Colon)                                         | :                                        | 30:15:849       |            |           
 Number                                                  | 5                                        | 30:17:851       |            | TRUE      
 Unit(Mass)                                              | kg                                       | 30:18:852       |            |           
-Operator(Obelus)                                        | ÷                                        | 30:21:855       |            | TRUE      
+Identifier                                              | ÷                                        | 30:21:855       |            | TRUE      
 Number                                                  | 1                                        | 30:23:858       |            | TRUE      
 Unit(Time)                                              | min                                      | 30:24:859       |            |           
 Newline                                                 |                                          | 30:27:862       |            |           
@@ -355,7 +355,7 @@ Identifier                                              | consumption           
 Operator(Colon)                                         | :                                        | 57:15:1570      |            |           
 Number                                                  | 3                                        | 57:17:1572      |            | TRUE      
 Unit(Volume)                                            | L                                        | 57:18:1573      |            |           
-Operator(Obelus)                                        | ÷                                        | 57:20:1575      |            | TRUE      
+Identifier                                              | ÷                                        | 57:20:1575      |            | TRUE      
 Number                                                  | 1                                        | 57:22:1578      |            | TRUE      
 Unit(Time)                                              | min                                      | 57:23:1579      |            |           
 Newline                                                 |                                          | 57:26:1582      |            |           

@@ -15,7 +15,7 @@ pub fn lex(source: &str) -> JsValue {
 	for token in tokens.iter() {
 		let obj = Object::new();
 
-		Reflect::set(&obj, &"token_type".into(), &format!("{:?}", token.token_kind).into()).unwrap();
+		Reflect::set(&obj, &"token_type".into(), &format!("{:?}", token.kind).into()).unwrap();
 		Reflect::set(&obj, &"lexeme".into(), &token.lexeme.clone().into()).unwrap();
 		Reflect::set(&obj, &"literal".into(), &token.lexeme.clone().into()).unwrap();
 		Reflect::set(&obj, &"position".into(), &token.position.to_string().into()).unwrap();
