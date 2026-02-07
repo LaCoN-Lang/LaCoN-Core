@@ -1,31 +1,31 @@
-TYPE                                                    | LEXEME                                   | POSITION        | LINE START | WHITESPACE
+POSITION        | TYPE                                                    | LEXEME                                                  | LINE START | WHITESPACE
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SOF                                                     |                                          | 1:1:0           |            |           
-Keyword(Variable)                                       | let                                      | 1:1:0           | TRUE       |           
-Identifier                                              | a                                        | 1:5:4           |            | TRUE      
-Operator(Equal)                                         | =                                        | 1:7:6           |            | TRUE      
-Syntax(DoubleQuote)                                     | "                                        | 1:9:8           |            | TRUE      
-Newline                                                 |                                          | 1:29:28         |            |           
-Newline                                                 |                                          | 2:1:29          |            |           
-Keyword(Variable)                                       | let                                      | 3:1:30          | TRUE       |           
-Identifier                                              | a                                        | 3:5:34          |            | TRUE      
-Operator(Equal)                                         | =                                        | 3:7:36          |            | TRUE      
-Syntax(SingleQuote)                                     | '                                        | 3:9:38          |            | TRUE      
-Newline                                                 |                                          | 3:29:58         |            |           
-Newline                                                 |                                          | 4:1:59          |            |           
-Keyword(Root)                                           | root                                     | 5:1:60          | TRUE       |           
-Operator(Colon)                                         | :                                        | 5:5:64          |            |           
-Newline                                                 |                                          | 5:6:65          |            |           
-Indent(1)                                               |                                          | 6:1:66          |            |           
-Identifier                                              | child_1                                  | 6:2:67          | TRUE       |           
-Operator(Colon)                                         | :                                        | 6:9:74          |            |           
-Newline                                                 |                                          | 6:10:75         |            |           
-Indent(2)                                               |                                          | 7:1:76          |            |           
-Identifier                                              | child_2                                  | 7:9:84          | TRUE       |           
-Operator(Colon)                                         | :                                        | 7:16:91         |            |           
-Newline                                                 |                                          | 7:17:92         |            |           
-Dedent(1)                                               |                                          | 8:1:93          |            |           
-Identifier                                              | broken_indent                            | 8:7:99          | TRUE       |           
-Newline                                                 |                                          | 8:20:112        |            |           
-Dedent(0)                                               |                                          | 9:1:113         |            |           
-EOF                                                     |                                          | 9:1:113         |            |           
+1:1:0           | SOF                                                     |                                          |            |           
+1:1:1           | Keyword(Variable)                                       | let                                      | TRUE       |           
+1:5:5           | Identifier                                              | a                                        |            | TRUE      
+1:7:7           | Operator(Equal)                                         | =                                        |            | TRUE      
+1:9:9           | Syntax(DoubleQuote)                                     | "                                        |            | TRUE      
+1:29:29         | Newline                                                 |                                          |            |           
+2:1:30          | Newline                                                 |                                          |            |           
+3:1:31          | Keyword(Variable)                                       | let                                      | TRUE       |           
+3:5:35          | Identifier                                              | a                                        |            | TRUE      
+3:7:37          | Operator(Equal)                                         | =                                        |            | TRUE      
+3:9:39          | Syntax(SingleQuote)                                     | '                                        |            | TRUE      
+3:29:59         | Newline                                                 |                                          |            |           
+4:1:60          | Newline                                                 |                                          |            |           
+5:1:61          | Keyword(Root)                                           | root                                     | TRUE       |           
+5:5:65          | Operator(Colon)                                         | :                                        |            |           
+5:6:66          | Newline                                                 |                                          |            |           
+6:1:67          | Indent(1)                                               |                                          |            |           
+6:2:68          | Identifier                                              | child_1                                  | TRUE       |           
+6:9:75          | Operator(Colon)                                         | :                                        |            |           
+6:10:76         | Newline                                                 |                                          |            |           
+7:1:77          | Indent(2)                                               |                                          |            |           
+7:9:85          | Identifier                                              | child_2                                  | TRUE       |           
+7:16:92         | Operator(Colon)                                         | :                                        |            |           
+7:17:93         | Newline                                                 |                                          |            |           
+8:1:94          | Dedent(1)                                               |                                          |            |           
+8:7:100         | Identifier                                              | broken_indent                            | TRUE       |           
+8:20:113        | Newline                                                 |                                          |            |           
+9:1:114         | Dedent(0)                                               |                                          |            |           
+9:1:114         | EOF                                                     |                                          |            |           

@@ -1,3 +1,4 @@
+pub mod big_strings;
 pub mod fields {
 	use std::path::PathBuf;
 	use std::sync::LazyLock;

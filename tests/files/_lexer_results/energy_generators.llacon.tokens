@@ -1,591 +1,591 @@
-TYPE                                                    | LEXEME                                   | POSITION        | LINE START | WHITESPACE
+POSITION        | TYPE                                                    | LEXEME                                                  | LINE START | WHITESPACE
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SOF                                                     |                                          | 1:1:0           |            |           
-Syntax(LeftBracket)                                     | [                                        | 1:1:0           | TRUE       |           
-Keyword(Marker)                                         | Marker                                   | 1:2:1           |            |           
-Operator(Colon)                                         | :                                        | 1:8:7           |            |           
-Identifier                                              | Output                                   | 1:9:8           |            |           
-Operator(Less)                                          | <                                        | 1:15:14         |            |           
-Identifier                                              | Dictionary                               | 1:16:15         |            |           
-Syntax(LeftBracket)                                     | [                                        | 1:26:25         |            |           
-Syntax(RightBracket)                                    | ]                                        | 1:27:26         |            |           
-Operator(Greater)                                       | >                                        | 1:28:27         |            |           
-Syntax(RightBracket)                                    | ]                                        | 1:29:28         |            |           
-Newline                                                 |                                          | 1:30:29         |            |           
-Keyword(Use)                                            | use                                      | 2:1:30          | TRUE       |           
-Keyword(Schema)                                         | schema                                   | 2:5:34          |            | TRUE      
-Syntax(SingleQuote)                                     | '                                        | 2:12:41         |            | TRUE      
-String                                                  | ./energy_generator.slacon                | 2:13:42         |            |           
-Syntax(SingleQuote)                                     | '                                        | 2:38:67         |            |           
-Newline                                                 |                                          | 2:39:68         |            |           
-Syntax(LeftBrace)                                       | {                                        | 3:1:69          | TRUE       |           
-Newline                                                 |                                          | 3:2:70          |            |           
-Identifier                                              | entity-type                              | 4:2:72          | TRUE       |           
-Operator(Colon)                                         | :                                        | 4:13:83         |            |           
-Identifier                                              | energy-generator                         | 4:15:85         |            | TRUE      
-Newline                                                 |                                          | 4:31:101        |            |           
-Identifier                                              | entity-name                              | 5:2:103         | TRUE       |           
-Operator(Colon)                                         | :                                        | 5:13:114        |            |           
-Identifier                                              | solar-generator-mk1                      | 5:15:116        |            | TRUE      
-Newline                                                 |                                          | 5:34:135        |            |           
-Identifier                                              | entity-description                       | 6:2:137         | TRUE       |           
-Operator(Colon)                                         | :                                        | 6:20:155        |            |           
-Identifier                                              | Базовый                                  | 6:22:157        |            | TRUE      
-Identifier                                              | солнечный                                | 6:30:172        |            | TRUE      
-Identifier                                              | генератор                                | 6:40:191        |            | TRUE      
-Identifier                                              | для                                      | 6:50:210        |            | TRUE      
-Identifier                                              | малых                                    | 6:54:217        |            | TRUE      
-Identifier                                              | станций                                  | 6:60:228        |            | TRUE      
-Newline                                                 |                                          | 6:67:242        |            |           
-Identifier                                              | energy                                   | 7:2:244         | TRUE       |           
-Operator(Colon)                                         | :                                        | 7:8:250         |            |           
-Syntax(LeftBrace)                                       | {                                        | 7:10:252        |            | TRUE      
-Newline                                                 |                                          | 7:11:253        |            |           
-Identifier                                              | power-reproduction                       | 8:3:256         | TRUE       |           
-Operator(Colon)                                         | :                                        | 8:21:274        |            |           
-Number                                                  | 50                                       | 8:23:276        |            | TRUE      
-Unit(Power)                                             | W                                        | 8:25:278        |            |           
-Newline                                                 |                                          | 8:26:279        |            |           
-Identifier                                              | heat-generation                          | 9:3:282         | TRUE       |           
-Operator(Colon)                                         | :                                        | 9:18:297        |            |           
-Number                                                  | 1                                        | 9:20:299        |            | TRUE      
-Unit(Energy)                                            | kJ                                       | 9:21:300        |            |           
-Operator(Slash)                                         | /                                        | 9:24:303        |            | TRUE      
-Number                                                  | 1                                        | 9:26:305        |            | TRUE      
-Unit(Time)                                              | min                                      | 9:28:307        |            |           
-Newline                                                 |                                          | 9:31:310        |            |           
-Syntax(RightBrace)                                      | }                                        | 10:2:312        | TRUE       |           
-Newline                                                 |                                          | 10:3:313        |            |           
-Identifier                                              | craft                                    | 11:2:315        | TRUE       |           
-Operator(Colon)                                         | :                                        | 11:7:320        |            |           
-Syntax(LeftBracket)                                     | [                                        | 11:9:322        |            | TRUE      
-Newline                                                 |                                          | 11:10:323       |            |           
-Syntax(LeftBrace)                                       | {                                        | 12:3:326        | TRUE       |           
-Identifier                                              | component                                | 12:4:327        |            |           
-Operator(Colon)                                         | :                                        | 12:13:336       |            |           
-Identifier                                              | metal-plate                              | 12:15:338       |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 12:26:349       |            |           
-Identifier                                              | count                                    | 12:28:351       |            | TRUE      
-Operator(Colon)                                         | :                                        | 12:33:356       |            |           
-Number                                                  | 10                                       | 12:35:358       |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 12:37:360       |            |           
-Syntax(Comma)                                           | ,                                        | 12:38:361       |            |           
-Newline                                                 |                                          | 12:39:362       |            |           
-Syntax(LeftBrace)                                       | {                                        | 13:3:365        | TRUE       |           
-Identifier                                              | component                                | 13:4:366        |            |           
-Operator(Colon)                                         | :                                        | 13:13:375       |            |           
-Identifier                                              | solar-cell                               | 13:15:377       |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 13:25:387       |            |           
-Identifier                                              | count                                    | 13:27:389       |            | TRUE      
-Operator(Colon)                                         | :                                        | 13:32:394       |            |           
-Number                                                  | 8                                        | 13:34:396       |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 13:35:397       |            |           
-Syntax(Comma)                                           | ,                                        | 13:36:398       |            |           
-Newline                                                 |                                          | 13:37:399       |            |           
-Syntax(LeftBrace)                                       | {                                        | 14:3:402        | TRUE       |           
-Identifier                                              | component                                | 14:4:403        |            |           
-Operator(Colon)                                         | :                                        | 14:13:412       |            |           
-Identifier                                              | circuit-board                            | 14:15:414       |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 14:28:427       |            |           
-Identifier                                              | count                                    | 14:30:429       |            | TRUE      
-Operator(Colon)                                         | :                                        | 14:35:434       |            |           
-Number                                                  | 5                                        | 14:37:436       |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 14:38:437       |            |           
-Newline                                                 |                                          | 14:39:438       |            |           
-Syntax(RightBracket)                                    | ]                                        | 15:2:440        | TRUE       |           
-Newline                                                 |                                          | 15:3:441        |            |           
-Identifier                                              | craft-time                               | 16:2:443        | TRUE       |           
-Operator(Colon)                                         | :                                        | 16:12:453       |            |           
-Number                                                  | 30                                       | 16:14:455       |            | TRUE      
-Unit(Time)                                              | s                                        | 16:16:457       |            |           
-Newline                                                 |                                          | 16:17:458       |            |           
-Identifier                                              | cost                                     | 17:2:460        | TRUE       |           
-Operator(Colon)                                         | :                                        | 17:6:464        |            |           
-Syntax(LeftBrace)                                       | {                                        | 17:8:466        |            | TRUE      
-Identifier                                              | requisition                              | 17:9:467        |            |           
-Operator(Colon)                                         | :                                        | 17:20:478       |            |           
-Number                                                  | 200                                      | 17:22:480       |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 17:25:483       |            |           
-Identifier                                              | energy                                   | 17:27:485       |            | TRUE      
-Operator(Colon)                                         | :                                        | 17:33:491       |            |           
-Number                                                  | 50                                       | 17:35:493       |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 17:37:495       |            |           
-Newline                                                 |                                          | 17:38:496       |            |           
-Identifier                                              | size                                     | 18:2:498        | TRUE       |           
-Operator(Colon)                                         | :                                        | 18:6:502        |            |           
-Syntax(LeftBrace)                                       | {                                        | 18:8:504        |            | TRUE      
-Identifier                                              | L                                        | 18:9:505        |            |           
-Operator(Colon)                                         | :                                        | 18:10:506       |            |           
-Number                                                  | 2                                        | 18:12:508       |            | TRUE      
-Unit(Length)                                            | m                                        | 18:13:509       |            |           
-Syntax(Comma)                                           | ,                                        | 18:14:510       |            |           
-Identifier                                              | W                                        | 18:16:512       |            | TRUE      
-Operator(Colon)                                         | :                                        | 18:17:513       |            |           
-Number                                                  | 1                                        | 18:19:515       |            | TRUE      
-Unit(Length)                                            | m                                        | 18:20:516       |            |           
-Syntax(Comma)                                           | ,                                        | 18:21:517       |            |           
-Identifier                                              | H                                        | 18:23:519       |            | TRUE      
-Operator(Colon)                                         | :                                        | 18:24:520       |            |           
-Number                                                  | 1                                        | 18:26:522       |            | TRUE      
-Unit(Length)                                            | m                                        | 18:27:523       |            |           
-Syntax(RightBrace)                                      | }                                        | 18:28:524       |            |           
-Newline                                                 |                                          | 18:29:525       |            |           
-Identifier                                              | weight                                   | 19:2:527        | TRUE       |           
-Operator(Colon)                                         | :                                        | 19:8:533        |            |           
-Number                                                  | 150                                      | 19:10:535       |            | TRUE      
-Unit(Mass)                                              | kg                                       | 19:13:538       |            |           
-Newline                                                 |                                          | 19:15:540       |            |           
-Identifier                                              | durability                               | 20:2:542        | TRUE       |           
-Operator(Colon)                                         | :                                        | 20:12:552       |            |           
-Number                                                  | 100                                      | 20:14:554       |            | TRUE      
-Newline                                                 |                                          | 20:17:557       |            |           
-Syntax(RightBrace)                                      | }                                        | 21:1:558        | TRUE       |           
-Newline                                                 |                                          | 21:2:559        |            |           
-Syntax(LeftBrace)                                       | {                                        | 22:1:560        | TRUE       |           
-Newline                                                 |                                          | 22:2:561        |            |           
-Identifier                                              | entity-type                              | 23:2:563        | TRUE       |           
-Operator(Colon)                                         | :                                        | 23:13:574       |            |           
-Identifier                                              | energy-generator                         | 23:15:576       |            | TRUE      
-Newline                                                 |                                          | 23:31:592       |            |           
-Identifier                                              | entity-name                              | 24:2:594        | TRUE       |           
-Operator(Colon)                                         | :                                        | 24:13:605       |            |           
-Identifier                                              | coal-generator                           | 24:15:607       |            | TRUE      
-Newline                                                 |                                          | 24:29:621       |            |           
-Identifier                                              | entity-description                       | 25:2:623        | TRUE       |           
-Operator(Colon)                                         | :                                        | 25:20:641       |            |           
-Identifier                                              | Угольный                                 | 25:22:643       |            | TRUE      
-Identifier                                              | генератор                                | 25:31:660       |            | TRUE      
-Identifier                                              | средней                                  | 25:41:679       |            | TRUE      
-Identifier                                              | мощности                                 | 25:49:694       |            | TRUE      
-Identifier                                              | для                                      | 25:58:711       |            | TRUE      
-Identifier                                              | промышленного                            | 25:62:718       |            | TRUE      
-Identifier                                              | использования                            | 25:76:745       |            | TRUE      
-Newline                                                 |                                          | 25:89:771       |            |           
-Identifier                                              | energy                                   | 26:2:773        | TRUE       |           
-Operator(Colon)                                         | :                                        | 26:8:779        |            |           
-Syntax(LeftBrace)                                       | {                                        | 26:10:781       |            | TRUE      
-Newline                                                 |                                          | 26:11:782       |            |           
-Identifier                                              | power-reproduction                       | 27:3:785        | TRUE       |           
-Operator(Colon)                                         | :                                        | 27:21:803       |            |           
-Number                                                  | 200                                      | 27:23:805       |            | TRUE      
-Unit(Power)                                             | W                                        | 27:26:808       |            |           
-Newline                                                 |                                          | 27:27:809       |            |           
-Identifier                                              | fuel                                     | 28:3:812        | TRUE       |           
-Operator(Colon)                                         | :                                        | 28:7:816        |            |           
-Syntax(LeftBrace)                                       | {                                        | 28:9:818        |            | TRUE      
-Newline                                                 |                                          | 28:10:819       |            |           
-Keyword(Type)                                           | type                                     | 29:4:823        | TRUE       |           
-Operator(Colon)                                         | :                                        | 29:8:827        |            |           
-Identifier                                              | solid                                    | 29:10:829       |            | TRUE      
-Newline                                                 |                                          | 29:15:834       |            |           
-Identifier                                              | consumption                              | 30:4:838        | TRUE       |           
-Operator(Colon)                                         | :                                        | 30:15:849       |            |           
-Number                                                  | 5                                        | 30:17:851       |            | TRUE      
-Unit(Mass)                                              | kg                                       | 30:18:852       |            |           
-Identifier                                              | ÷                                        | 30:21:855       |            | TRUE      
-Number                                                  | 1                                        | 30:23:858       |            | TRUE      
-Unit(Time)                                              | min                                      | 30:24:859       |            |           
-Newline                                                 |                                          | 30:27:862       |            |           
-Identifier                                              | emission                                 | 31:4:866        | TRUE       |           
-Operator(Colon)                                         | :                                        | 31:12:874       |            |           
-Syntax(LeftBracket)                                     | [                                        | 31:14:876       |            | TRUE      
-Newline                                                 |                                          | 31:15:877       |            |           
-Syntax(LeftBrace)                                       | {                                        | 32:5:882        | TRUE       |           
-Identifier                                              | compound                                 | 32:6:883        |            |           
-Operator(Colon)                                         | :                                        | 32:14:891       |            |           
-Identifier                                              | CO2                                      | 32:16:893       |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 32:19:896       |            |           
-Identifier                                              | per-consumption                          | 32:21:898       |            | TRUE      
-Operator(Colon)                                         | :                                        | 32:36:913       |            |           
-Number                                                  | 4.5                                      | 32:38:915       |            | TRUE      
-Unit(Mass)                                              | kg                                       | 32:41:918       |            |           
-Syntax(RightBrace)                                      | }                                        | 32:43:920       |            |           
-Syntax(Comma)                                           | ,                                        | 32:44:921       |            |           
-Newline                                                 |                                          | 32:45:922       |            |           
-Syntax(LeftBrace)                                       | {                                        | 33:5:927        | TRUE       |           
-Identifier                                              | compound                                 | 33:6:928        |            |           
-Operator(Colon)                                         | :                                        | 33:14:936       |            |           
-Identifier                                              | SO2                                      | 33:16:938       |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 33:19:941       |            |           
-Identifier                                              | per-consumption                          | 33:21:943       |            | TRUE      
-Operator(Colon)                                         | :                                        | 33:36:958       |            |           
-Number                                                  | 0.5                                      | 33:38:960       |            | TRUE      
-Unit(Mass)                                              | kg                                       | 33:41:963       |            |           
-Syntax(RightBrace)                                      | }                                        | 33:43:965       |            |           
-Newline                                                 |                                          | 33:44:966       |            |           
-Syntax(RightBracket)                                    | ]                                        | 34:4:970        | TRUE       |           
-Newline                                                 |                                          | 34:5:971        |            |           
-Syntax(RightBrace)                                      | }                                        | 35:3:974        | TRUE       |           
-Newline                                                 |                                          | 35:4:975        |            |           
-Identifier                                              | heat-generation                          | 36:3:978        | TRUE       |           
-Operator(Colon)                                         | :                                        | 36:18:993       |            |           
-Number                                                  | 150                                      | 36:20:995       |            | TRUE      
-Unit(Energy)                                            | kJ                                       | 36:23:998       |            |           
-Operator(Slash)                                         | /                                        | 36:26:1001      |            | TRUE      
-Number                                                  | 1                                        | 36:28:1003      |            | TRUE      
-Unit(Time)                                              | min                                      | 36:30:1005      |            |           
-Newline                                                 |                                          | 36:33:1008      |            |           
-Syntax(RightBrace)                                      | }                                        | 37:2:1010       | TRUE       |           
-Newline                                                 |                                          | 37:3:1011       |            |           
-Identifier                                              | craft                                    | 38:2:1013       | TRUE       |           
-Operator(Colon)                                         | :                                        | 38:7:1018       |            |           
-Syntax(LeftBracket)                                     | [                                        | 38:9:1020       |            | TRUE      
-Newline                                                 |                                          | 38:10:1021      |            |           
-Syntax(LeftBrace)                                       | {                                        | 39:3:1024       | TRUE       |           
-Identifier                                              | component                                | 39:4:1025       |            |           
-Operator(Colon)                                         | :                                        | 39:13:1034      |            |           
-Identifier                                              | steel-plate                              | 39:15:1036      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 39:26:1047      |            |           
-Identifier                                              | count                                    | 39:28:1049      |            | TRUE      
-Operator(Colon)                                         | :                                        | 39:33:1054      |            |           
-Number                                                  | 20                                       | 39:35:1056      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 39:37:1058      |            |           
-Syntax(Comma)                                           | ,                                        | 39:38:1059      |            |           
-Newline                                                 |                                          | 39:39:1060      |            |           
-Syntax(LeftBrace)                                       | {                                        | 40:3:1063       | TRUE       |           
-Identifier                                              | component                                | 40:4:1064       |            |           
-Operator(Colon)                                         | :                                        | 40:13:1073      |            |           
-Identifier                                              | combustion-chamber                       | 40:15:1075      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 40:33:1093      |            |           
-Identifier                                              | count                                    | 40:35:1095      |            | TRUE      
-Operator(Colon)                                         | :                                        | 40:40:1100      |            |           
-Number                                                  | 1                                        | 40:42:1102      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 40:43:1103      |            |           
-Syntax(Comma)                                           | ,                                        | 40:44:1104      |            |           
-Newline                                                 |                                          | 40:45:1105      |            |           
-Syntax(LeftBrace)                                       | {                                        | 41:3:1108       | TRUE       |           
-Identifier                                              | component                                | 41:4:1109       |            |           
-Operator(Colon)                                         | :                                        | 41:13:1118      |            |           
-Identifier                                              | coolant-pipe                             | 41:15:1120      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 41:27:1132      |            |           
-Identifier                                              | count                                    | 41:29:1134      |            | TRUE      
-Operator(Colon)                                         | :                                        | 41:34:1139      |            |           
-Number                                                  | 5                                        | 41:36:1141      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 41:37:1142      |            |           
-Newline                                                 |                                          | 41:38:1143      |            |           
-Syntax(RightBracket)                                    | ]                                        | 42:2:1145       | TRUE       |           
-Newline                                                 |                                          | 42:3:1146       |            |           
-Identifier                                              | craft-time                               | 43:2:1148       | TRUE       |           
-Operator(Colon)                                         | :                                        | 43:12:1158      |            |           
-Number                                                  | 120                                      | 43:14:1160      |            | TRUE      
-Unit(Time)                                              | s                                        | 43:17:1163      |            |           
-Newline                                                 |                                          | 43:18:1164      |            |           
-Identifier                                              | cost                                     | 44:2:1166       | TRUE       |           
-Operator(Colon)                                         | :                                        | 44:6:1170       |            |           
-Syntax(LeftBrace)                                       | {                                        | 44:8:1172       |            | TRUE      
-Identifier                                              | requisition                              | 44:9:1173       |            |           
-Operator(Colon)                                         | :                                        | 44:20:1184      |            |           
-Number                                                  | 1000                                     | 44:22:1186      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 44:26:1190      |            |           
-Identifier                                              | energy                                   | 44:28:1192      |            | TRUE      
-Operator(Colon)                                         | :                                        | 44:34:1198      |            |           
-Number                                                  | 200                                      | 44:36:1200      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 44:39:1203      |            |           
-Newline                                                 |                                          | 44:40:1204      |            |           
-Identifier                                              | size                                     | 45:2:1206       | TRUE       |           
-Operator(Colon)                                         | :                                        | 45:6:1210       |            |           
-Syntax(LeftBrace)                                       | {                                        | 45:8:1212       |            | TRUE      
-Identifier                                              | L                                        | 45:9:1213       |            |           
-Operator(Colon)                                         | :                                        | 45:10:1214      |            |           
-Number                                                  | 5                                        | 45:12:1216      |            | TRUE      
-Unit(Length)                                            | m                                        | 45:13:1217      |            |           
-Syntax(Comma)                                           | ,                                        | 45:14:1218      |            |           
-Identifier                                              | W                                        | 45:16:1220      |            | TRUE      
-Operator(Colon)                                         | :                                        | 45:17:1221      |            |           
-Number                                                  | 2                                        | 45:19:1223      |            | TRUE      
-Unit(Length)                                            | m                                        | 45:20:1224      |            |           
-Syntax(Comma)                                           | ,                                        | 45:21:1225      |            |           
-Identifier                                              | H                                        | 45:23:1227      |            | TRUE      
-Operator(Colon)                                         | :                                        | 45:24:1228      |            |           
-Number                                                  | 2                                        | 45:26:1230      |            | TRUE      
-Unit(Length)                                            | m                                        | 45:27:1231      |            |           
-Syntax(RightBrace)                                      | }                                        | 45:28:1232      |            |           
-Newline                                                 |                                          | 45:29:1233      |            |           
-Identifier                                              | weight                                   | 46:2:1235       | TRUE       |           
-Operator(Colon)                                         | :                                        | 46:8:1241       |            |           
-Number                                                  | 1200                                     | 46:10:1243      |            | TRUE      
-Unit(Mass)                                              | kg                                       | 46:14:1247      |            |           
-Newline                                                 |                                          | 46:16:1249      |            |           
-Identifier                                              | durability                               | 47:2:1251       | TRUE       |           
-Operator(Colon)                                         | :                                        | 47:12:1261      |            |           
-Number                                                  | 500                                      | 47:14:1263      |            | TRUE      
-Newline                                                 |                                          | 47:17:1266      |            |           
-Syntax(RightBrace)                                      | }                                        | 48:1:1267       | TRUE       |           
-Newline                                                 |                                          | 48:2:1268       |            |           
-Syntax(LeftBrace)                                       | {                                        | 49:1:1269       | TRUE       |           
-Newline                                                 |                                          | 49:2:1270       |            |           
-Identifier                                              | entity-type                              | 50:2:1272       | TRUE       |           
-Operator(Colon)                                         | :                                        | 50:13:1283      |            |           
-Identifier                                              | energy-generator                         | 50:15:1285      |            | TRUE      
-Newline                                                 |                                          | 50:31:1301      |            |           
-Identifier                                              | entity-name                              | 51:2:1303       | TRUE       |           
-Operator(Colon)                                         | :                                        | 51:13:1314      |            |           
-Identifier                                              | steam-generator                          | 51:15:1316      |            | TRUE      
-Newline                                                 |                                          | 51:30:1331      |            |           
-Identifier                                              | entity-description                       | 52:2:1333       | TRUE       |           
-Operator(Colon)                                         | :                                        | 52:20:1351      |            |           
-Identifier                                              | Паровой                                  | 52:22:1353      |            | TRUE      
-Identifier                                              | генератор                                | 52:30:1368      |            | TRUE      
-Identifier                                              | средней                                  | 52:40:1387      |            | TRUE      
-Identifier                                              | мощности                                 | 52:48:1402      |            | TRUE      
-Identifier                                              | для                                      | 52:57:1419      |            | TRUE      
-Identifier                                              | промышленных                             | 52:61:1426      |            | TRUE      
-Identifier                                              | и                                        | 52:74:1451      |            | TRUE      
-Identifier                                              | энергетических                           | 52:76:1454      |            | TRUE      
-Identifier                                              | нужд                                     | 52:91:1483      |            | TRUE      
-Newline                                                 |                                          | 52:95:1491      |            |           
-Identifier                                              | energy                                   | 53:2:1493       | TRUE       |           
-Operator(Colon)                                         | :                                        | 53:8:1499       |            |           
-Syntax(LeftBrace)                                       | {                                        | 53:10:1501      |            | TRUE      
-Newline                                                 |                                          | 53:11:1502      |            |           
-Identifier                                              | power-reproduction                       | 54:3:1505       | TRUE       |           
-Operator(Colon)                                         | :                                        | 54:21:1523      |            |           
-Number                                                  | 150                                      | 54:23:1525      |            | TRUE      
-Unit(Power)                                             | W                                        | 54:26:1528      |            |           
-Newline                                                 |                                          | 54:27:1529      |            |           
-Identifier                                              | fuel                                     | 55:3:1532       | TRUE       |           
-Operator(Colon)                                         | :                                        | 55:7:1536       |            |           
-Syntax(LeftBrace)                                       | {                                        | 55:9:1538       |            | TRUE      
-Newline                                                 |                                          | 55:10:1539      |            |           
-Keyword(Type)                                           | type                                     | 56:4:1543       | TRUE       |           
-Operator(Colon)                                         | :                                        | 56:8:1547       |            |           
-Identifier                                              | liquid                                   | 56:10:1549      |            | TRUE      
-Newline                                                 |                                          | 56:16:1555      |            |           
-Identifier                                              | consumption                              | 57:4:1559       | TRUE       |           
-Operator(Colon)                                         | :                                        | 57:15:1570      |            |           
-Number                                                  | 3                                        | 57:17:1572      |            | TRUE      
-Unit(Volume)                                            | L                                        | 57:18:1573      |            |           
-Identifier                                              | ÷                                        | 57:20:1575      |            | TRUE      
-Number                                                  | 1                                        | 57:22:1578      |            | TRUE      
-Unit(Time)                                              | min                                      | 57:23:1579      |            |           
-Newline                                                 |                                          | 57:26:1582      |            |           
-Identifier                                              | emission                                 | 58:4:1586       | TRUE       |           
-Operator(Colon)                                         | :                                        | 58:12:1594      |            |           
-Syntax(LeftBracket)                                     | [                                        | 58:14:1596      |            | TRUE      
-Newline                                                 |                                          | 58:15:1597      |            |           
-Syntax(LeftBrace)                                       | {                                        | 59:5:1602       | TRUE       |           
-Identifier                                              | compound                                 | 59:6:1603       |            |           
-Operator(Colon)                                         | :                                        | 59:14:1611      |            |           
-Identifier                                              | H2O                                      | 59:16:1613      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 59:19:1616      |            |           
-Identifier                                              | per-consumption                          | 59:21:1618      |            | TRUE      
-Operator(Colon)                                         | :                                        | 59:36:1633      |            |           
-Number                                                  | 3                                        | 59:38:1635      |            | TRUE      
-Unit(Volume)                                            | L                                        | 59:39:1636      |            |           
-Syntax(RightBrace)                                      | }                                        | 59:40:1637      |            |           
-Newline                                                 |                                          | 59:41:1638      |            |           
-Syntax(RightBracket)                                    | ]                                        | 60:4:1642       | TRUE       |           
-Newline                                                 |                                          | 60:5:1643       |            |           
-Syntax(RightBrace)                                      | }                                        | 61:3:1646       | TRUE       |           
-Newline                                                 |                                          | 61:4:1647       |            |           
-Identifier                                              | heat-generation                          | 62:3:1650       | TRUE       |           
-Operator(Colon)                                         | :                                        | 62:18:1665      |            |           
-Number                                                  | 120                                      | 62:20:1667      |            | TRUE      
-Unit(Energy)                                            | kJ                                       | 62:23:1670      |            |           
-Operator(Slash)                                         | /                                        | 62:26:1673      |            | TRUE      
-Number                                                  | 1                                        | 62:28:1675      |            | TRUE      
-Unit(Time)                                              | min                                      | 62:30:1677      |            |           
-Newline                                                 |                                          | 62:33:1680      |            |           
-Syntax(RightBrace)                                      | }                                        | 63:2:1682       | TRUE       |           
-Newline                                                 |                                          | 63:3:1683       |            |           
-Identifier                                              | craft                                    | 64:2:1685       | TRUE       |           
-Operator(Colon)                                         | :                                        | 64:7:1690       |            |           
-Syntax(LeftBracket)                                     | [                                        | 64:9:1692       |            | TRUE      
-Newline                                                 |                                          | 64:10:1693      |            |           
-Syntax(LeftBrace)                                       | {                                        | 65:3:1696       | TRUE       |           
-Identifier                                              | component                                | 65:4:1697       |            |           
-Operator(Colon)                                         | :                                        | 65:13:1706      |            |           
-Identifier                                              | steel-plate                              | 65:15:1708      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 65:26:1719      |            |           
-Identifier                                              | count                                    | 65:28:1721      |            | TRUE      
-Operator(Colon)                                         | :                                        | 65:33:1726      |            |           
-Number                                                  | 15                                       | 65:35:1728      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 65:37:1730      |            |           
-Syntax(Comma)                                           | ,                                        | 65:38:1731      |            |           
-Newline                                                 |                                          | 65:39:1732      |            |           
-Syntax(LeftBrace)                                       | {                                        | 66:3:1735       | TRUE       |           
-Identifier                                              | component                                | 66:4:1736       |            |           
-Operator(Colon)                                         | :                                        | 66:13:1745      |            |           
-Identifier                                              | boiler                                   | 66:15:1747      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 66:21:1753      |            |           
-Identifier                                              | count                                    | 66:23:1755      |            | TRUE      
-Operator(Colon)                                         | :                                        | 66:28:1760      |            |           
-Number                                                  | 1                                        | 66:30:1762      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 66:31:1763      |            |           
-Syntax(Comma)                                           | ,                                        | 66:32:1764      |            |           
-Newline                                                 |                                          | 66:33:1765      |            |           
-Syntax(LeftBrace)                                       | {                                        | 67:3:1768       | TRUE       |           
-Identifier                                              | component                                | 67:4:1769       |            |           
-Operator(Colon)                                         | :                                        | 67:13:1778      |            |           
-Identifier                                              | pipe                                     | 67:15:1780      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 67:19:1784      |            |           
-Identifier                                              | count                                    | 67:21:1786      |            | TRUE      
-Operator(Colon)                                         | :                                        | 67:26:1791      |            |           
-Number                                                  | 10                                       | 67:28:1793      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 67:30:1795      |            |           
-Syntax(Comma)                                           | ,                                        | 67:31:1796      |            |           
-Newline                                                 |                                          | 67:32:1797      |            |           
-Syntax(LeftBrace)                                       | {                                        | 68:3:1800       | TRUE       |           
-Identifier                                              | component                                | 68:4:1801       |            |           
-Operator(Colon)                                         | :                                        | 68:13:1810      |            |           
-Identifier                                              | valve                                    | 68:15:1812      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 68:20:1817      |            |           
-Identifier                                              | count                                    | 68:22:1819      |            | TRUE      
-Operator(Colon)                                         | :                                        | 68:27:1824      |            |           
-Number                                                  | 4                                        | 68:29:1826      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 68:30:1827      |            |           
-Newline                                                 |                                          | 68:31:1828      |            |           
-Syntax(RightBracket)                                    | ]                                        | 69:2:1830       | TRUE       |           
-Newline                                                 |                                          | 69:3:1831       |            |           
-Identifier                                              | craft-time                               | 70:2:1833       | TRUE       |           
-Operator(Colon)                                         | :                                        | 70:12:1843      |            |           
-Number                                                  | 90                                       | 70:14:1845      |            | TRUE      
-Unit(Time)                                              | s                                        | 70:16:1847      |            |           
-Newline                                                 |                                          | 70:17:1848      |            |           
-Identifier                                              | cost                                     | 71:2:1850       | TRUE       |           
-Operator(Colon)                                         | :                                        | 71:6:1854       |            |           
-Syntax(LeftBrace)                                       | {                                        | 71:8:1856       |            | TRUE      
-Identifier                                              | requisition                              | 71:9:1857       |            |           
-Operator(Colon)                                         | :                                        | 71:20:1868      |            |           
-Number                                                  | 700                                      | 71:22:1870      |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 71:25:1873      |            |           
-Identifier                                              | energy                                   | 71:27:1875      |            | TRUE      
-Operator(Colon)                                         | :                                        | 71:33:1881      |            |           
-Number                                                  | 150                                      | 71:35:1883      |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 71:38:1886      |            |           
-Newline                                                 |                                          | 71:39:1887      |            |           
-Identifier                                              | size                                     | 72:2:1889       | TRUE       |           
-Operator(Colon)                                         | :                                        | 72:6:1893       |            |           
-Syntax(LeftBrace)                                       | {                                        | 72:8:1895       |            | TRUE      
-Identifier                                              | L                                        | 72:9:1896       |            |           
-Operator(Colon)                                         | :                                        | 72:10:1897      |            |           
-Number                                                  | 4                                        | 72:12:1899      |            | TRUE      
-Unit(Length)                                            | m                                        | 72:13:1900      |            |           
-Syntax(Comma)                                           | ,                                        | 72:14:1901      |            |           
-Identifier                                              | W                                        | 72:16:1903      |            | TRUE      
-Operator(Colon)                                         | :                                        | 72:17:1904      |            |           
-Number                                                  | 2                                        | 72:19:1906      |            | TRUE      
-Unit(Length)                                            | m                                        | 72:20:1907      |            |           
-Syntax(Comma)                                           | ,                                        | 72:21:1908      |            |           
-Identifier                                              | H                                        | 72:23:1910      |            | TRUE      
-Operator(Colon)                                         | :                                        | 72:24:1911      |            |           
-Number                                                  | 2                                        | 72:26:1913      |            | TRUE      
-Unit(Length)                                            | m                                        | 72:27:1914      |            |           
-Syntax(RightBrace)                                      | }                                        | 72:28:1915      |            |           
-Newline                                                 |                                          | 72:29:1916      |            |           
-Identifier                                              | weight                                   | 73:2:1918       | TRUE       |           
-Operator(Colon)                                         | :                                        | 73:8:1924       |            |           
-Number                                                  | 900                                      | 73:10:1926      |            | TRUE      
-Unit(Mass)                                              | kg                                       | 73:13:1929      |            |           
-Newline                                                 |                                          | 73:15:1931      |            |           
-Identifier                                              | durability                               | 74:2:1933       | TRUE       |           
-Operator(Colon)                                         | :                                        | 74:12:1943      |            |           
-Number                                                  | 400                                      | 74:14:1945      |            | TRUE      
-Newline                                                 |                                          | 74:17:1948      |            |           
-Syntax(RightBrace)                                      | }                                        | 75:1:1949       | TRUE       |           
-Newline                                                 |                                          | 75:2:1950       |            |           
-Keyword(Spread)                                         | spread                                   | 76:1:1951       | TRUE       |           
-Syntax(LeftParenthesis)                                 | (                                        | 76:7:1957       |            |           
-Syntax(LeftBracket)                                     | [                                        | 76:8:1958       |            |           
-Syntax(DoubleQuote)                                     | "                                        | 76:9:1959       |            |           
-String                                                  | steam-generator-mk2                      | 76:10:1960      |            |           
-Syntax(DoubleQuote)                                     | "                                        | 76:29:1979      |            |           
-Syntax(Comma)                                           | ,                                        | 76:30:1980      |            |           
-Syntax(DoubleQuote)                                     | "                                        | 76:32:1982      |            | TRUE      
-String                                                  | steam-generator-mk3                      | 76:33:1983      |            |           
-Syntax(DoubleQuote)                                     | "                                        | 76:52:2002      |            |           
-Syntax(Comma)                                           | ,                                        | 76:53:2003      |            |           
-Syntax(DoubleQuote)                                     | "                                        | 76:55:2005      |            | TRUE      
-String                                                  | steam-generator-mk4                      | 76:56:2006      |            |           
-Syntax(DoubleQuote)                                     | "                                        | 76:75:2025      |            |           
-Syntax(Comma)                                           | ,                                        | 76:76:2026      |            |           
-Syntax(DoubleQuote)                                     | "                                        | 76:78:2028      |            | TRUE      
-String                                                  | steam-generator-mk5                      | 76:79:2029      |            |           
-Syntax(DoubleQuote)                                     | "                                        | 76:98:2048      |            |           
-Syntax(RightBracket)                                    | ]                                        | 76:99:2049      |            |           
-Syntax(Comma)                                           | ,                                        | 76:100:2050     |            |           
-Syntax(LeftBracket)                                     | [                                        | 76:102:2052     |            | TRUE      
-Syntax(LeftBrace)                                       | {                                        | 76:103:2053     |            |           
-Operator(DotDotDot)                                     | ...                                      | 76:105:2055     |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 76:109:2059     |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 76:110:2060     |            |           
-Syntax(LeftBrace)                                       | {                                        | 76:112:2062     |            | TRUE      
-Operator(DotDotDot)                                     | ...                                      | 76:114:2064     |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 76:118:2068     |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 76:119:2069     |            |           
-Syntax(LeftBrace)                                       | {                                        | 76:121:2071     |            | TRUE      
-Operator(DotDotDot)                                     | ...                                      | 76:123:2073     |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 76:127:2077     |            | TRUE      
-Syntax(Comma)                                           | ,                                        | 76:128:2078     |            |           
-Syntax(LeftBrace)                                       | {                                        | 76:130:2080     |            | TRUE      
-Operator(DotDotDot)                                     | ...                                      | 76:132:2082     |            | TRUE      
-Syntax(RightBrace)                                      | }                                        | 76:136:2086     |            | TRUE      
-Syntax(RightBracket)                                    | ]                                        | 76:137:2087     |            |           
-Syntax(RightParenthesis)                                | )                                        | 76:138:2088     |            |           
-Keyword(As)                                             | as                                       | 76:140:2090     |            | TRUE      
-Syntax(LeftParenthesis)                                 | (                                        | 76:143:2093     |            | TRUE      
-Identifier                                              | generator                                | 76:144:2094     |            |           
-Syntax(Comma)                                           | ,                                        | 76:153:2103     |            |           
-Identifier                                              | data                                     | 76:155:2105     |            | TRUE      
-Syntax(RightParenthesis)                                | )                                        | 76:159:2109     |            |           
-Syntax(LeftBrace)                                       | {                                        | 76:160:2110     |            |           
-Newline                                                 |                                          | 76:161:2111     |            |           
-Keyword(Yield)                                          | yield                                    | 77:2:2113       | TRUE       |           
-Syntax(LeftBrace)                                       | {                                        | 77:8:2119       |            | TRUE      
-Newline                                                 |                                          | 77:9:2120       |            |           
-Identifier                                              | entity-type                              | 78:3:2123       | TRUE       |           
-Operator(Colon)                                         | :                                        | 78:14:2134      |            |           
-Identifier                                              | energy-generator                         | 78:16:2136      |            | TRUE      
-Newline                                                 |                                          | 78:32:2152      |            |           
-Identifier                                              | entity-name                              | 79:3:2155       | TRUE       |           
-Operator(Colon)                                         | :                                        | 79:14:2166      |            |           
-Syntax(Dollar)                                          | $                                        | 79:16:2168      |            | TRUE      
-Syntax(LeftBrace)                                       | {                                        | 79:17:2169      |            |           
-Identifier                                              | generator                                | 79:18:2170      |            |           
-Syntax(RightBrace)                                      | }                                        | 79:27:2179      |            |           
-Newline                                                 |                                          | 79:28:2180      |            |           
-Identifier                                              | entity-description                       | 80:3:2183       | TRUE       |           
-Operator(Colon)                                         | :                                        | 80:21:2201      |            |           
-Syntax(Dollar)                                          | $                                        | 80:23:2203      |            | TRUE      
-Syntax(LeftBrace)                                       | {                                        | 80:24:2204      |            |           
-Identifier                                              | data                                     | 80:25:2205      |            |           
-Operator(Dot)                                           | .                                        | 80:29:2209      |            |           
-Identifier                                              | description                              | 80:30:2210      |            |           
-Syntax(RightBrace)                                      | }                                        | 80:41:2221      |            |           
-Newline                                                 |                                          | 80:42:2222      |            |           
-Identifier                                              | energy                                   | 81:3:2225       | TRUE       |           
-Operator(Colon)                                         | :                                        | 81:9:2231       |            |           
-Syntax(LeftBrace)                                       | {                                        | 81:11:2233      |            | TRUE      
-Newline                                                 |                                          | 81:12:2234      |            |           
-Keyword(Type)                                           | type                                     | 82:4:2238       | TRUE       |           
-Operator(Colon)                                         | :                                        | 82:8:2242       |            |           
-Identifier                                              | liquid                                   | 82:10:2244      |            | TRUE      
-Newline                                                 |                                          | 82:16:2250      |            |           
-Identifier                                              | consumption                              | 83:4:2254       | TRUE       |           
-Operator(Colon)                                         | :                                        | 83:15:2265      |            |           
-Syntax(Dollar)                                          | $                                        | 83:17:2267      |            | TRUE      
-Syntax(LeftBrace)                                       | {                                        | 83:18:2268      |            |           
-Identifier                                              | data                                     | 83:19:2269      |            |           
-Operator(Dot)                                           | .                                        | 83:23:2273      |            |           
-Identifier                                              | consumption                              | 83:24:2274      |            |           
-Syntax(RightBrace)                                      | }                                        | 83:35:2285      |            |           
-Newline                                                 |                                          | 83:36:2286      |            |           
-Identifier                                              | emission                                 | 84:4:2290       | TRUE       |           
-Operator(Colon)                                         | :                                        | 84:12:2298      |            |           
-Syntax(Dollar)                                          | $                                        | 84:14:2300      |            | TRUE      
-Syntax(LeftBrace)                                       | {                                        | 84:15:2301      |            |           
-Identifier                                              | data                                     | 84:16:2302      |            |           
-Operator(Dot)                                           | .                                        | 84:20:2306      |            |           
-Identifier                                              | emission                                 | 84:21:2307      |            |           
-Syntax(RightBrace)                                      | }                                        | 84:29:2315      |            |           
-Newline                                                 |                                          | 84:30:2316      |            |           
-Syntax(RightBrace)                                      | }                                        | 85:3:2319       | TRUE       |           
-Newline                                                 |                                          | 85:4:2320       |            |           
-Operator(DotDotDot)                                     | ...                                      | 86:3:2323       | TRUE       |           
-Identifier                                              | data                                     | 86:6:2326       |            |           
-Newline                                                 |                                          | 86:10:2330      |            |           
-Syntax(RightBrace)                                      | }                                        | 87:2:2332       | TRUE       |           
-Newline                                                 |                                          | 87:3:2333       |            |           
-Syntax(RightBrace)                                      | }                                        | 88:1:2334       | TRUE       |           
-Newline                                                 |                                          | 88:2:2335       |            |           
-EOF                                                     |                                          | 89:1:2336       |            |           
+1:1:0           | SOF                                                     |                                          |            |           
+1:1:1           | Syntax(LeftBracket)                                     | [                                        | TRUE       |           
+1:2:2           | Keyword(Marker)                                         | Marker                                   |            |           
+1:8:8           | Operator(Colon)                                         | :                                        |            |           
+1:9:9           | Identifier                                              | Output                                   |            |           
+1:15:15         | Operator(Less)                                          | <                                        |            |           
+1:16:16         | Identifier                                              | Dictionary                               |            |           
+1:26:26         | Syntax(LeftBracket)                                     | [                                        |            |           
+1:27:27         | Syntax(RightBracket)                                    | ]                                        |            |           
+1:28:28         | Operator(Greater)                                       | >                                        |            |           
+1:29:29         | Syntax(RightBracket)                                    | ]                                        |            |           
+1:30:30         | Newline                                                 |                                          |            |           
+2:1:31          | Keyword(Use)                                            | use                                      | TRUE       |           
+2:5:35          | Keyword(Schema)                                         | schema                                   |            | TRUE      
+2:12:42         | Syntax(SingleQuote)                                     | '                                        |            | TRUE      
+2:13:43         | String                                                  | ./energy_generator.slacon                |            |           
+2:38:68         | Syntax(SingleQuote)                                     | '                                        |            |           
+2:39:69         | Newline                                                 |                                          |            |           
+3:1:70          | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
+3:2:71          | Newline                                                 |                                          |            |           
+4:1:72          | Identifier                                              | 	entity-type                             | TRUE       |           
+4:13:84         | Operator(Colon)                                         | :                                        |            |           
+4:15:86         | Identifier                                              | energy-generator                         |            | TRUE      
+4:31:102        | Newline                                                 |                                          |            |           
+5:1:103         | Identifier                                              | 	entity-name                             | TRUE       |           
+5:13:115        | Operator(Colon)                                         | :                                        |            |           
+5:15:117        | Identifier                                              | solar-generator-mk1                      |            | TRUE      
+5:34:136        | Newline                                                 |                                          |            |           
+6:1:137         | Identifier                                              | 	entity-description                      | TRUE       |           
+6:20:156        | Operator(Colon)                                         | :                                        |            |           
+6:22:158        | Identifier                                              | Базовый                                  |            | TRUE      
+6:30:173        | Identifier                                              | солнечный                                |            | TRUE      
+6:40:192        | Identifier                                              | генератор                                |            | TRUE      
+6:50:211        | Identifier                                              | для                                      |            | TRUE      
+6:54:218        | Identifier                                              | малых                                    |            | TRUE      
+6:60:229        | Identifier                                              | станций                                  |            | TRUE      
+6:67:243        | Newline                                                 |                                          |            |           
+7:1:244         | Identifier                                              | 	energy                                  | TRUE       |           
+7:8:251         | Operator(Colon)                                         | :                                        |            |           
+7:10:253        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+7:11:254        | Newline                                                 |                                          |            |           
+8:1:255         | Identifier                                              | 		power-reproduction                     | TRUE       |           
+8:21:275        | Operator(Colon)                                         | :                                        |            |           
+8:23:277        | Number                                                  | 50                                       |            | TRUE      
+8:25:279        | Unit(Power)                                             | W                                        |            |           
+8:26:280        | Newline                                                 |                                          |            |           
+9:1:281         | Identifier                                              | 		heat-generation                        | TRUE       |           
+9:18:298        | Operator(Colon)                                         | :                                        |            |           
+9:20:300        | Number                                                  | 1                                        |            | TRUE      
+9:21:301        | Unit(Energy)                                            | kJ                                       |            |           
+9:24:304        | Operator(Slash)                                         | /                                        |            | TRUE      
+9:26:306        | Number                                                  | 1                                        |            | TRUE      
+9:28:308        | Unit(Time)                                              | min                                      |            |           
+9:31:311        | Newline                                                 |                                          |            |           
+10:1:312        | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+10:3:314        | Newline                                                 |                                          |            |           
+11:1:315        | Identifier                                              | 	craft                                   | TRUE       |           
+11:7:321        | Operator(Colon)                                         | :                                        |            |           
+11:9:323        | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
+11:10:324       | Newline                                                 |                                          |            |           
+12:1:325        | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+12:4:328        | Identifier                                              | component                                |            |           
+12:13:337       | Operator(Colon)                                         | :                                        |            |           
+12:15:339       | Identifier                                              | metal-plate                              |            | TRUE      
+12:26:350       | Syntax(Comma)                                           | ,                                        |            |           
+12:28:352       | Identifier                                              | count                                    |            | TRUE      
+12:33:357       | Operator(Colon)                                         | :                                        |            |           
+12:35:359       | Number                                                  | 10                                       |            | TRUE      
+12:37:361       | Syntax(RightBrace)                                      | }                                        |            |           
+12:38:362       | Syntax(Comma)                                           | ,                                        |            |           
+12:39:363       | Newline                                                 |                                          |            |           
+13:1:364        | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+13:4:367        | Identifier                                              | component                                |            |           
+13:13:376       | Operator(Colon)                                         | :                                        |            |           
+13:15:378       | Identifier                                              | solar-cell                               |            | TRUE      
+13:25:388       | Syntax(Comma)                                           | ,                                        |            |           
+13:27:390       | Identifier                                              | count                                    |            | TRUE      
+13:32:395       | Operator(Colon)                                         | :                                        |            |           
+13:34:397       | Number                                                  | 8                                        |            | TRUE      
+13:35:398       | Syntax(RightBrace)                                      | }                                        |            |           
+13:36:399       | Syntax(Comma)                                           | ,                                        |            |           
+13:37:400       | Newline                                                 |                                          |            |           
+14:1:401        | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+14:4:404        | Identifier                                              | component                                |            |           
+14:13:413       | Operator(Colon)                                         | :                                        |            |           
+14:15:415       | Identifier                                              | circuit-board                            |            | TRUE      
+14:28:428       | Syntax(Comma)                                           | ,                                        |            |           
+14:30:430       | Identifier                                              | count                                    |            | TRUE      
+14:35:435       | Operator(Colon)                                         | :                                        |            |           
+14:37:437       | Number                                                  | 5                                        |            | TRUE      
+14:38:438       | Syntax(RightBrace)                                      | }                                        |            |           
+14:39:439       | Newline                                                 |                                          |            |           
+15:1:440        | Syntax(RightBracket)                                    | 	]                                       | TRUE       |           
+15:3:442        | Newline                                                 |                                          |            |           
+16:1:443        | Identifier                                              | 	craft-time                              | TRUE       |           
+16:12:454       | Operator(Colon)                                         | :                                        |            |           
+16:14:456       | Number                                                  | 30                                       |            | TRUE      
+16:16:458       | Unit(Time)                                              | s                                        |            |           
+16:17:459       | Newline                                                 |                                          |            |           
+17:1:460        | Identifier                                              | 	cost                                    | TRUE       |           
+17:6:465        | Operator(Colon)                                         | :                                        |            |           
+17:8:467        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+17:9:468        | Identifier                                              | requisition                              |            |           
+17:20:479       | Operator(Colon)                                         | :                                        |            |           
+17:22:481       | Number                                                  | 200                                      |            | TRUE      
+17:25:484       | Syntax(Comma)                                           | ,                                        |            |           
+17:27:486       | Identifier                                              | energy                                   |            | TRUE      
+17:33:492       | Operator(Colon)                                         | :                                        |            |           
+17:35:494       | Number                                                  | 50                                       |            | TRUE      
+17:37:496       | Syntax(RightBrace)                                      | }                                        |            |           
+17:38:497       | Newline                                                 |                                          |            |           
+18:1:498        | Identifier                                              | 	size                                    | TRUE       |           
+18:6:503        | Operator(Colon)                                         | :                                        |            |           
+18:8:505        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+18:9:506        | Identifier                                              | L                                        |            |           
+18:10:507       | Operator(Colon)                                         | :                                        |            |           
+18:12:509       | Number                                                  | 2                                        |            | TRUE      
+18:13:510       | Unit(Length)                                            | m                                        |            |           
+18:14:511       | Syntax(Comma)                                           | ,                                        |            |           
+18:16:513       | Identifier                                              | W                                        |            | TRUE      
+18:17:514       | Operator(Colon)                                         | :                                        |            |           
+18:19:516       | Number                                                  | 1                                        |            | TRUE      
+18:20:517       | Unit(Length)                                            | m                                        |            |           
+18:21:518       | Syntax(Comma)                                           | ,                                        |            |           
+18:23:520       | Identifier                                              | H                                        |            | TRUE      
+18:24:521       | Operator(Colon)                                         | :                                        |            |           
+18:26:523       | Number                                                  | 1                                        |            | TRUE      
+18:27:524       | Unit(Length)                                            | m                                        |            |           
+18:28:525       | Syntax(RightBrace)                                      | }                                        |            |           
+18:29:526       | Newline                                                 |                                          |            |           
+19:1:527        | Identifier                                              | 	weight                                  | TRUE       |           
+19:8:534        | Operator(Colon)                                         | :                                        |            |           
+19:10:536       | Number                                                  | 150                                      |            | TRUE      
+19:13:539       | Unit(Mass)                                              | kg                                       |            |           
+19:15:541       | Newline                                                 |                                          |            |           
+20:1:542        | Identifier                                              | 	durability                              | TRUE       |           
+20:12:553       | Operator(Colon)                                         | :                                        |            |           
+20:14:555       | Number                                                  | 100                                      |            | TRUE      
+20:17:558       | Newline                                                 |                                          |            |           
+21:1:559        | Syntax(RightBrace)                                      | }                                        | TRUE       |           
+21:2:560        | Newline                                                 |                                          |            |           
+22:1:561        | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
+22:2:562        | Newline                                                 |                                          |            |           
+23:1:563        | Identifier                                              | 	entity-type                             | TRUE       |           
+23:13:575       | Operator(Colon)                                         | :                                        |            |           
+23:15:577       | Identifier                                              | energy-generator                         |            | TRUE      
+23:31:593       | Newline                                                 |                                          |            |           
+24:1:594        | Identifier                                              | 	entity-name                             | TRUE       |           
+24:13:606       | Operator(Colon)                                         | :                                        |            |           
+24:15:608       | Identifier                                              | coal-generator                           |            | TRUE      
+24:29:622       | Newline                                                 |                                          |            |           
+25:1:623        | Identifier                                              | 	entity-description                      | TRUE       |           
+25:20:642       | Operator(Colon)                                         | :                                        |            |           
+25:22:644       | Identifier                                              | Угольный                                 |            | TRUE      
+25:31:661       | Identifier                                              | генератор                                |            | TRUE      
+25:41:680       | Identifier                                              | средней                                  |            | TRUE      
+25:49:695       | Identifier                                              | мощности                                 |            | TRUE      
+25:58:712       | Identifier                                              | для                                      |            | TRUE      
+25:62:719       | Identifier                                              | промышленного                            |            | TRUE      
+25:76:746       | Identifier                                              | использования                            |            | TRUE      
+25:89:772       | Newline                                                 |                                          |            |           
+26:1:773        | Identifier                                              | 	energy                                  | TRUE       |           
+26:8:780        | Operator(Colon)                                         | :                                        |            |           
+26:10:782       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+26:11:783       | Newline                                                 |                                          |            |           
+27:1:784        | Identifier                                              | 		power-reproduction                     | TRUE       |           
+27:21:804       | Operator(Colon)                                         | :                                        |            |           
+27:23:806       | Number                                                  | 200                                      |            | TRUE      
+27:26:809       | Unit(Power)                                             | W                                        |            |           
+27:27:810       | Newline                                                 |                                          |            |           
+28:1:811        | Identifier                                              | 		fuel                                   | TRUE       |           
+28:7:817        | Operator(Colon)                                         | :                                        |            |           
+28:9:819        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+28:10:820       | Newline                                                 |                                          |            |           
+29:1:821        | Identifier                                              | 			type                                  | TRUE       |           
+29:8:828        | Operator(Colon)                                         | :                                        |            |           
+29:10:830       | Identifier                                              | solid                                    |            | TRUE      
+29:15:835       | Newline                                                 |                                          |            |           
+30:1:836        | Identifier                                              | 			consumption                           | TRUE       |           
+30:15:850       | Operator(Colon)                                         | :                                        |            |           
+30:17:852       | Number                                                  | 5                                        |            | TRUE      
+30:18:853       | Unit(Mass)                                              | kg                                       |            |           
+30:21:856       | Identifier                                              | ÷                                        |            | TRUE      
+30:23:859       | Number                                                  | 1                                        |            | TRUE      
+30:24:860       | Unit(Time)                                              | min                                      |            |           
+30:27:863       | Newline                                                 |                                          |            |           
+31:1:864        | Identifier                                              | 			emission                              | TRUE       |           
+31:12:875       | Operator(Colon)                                         | :                                        |            |           
+31:14:877       | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
+31:15:878       | Newline                                                 |                                          |            |           
+32:1:879        | Syntax(LeftBrace)                                       | 				{                                    | TRUE       |           
+32:6:884        | Identifier                                              | compound                                 |            |           
+32:14:892       | Operator(Colon)                                         | :                                        |            |           
+32:16:894       | Identifier                                              | CO2                                      |            | TRUE      
+32:19:897       | Syntax(Comma)                                           | ,                                        |            |           
+32:21:899       | Identifier                                              | per-consumption                          |            | TRUE      
+32:36:914       | Operator(Colon)                                         | :                                        |            |           
+32:38:916       | Number                                                  | 4.5                                      |            | TRUE      
+32:41:919       | Unit(Mass)                                              | kg                                       |            |           
+32:43:921       | Syntax(RightBrace)                                      | }                                        |            |           
+32:44:922       | Syntax(Comma)                                           | ,                                        |            |           
+32:45:923       | Newline                                                 |                                          |            |           
+33:1:924        | Syntax(LeftBrace)                                       | 				{                                    | TRUE       |           
+33:6:929        | Identifier                                              | compound                                 |            |           
+33:14:937       | Operator(Colon)                                         | :                                        |            |           
+33:16:939       | Identifier                                              | SO2                                      |            | TRUE      
+33:19:942       | Syntax(Comma)                                           | ,                                        |            |           
+33:21:944       | Identifier                                              | per-consumption                          |            | TRUE      
+33:36:959       | Operator(Colon)                                         | :                                        |            |           
+33:38:961       | Number                                                  | 0.5                                      |            | TRUE      
+33:41:964       | Unit(Mass)                                              | kg                                       |            |           
+33:43:966       | Syntax(RightBrace)                                      | }                                        |            |           
+33:44:967       | Newline                                                 |                                          |            |           
+34:1:968        | Syntax(RightBracket)                                    | 			]                                     | TRUE       |           
+34:5:972        | Newline                                                 |                                          |            |           
+35:1:973        | Syntax(RightBrace)                                      | 		}                                      | TRUE       |           
+35:4:976        | Newline                                                 |                                          |            |           
+36:1:977        | Identifier                                              | 		heat-generation                        | TRUE       |           
+36:18:994       | Operator(Colon)                                         | :                                        |            |           
+36:20:996       | Number                                                  | 150                                      |            | TRUE      
+36:23:999       | Unit(Energy)                                            | kJ                                       |            |           
+36:26:1002      | Operator(Slash)                                         | /                                        |            | TRUE      
+36:28:1004      | Number                                                  | 1                                        |            | TRUE      
+36:30:1006      | Unit(Time)                                              | min                                      |            |           
+36:33:1009      | Newline                                                 |                                          |            |           
+37:1:1010       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+37:3:1012       | Newline                                                 |                                          |            |           
+38:1:1013       | Identifier                                              | 	craft                                   | TRUE       |           
+38:7:1019       | Operator(Colon)                                         | :                                        |            |           
+38:9:1021       | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
+38:10:1022      | Newline                                                 |                                          |            |           
+39:1:1023       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+39:4:1026       | Identifier                                              | component                                |            |           
+39:13:1035      | Operator(Colon)                                         | :                                        |            |           
+39:15:1037      | Identifier                                              | steel-plate                              |            | TRUE      
+39:26:1048      | Syntax(Comma)                                           | ,                                        |            |           
+39:28:1050      | Identifier                                              | count                                    |            | TRUE      
+39:33:1055      | Operator(Colon)                                         | :                                        |            |           
+39:35:1057      | Number                                                  | 20                                       |            | TRUE      
+39:37:1059      | Syntax(RightBrace)                                      | }                                        |            |           
+39:38:1060      | Syntax(Comma)                                           | ,                                        |            |           
+39:39:1061      | Newline                                                 |                                          |            |           
+40:1:1062       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+40:4:1065       | Identifier                                              | component                                |            |           
+40:13:1074      | Operator(Colon)                                         | :                                        |            |           
+40:15:1076      | Identifier                                              | combustion-chamber                       |            | TRUE      
+40:33:1094      | Syntax(Comma)                                           | ,                                        |            |           
+40:35:1096      | Identifier                                              | count                                    |            | TRUE      
+40:40:1101      | Operator(Colon)                                         | :                                        |            |           
+40:42:1103      | Number                                                  | 1                                        |            | TRUE      
+40:43:1104      | Syntax(RightBrace)                                      | }                                        |            |           
+40:44:1105      | Syntax(Comma)                                           | ,                                        |            |           
+40:45:1106      | Newline                                                 |                                          |            |           
+41:1:1107       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+41:4:1110       | Identifier                                              | component                                |            |           
+41:13:1119      | Operator(Colon)                                         | :                                        |            |           
+41:15:1121      | Identifier                                              | coolant-pipe                             |            | TRUE      
+41:27:1133      | Syntax(Comma)                                           | ,                                        |            |           
+41:29:1135      | Identifier                                              | count                                    |            | TRUE      
+41:34:1140      | Operator(Colon)                                         | :                                        |            |           
+41:36:1142      | Number                                                  | 5                                        |            | TRUE      
+41:37:1143      | Syntax(RightBrace)                                      | }                                        |            |           
+41:38:1144      | Newline                                                 |                                          |            |           
+42:1:1145       | Syntax(RightBracket)                                    | 	]                                       | TRUE       |           
+42:3:1147       | Newline                                                 |                                          |            |           
+43:1:1148       | Identifier                                              | 	craft-time                              | TRUE       |           
+43:12:1159      | Operator(Colon)                                         | :                                        |            |           
+43:14:1161      | Number                                                  | 120                                      |            | TRUE      
+43:17:1164      | Unit(Time)                                              | s                                        |            |           
+43:18:1165      | Newline                                                 |                                          |            |           
+44:1:1166       | Identifier                                              | 	cost                                    | TRUE       |           
+44:6:1171       | Operator(Colon)                                         | :                                        |            |           
+44:8:1173       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+44:9:1174       | Identifier                                              | requisition                              |            |           
+44:20:1185      | Operator(Colon)                                         | :                                        |            |           
+44:22:1187      | Number                                                  | 1000                                     |            | TRUE      
+44:26:1191      | Syntax(Comma)                                           | ,                                        |            |           
+44:28:1193      | Identifier                                              | energy                                   |            | TRUE      
+44:34:1199      | Operator(Colon)                                         | :                                        |            |           
+44:36:1201      | Number                                                  | 200                                      |            | TRUE      
+44:39:1204      | Syntax(RightBrace)                                      | }                                        |            |           
+44:40:1205      | Newline                                                 |                                          |            |           
+45:1:1206       | Identifier                                              | 	size                                    | TRUE       |           
+45:6:1211       | Operator(Colon)                                         | :                                        |            |           
+45:8:1213       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+45:9:1214       | Identifier                                              | L                                        |            |           
+45:10:1215      | Operator(Colon)                                         | :                                        |            |           
+45:12:1217      | Number                                                  | 5                                        |            | TRUE      
+45:13:1218      | Unit(Length)                                            | m                                        |            |           
+45:14:1219      | Syntax(Comma)                                           | ,                                        |            |           
+45:16:1221      | Identifier                                              | W                                        |            | TRUE      
+45:17:1222      | Operator(Colon)                                         | :                                        |            |           
+45:19:1224      | Number                                                  | 2                                        |            | TRUE      
+45:20:1225      | Unit(Length)                                            | m                                        |            |           
+45:21:1226      | Syntax(Comma)                                           | ,                                        |            |           
+45:23:1228      | Identifier                                              | H                                        |            | TRUE      
+45:24:1229      | Operator(Colon)                                         | :                                        |            |           
+45:26:1231      | Number                                                  | 2                                        |            | TRUE      
+45:27:1232      | Unit(Length)                                            | m                                        |            |           
+45:28:1233      | Syntax(RightBrace)                                      | }                                        |            |           
+45:29:1234      | Newline                                                 |                                          |            |           
+46:1:1235       | Identifier                                              | 	weight                                  | TRUE       |           
+46:8:1242       | Operator(Colon)                                         | :                                        |            |           
+46:10:1244      | Number                                                  | 1200                                     |            | TRUE      
+46:14:1248      | Unit(Mass)                                              | kg                                       |            |           
+46:16:1250      | Newline                                                 |                                          |            |           
+47:1:1251       | Identifier                                              | 	durability                              | TRUE       |           
+47:12:1262      | Operator(Colon)                                         | :                                        |            |           
+47:14:1264      | Number                                                  | 500                                      |            | TRUE      
+47:17:1267      | Newline                                                 |                                          |            |           
+48:1:1268       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
+48:2:1269       | Newline                                                 |                                          |            |           
+49:1:1270       | Syntax(LeftBrace)                                       | {                                        | TRUE       |           
+49:2:1271       | Newline                                                 |                                          |            |           
+50:1:1272       | Identifier                                              | 	entity-type                             | TRUE       |           
+50:13:1284      | Operator(Colon)                                         | :                                        |            |           
+50:15:1286      | Identifier                                              | energy-generator                         |            | TRUE      
+50:31:1302      | Newline                                                 |                                          |            |           
+51:1:1303       | Identifier                                              | 	entity-name                             | TRUE       |           
+51:13:1315      | Operator(Colon)                                         | :                                        |            |           
+51:15:1317      | Identifier                                              | steam-generator                          |            | TRUE      
+51:30:1332      | Newline                                                 |                                          |            |           
+52:1:1333       | Identifier                                              | 	entity-description                      | TRUE       |           
+52:20:1352      | Operator(Colon)                                         | :                                        |            |           
+52:22:1354      | Identifier                                              | Паровой                                  |            | TRUE      
+52:30:1369      | Identifier                                              | генератор                                |            | TRUE      
+52:40:1388      | Identifier                                              | средней                                  |            | TRUE      
+52:48:1403      | Identifier                                              | мощности                                 |            | TRUE      
+52:57:1420      | Identifier                                              | для                                      |            | TRUE      
+52:61:1427      | Identifier                                              | промышленных                             |            | TRUE      
+52:74:1452      | Identifier                                              | и                                        |            | TRUE      
+52:76:1455      | Identifier                                              | энергетических                           |            | TRUE      
+52:91:1484      | Identifier                                              | нужд                                     |            | TRUE      
+52:95:1492      | Newline                                                 |                                          |            |           
+53:1:1493       | Identifier                                              | 	energy                                  | TRUE       |           
+53:8:1500       | Operator(Colon)                                         | :                                        |            |           
+53:10:1502      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+53:11:1503      | Newline                                                 |                                          |            |           
+54:1:1504       | Identifier                                              | 		power-reproduction                     | TRUE       |           
+54:21:1524      | Operator(Colon)                                         | :                                        |            |           
+54:23:1526      | Number                                                  | 150                                      |            | TRUE      
+54:26:1529      | Unit(Power)                                             | W                                        |            |           
+54:27:1530      | Newline                                                 |                                          |            |           
+55:1:1531       | Identifier                                              | 		fuel                                   | TRUE       |           
+55:7:1537       | Operator(Colon)                                         | :                                        |            |           
+55:9:1539       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+55:10:1540      | Newline                                                 |                                          |            |           
+56:1:1541       | Identifier                                              | 			type                                  | TRUE       |           
+56:8:1548       | Operator(Colon)                                         | :                                        |            |           
+56:10:1550      | Identifier                                              | liquid                                   |            | TRUE      
+56:16:1556      | Newline                                                 |                                          |            |           
+57:1:1557       | Identifier                                              | 			consumption                           | TRUE       |           
+57:15:1571      | Operator(Colon)                                         | :                                        |            |           
+57:17:1573      | Number                                                  | 3                                        |            | TRUE      
+57:18:1574      | Unit(Volume)                                            | L                                        |            |           
+57:20:1576      | Identifier                                              | ÷                                        |            | TRUE      
+57:22:1579      | Number                                                  | 1                                        |            | TRUE      
+57:23:1580      | Unit(Time)                                              | min                                      |            |           
+57:26:1583      | Newline                                                 |                                          |            |           
+58:1:1584       | Identifier                                              | 			emission                              | TRUE       |           
+58:12:1595      | Operator(Colon)                                         | :                                        |            |           
+58:14:1597      | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
+58:15:1598      | Newline                                                 |                                          |            |           
+59:1:1599       | Syntax(LeftBrace)                                       | 				{                                    | TRUE       |           
+59:6:1604       | Identifier                                              | compound                                 |            |           
+59:14:1612      | Operator(Colon)                                         | :                                        |            |           
+59:16:1614      | Identifier                                              | H2O                                      |            | TRUE      
+59:19:1617      | Syntax(Comma)                                           | ,                                        |            |           
+59:21:1619      | Identifier                                              | per-consumption                          |            | TRUE      
+59:36:1634      | Operator(Colon)                                         | :                                        |            |           
+59:38:1636      | Number                                                  | 3                                        |            | TRUE      
+59:39:1637      | Unit(Volume)                                            | L                                        |            |           
+59:40:1638      | Syntax(RightBrace)                                      | }                                        |            |           
+59:41:1639      | Newline                                                 |                                          |            |           
+60:1:1640       | Syntax(RightBracket)                                    | 			]                                     | TRUE       |           
+60:5:1644       | Newline                                                 |                                          |            |           
+61:1:1645       | Syntax(RightBrace)                                      | 		}                                      | TRUE       |           
+61:4:1648       | Newline                                                 |                                          |            |           
+62:1:1649       | Identifier                                              | 		heat-generation                        | TRUE       |           
+62:18:1666      | Operator(Colon)                                         | :                                        |            |           
+62:20:1668      | Number                                                  | 120                                      |            | TRUE      
+62:23:1671      | Unit(Energy)                                            | kJ                                       |            |           
+62:26:1674      | Operator(Slash)                                         | /                                        |            | TRUE      
+62:28:1676      | Number                                                  | 1                                        |            | TRUE      
+62:30:1678      | Unit(Time)                                              | min                                      |            |           
+62:33:1681      | Newline                                                 |                                          |            |           
+63:1:1682       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+63:3:1684       | Newline                                                 |                                          |            |           
+64:1:1685       | Identifier                                              | 	craft                                   | TRUE       |           
+64:7:1691       | Operator(Colon)                                         | :                                        |            |           
+64:9:1693       | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
+64:10:1694      | Newline                                                 |                                          |            |           
+65:1:1695       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+65:4:1698       | Identifier                                              | component                                |            |           
+65:13:1707      | Operator(Colon)                                         | :                                        |            |           
+65:15:1709      | Identifier                                              | steel-plate                              |            | TRUE      
+65:26:1720      | Syntax(Comma)                                           | ,                                        |            |           
+65:28:1722      | Identifier                                              | count                                    |            | TRUE      
+65:33:1727      | Operator(Colon)                                         | :                                        |            |           
+65:35:1729      | Number                                                  | 15                                       |            | TRUE      
+65:37:1731      | Syntax(RightBrace)                                      | }                                        |            |           
+65:38:1732      | Syntax(Comma)                                           | ,                                        |            |           
+65:39:1733      | Newline                                                 |                                          |            |           
+66:1:1734       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+66:4:1737       | Identifier                                              | component                                |            |           
+66:13:1746      | Operator(Colon)                                         | :                                        |            |           
+66:15:1748      | Identifier                                              | boiler                                   |            | TRUE      
+66:21:1754      | Syntax(Comma)                                           | ,                                        |            |           
+66:23:1756      | Identifier                                              | count                                    |            | TRUE      
+66:28:1761      | Operator(Colon)                                         | :                                        |            |           
+66:30:1763      | Number                                                  | 1                                        |            | TRUE      
+66:31:1764      | Syntax(RightBrace)                                      | }                                        |            |           
+66:32:1765      | Syntax(Comma)                                           | ,                                        |            |           
+66:33:1766      | Newline                                                 |                                          |            |           
+67:1:1767       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+67:4:1770       | Identifier                                              | component                                |            |           
+67:13:1779      | Operator(Colon)                                         | :                                        |            |           
+67:15:1781      | Identifier                                              | pipe                                     |            | TRUE      
+67:19:1785      | Syntax(Comma)                                           | ,                                        |            |           
+67:21:1787      | Identifier                                              | count                                    |            | TRUE      
+67:26:1792      | Operator(Colon)                                         | :                                        |            |           
+67:28:1794      | Number                                                  | 10                                       |            | TRUE      
+67:30:1796      | Syntax(RightBrace)                                      | }                                        |            |           
+67:31:1797      | Syntax(Comma)                                           | ,                                        |            |           
+67:32:1798      | Newline                                                 |                                          |            |           
+68:1:1799       | Syntax(LeftBrace)                                       | 		{                                      | TRUE       |           
+68:4:1802       | Identifier                                              | component                                |            |           
+68:13:1811      | Operator(Colon)                                         | :                                        |            |           
+68:15:1813      | Identifier                                              | valve                                    |            | TRUE      
+68:20:1818      | Syntax(Comma)                                           | ,                                        |            |           
+68:22:1820      | Identifier                                              | count                                    |            | TRUE      
+68:27:1825      | Operator(Colon)                                         | :                                        |            |           
+68:29:1827      | Number                                                  | 4                                        |            | TRUE      
+68:30:1828      | Syntax(RightBrace)                                      | }                                        |            |           
+68:31:1829      | Newline                                                 |                                          |            |           
+69:1:1830       | Syntax(RightBracket)                                    | 	]                                       | TRUE       |           
+69:3:1832       | Newline                                                 |                                          |            |           
+70:1:1833       | Identifier                                              | 	craft-time                              | TRUE       |           
+70:12:1844      | Operator(Colon)                                         | :                                        |            |           
+70:14:1846      | Number                                                  | 90                                       |            | TRUE      
+70:16:1848      | Unit(Time)                                              | s                                        |            |           
+70:17:1849      | Newline                                                 |                                          |            |           
+71:1:1850       | Identifier                                              | 	cost                                    | TRUE       |           
+71:6:1855       | Operator(Colon)                                         | :                                        |            |           
+71:8:1857       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+71:9:1858       | Identifier                                              | requisition                              |            |           
+71:20:1869      | Operator(Colon)                                         | :                                        |            |           
+71:22:1871      | Number                                                  | 700                                      |            | TRUE      
+71:25:1874      | Syntax(Comma)                                           | ,                                        |            |           
+71:27:1876      | Identifier                                              | energy                                   |            | TRUE      
+71:33:1882      | Operator(Colon)                                         | :                                        |            |           
+71:35:1884      | Number                                                  | 150                                      |            | TRUE      
+71:38:1887      | Syntax(RightBrace)                                      | }                                        |            |           
+71:39:1888      | Newline                                                 |                                          |            |           
+72:1:1889       | Identifier                                              | 	size                                    | TRUE       |           
+72:6:1894       | Operator(Colon)                                         | :                                        |            |           
+72:8:1896       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+72:9:1897       | Identifier                                              | L                                        |            |           
+72:10:1898      | Operator(Colon)                                         | :                                        |            |           
+72:12:1900      | Number                                                  | 4                                        |            | TRUE      
+72:13:1901      | Unit(Length)                                            | m                                        |            |           
+72:14:1902      | Syntax(Comma)                                           | ,                                        |            |           
+72:16:1904      | Identifier                                              | W                                        |            | TRUE      
+72:17:1905      | Operator(Colon)                                         | :                                        |            |           
+72:19:1907      | Number                                                  | 2                                        |            | TRUE      
+72:20:1908      | Unit(Length)                                            | m                                        |            |           
+72:21:1909      | Syntax(Comma)                                           | ,                                        |            |           
+72:23:1911      | Identifier                                              | H                                        |            | TRUE      
+72:24:1912      | Operator(Colon)                                         | :                                        |            |           
+72:26:1914      | Number                                                  | 2                                        |            | TRUE      
+72:27:1915      | Unit(Length)                                            | m                                        |            |           
+72:28:1916      | Syntax(RightBrace)                                      | }                                        |            |           
+72:29:1917      | Newline                                                 |                                          |            |           
+73:1:1918       | Identifier                                              | 	weight                                  | TRUE       |           
+73:8:1925       | Operator(Colon)                                         | :                                        |            |           
+73:10:1927      | Number                                                  | 900                                      |            | TRUE      
+73:13:1930      | Unit(Mass)                                              | kg                                       |            |           
+73:15:1932      | Newline                                                 |                                          |            |           
+74:1:1933       | Identifier                                              | 	durability                              | TRUE       |           
+74:12:1944      | Operator(Colon)                                         | :                                        |            |           
+74:14:1946      | Number                                                  | 400                                      |            | TRUE      
+74:17:1949      | Newline                                                 |                                          |            |           
+75:1:1950       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
+75:2:1951       | Newline                                                 |                                          |            |           
+76:1:1952       | Keyword(Spread)                                         | spread                                   | TRUE       |           
+76:7:1958       | Syntax(LeftParenthesis)                                 | (                                        |            |           
+76:8:1959       | Syntax(LeftBracket)                                     | [                                        |            |           
+76:9:1960       | Syntax(DoubleQuote)                                     | "                                        |            |           
+76:10:1961      | String                                                  | steam-generator-mk2                      |            |           
+76:29:1980      | Syntax(DoubleQuote)                                     | "                                        |            |           
+76:30:1981      | Syntax(Comma)                                           | ,                                        |            |           
+76:32:1983      | Syntax(DoubleQuote)                                     | "                                        |            | TRUE      
+76:33:1984      | String                                                  | steam-generator-mk3                      |            |           
+76:52:2003      | Syntax(DoubleQuote)                                     | "                                        |            |           
+76:53:2004      | Syntax(Comma)                                           | ,                                        |            |           
+76:55:2006      | Syntax(DoubleQuote)                                     | "                                        |            | TRUE      
+76:56:2007      | String                                                  | steam-generator-mk4                      |            |           
+76:75:2026      | Syntax(DoubleQuote)                                     | "                                        |            |           
+76:76:2027      | Syntax(Comma)                                           | ,                                        |            |           
+76:78:2029      | Syntax(DoubleQuote)                                     | "                                        |            | TRUE      
+76:79:2030      | String                                                  | steam-generator-mk5                      |            |           
+76:98:2049      | Syntax(DoubleQuote)                                     | "                                        |            |           
+76:99:2050      | Syntax(RightBracket)                                    | ]                                        |            |           
+76:100:2051     | Syntax(Comma)                                           | ,                                        |            |           
+76:102:2053     | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
+76:103:2054     | Syntax(LeftBrace)                                       | {                                        |            |           
+76:105:2056     | Operator(DotDotDot)                                     | ...                                      |            | TRUE      
+76:109:2060     | Syntax(RightBrace)                                      | }                                        |            | TRUE      
+76:110:2061     | Syntax(Comma)                                           | ,                                        |            |           
+76:112:2063     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+76:114:2065     | Operator(DotDotDot)                                     | ...                                      |            | TRUE      
+76:118:2069     | Syntax(RightBrace)                                      | }                                        |            | TRUE      
+76:119:2070     | Syntax(Comma)                                           | ,                                        |            |           
+76:121:2072     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+76:123:2074     | Operator(DotDotDot)                                     | ...                                      |            | TRUE      
+76:127:2078     | Syntax(RightBrace)                                      | }                                        |            | TRUE      
+76:128:2079     | Syntax(Comma)                                           | ,                                        |            |           
+76:130:2081     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+76:132:2083     | Operator(DotDotDot)                                     | ...                                      |            | TRUE      
+76:136:2087     | Syntax(RightBrace)                                      | }                                        |            | TRUE      
+76:137:2088     | Syntax(RightBracket)                                    | ]                                        |            |           
+76:138:2089     | Syntax(RightParenthesis)                                | )                                        |            |           
+76:140:2091     | Keyword(As)                                             | as                                       |            | TRUE      
+76:143:2094     | Syntax(LeftParenthesis)                                 | (                                        |            | TRUE      
+76:144:2095     | Identifier                                              | generator                                |            |           
+76:153:2104     | Syntax(Comma)                                           | ,                                        |            |           
+76:155:2106     | Identifier                                              | data                                     |            | TRUE      
+76:159:2110     | Syntax(RightParenthesis)                                | )                                        |            |           
+76:160:2111     | Syntax(LeftBrace)                                       | {                                        |            |           
+76:161:2112     | Newline                                                 |                                          |            |           
+77:1:2113       | Identifier                                              | 	yield                                   | TRUE       |           
+77:8:2120       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+77:9:2121       | Newline                                                 |                                          |            |           
+78:1:2122       | Identifier                                              | 		entity-type                            | TRUE       |           
+78:14:2135      | Operator(Colon)                                         | :                                        |            |           
+78:16:2137      | Identifier                                              | energy-generator                         |            | TRUE      
+78:32:2153      | Newline                                                 |                                          |            |           
+79:1:2154       | Identifier                                              | 		entity-name                            | TRUE       |           
+79:14:2167      | Operator(Colon)                                         | :                                        |            |           
+79:16:2169      | Syntax(Dollar)                                          | $                                        |            | TRUE      
+79:17:2170      | Syntax(LeftBrace)                                       | {                                        |            |           
+79:18:2171      | Identifier                                              | generator                                |            |           
+79:27:2180      | Syntax(RightBrace)                                      | }                                        |            |           
+79:28:2181      | Newline                                                 |                                          |            |           
+80:1:2182       | Identifier                                              | 		entity-description                     | TRUE       |           
+80:21:2202      | Operator(Colon)                                         | :                                        |            |           
+80:23:2204      | Syntax(Dollar)                                          | $                                        |            | TRUE      
+80:24:2205      | Syntax(LeftBrace)                                       | {                                        |            |           
+80:25:2206      | Identifier                                              | data                                     |            |           
+80:29:2210      | Operator(Dot)                                           | .                                        |            |           
+80:30:2211      | Identifier                                              | description                              |            |           
+80:41:2222      | Syntax(RightBrace)                                      | }                                        |            |           
+80:42:2223      | Newline                                                 |                                          |            |           
+81:1:2224       | Identifier                                              | 		energy                                 | TRUE       |           
+81:9:2232       | Operator(Colon)                                         | :                                        |            |           
+81:11:2234      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+81:12:2235      | Newline                                                 |                                          |            |           
+82:1:2236       | Identifier                                              | 			type                                  | TRUE       |           
+82:8:2243       | Operator(Colon)                                         | :                                        |            |           
+82:10:2245      | Identifier                                              | liquid                                   |            | TRUE      
+82:16:2251      | Newline                                                 |                                          |            |           
+83:1:2252       | Identifier                                              | 			consumption                           | TRUE       |           
+83:15:2266      | Operator(Colon)                                         | :                                        |            |           
+83:17:2268      | Syntax(Dollar)                                          | $                                        |            | TRUE      
+83:18:2269      | Syntax(LeftBrace)                                       | {                                        |            |           
+83:19:2270      | Identifier                                              | data                                     |            |           
+83:23:2274      | Operator(Dot)                                           | .                                        |            |           
+83:24:2275      | Identifier                                              | consumption                              |            |           
+83:35:2286      | Syntax(RightBrace)                                      | }                                        |            |           
+83:36:2287      | Newline                                                 |                                          |            |           
+84:1:2288       | Identifier                                              | 			emission                              | TRUE       |           
+84:12:2299      | Operator(Colon)                                         | :                                        |            |           
+84:14:2301      | Syntax(Dollar)                                          | $                                        |            | TRUE      
+84:15:2302      | Syntax(LeftBrace)                                       | {                                        |            |           
+84:16:2303      | Identifier                                              | data                                     |            |           
+84:20:2307      | Operator(Dot)                                           | .                                        |            |           
+84:21:2308      | Identifier                                              | emission                                 |            |           
+84:29:2316      | Syntax(RightBrace)                                      | }                                        |            |           
+84:30:2317      | Newline                                                 |                                          |            |           
+85:1:2318       | Syntax(RightBrace)                                      | 		}                                      | TRUE       |           
+85:4:2321       | Newline                                                 |                                          |            |           
+86:1:2322       | Operator(DotDotDot)                                     | 		...                                    | TRUE       |           
+86:6:2327       | Identifier                                              | data                                     |            |           
+86:10:2331      | Newline                                                 |                                          |            |           
+87:1:2332       | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+87:3:2334       | Newline                                                 |                                          |            |           
+88:1:2335       | Syntax(RightBrace)                                      | }                                        | TRUE       |           
+88:2:2336       | Newline                                                 |                                          |            |           
+89:1:2337       | EOF                                                     |                                          |            |           

@@ -1,207 +1,207 @@
-TYPE                                                    | LEXEME                                   | POSITION        | LINE START | WHITESPACE
+POSITION        | TYPE                                                    | LEXEME                                                  | LINE START | WHITESPACE
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SOF                                                     |                                          | 1:1:0           |            |           
-Identifier                                              | entity-type                              | 1:1:0           | TRUE       |           
-Operator(Colon)                                         | :                                        | 1:12:11         |            |           
-Identifier                                              | energy-generator                         | 1:14:13         |            | TRUE      
-Newline                                                 |                                          | 1:30:29         |            |           
-Identifier                                              | entity-name                              | 2:1:30          | TRUE       |           
-Operator(Colon)                                         | :                                        | 2:12:41         |            |           
-Operator(Less)                                          | <                                        | 2:14:43         |            | TRUE      
-Identifier                                              | String                                   | 2:15:44         |            |           
-Operator(Greater)                                       | >                                        | 2:21:50         |            |           
-Newline                                                 |                                          | 2:22:51         |            |           
-Identifier                                              | entity-description                       | 3:1:52          | TRUE       |           
-Operator(QuestionColon)                                 | ?:                                       | 3:19:70         |            |           
-Operator(Less)                                          | <                                        | 3:22:73         |            | TRUE      
-Identifier                                              | String                                   | 3:23:74         |            |           
-Operator(Greater)                                       | >                                        | 3:29:80         |            |           
-Newline                                                 |                                          | 3:30:81         |            |           
-Identifier                                              | energy                                   | 4:1:82          | TRUE       |           
-Operator(Less)                                          | <                                        | 4:7:88          |            |           
-Identifier                                              | Dictionary                               | 4:8:89          |            |           
-Operator(Greater)                                       | >                                        | 4:18:99         |            |           
-Operator(Colon)                                         | :                                        | 4:19:100        |            |           
-Syntax(LeftBrace)                                       | {                                        | 4:21:102        |            | TRUE      
-Newline                                                 |                                          | 4:22:103        |            |           
-Identifier                                              | power-reproduction                       | 5:2:105         | TRUE       |           
-Operator(Colon)                                         | :                                        | 5:20:123        |            |           
-Operator(Less)                                          | <                                        | 5:22:125        |            | TRUE      
-Identifier                                              | Power                                    | 5:23:126        |            |           
-Operator(Greater)                                       | >                                        | 5:28:131        |            |           
-Newline                                                 |                                          | 5:29:132        |            |           
-Identifier                                              | fuel                                     | 6:2:134         | TRUE       |           
-Operator(Question)                                      | ?                                        | 6:6:138         |            |           
-Operator(Less)                                          | <                                        | 6:7:139         |            |           
-Identifier                                              | Dictionary                               | 6:8:140         |            |           
-Operator(Greater)                                       | >                                        | 6:18:150        |            |           
-Operator(Colon)                                         | :                                        | 6:19:151        |            |           
-Syntax(LeftBrace)                                       | {                                        | 6:21:153        |            | TRUE      
-Newline                                                 |                                          | 6:22:154        |            |           
-Keyword(Type)                                           | type                                     | 7:3:157         | TRUE       |           
-Operator(QuestionColon)                                 | ?:                                       | 7:7:161         |            |           
-Operator(Less)                                          | <                                        | 7:10:164        |            | TRUE      
-Identifier                                              | String                                   | 7:11:165        |            |           
-Operator(Greater)                                       | >                                        | 7:17:171        |            |           
-Keyword(Of)                                             | of                                       | 7:19:173        |            | TRUE      
-Syntax(LeftParenthesis)                                 | (                                        | 7:22:176        |            | TRUE      
-Syntax(DoubleQuote)                                     | "                                        | 7:23:177        |            |           
-String                                                  | solid                                    | 7:24:178        |            |           
-Syntax(DoubleQuote)                                     | "                                        | 7:29:183        |            |           
-Operator(Pipe)                                          | |                                        | 7:31:185        |            | TRUE      
-Syntax(DoubleQuote)                                     | "                                        | 7:33:187        |            | TRUE      
-String                                                  | liquid                                   | 7:34:188        |            |           
-Syntax(DoubleQuote)                                     | "                                        | 7:40:194        |            |           
-Operator(Pipe)                                          | |                                        | 7:42:196        |            | TRUE      
-Syntax(DoubleQuote)                                     | "                                        | 7:44:198        |            | TRUE      
-String                                                  | gas                                      | 7:45:199        |            |           
-Syntax(DoubleQuote)                                     | "                                        | 7:48:202        |            |           
-Syntax(RightParenthesis)                                | )                                        | 7:49:203        |            |           
-Newline                                                 |                                          | 7:50:204        |            |           
-Identifier                                              | consumption                              | 8:3:207         | TRUE       |           
-Operator(Less)                                          | <                                        | 8:14:218        |            |           
-Identifier                                              | Expr                                     | 8:15:219        |            |           
-Operator(Greater)                                       | >                                        | 8:19:223        |            |           
-Operator(QuestionColon)                                 | ?:                                       | 8:20:224        |            |           
-Operator(Less)                                          | <                                        | 8:23:227        |            | TRUE      
-Identifier                                              | Mass                                     | 8:24:228        |            |           
-Operator(Greater)                                       | >                                        | 8:28:232        |            |           
-Identifier                                              | ÷                                        | 8:30:234        |            | TRUE      
-Keyword(Delta)                                          | delta                                    | 8:32:237        |            | TRUE      
-Operator(Less)                                          | <                                        | 8:38:243        |            | TRUE      
-Identifier                                              | Time                                     | 8:39:244        |            |           
-Operator(Greater)                                       | >                                        | 8:43:248        |            |           
-Newline                                                 |                                          | 8:44:249        |            |           
-Identifier                                              | emission                                 | 9:3:252         | TRUE       |           
-Operator(Less)                                          | <                                        | 9:11:260        |            |           
-Identifier                                              | Dictionary                               | 9:12:261        |            |           
-Syntax(LeftBracket)                                     | [                                        | 9:22:271        |            |           
-Syntax(RightBracket)                                    | ]                                        | 9:23:272        |            |           
-Operator(Greater)                                       | >                                        | 9:24:273        |            |           
-Operator(QuestionColon)                                 | ?:                                       | 9:25:274        |            |           
-Syntax(LeftBracket)                                     | [                                        | 9:28:277        |            | TRUE      
-Newline                                                 |                                          | 9:29:278        |            |           
-Syntax(LeftBrace)                                       | {                                        | 10:4:282        | TRUE       |           
-Identifier                                              | compound                                 | 10:5:283        |            |           
-Operator(Colon)                                         | :                                        | 10:13:291       |            |           
-Operator(Less)                                          | <                                        | 10:15:293       |            | TRUE      
-Identifier                                              | String                                   | 10:16:294       |            |           
-Operator(Greater)                                       | >                                        | 10:22:300       |            |           
-Syntax(Comma)                                           | ,                                        | 10:23:301       |            |           
-Identifier                                              | per-consumption                          | 10:25:303       |            | TRUE      
-Operator(Colon)                                         | :                                        | 10:40:318       |            |           
-Operator(Less)                                          | <                                        | 10:42:320       |            | TRUE      
-Identifier                                              | Mass                                     | 10:43:321       |            |           
-Operator(Greater)                                       | >                                        | 10:47:325       |            |           
-Syntax(RightBrace)                                      | }                                        | 10:48:326       |            |           
-Operator(Asterisk)                                      | *                                        | 10:49:327       |            |           
-Newline                                                 |                                          | 10:50:328       |            |           
-Syntax(RightBracket)                                    | ]                                        | 11:3:331        | TRUE       |           
-Newline                                                 |                                          | 11:4:332        |            |           
-Syntax(RightBrace)                                      | }                                        | 12:2:334        | TRUE       |           
-Newline                                                 |                                          | 12:3:335        |            |           
-Identifier                                              | heat-generation                          | 13:2:337        | TRUE       |           
-Operator(Less)                                          | <                                        | 13:17:352       |            |           
-Identifier                                              | Expr                                     | 13:18:353       |            |           
-Operator(Greater)                                       | >                                        | 13:22:357       |            |           
-Operator(QuestionColon)                                 | ?:                                       | 13:23:358       |            |           
-Operator(Less)                                          | <                                        | 13:26:361       |            | TRUE      
-Identifier                                              | Energy                                   | 13:27:362       |            |           
-Operator(Greater)                                       | >                                        | 13:33:368       |            |           
-Identifier                                              | ÷                                        | 13:35:370       |            | TRUE      
-Keyword(Delta)                                          | delta                                    | 13:37:373       |            | TRUE      
-Operator(Less)                                          | <                                        | 13:43:379       |            | TRUE      
-Identifier                                              | Time                                     | 13:44:380       |            |           
-Operator(Greater)                                       | >                                        | 13:48:384       |            |           
-Newline                                                 |                                          | 13:49:385       |            |           
-Syntax(RightBrace)                                      | }                                        | 14:1:386        | TRUE       |           
-Newline                                                 |                                          | 14:2:387        |            |           
-Identifier                                              | craft                                    | 15:1:388        | TRUE       |           
-Operator(Less)                                          | <                                        | 15:6:393        |            |           
-Identifier                                              | Dictionary                               | 15:7:394        |            |           
-Syntax(LeftBracket)                                     | [                                        | 15:17:404       |            |           
-Syntax(RightBracket)                                    | ]                                        | 15:18:405       |            |           
-Operator(Greater)                                       | >                                        | 15:19:406       |            |           
-Operator(Colon)                                         | :                                        | 15:20:407       |            |           
-Syntax(LeftBracket)                                     | [                                        | 15:22:409       |            | TRUE      
-Newline                                                 |                                          | 15:23:410       |            |           
-Syntax(LeftBrace)                                       | {                                        | 16:2:412        | TRUE       |           
-Identifier                                              | component                                | 16:3:413        |            |           
-Operator(Colon)                                         | :                                        | 16:12:422       |            |           
-Operator(Less)                                          | <                                        | 16:14:424       |            | TRUE      
-Identifier                                              | String                                   | 16:15:425       |            |           
-Operator(Greater)                                       | >                                        | 16:21:431       |            |           
-Syntax(Comma)                                           | ,                                        | 16:22:432       |            |           
-Identifier                                              | count                                    | 16:24:434       |            | TRUE      
-Operator(Colon)                                         | :                                        | 16:29:439       |            |           
-Operator(Less)                                          | <                                        | 16:31:441       |            | TRUE      
-Identifier                                              | Int                                      | 16:32:442       |            |           
-Operator(Greater)                                       | >                                        | 16:35:445       |            |           
-Syntax(RightBrace)                                      | }                                        | 16:36:446       |            |           
-Operator(Asterisk)                                      | *                                        | 16:37:447       |            |           
-Newline                                                 |                                          | 16:38:448       |            |           
-Syntax(RightBracket)                                    | ]                                        | 17:1:449        | TRUE       |           
-Newline                                                 |                                          | 17:2:450        |            |           
-Identifier                                              | craft-time                               | 18:1:451        | TRUE       |           
-Operator(Colon)                                         | :                                        | 18:11:461       |            |           
-Operator(Less)                                          | <                                        | 18:13:463       |            | TRUE      
-Identifier                                              | Time                                     | 18:14:464       |            |           
-Operator(Greater)                                       | >                                        | 18:18:468       |            |           
-Newline                                                 |                                          | 18:19:469       |            |           
-Identifier                                              | cost                                     | 19:1:470        | TRUE       |           
-Operator(Less)                                          | <                                        | 19:5:474        |            |           
-Identifier                                              | Dictionary                               | 19:6:475        |            |           
-Operator(Greater)                                       | >                                        | 19:16:485       |            |           
-Operator(Colon)                                         | :                                        | 19:17:486       |            |           
-Syntax(LeftBrace)                                       | {                                        | 19:19:488       |            | TRUE      
-Identifier                                              | requisition                              | 19:20:489       |            |           
-Operator(Colon)                                         | :                                        | 19:31:500       |            |           
-Operator(Less)                                          | <                                        | 19:33:502       |            | TRUE      
-Identifier                                              | Number                                   | 19:34:503       |            |           
-Operator(Greater)                                       | >                                        | 19:40:509       |            |           
-Syntax(Comma)                                           | ,                                        | 19:41:510       |            |           
-Identifier                                              | energy                                   | 19:43:512       |            | TRUE      
-Operator(Colon)                                         | :                                        | 19:49:518       |            |           
-Operator(Less)                                          | <                                        | 19:51:520       |            | TRUE      
-Identifier                                              | Number                                   | 19:52:521       |            |           
-Operator(Greater)                                       | >                                        | 19:58:527       |            |           
-Syntax(RightBrace)                                      | }                                        | 19:59:528       |            |           
-Newline                                                 |                                          | 19:60:529       |            |           
-Identifier                                              | size                                     | 20:1:530        | TRUE       |           
-Operator(Less)                                          | <                                        | 20:5:534        |            |           
-Identifier                                              | Dictionary                               | 20:6:535        |            |           
-Operator(Greater)                                       | >                                        | 20:16:545       |            |           
-Operator(Colon)                                         | :                                        | 20:17:546       |            |           
-Syntax(LeftBrace)                                       | {                                        | 20:19:548       |            | TRUE      
-Identifier                                              | L                                        | 20:20:549       |            |           
-Operator(Colon)                                         | :                                        | 20:21:550       |            |           
-Operator(Less)                                          | <                                        | 20:23:552       |            | TRUE      
-Identifier                                              | Length                                   | 20:24:553       |            |           
-Operator(Greater)                                       | >                                        | 20:30:559       |            |           
-Syntax(Comma)                                           | ,                                        | 20:31:560       |            |           
-Identifier                                              | W                                        | 20:33:562       |            | TRUE      
-Operator(Colon)                                         | :                                        | 20:34:563       |            |           
-Operator(Less)                                          | <                                        | 20:36:565       |            | TRUE      
-Identifier                                              | Length                                   | 20:37:566       |            |           
-Operator(Greater)                                       | >                                        | 20:43:572       |            |           
-Syntax(Comma)                                           | ,                                        | 20:44:573       |            |           
-Identifier                                              | H                                        | 20:46:575       |            | TRUE      
-Operator(Colon)                                         | :                                        | 20:47:576       |            |           
-Operator(Less)                                          | <                                        | 20:49:578       |            | TRUE      
-Identifier                                              | Length                                   | 20:50:579       |            |           
-Operator(Greater)                                       | >                                        | 20:56:585       |            |           
-Syntax(RightBrace)                                      | }                                        | 20:57:586       |            |           
-Newline                                                 |                                          | 20:58:587       |            |           
-Identifier                                              | weight                                   | 21:1:588        | TRUE       |           
-Operator(Colon)                                         | :                                        | 21:7:594        |            |           
-Operator(Less)                                          | <                                        | 21:9:596        |            | TRUE      
-Identifier                                              | Mass                                     | 21:10:597       |            |           
-Operator(Greater)                                       | >                                        | 21:14:601       |            |           
-Newline                                                 |                                          | 21:15:602       |            |           
-Identifier                                              | durability                               | 22:1:603        | TRUE       |           
-Operator(Colon)                                         | :                                        | 22:11:613       |            |           
-Operator(Less)                                          | <                                        | 22:13:615       |            | TRUE      
-Identifier                                              | UInt16                                   | 22:14:616       |            |           
-Operator(Greater)                                       | >                                        | 22:20:622       |            |           
-Newline                                                 |                                          | 22:21:623       |            |           
-EOF                                                     |                                          | 23:1:624        |            |           
+1:1:0           | SOF                                                     |                                          |            |           
+1:1:1           | Identifier                                              | entity-type                              | TRUE       |           
+1:12:12         | Operator(Colon)                                         | :                                        |            |           
+1:14:14         | Identifier                                              | energy-generator                         |            | TRUE      
+1:30:30         | Newline                                                 |                                          |            |           
+2:1:31          | Identifier                                              | entity-name                              | TRUE       |           
+2:12:42         | Operator(Colon)                                         | :                                        |            |           
+2:14:44         | Operator(Less)                                          | <                                        |            | TRUE      
+2:15:45         | Identifier                                              | String                                   |            |           
+2:21:51         | Operator(Greater)                                       | >                                        |            |           
+2:22:52         | Newline                                                 |                                          |            |           
+3:1:53          | Identifier                                              | entity-description                       | TRUE       |           
+3:19:71         | Operator(QuestionColon)                                 | ?:                                       |            |           
+3:22:74         | Operator(Less)                                          | <                                        |            | TRUE      
+3:23:75         | Identifier                                              | String                                   |            |           
+3:29:81         | Operator(Greater)                                       | >                                        |            |           
+3:30:82         | Newline                                                 |                                          |            |           
+4:1:83          | Identifier                                              | energy                                   | TRUE       |           
+4:7:89          | Operator(Less)                                          | <                                        |            |           
+4:8:90          | Identifier                                              | Dictionary                               |            |           
+4:18:100        | Operator(Greater)                                       | >                                        |            |           
+4:19:101        | Operator(Colon)                                         | :                                        |            |           
+4:21:103        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+4:22:104        | Newline                                                 |                                          |            |           
+5:1:105         | Identifier                                              | 	power-reproduction                      | TRUE       |           
+5:20:124        | Operator(Colon)                                         | :                                        |            |           
+5:22:126        | Operator(Less)                                          | <                                        |            | TRUE      
+5:23:127        | Identifier                                              | Power                                    |            |           
+5:28:132        | Operator(Greater)                                       | >                                        |            |           
+5:29:133        | Newline                                                 |                                          |            |           
+6:1:134         | Identifier                                              | 	fuel                                    | TRUE       |           
+6:6:139         | Operator(Question)                                      | ?                                        |            |           
+6:7:140         | Operator(Less)                                          | <                                        |            |           
+6:8:141         | Identifier                                              | Dictionary                               |            |           
+6:18:151        | Operator(Greater)                                       | >                                        |            |           
+6:19:152        | Operator(Colon)                                         | :                                        |            |           
+6:21:154        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+6:22:155        | Newline                                                 |                                          |            |           
+7:1:156         | Identifier                                              | 		type                                   | TRUE       |           
+7:7:162         | Operator(QuestionColon)                                 | ?:                                       |            |           
+7:10:165        | Operator(Less)                                          | <                                        |            | TRUE      
+7:11:166        | Identifier                                              | String                                   |            |           
+7:17:172        | Operator(Greater)                                       | >                                        |            |           
+7:19:174        | Keyword(Of)                                             | of                                       |            | TRUE      
+7:22:177        | Syntax(LeftParenthesis)                                 | (                                        |            | TRUE      
+7:23:178        | Syntax(DoubleQuote)                                     | "                                        |            |           
+7:24:179        | String                                                  | solid                                    |            |           
+7:29:184        | Syntax(DoubleQuote)                                     | "                                        |            |           
+7:31:186        | Operator(Pipe)                                          | |                                        |            | TRUE      
+7:33:188        | Syntax(DoubleQuote)                                     | "                                        |            | TRUE      
+7:34:189        | String                                                  | liquid                                   |            |           
+7:40:195        | Syntax(DoubleQuote)                                     | "                                        |            |           
+7:42:197        | Operator(Pipe)                                          | |                                        |            | TRUE      
+7:44:199        | Syntax(DoubleQuote)                                     | "                                        |            | TRUE      
+7:45:200        | String                                                  | gas                                      |            |           
+7:48:203        | Syntax(DoubleQuote)                                     | "                                        |            |           
+7:49:204        | Syntax(RightParenthesis)                                | )                                        |            |           
+7:50:205        | Newline                                                 |                                          |            |           
+8:1:206         | Identifier                                              | 		consumption                            | TRUE       |           
+8:14:219        | Operator(Less)                                          | <                                        |            |           
+8:15:220        | Identifier                                              | Expr                                     |            |           
+8:19:224        | Operator(Greater)                                       | >                                        |            |           
+8:20:225        | Operator(QuestionColon)                                 | ?:                                       |            |           
+8:23:228        | Operator(Less)                                          | <                                        |            | TRUE      
+8:24:229        | Identifier                                              | Mass                                     |            |           
+8:28:233        | Operator(Greater)                                       | >                                        |            |           
+8:30:235        | Identifier                                              | ÷                                        |            | TRUE      
+8:32:238        | Keyword(Delta)                                          | delta                                    |            | TRUE      
+8:38:244        | Operator(Less)                                          | <                                        |            | TRUE      
+8:39:245        | Identifier                                              | Time                                     |            |           
+8:43:249        | Operator(Greater)                                       | >                                        |            |           
+8:44:250        | Newline                                                 |                                          |            |           
+9:1:251         | Identifier                                              | 		emission                               | TRUE       |           
+9:11:261        | Operator(Less)                                          | <                                        |            |           
+9:12:262        | Identifier                                              | Dictionary                               |            |           
+9:22:272        | Syntax(LeftBracket)                                     | [                                        |            |           
+9:23:273        | Syntax(RightBracket)                                    | ]                                        |            |           
+9:24:274        | Operator(Greater)                                       | >                                        |            |           
+9:25:275        | Operator(QuestionColon)                                 | ?:                                       |            |           
+9:28:278        | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
+9:29:279        | Newline                                                 |                                          |            |           
+10:1:280        | Syntax(LeftBrace)                                       | 			{                                     | TRUE       |           
+10:5:284        | Identifier                                              | compound                                 |            |           
+10:13:292       | Operator(Colon)                                         | :                                        |            |           
+10:15:294       | Operator(Less)                                          | <                                        |            | TRUE      
+10:16:295       | Identifier                                              | String                                   |            |           
+10:22:301       | Operator(Greater)                                       | >                                        |            |           
+10:23:302       | Syntax(Comma)                                           | ,                                        |            |           
+10:25:304       | Identifier                                              | per-consumption                          |            | TRUE      
+10:40:319       | Operator(Colon)                                         | :                                        |            |           
+10:42:321       | Operator(Less)                                          | <                                        |            | TRUE      
+10:43:322       | Identifier                                              | Mass                                     |            |           
+10:47:326       | Operator(Greater)                                       | >                                        |            |           
+10:48:327       | Syntax(RightBrace)                                      | }                                        |            |           
+10:49:328       | Operator(Asterisk)                                      | *                                        |            |           
+10:50:329       | Newline                                                 |                                          |            |           
+11:1:330        | Syntax(RightBracket)                                    | 		]                                      | TRUE       |           
+11:4:333        | Newline                                                 |                                          |            |           
+12:1:334        | Syntax(RightBrace)                                      | 	}                                       | TRUE       |           
+12:3:336        | Newline                                                 |                                          |            |           
+13:1:337        | Identifier                                              | 	heat-generation                         | TRUE       |           
+13:17:353       | Operator(Less)                                          | <                                        |            |           
+13:18:354       | Identifier                                              | Expr                                     |            |           
+13:22:358       | Operator(Greater)                                       | >                                        |            |           
+13:23:359       | Operator(QuestionColon)                                 | ?:                                       |            |           
+13:26:362       | Operator(Less)                                          | <                                        |            | TRUE      
+13:27:363       | Identifier                                              | Energy                                   |            |           
+13:33:369       | Operator(Greater)                                       | >                                        |            |           
+13:35:371       | Identifier                                              | ÷                                        |            | TRUE      
+13:37:374       | Keyword(Delta)                                          | delta                                    |            | TRUE      
+13:43:380       | Operator(Less)                                          | <                                        |            | TRUE      
+13:44:381       | Identifier                                              | Time                                     |            |           
+13:48:385       | Operator(Greater)                                       | >                                        |            |           
+13:49:386       | Newline                                                 |                                          |            |           
+14:1:387        | Syntax(RightBrace)                                      | }                                        | TRUE       |           
+14:2:388        | Newline                                                 |                                          |            |           
+15:1:389        | Identifier                                              | craft                                    | TRUE       |           
+15:6:394        | Operator(Less)                                          | <                                        |            |           
+15:7:395        | Identifier                                              | Dictionary                               |            |           
+15:17:405       | Syntax(LeftBracket)                                     | [                                        |            |           
+15:18:406       | Syntax(RightBracket)                                    | ]                                        |            |           
+15:19:407       | Operator(Greater)                                       | >                                        |            |           
+15:20:408       | Operator(Colon)                                         | :                                        |            |           
+15:22:410       | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
+15:23:411       | Newline                                                 |                                          |            |           
+16:1:412        | Syntax(LeftBrace)                                       | 	{                                       | TRUE       |           
+16:3:414        | Identifier                                              | component                                |            |           
+16:12:423       | Operator(Colon)                                         | :                                        |            |           
+16:14:425       | Operator(Less)                                          | <                                        |            | TRUE      
+16:15:426       | Identifier                                              | String                                   |            |           
+16:21:432       | Operator(Greater)                                       | >                                        |            |           
+16:22:433       | Syntax(Comma)                                           | ,                                        |            |           
+16:24:435       | Identifier                                              | count                                    |            | TRUE      
+16:29:440       | Operator(Colon)                                         | :                                        |            |           
+16:31:442       | Operator(Less)                                          | <                                        |            | TRUE      
+16:32:443       | Identifier                                              | Int                                      |            |           
+16:35:446       | Operator(Greater)                                       | >                                        |            |           
+16:36:447       | Syntax(RightBrace)                                      | }                                        |            |           
+16:37:448       | Operator(Asterisk)                                      | *                                        |            |           
+16:38:449       | Newline                                                 |                                          |            |           
+17:1:450        | Syntax(RightBracket)                                    | ]                                        | TRUE       |           
+17:2:451        | Newline                                                 |                                          |            |           
+18:1:452        | Identifier                                              | craft-time                               | TRUE       |           
+18:11:462       | Operator(Colon)                                         | :                                        |            |           
+18:13:464       | Operator(Less)                                          | <                                        |            | TRUE      
+18:14:465       | Identifier                                              | Time                                     |            |           
+18:18:469       | Operator(Greater)                                       | >                                        |            |           
+18:19:470       | Newline                                                 |                                          |            |           
+19:1:471        | Identifier                                              | cost                                     | TRUE       |           
+19:5:475        | Operator(Less)                                          | <                                        |            |           
+19:6:476        | Identifier                                              | Dictionary                               |            |           
+19:16:486       | Operator(Greater)                                       | >                                        |            |           
+19:17:487       | Operator(Colon)                                         | :                                        |            |           
+19:19:489       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+19:20:490       | Identifier                                              | requisition                              |            |           
+19:31:501       | Operator(Colon)                                         | :                                        |            |           
+19:33:503       | Operator(Less)                                          | <                                        |            | TRUE      
+19:34:504       | Identifier                                              | Number                                   |            |           
+19:40:510       | Operator(Greater)                                       | >                                        |            |           
+19:41:511       | Syntax(Comma)                                           | ,                                        |            |           
+19:43:513       | Identifier                                              | energy                                   |            | TRUE      
+19:49:519       | Operator(Colon)                                         | :                                        |            |           
+19:51:521       | Operator(Less)                                          | <                                        |            | TRUE      
+19:52:522       | Identifier                                              | Number                                   |            |           
+19:58:528       | Operator(Greater)                                       | >                                        |            |           
+19:59:529       | Syntax(RightBrace)                                      | }                                        |            |           
+19:60:530       | Newline                                                 |                                          |            |           
+20:1:531        | Identifier                                              | size                                     | TRUE       |           
+20:5:535        | Operator(Less)                                          | <                                        |            |           
+20:6:536        | Identifier                                              | Dictionary                               |            |           
+20:16:546       | Operator(Greater)                                       | >                                        |            |           
+20:17:547       | Operator(Colon)                                         | :                                        |            |           
+20:19:549       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
+20:20:550       | Identifier                                              | L                                        |            |           
+20:21:551       | Operator(Colon)                                         | :                                        |            |           
+20:23:553       | Operator(Less)                                          | <                                        |            | TRUE      
+20:24:554       | Identifier                                              | Length                                   |            |           
+20:30:560       | Operator(Greater)                                       | >                                        |            |           
+20:31:561       | Syntax(Comma)                                           | ,                                        |            |           
+20:33:563       | Identifier                                              | W                                        |            | TRUE      
+20:34:564       | Operator(Colon)                                         | :                                        |            |           
+20:36:566       | Operator(Less)                                          | <                                        |            | TRUE      
+20:37:567       | Identifier                                              | Length                                   |            |           
+20:43:573       | Operator(Greater)                                       | >                                        |            |           
+20:44:574       | Syntax(Comma)                                           | ,                                        |            |           
+20:46:576       | Identifier                                              | H                                        |            | TRUE      
+20:47:577       | Operator(Colon)                                         | :                                        |            |           
+20:49:579       | Operator(Less)                                          | <                                        |            | TRUE      
+20:50:580       | Identifier                                              | Length                                   |            |           
+20:56:586       | Operator(Greater)                                       | >                                        |            |           
+20:57:587       | Syntax(RightBrace)                                      | }                                        |            |           
+20:58:588       | Newline                                                 |                                          |            |           
+21:1:589        | Identifier                                              | weight                                   | TRUE       |           
+21:7:595        | Operator(Colon)                                         | :                                        |            |           
+21:9:597        | Operator(Less)                                          | <                                        |            | TRUE      
+21:10:598       | Identifier                                              | Mass                                     |            |           
+21:14:602       | Operator(Greater)                                       | >                                        |            |           
+21:15:603       | Newline                                                 |                                          |            |           
+22:1:604        | Identifier                                              | durability                               | TRUE       |           
+22:11:614       | Operator(Colon)                                         | :                                        |            |           
+22:13:616       | Operator(Less)                                          | <                                        |            | TRUE      
+22:14:617       | Identifier                                              | UInt16                                   |            |           
+22:20:623       | Operator(Greater)                                       | >                                        |            |           
+22:21:624       | Newline                                                 |                                          |            |           
+23:1:625        | EOF                                                     |                                          |            |           

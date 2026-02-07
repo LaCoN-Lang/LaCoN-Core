@@ -44,7 +44,9 @@ const FILE_STRINGS_BIG: &str = include_str!("../../files/big.lacon");
 
 #[cfg(test)]
 mod lexer_tests {
-	use super::{FILE_STRINGS_BIG, workspace_root};
+	// use super::super::big_strings::FILE_STRINGS_BIG;
+	use super::FILE_STRINGS_BIG;
+	use super::workspace_root;
 	use lacon_core::frontend::lexer::Scanner;
 	use lacon_core::shared::{ErrorReporter, ErrorStorage, UnitArena, UnitContext};
 	use memory_stats::memory_stats;
@@ -64,7 +66,7 @@ mod lexer_tests {
 		let ctx = UnitContext::new(&arena);
 
 		let source_str = FILE_STRINGS_BIG;
-		let iterations = 10;
+		let iterations = 1000;
 		let warmup_iterations = 10;
 
 		let multiple_files = true;

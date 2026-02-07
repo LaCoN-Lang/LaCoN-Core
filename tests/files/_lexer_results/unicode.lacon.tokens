@@ -1,36 +1,36 @@
-TYPE                                                    | LEXEME                                   | POSITION        | LINE START | WHITESPACE
+POSITION        | TYPE                                                    | LEXEME                                                  | LINE START | WHITESPACE
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SOF                                                     |                                          | 1:1:0           |            |           
-Keyword(Variable)                                       | let                                      | 1:1:0           | TRUE       |           
-Identifier                                              | カタカナ                                     | 1:5:4           |            | TRUE      
-Operator(Equal)                                         | =                                        | 1:10:17         |            | TRUE      
-Syntax(SingleQuote)                                     | '                                        | 1:12:19         |            | TRUE      
-String                                                  | Katakana                                 | 1:13:20         |            |           
-Syntax(SingleQuote)                                     | '                                        | 1:21:28         |            |           
-Syntax(Semicolon)                                       | ;                                        | 1:22:29         |            |           
-Newline                                                 |                                          | 1:23:30         |            |           
-Keyword(Variable)                                       | let                                      | 2:1:31          | TRUE       |           
-Identifier                                              | ひらがな                                     | 2:5:35          |            | TRUE      
-Operator(Equal)                                         | =                                        | 2:10:48         |            | TRUE      
-Syntax(SingleQuote)                                     | '                                        | 2:12:50         |            | TRUE      
-String                                                  | Hiragana                                 | 2:13:51         |            |           
-Syntax(SingleQuote)                                     | '                                        | 2:21:59         |            |           
-Syntax(Semicolon)                                       | ;                                        | 2:22:60         |            |           
-Newline                                                 |                                          | 2:23:61         |            |           
-Keyword(Variable)                                       | let                                      | 3:1:62          | TRUE       |           
-Identifier                                              | 漢字                                       | 3:5:66          |            | TRUE      
-Operator(Equal)                                         | =                                        | 3:8:73          |            | TRUE      
-Syntax(SingleQuote)                                     | '                                        | 3:10:75         |            | TRUE      
-String                                                  | Kanji                                    | 3:11:76         |            |           
-Syntax(SingleQuote)                                     | '                                        | 3:16:81         |            |           
-Syntax(Semicolon)                                       | ;                                        | 3:17:82         |            |           
-Newline                                                 |                                          | 3:18:83         |            |           
-Keyword(Variable)                                       | let                                      | 4:1:84          | TRUE       |           
-Identifier                                              | ᠮᠥᠨᠭᠥᠯᠢᠠ                                 | 4:5:88          |            | TRUE      
-Operator(Equal)                                         | =                                        | 4:14:113        |            | TRUE      
-Syntax(SingleQuote)                                     | '                                        | 4:16:115        |            | TRUE      
-String                                                  | Mongolian                                | 4:17:116        |            |           
-Syntax(SingleQuote)                                     | '                                        | 4:26:125        |            |           
-Syntax(Semicolon)                                       | ;                                        | 4:27:126        |            |           
-Newline                                                 |                                          | 4:28:127        |            |           
-EOF                                                     |                                          | 5:1:128         |            |           
+1:1:0           | SOF                                                     |                                          |            |           
+1:1:1           | Keyword(Variable)                                       | let                                      | TRUE       |           
+1:5:5           | Identifier                                              | カタカナ                                     |            | TRUE      
+1:10:18         | Operator(Equal)                                         | =                                        |            | TRUE      
+1:12:20         | Syntax(SingleQuote)                                     | '                                        |            | TRUE      
+1:13:21         | String                                                  | Katakana                                 |            |           
+1:21:29         | Syntax(SingleQuote)                                     | '                                        |            |           
+1:22:30         | Syntax(Semicolon)                                       | ;                                        |            |           
+1:23:31         | Newline                                                 |                                          |            |           
+2:1:32          | Keyword(Variable)                                       | let                                      | TRUE       |           
+2:5:36          | Identifier                                              | ひらがな                                     |            | TRUE      
+2:10:49         | Operator(Equal)                                         | =                                        |            | TRUE      
+2:12:51         | Syntax(SingleQuote)                                     | '                                        |            | TRUE      
+2:13:52         | String                                                  | Hiragana                                 |            |           
+2:21:60         | Syntax(SingleQuote)                                     | '                                        |            |           
+2:22:61         | Syntax(Semicolon)                                       | ;                                        |            |           
+2:23:62         | Newline                                                 |                                          |            |           
+3:1:63          | Keyword(Variable)                                       | let                                      | TRUE       |           
+3:5:67          | Identifier                                              | 漢字                                       |            | TRUE      
+3:8:74          | Operator(Equal)                                         | =                                        |            | TRUE      
+3:10:76         | Syntax(SingleQuote)                                     | '                                        |            | TRUE      
+3:11:77         | String                                                  | Kanji                                    |            |           
+3:16:82         | Syntax(SingleQuote)                                     | '                                        |            |           
+3:17:83         | Syntax(Semicolon)                                       | ;                                        |            |           
+3:18:84         | Newline                                                 |                                          |            |           
+4:1:85          | Keyword(Variable)                                       | let                                      | TRUE       |           
+4:5:89          | Identifier                                              | ᠮᠥᠨᠭᠥᠯᠢᠠ                                 |            | TRUE      
+4:14:114        | Operator(Equal)                                         | =                                        |            | TRUE      
+4:16:116        | Syntax(SingleQuote)                                     | '                                        |            | TRUE      
+4:17:117        | String                                                  | Mongolian                                |            |           
+4:26:126        | Syntax(SingleQuote)                                     | '                                        |            |           
+4:27:127        | Syntax(Semicolon)                                       | ;                                        |            |           
+4:28:128        | Newline                                                 |                                          |            |           
+5:1:129         | EOF                                                     |                                          |            |           

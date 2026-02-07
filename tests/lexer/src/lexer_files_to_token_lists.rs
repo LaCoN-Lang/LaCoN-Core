@@ -65,7 +65,7 @@ mod lexer_tests {
 		let file = File::create(&output_path).unwrap();
 		let mut writer = BufWriter::with_capacity(128 * 1024, file); // Буфер 128КБ
 
-		writeln!(writer, "{:<55} | {:<40} | {:<15} | {:<10} | {:<10}", "TYPE", "LEXEME", "POSITION", "LINE START", "WHITESPACE").unwrap();
+		writeln!(writer, "{:<15} | {:<55} | {:<55} | {:<10} | {:<10}", "POSITION", "TYPE", "LEXEME", "LINE START", "WHITESPACE").unwrap();
 		writeln!(writer, "{}", "-".repeat(170)).unwrap();
 
 		// Используем временный буфер для строк, чтобы не аллоцировать на каждой итерации
@@ -82,10 +82,10 @@ mod lexer_tests {
 
 			writeln!(
 				writer,
-				"{:<55} | {:<40} | {:<15} | {:<10} | {:<10}",
+				"{:<15} | {:<55} | {:<40} | {:<10} | {:<10}",
+				token.position.to_string(),
 				kind_buf,
 				lexeme_view,
-				token.position.to_string(),
 				if token.flags.contains(TokenFlags::AT_LINE_START) { "TRUE" } else { "" },
 				if token.flags.contains(TokenFlags::HAS_PRECEDING_WHITESPACE) { "TRUE" } else { "" }
 			)
