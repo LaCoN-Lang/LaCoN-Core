@@ -155,7 +155,6 @@ pub fn match_operator(tail: &[u8]) -> OpMatch {
 		},
 		b"_" => (Underscore, 0),
 
-		// Unicode Single-char Match
 		MULTIPLICATION_SIGN => (Operator(Multiplication), 0),
 		ELLIPSIS_SIGN => (Operator(Ellipsis), 0),
 		DIVISION_SIGN => (Operator(Obelus), 0),

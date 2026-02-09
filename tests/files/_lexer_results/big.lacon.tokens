@@ -827,7 +827,9 @@ POSITION        | TYPE                                                    | LEXE
 118:12:5117     | Identifier                                              | Kinetic                                  |            | TRUE      
 118:20:5125     | Identifier                                              | energy                                   |            | TRUE      
 118:26:5131     | Operator(Colon)                                         | :                                        |            |           
-118:28:5133     | Identifier                                              | ½mv²                                     |            | TRUE      
+118:28:5133     | Unknown                                                 | �                                        |            | TRUE      
+118:29:5134     | Unknown                                                 | �                                        |            |           
+118:29:5135     | Identifier                                              | mv²                                      |            |           
 118:32:5139     | Newline                                                 |                                          |            |           
 119:9:5148      | Keyword(Variable)                                       | let                                      | TRUE       |           
 119:13:5152     | Identifier                                              | kinetic                                  |            | TRUE      
@@ -853,7 +855,8 @@ POSITION        | TYPE                                                    | LEXE
 121:30:5251     | Operator(Asterisk)                                      | *                                        |            | TRUE      
 121:32:5253     | Number                                                  | 9.80665                                  |            | TRUE      
 121:39:5260     | Unit(Velocity)                                          | m/s                                      |            |           
-121:42:5263     | Identifier                                              | ²                                        |            |           
+121:42:5263     | Unknown                                                 | �                                        |            |           
+121:43:5264     | Unknown                                                 | �                                        |            |           
 121:44:5266     | Operator(Asterisk)                                      | *                                        |            | TRUE      
 121:46:5268     | Identifier                                              | height                                   |            | TRUE      
 121:52:5274     | Newline                                                 |                                          |            |           
@@ -879,7 +882,8 @@ POSITION        | TYPE                                                    | LEXE
 127:38:5391     | Identifier                                              | operations                               |            | TRUE      
 127:48:5401     | Newline                                                 |                                          |            |           
 128:9:5410      | Keyword(Variable)                                       | let                                      | TRUE       |           
-128:13:5414     | Identifier                                              | ψ                                        |            | TRUE      
+128:13:5414     | Unknown                                                 | �                                        |            | TRUE      
+128:14:5415     | Unknown                                                 | �                                        |            |           
 128:15:5417     | Operator(Equal)                                         | =                                        |            | TRUE      
 128:17:5419     | Operator(Pipe)                                          | |                                        |            | TRUE      
 128:18:5420     | Number                                                  | 0                                        |            |           
@@ -901,7 +905,8 @@ POSITION        | TYPE                                                    | LEXE
 128:56:5464     | Identifier                                              | state                                    |            | TRUE      
 128:61:5469     | Newline                                                 |                                          |            |           
 129:9:5478      | Keyword(Variable)                                       | let                                      | TRUE       |           
-129:13:5482     | Identifier                                              | φ                                        |            | TRUE      
+129:13:5482     | Unknown                                                 | �                                        |            | TRUE      
+129:14:5483     | Unknown                                                 | �                                        |            |           
 129:15:5485     | Operator(Equal)                                         | =                                        |            | TRUE      
 129:17:5487     | Operator(Pipe)                                          | |                                        |            | TRUE      
 129:18:5488     | Number                                                  | 0                                        |            |           
@@ -947,7 +952,8 @@ POSITION        | TYPE                                                    | LEXE
 135:9:5652      | Keyword(Match)                                          | match                                    | TRUE       |           
 135:15:5658     | Identifier                                              | measure                                  |            | TRUE      
 135:22:5665     | Syntax(LeftParenthesis)                                 | (                                        |            |           
-135:23:5666     | Identifier                                              | ψ                                        |            |           
+135:23:5666     | Unknown                                                 | �                                        |            |           
+135:24:5667     | Unknown                                                 | �                                        |            |           
 135:24:5668     | Syntax(RightParenthesis)                                | )                                        |            |           
 135:26:5670     | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 135:27:5671     | Newline                                                 |                                          |            |           
@@ -1610,7 +1616,8 @@ POSITION        | TYPE                                                    | LEXE
 238:1:9541      | Newline                                                 |                                          |            |           
 239:5:9546      | Keyword(Public)                                         | public                                   | TRUE       |           
 239:12:9553     | Identifier                                              | operator                                 |            | TRUE      
-239:21:9562     | Identifier                                              | ×                                        |            | TRUE      
+239:21:9562     | Unknown                                                 | �                                        |            | TRUE      
+239:22:9563     | Unknown                                                 | �                                        |            |           
 239:23:9565     | Syntax(LeftParenthesis)                                 | (                                        |            | TRUE      
 239:24:9566     | Identifier                                              | a                                        |            |           
 239:25:9567     | Operator(Colon)                                         | :                                        |            |           
@@ -24394,13 +24401,17 @@ POSITION        | TYPE                                                    | LEXE
 3133:18:123147  | Keyword(In)                                             | in                                       |            | TRUE      
 3133:21:123150  | Identifier                                              | identifiers                              |            | TRUE      
 3133:32:123161  | Operator(Colon)                                         | :                                        |            |           
-3133:34:123163  | Identifier                                              | α                                        |            | TRUE      
+3133:34:123163  | Unknown                                                 | �                                        |            | TRUE      
+3133:35:123164  | Unknown                                                 | �                                        |            |           
 3133:35:123165  | Syntax(Comma)                                           | ,                                        |            |           
-3133:37:123167  | Identifier                                              | β                                        |            | TRUE      
+3133:37:123167  | Unknown                                                 | �                                        |            | TRUE      
+3133:38:123168  | Unknown                                                 | �                                        |            |           
 3133:38:123169  | Syntax(Comma)                                           | ,                                        |            |           
-3133:40:123171  | Identifier                                              | γ                                        |            | TRUE      
+3133:40:123171  | Unknown                                                 | �                                        |            | TRUE      
+3133:41:123172  | Unknown                                                 | �                                        |            |           
 3133:41:123173  | Syntax(Comma)                                           | ,                                        |            |           
-3133:43:123175  | Identifier                                              | δ                                        |            | TRUE      
+3133:43:123175  | Unknown                                                 | �                                        |            | TRUE      
+3133:44:123176  | Unknown                                                 | �                                        |            |           
 3133:44:123177  | Newline                                                 |                                          |            |           
 3134:6:123183   | Operator(Asterisk)                                      | *                                        | TRUE       |           
 3134:8:123185   | Operator(Minus)                                         | -                                        |            | TRUE      

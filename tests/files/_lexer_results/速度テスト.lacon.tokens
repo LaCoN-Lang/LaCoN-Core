@@ -924,7 +924,8 @@ POSITION        | TYPE                                                    | LEXE
 122:21:3523     | Operator(Less)                                          | <                                        |            | TRUE      
 122:22:3524     | Identifier                                              | Mass                                     |            |           
 122:26:3528     | Operator(Greater)                                       | >                                        |            |           
-122:28:3530     | Identifier                                              | ÷                                        |            | TRUE      
+122:28:3530     | Unknown                                                 | �                                        |            | TRUE      
+122:29:3531     | Unknown                                                 | �                                        |            |           
 122:30:3533     | Keyword(Delta)                                          | delta                                    |            | TRUE      
 122:36:3539     | Operator(Less)                                          | <                                        |            | TRUE      
 122:37:3540     | Identifier                                              | Time                                     |            |           
@@ -966,7 +967,8 @@ POSITION        | TYPE                                                    | LEXE
 127:17:3686     | Operator(Less)                                          | <                                        |            | TRUE      
 127:18:3687     | Identifier                                              | Energy                                   |            |           
 127:24:3693     | Operator(Greater)                                       | >                                        |            |           
-127:26:3695     | Identifier                                              | ÷                                        |            | TRUE      
+127:26:3695     | Unknown                                                 | �                                        |            | TRUE      
+127:27:3696     | Unknown                                                 | �                                        |            |           
 127:28:3698     | Keyword(Delta)                                          | delta                                    |            | TRUE      
 127:34:3704     | Operator(Less)                                          | <                                        |            | TRUE      
 127:35:3705     | Identifier                                              | Time                                     |            |           
@@ -1275,7 +1277,8 @@ POSITION        | TYPE                                                    | LEXE
 164:19:4793     | Operator(Less)                                          | <                                        |            | TRUE      
 164:20:4794     | Identifier                                              | Energy                                   |            |           
 164:26:4800     | Operator(Greater)                                       | >                                        |            |           
-164:28:4802     | Identifier                                              | ÷                                        |            | TRUE      
+164:28:4802     | Unknown                                                 | �                                        |            | TRUE      
+164:29:4803     | Unknown                                                 | �                                        |            |           
 164:30:4805     | Keyword(Delta)                                          | delta                                    |            | TRUE      
 164:36:4811     | Operator(Less)                                          | <                                        |            | TRUE      
 164:37:4812     | Identifier                                              | Time                                     |            |           
@@ -1404,7 +1407,8 @@ POSITION        | TYPE                                                    | LEXE
 180:16:5241     | Operator(Less)                                          | <                                        |            | TRUE      
 180:17:5242     | Identifier                                              | Mass                                     |            |           
 180:21:5246     | Operator(Greater)                                       | >                                        |            |           
-180:23:5248     | Identifier                                              | ÷                                        |            | TRUE      
+180:23:5248     | Unknown                                                 | �                                        |            | TRUE      
+180:24:5249     | Unknown                                                 | �                                        |            |           
 180:25:5251     | Keyword(Delta)                                          | delta                                    |            | TRUE      
 180:31:5257     | Operator(Less)                                          | <                                        |            | TRUE      
 180:32:5258     | Identifier                                              | Time                                     |            |           

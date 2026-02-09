@@ -41,10 +41,12 @@ POSITION        | TYPE                                                    | LEXE
 5:1:102         | Identifier                                              | c                                        | TRUE       |           
 5:3:104         | Operator(AsteriskEqual)                                 | *=                                       |            | TRUE      
 5:6:107         | Identifier                                              | c                                        |            | TRUE      
-5:8:109         | Identifier                                              | ×                                        |            | TRUE      
+5:8:109         | Unknown                                                 | �                                        |            | TRUE      
+5:9:110         | Unknown                                                 | �                                        |            |           
 5:10:112        | Syntax(LeftParenthesis)                                 | (                                        |            | TRUE      
 5:11:113        | Identifier                                              | c                                        |            |           
-5:13:115        | Identifier                                              | ÷                                        |            | TRUE      
+5:13:115        | Unknown                                                 | �                                        |            | TRUE      
+5:14:116        | Unknown                                                 | �                                        |            |           
 5:15:118        | Number                                                  | 2                                        |            | TRUE      
 5:16:119        | Syntax(RightParenthesis)                                | )                                        |            |           
 5:17:120        | Newline                                                 |                                          |            |           

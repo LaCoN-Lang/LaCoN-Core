@@ -66,7 +66,8 @@ POSITION        | TYPE                                                    | LEXE
 8:23:228        | Operator(Less)                                          | <                                        |            | TRUE      
 8:24:229        | Identifier                                              | Mass                                     |            |           
 8:28:233        | Operator(Greater)                                       | >                                        |            |           
-8:30:235        | Identifier                                              | ÷                                        |            | TRUE      
+8:30:235        | Unknown                                                 | �                                        |            | TRUE      
+8:31:236        | Unknown                                                 | �                                        |            |           
 8:32:238        | Keyword(Delta)                                          | delta                                    |            | TRUE      
 8:38:244        | Operator(Less)                                          | <                                        |            | TRUE      
 8:39:245        | Identifier                                              | Time                                     |            |           
@@ -108,7 +109,8 @@ POSITION        | TYPE                                                    | LEXE
 13:26:362       | Operator(Less)                                          | <                                        |            | TRUE      
 13:27:363       | Identifier                                              | Energy                                   |            |           
 13:33:369       | Operator(Greater)                                       | >                                        |            |           
-13:35:371       | Identifier                                              | ÷                                        |            | TRUE      
+13:35:371       | Unknown                                                 | �                                        |            | TRUE      
+13:36:372       | Unknown                                                 | �                                        |            |           
 13:37:374       | Keyword(Delta)                                          | delta                                    |            | TRUE      
 13:43:380       | Operator(Less)                                          | <                                        |            | TRUE      
 13:44:381       | Identifier                                              | Time                                     |            |           

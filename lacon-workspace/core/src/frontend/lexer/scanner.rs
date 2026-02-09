@@ -202,6 +202,16 @@ impl<'src> Scanner<'src> {
 			b'0'..=b'9' => self.scan_number(),
 			b'n' => self.process_unit_suffix(b"n"),
 
+			// _ => {
+			// 	let tail = &self.source[self.current - 1..];
+			// 	if match_operator(tail).consume_count > 0 {
+			// 		self.handle_operator(c);
+			// 	} else if self.is_identifier_start(c) {
+			// 		self.scan_identifier();
+			// 	} else {
+			// 		self.handle_operator(c);
+			// 	}
+			// }
 			_ if self.is_identifier_start(c) => {
 				self.scan_identifier();
 			}
@@ -627,6 +637,30 @@ impl<'src> Scanner<'src> {
 
 	#[inline(always)]
 	fn is_identifier_start(&self, b: u8) -> bool {
-		if b < 128 { b != 0 && (ASCII_START & (1 << b)) != 0 } else { true }
+		if b < 128 {
+			return b != 0 && (ASCII_START & (1 << b)) != 0;
+		}
+		match b {
+			// Кириллица (U+04xx, U+05xx)
+			0xD0..=0xD3 => true,
+			// Армянский (U+0530..), Арабский (U+06xx), Таана, Сирийский
+			0xD4..=0xD9 => true,
+			// Сами (U+07xx), Деванагари, Бенгальский, Гурмукхи и др. (U+08xx - U+0Dxx)
+			0xDA..=0xDF => true,
+			// Большой блок азиатских письменностей (E0... - это U+0800 и выше)
+			// ВНИМАНИЕ: Здесь могут быть символы пунктуации (как твой ∸),
+			// если не проверять последующие байты.
+			0xE0..=0xEF => {
+				// Если нужна 100% точность для математических символов типа ∸ (U+2238),
+				// придется заглядывать в self.peek() или принимать больше байтов.
+				// Но для большинства ID Syntax этих стартовых байтов достаточно,
+				// если операторы отсекаются раньше.
+				true
+			}
+			// Иероглифы и редкие символы
+			0xF0..=0xF4 => true,
+
+			_ => false,
+		}
 	}
 }

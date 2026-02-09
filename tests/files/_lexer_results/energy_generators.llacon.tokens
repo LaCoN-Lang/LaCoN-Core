@@ -182,7 +182,8 @@ POSITION        | TYPE                                                    | LEXE
 30:15:850       | Operator(Colon)                                         | :                                        |            |           
 30:17:852       | Number                                                  | 5                                        |            | TRUE      
 30:18:853       | Unit(Mass)                                              | kg                                       |            |           
-30:21:856       | Identifier                                              | ÷                                        |            | TRUE      
+30:21:856       | Unknown                                                 | �                                        |            | TRUE      
+30:22:857       | Unknown                                                 | �                                        |            |           
 30:23:859       | Number                                                  | 1                                        |            | TRUE      
 30:24:860       | Unit(Time)                                              | min                                      |            |           
 30:27:863       | Newline                                                 |                                          |            |           
@@ -355,7 +356,8 @@ POSITION        | TYPE                                                    | LEXE
 57:15:1571      | Operator(Colon)                                         | :                                        |            |           
 57:17:1573      | Number                                                  | 3                                        |            | TRUE      
 57:18:1574      | Unit(Volume)                                            | L                                        |            |           
-57:20:1576      | Identifier                                              | ÷                                        |            | TRUE      
+57:20:1576      | Unknown                                                 | �                                        |            | TRUE      
+57:21:1577      | Unknown                                                 | �                                        |            |           
 57:22:1579      | Number                                                  | 1                                        |            | TRUE      
 57:23:1580      | Unit(Time)                                              | min                                      |            |           
 57:26:1583      | Newline                                                 |                                          |            |           
