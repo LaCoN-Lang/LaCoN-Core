@@ -97,7 +97,9 @@ impl<'src> Scanner<'src> {
 	fn fast_skip_line_comment(&mut self) {
 		let word_size = std::mem::size_of::<usize>();
 		while self.current + word_size <= self.source.len() {
-			let chunk = unsafe { (self.source.as_ptr().add(self.current) as *const usize).read_unaligned() };
+			let chunk_slice = &self.source[self.current..self.current + word_size];
+			let chunk = usize::from_ne_bytes(chunk_slice.try_into().unwrap());
+
 			if Self::has_byte(chunk, b'\n') {
 				break;
 			}
@@ -299,7 +301,7 @@ impl<'src> Scanner<'src> {
 					if b == b'-' {
 						let next_idx = curr_idx + 1;
 						if next_idx < total_len {
-							let next = unsafe { *source.get_unchecked(next_idx) };
+							let next = source[next_idx];
 							if next != b'>' && (next >= 128 || (ASCII_CONTINUE & (1 << next)) != 0) {
 								curr_idx += 1;
 								continue;
