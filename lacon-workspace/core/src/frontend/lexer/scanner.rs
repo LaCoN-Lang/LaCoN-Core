@@ -224,10 +224,11 @@ impl<'src> Scanner<'src> {
 			_ => self.handle_operator(c),
 		}
 	}
-	#[inline(always)]
-	fn peek(&self, offset: usize) -> u8 {
-		self.source.get(self.current + offset).copied().unwrap_or(EOF_CHAR)
-	}
+
+	// #[inline(always)]
+	// fn peek(&self, offset: usize) -> u8 {
+	// 	self.source.get(self.current + offset).copied().unwrap_or(EOF_CHAR)
+	// }
 
 	#[inline(always)]
 	fn first(&self) -> u8 {

@@ -19,6 +19,9 @@ mod lexer_tests {
 		let entries = fs::read_dir(LACON_FILES_DIR.as_path()).expect("Не удалось прочитать директорию");
 
 		let mut processed_count = 0;
+		let mut processed_count_default = 0;
+		let mut processed_count_list = 0;
+		let mut processed_count_static = 0;
 		let mut total_scan_time = Duration::ZERO;
 
 		let arena = UnitArena::new();
@@ -41,6 +44,12 @@ mod lexer_tests {
 
 					total_scan_time += scan_duration;
 					processed_count += 1;
+
+					match code_mode {
+						CodeReadModes::None => processed_count_default += 1,
+						CodeReadModes::DynamicData => processed_count_list += 1,
+						CodeReadModes::StaticData => processed_count_static += 1,
+					}
 				}
 			}
 		}
@@ -49,7 +58,10 @@ mod lexer_tests {
 		let mem_diff = (mem_after as f64 - mem_before as f64) / 1024.0 / 1024.0;
 
 		println!("\n========================================");
-		println!("Обработано файлов: {}", processed_count);
+		println!("Обработано файлов: {processed_count}");
+		println!("LaCoN: {processed_count_default}");
+		println!("LLaCoN: {processed_count_list}");
+		println!("SLaCoN: {processed_count_static}");
 		println!("ЧИСТОЕ время лексера (без I/O): {:.2}ms", total_scan_time.as_secs_f64() * 1000.0);
 		println!("Использование памяти: {:.2}MB", mem_diff);
 		println!("========================================\n");

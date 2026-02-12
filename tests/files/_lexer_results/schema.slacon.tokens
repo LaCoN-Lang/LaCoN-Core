@@ -17,7 +17,7 @@ POSITION        | TYPE                                                    | LEXE
 3:5:55          | Syntax(At)                                              | @                                        |            |           
 3:6:56          | Syntax(LeftBracket)                                     | [                                        |            |           
 3:7:57          | Identifier                                              | value                                    |            |           
-3:13:63         | Identifier                                              | in                                       |            | TRUE      
+3:13:63         | Keyword(In)                                             | in                                       |            | TRUE      
 3:16:66         | Syntax(LeftBracket)                                     | [                                        |            | TRUE      
 3:17:67         | Syntax(DoubleQuote)                                     | "                                        |            |           
 3:18:68         | String                                                  | solid                                    |            |           
