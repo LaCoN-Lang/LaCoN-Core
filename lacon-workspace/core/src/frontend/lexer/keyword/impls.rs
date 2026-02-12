@@ -1,10 +1,10 @@
+use crate::shared::CodeReadModes;
+
 use super::KeywordKind;
 
 impl KeywordKind {
-	#[inline(always)] // Принудительно вшиваем логику в сканер
+	#[inline(always)]
 	pub fn from_bytes(slice: &[u8]) -> Option<Self> {
-		// Компилятор оптимизирует этот match лучше, чем PHF,
-		// так как он сначала сравнивает длину (len), а потом делает быстрые прыжки
 		match slice {
 			b"if" => Some(Self::If),
 			b"else" => Some(Self::Else),
@@ -137,5 +137,65 @@ impl KeywordKind {
 
 			_ => None,
 		}
+	}
+
+	pub fn in_allowed(&self, code_read_mode: &CodeReadModes) -> bool {
+		use CodeReadModes::*;
+		use KeywordKind::*;
+
+		matches!(
+			(code_read_mode, self),
+			(
+				DynamicData,
+				Boolean
+					| AutoValue
+					| NilValue
+					| NoneValue
+					| UndefinedValue
+					| Constant
+					| Variable
+					| Local
+					| Attribute
+					| This
+					| SelfScope
+					| Root
+					| And
+					| Or
+					| Not
+					| Xor
+					| Delta
+					| Bitwise
+					| NumberInfinity
+					| If
+					| Else
+					| Elif
+					| As
+					| Is
+					| In
+					| Of
+					| Where
+					| When
+					| For
+					| Loop
+					| While
+					| Until
+					| Break
+					| Continue
+					| Yield
+					| Switch
+					| Case
+					| Spread
+					| Generate
+					| Include
+					| Provide
+					| Use
+					| Schema
+					| SectionMaker
+					| Marker
+			) | (
+				StaticData,
+				Boolean | AutoValue | NilValue | NoneValue | UndefinedValue | Root | Xor | Delta | Bitwise | NumberInfinity | In | Of | Include | Provide | Use | Schema | SectionMaker | Marker
+			)
+		)
 	}
 }

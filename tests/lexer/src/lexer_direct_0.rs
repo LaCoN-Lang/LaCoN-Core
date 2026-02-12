@@ -5,7 +5,7 @@ mod lexer_tests {
 	// use super::super::big_strings::FILE_STRINGS_BIG;
 	use super::FILE_STRINGS_BIG;
 	use lacon_core::frontend::lexer::{Scanner, TokenKind};
-	use lacon_core::shared::{ErrorReporter, ErrorStorage, UnitArena, UnitContext};
+	use lacon_core::shared::{CodeReadModes, ErrorReporter, ErrorStorage, UnitArena, UnitContext};
 	use memory_stats::memory_stats;
 	use std::time::Instant;
 
@@ -17,6 +17,8 @@ mod lexer_tests {
 		let ctx = UnitContext::new(&arena);
 
 		let source_str = FILE_STRINGS_BIG;
+		let code_mode = Some(CodeReadModes::None);
+
 		let iterations = 1000;
 		let warmup_iterations = 10;
 
@@ -30,11 +32,11 @@ mod lexer_tests {
 
 		// Инициализируем сканер (убедись, что Scanner::new принимает &[u8])
 		// Если Scanner::new все еще принимает &str внутри, он сам сделает .as_bytes()
-		let mut scanner = Scanner::new(source_str.as_bytes(), &ctx, &mut error_store);
+		let mut scanner = Scanner::new(source_str.as_bytes(), &ctx, &mut error_store, code_mode);
 
 		// Прогрев
 		for _ in 0..warmup_iterations {
-			scanner.reset(source_bytes); // Передаем &[u8]
+			scanner.reset(source_bytes, code_mode); // Передаем &[u8]
 			let tokens = scanner.scan_tokens();
 			std::hint::black_box(tokens);
 		}
@@ -45,7 +47,7 @@ mod lexer_tests {
 		let mut total_lines = 0;
 
 		for _ in 0..iters_to_run {
-			scanner.reset(source_bytes);
+			scanner.reset(source_bytes, code_mode);
 
 			let tokens = scanner.scan_tokens();
 			total_tokens += tokens.len();
@@ -66,17 +68,54 @@ mod lexer_tests {
 		let token_speed = if duration_secs > 0.0 { (total_tokens as f64 / 1_000_000.0) / duration_secs } else { 0.0 };
 		let lines_speed = if duration_secs > 0.0 { (total_lines as f64 / 1_000_000.0) / duration_secs } else { 0.0 };
 
+		fn format_int(num: usize) -> String {
+			let mut s = num.to_string();
+
+			if s.len() <= 3 {
+				return s;
+			}
+
+			let mut i = s.len() - 3;
+			while i > 0 {
+				s.insert(i, ' ');
+				if i < 3 {
+					break;
+				}
+				i -= 3;
+			}
+			s
+		}
+
+		fn format_float(value: f64, frac_digits: usize) -> String {
+			let sign = if value.is_sign_negative() { "-" } else { "" };
+			let abs = value.abs();
+
+			let int_part = abs.trunc() as u64;
+			let frac_part = abs.fract();
+
+			let int_str = format_int(int_part as usize);
+
+			if frac_digits == 0 {
+				return format!("{sign}{int_str}");
+			}
+
+			let frac_full = format!("{:.*}", frac_digits, frac_part);
+			let frac_str = frac_full.trim_start_matches('0');
+
+			format!("{sign}{int_str}{frac_str}")
+		}
+
 		println!("========================================");
-		println!("ТЕСТОВЫЕ ДАННЫЕ (u8 MODE):");
-		println!("Режим:             {}", if multiple_files { "Множество файлов (reset)" } else { "Один гигантский файл" });
-		println!("Длина исходника:   {} байт", source_bytes.len());
-		println!("Итераций:          {}", iters_to_run);
+		println!("ТЕСТИРОВАНИЕ БАЙТ-ЛЕКСЕРА (u8):");
+		println!("Режим:             {}", if multiple_files { "Множество файлов" } else { "Один гигантский файл" });
+		println!("Длина исходника:   {} байт", format_int(source_bytes.len() as usize));
+		println!("Итераций:          {}", format_int(iters_to_run as usize));
 		println!("----------------------------------------");
-		println!("РЕЗУЛЬТАТЫ БЕНЧМАРКА:");
-		println!("Всего токенов (Σ):  {}", total_tokens);
-		println!("Всего байт (Σ):    {}", total_bytes);
-		println!("Всего строк (Σ):   {}", total_lines);
-		println!("Среднее токенов/итерацию: {:.2}", actual_avg_tokens);
+		println!("РЕЗУЛЬТАТЫ:");
+		println!("Всего токенов (Σ):  {}", format_int(total_tokens as usize));
+		println!("Всего байт (Σ):    {}", format_int(total_bytes as usize));
+		println!("Всего строк (Σ):   {}", format_int(total_lines as usize));
+		println!("Среднее токенов/итерацию: {:}", format_float(actual_avg_tokens, 2));
 		println!("----------------------------------------");
 		println!("ПРОИЗВОДИТЕЛЬНОСТЬ:");
 		println!("Общее время:        {:.3}ms", duration_secs * 1000.0);

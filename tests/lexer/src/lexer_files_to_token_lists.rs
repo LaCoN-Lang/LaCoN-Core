@@ -3,7 +3,7 @@ mod lexer_tests {
 	use super::super::{LACON_FILES_DIR, LEXER_RESULTS_DIR};
 	use lacon_core::frontend::lexer::Scanner;
 	use lacon_core::frontend::lexer::TokenFlags;
-	use lacon_core::shared::{ErrorStorage, UnitArena, UnitContext};
+	use lacon_core::shared::{CodeReadModes, ErrorStorage, UnitArena, UnitContext};
 	use memory_stats::memory_stats;
 	use std::fs::{self, File};
 	use std::io::{BufWriter, Write};
@@ -19,15 +19,26 @@ mod lexer_tests {
 		let entries = fs::read_dir(LACON_FILES_DIR.as_path()).expect("Не удалось прочитать директорию");
 
 		let mut processed_count = 0;
-		let mut total_scan_time = Duration::ZERO; // Суммируем ТОЛЬКО чистое время лексера
+		let mut total_scan_time = Duration::ZERO;
+
+		let arena = UnitArena::new();
+		let ctx = UnitContext::new(&arena);
 
 		for entry in entries {
 			let entry = entry.expect("Ошибка элемента директории");
 			let path = entry.path();
 
 			if let Some(ext) = path.extension().and_then(|s| s.to_str()) {
+				let code_mode = match ext {
+					"llacon" => CodeReadModes::DynamicData,
+					"slacon" => CodeReadModes::StaticData,
+					_ => CodeReadModes::None,
+				};
+
 				if matches!(ext, "lacon" | "llacon" | "slacon") {
-					let scan_duration = process_file_optimized(&path);
+					let mut error_store = ErrorStorage::new();
+					let scan_duration = process_file_optimized(&path, &mut error_store, &ctx, code_mode);
+
 					total_scan_time += scan_duration;
 					processed_count += 1;
 				}
@@ -46,16 +57,10 @@ mod lexer_tests {
 		assert!(processed_count > 0);
 	}
 
-	fn process_file_optimized(file_path: &Path) -> Duration {
-		let mut error_store = ErrorStorage::new();
-		let arena = UnitArena::new();
-		let ctx = UnitContext::new(&arena);
-
-		// 1. Читаем файл целиком (не входит в замер времени лексера)
+	fn process_file_optimized(file_path: &Path, error_store: &mut ErrorStorage, ctx: &UnitContext, code_mode: CodeReadModes) -> Duration {
 		let source_bytes = fs::read(file_path).unwrap();
 
-		// 2. ЗАМЕРЯЕМ ТОЛЬКО ЭТОТ БЛОК
-		let mut scanner = Scanner::new(&source_bytes, &ctx, &mut error_store);
+		let mut scanner = Scanner::new(&source_bytes, ctx, error_store, Some(code_mode));
 		let start_scan = Instant::now();
 		let tokens = scanner.scan_tokens();
 		let scan_duration = start_scan.elapsed();

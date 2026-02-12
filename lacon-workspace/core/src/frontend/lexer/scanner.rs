@@ -1,5 +1,5 @@
 use super::{KeywordKind, SyntaxKind, Token, TokenKind, match_operator};
-use crate::shared::{Error, ErrorFlag, ErrorKind, ErrorStorage, LexicalError, Position, UnitContext, UnitKind};
+use crate::shared::{CodeReadModes, Error, ErrorFlag, ErrorKind, ErrorStorage, LexicalError, Position, UnitContext, UnitKind};
 
 const ASCII_START: u128 = 0x7fffffe07fffffe0000000000000000;
 const ASCII_CONTINUE: u128 = 0x7fffffe87fffffe03ff000000000000;
@@ -11,6 +11,7 @@ pub struct Scanner<'src> {
 	context: &'src UnitContext<'src>,
 	errors_storage: &'src mut ErrorStorage,
 	tokens: Vec<Token<'src>>,
+	code_mode: Option<CodeReadModes>,
 	start: usize,
 	current: usize,
 	position: Position,
@@ -22,11 +23,13 @@ pub struct Scanner<'src> {
 	had_whitespace: bool,
 	#[cfg(debug_assertions)]
 	prev: u8,
+	// get_keyword: KeywordGetter,
 }
 
 impl<'src> Scanner<'src> {
-	pub fn reset(&mut self, new_source: &'src [u8]) {
+	pub fn reset(&mut self, new_source: &'src [u8], code_mode: Option<CodeReadModes>) {
 		self.source = new_source;
+		self.code_mode = code_mode;
 		self.start = 0;
 		self.current = 0;
 		self.tokens.clear();
@@ -44,10 +47,12 @@ impl<'src> Scanner<'src> {
 		}
 	}
 
-	pub fn new(source: &'src [u8], ctx: &'src UnitContext, errors_storage: &'src mut ErrorStorage) -> Self {
+	pub fn new(source: &'src [u8], ctx: &'src UnitContext, errors_storage: &'src mut ErrorStorage, code_mode: Option<CodeReadModes>) -> Self {
 		let start_pos = Position::start();
+
 		Self {
 			source,
+			code_mode,
 			context: ctx,
 			errors_storage,
 			tokens: Vec::new(),
@@ -335,7 +340,8 @@ impl<'src> Scanner<'src> {
 		self.position.offset = self.start_position.offset + text_len;
 		self.position.column = self.start_position.column + char_count;
 
-		let t_type = KeywordKind::from_bytes(text).map(TokenKind::Keyword).unwrap_or(TokenKind::Identifier);
+		// let t_type = KeywordKind::from_bytes(text).map(TokenKind::Keyword).unwrap_or(TokenKind::Identifier);
+		let t_type = self.get_keyword(text);
 
 		let is_start = self.is_at_line_start;
 		let has_ws = self.had_whitespace;
@@ -343,6 +349,20 @@ impl<'src> Scanner<'src> {
 		self.had_whitespace = false;
 
 		self.tokens.push(Token::new(t_type, is_start, has_ws, Some(text), self.start_position));
+	}
+
+	#[inline]
+	fn get_keyword(&self, text: &[u8]) -> TokenKind {
+		let keyword = match KeywordKind::from_bytes(text) {
+			Some(kw) => kw,
+			None => return TokenKind::Identifier,
+		};
+
+		match &self.code_mode {
+			None | Some(CodeReadModes::None) => TokenKind::Keyword(keyword),
+			Some(mode) if keyword.in_allowed(mode) => TokenKind::Keyword(keyword),
+			Some(_) => TokenKind::Identifier,
+		}
 	}
 
 	fn scan_number(&mut self) {

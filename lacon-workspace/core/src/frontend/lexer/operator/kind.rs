@@ -1,5 +1,5 @@
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
 #[repr(u8)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub enum OperatorKind {
 	Plus,
 	Minus,

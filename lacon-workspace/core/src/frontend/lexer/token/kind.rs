@@ -1,6 +1,7 @@
 use super::super::{KeywordKind, OperatorKind, SyntaxKind};
 use crate::shared::UnitKind;
 
+#[repr(u8)]
 #[derive(Debug, Clone, PartialEq)]
 pub enum TokenKind {
 	// ─────────────────────────────────────────────

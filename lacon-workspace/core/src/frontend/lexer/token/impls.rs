@@ -1,7 +1,6 @@
 use super::super::KeywordKind;
 use super::{Token, TokenFlags, TokenKind};
-use crate::shared::Position;
-use crate::shared::UnitKind;
+use crate::shared::{Position, UnitKind};
 use std::fmt;
 
 impl<'a> Token<'a> {

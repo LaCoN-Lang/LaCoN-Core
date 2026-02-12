@@ -174,7 +174,7 @@ POSITION        | TYPE                                                    | LEXE
 28:7:817        | Operator(Colon)                                         | :                                        |            |           
 28:9:819        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 28:10:820       | Newline                                                 |                                          |            |           
-29:4:824        | Keyword(Type)                                           | type                                     | TRUE       |           
+29:4:824        | Identifier                                              | type                                     | TRUE       |           
 29:8:828        | Operator(Colon)                                         | :                                        |            |           
 29:10:830       | Identifier                                              | solid                                    |            | TRUE      
 29:15:835       | Newline                                                 |                                          |            |           
@@ -348,7 +348,7 @@ POSITION        | TYPE                                                    | LEXE
 55:7:1537       | Operator(Colon)                                         | :                                        |            |           
 55:9:1539       | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 55:10:1540      | Newline                                                 |                                          |            |           
-56:4:1544       | Keyword(Type)                                           | type                                     | TRUE       |           
+56:4:1544       | Identifier                                              | type                                     | TRUE       |           
 56:8:1548       | Operator(Colon)                                         | :                                        |            |           
 56:10:1550      | Identifier                                              | liquid                                   |            | TRUE      
 56:16:1556      | Newline                                                 |                                          |            |           
@@ -559,7 +559,7 @@ POSITION        | TYPE                                                    | LEXE
 81:9:2232       | Operator(Colon)                                         | :                                        |            |           
 81:11:2234      | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 81:12:2235      | Newline                                                 |                                          |            |           
-82:4:2239       | Keyword(Type)                                           | type                                     | TRUE       |           
+82:4:2239       | Identifier                                              | type                                     | TRUE       |           
 82:8:2243       | Operator(Colon)                                         | :                                        |            |           
 82:10:2245      | Identifier                                              | liquid                                   |            | TRUE      
 82:16:2251      | Newline                                                 |                                          |            |           

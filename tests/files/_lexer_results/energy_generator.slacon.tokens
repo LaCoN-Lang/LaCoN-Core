@@ -38,7 +38,7 @@ POSITION        | TYPE                                                    | LEXE
 6:19:152        | Operator(Colon)                                         | :                                        |            |           
 6:21:154        | Syntax(LeftBrace)                                       | {                                        |            | TRUE      
 6:22:155        | Newline                                                 |                                          |            |           
-7:3:158         | Keyword(Type)                                           | type                                     | TRUE       |           
+7:3:158         | Identifier                                              | type                                     | TRUE       |           
 7:7:162         | Operator(QuestionColon)                                 | ?:                                       |            |           
 7:10:165        | Operator(Less)                                          | <                                        |            | TRUE      
 7:11:166        | Identifier                                              | String                                   |            |           
