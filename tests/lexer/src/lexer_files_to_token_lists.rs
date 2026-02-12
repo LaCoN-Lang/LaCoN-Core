@@ -3,11 +3,10 @@ mod lexer_tests {
 	use super::super::{LACON_FILES_DIR, LEXER_RESULTS_DIR};
 	use lacon_core::frontend::lexer::Scanner;
 	use lacon_core::frontend::lexer::TokenFlags;
-	use lacon_core::shared::{CodeReadModes, ErrorStorage, UnitArena, UnitContext};
+	use lacon_core::shared::{ErrorStorage, SourceCodeReadModes, SourceFile, UnitArena, UnitContext};
 	use memory_stats::memory_stats;
 	use std::fs::{self, File};
 	use std::io::{BufWriter, Write};
-	use std::path::Path;
 	use std::time::{Duration, Instant};
 
 	#[test]
@@ -32,23 +31,28 @@ mod lexer_tests {
 			let path = entry.path();
 
 			if let Some(ext) = path.extension().and_then(|s| s.to_str()) {
-				let code_mode = match ext {
-					"llacon" => CodeReadModes::DynamicData,
-					"slacon" => CodeReadModes::StaticData,
-					_ => CodeReadModes::None,
-				};
-
 				if matches!(ext, "lacon" | "llacon" | "slacon") {
+					let source_file = match SourceFile::load(&path) {
+						Ok(sf) => sf,
+						Err(e) => {
+							eprintln!("Ошибка загрузки файла {:?}: {}", path, e);
+							continue;
+						}
+					};
+
+					let code_mode = source_file.code_mode();
 					let mut error_store = ErrorStorage::new();
-					let scan_duration = process_file_optimized(&path, &mut error_store, &ctx, code_mode);
+
+					let scan_duration = process_file_optimized(&source_file, &mut error_store, &ctx);
 
 					total_scan_time += scan_duration;
 					processed_count += 1;
 
 					match code_mode {
-						CodeReadModes::None => processed_count_default += 1,
-						CodeReadModes::DynamicData => processed_count_list += 1,
-						CodeReadModes::StaticData => processed_count_static += 1,
+						Some(SourceCodeReadModes::None) => processed_count_default += 1,
+						Some(SourceCodeReadModes::DynamicData) => processed_count_list += 1,
+						Some(SourceCodeReadModes::StaticData) => processed_count_static += 1,
+						None => processed_count_default += 1,
 					}
 				}
 			}
@@ -69,23 +73,24 @@ mod lexer_tests {
 		assert!(processed_count > 0);
 	}
 
-	fn process_file_optimized(file_path: &Path, error_store: &mut ErrorStorage, ctx: &UnitContext, code_mode: CodeReadModes) -> Duration {
-		let source_bytes = fs::read(file_path).unwrap();
+	fn process_file_optimized(source_file: &SourceFile, error_store: &mut ErrorStorage, ctx: &UnitContext) -> Duration {
+		let source_bytes = source_file.source.as_bytes();
+		let code_mode = source_file.code_mode();
 
-		let mut scanner = Scanner::new(&source_bytes, ctx, error_store, Some(code_mode));
+		let mut scanner = Scanner::new(source_bytes, ctx, error_store, code_mode);
 		let start_scan = Instant::now();
 		let tokens = scanner.scan_tokens();
 		let scan_duration = start_scan.elapsed();
 
-		// 3. Оптимизированная запись (вне замера времени)
-		let output_path = LEXER_RESULTS_DIR.join(format!("{}.tokens", file_path.file_name().unwrap().to_str().unwrap()));
+		let file_name = source_file.name().unwrap_or("unknown");
+		let output_path = LEXER_RESULTS_DIR.join(format!("{}.tokens", file_name));
+
 		let file = File::create(&output_path).unwrap();
-		let mut writer = BufWriter::with_capacity(128 * 1024, file); // Буфер 128КБ
+		let mut writer = BufWriter::with_capacity(128 * 1024, file);
 
 		writeln!(writer, "{:<15} | {:<55} | {:<55} | {:<10} | {:<10}", "POSITION", "TYPE", "LEXEME", "LINE START", "WHITESPACE").unwrap();
 		writeln!(writer, "{}", "-".repeat(170)).unwrap();
 
-		// Используем временный буфер для строк, чтобы не аллоцировать на каждой итерации
 		let mut kind_buf = String::with_capacity(64);
 
 		for token in tokens {
@@ -93,8 +98,6 @@ mod lexer_tests {
 			use std::fmt::Write as _;
 			write!(&mut kind_buf, "{:?}", token.kind).unwrap();
 
-			// Печатаем напрямую в BufWriter, конвертируя байты «на лету» через lossy
-			// Это гораздо быстрее, чем .into_owned()
 			let lexeme_view = token.lexeme.map(|b| String::from_utf8_lossy(b)).unwrap_or_default();
 
 			writeln!(
@@ -109,9 +112,8 @@ mod lexer_tests {
 			.unwrap();
 		}
 
-		// Принудительно сбрасываем буфер на диск
 		writer.flush().unwrap();
 
-		scan_duration // Возвращаем только время работы алгоритма
+		scan_duration
 	}
 }

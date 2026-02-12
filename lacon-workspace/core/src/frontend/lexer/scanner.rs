@@ -1,5 +1,5 @@
 use super::{KeywordKind, SyntaxKind, Token, TokenKind, match_operator};
-use crate::shared::{CodeReadModes, Error, ErrorFlag, ErrorKind, ErrorStorage, LexicalError, Position, UnitContext, UnitKind};
+use crate::shared::{SourceCodeReadModes, Error, ErrorFlag, ErrorKind, ErrorStorage, LexicalError, Position, UnitContext, UnitKind};
 
 const ASCII_START: u128 = 0x7fffffe07fffffe0000000000000000;
 const ASCII_CONTINUE: u128 = 0x7fffffe87fffffe03ff000000000000;
@@ -11,7 +11,7 @@ pub struct Scanner<'src> {
 	context: &'src UnitContext<'src>,
 	errors_storage: &'src mut ErrorStorage,
 	tokens: Vec<Token<'src>>,
-	code_mode: Option<CodeReadModes>,
+	code_mode: Option<SourceCodeReadModes>,
 	start: usize,
 	current: usize,
 	position: Position,
@@ -27,7 +27,7 @@ pub struct Scanner<'src> {
 }
 
 impl<'src> Scanner<'src> {
-	pub fn reset(&mut self, new_source: &'src [u8], code_mode: Option<CodeReadModes>) {
+	pub fn reset(&mut self, new_source: &'src [u8], code_mode: Option<SourceCodeReadModes>) {
 		self.source = new_source;
 		self.code_mode = code_mode;
 		self.start = 0;
@@ -47,7 +47,7 @@ impl<'src> Scanner<'src> {
 		}
 	}
 
-	pub fn new(source: &'src [u8], ctx: &'src UnitContext, errors_storage: &'src mut ErrorStorage, code_mode: Option<CodeReadModes>) -> Self {
+	pub fn new(source: &'src [u8], ctx: &'src UnitContext, errors_storage: &'src mut ErrorStorage, code_mode: Option<SourceCodeReadModes>) -> Self {
 		let start_pos = Position::start();
 
 		Self {
@@ -360,7 +360,7 @@ impl<'src> Scanner<'src> {
 		};
 
 		match &self.code_mode {
-			None | Some(CodeReadModes::None) => TokenKind::Keyword(keyword),
+			None | Some(SourceCodeReadModes::None) => TokenKind::Keyword(keyword),
 			Some(mode) if keyword.in_allowed(mode) => TokenKind::Keyword(keyword),
 			Some(_) => TokenKind::Identifier,
 		}

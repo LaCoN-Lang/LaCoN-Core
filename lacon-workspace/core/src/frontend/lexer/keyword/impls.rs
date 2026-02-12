@@ -1,4 +1,4 @@
-use crate::shared::CodeReadModes;
+use crate::shared::SourceCodeReadModes;
 
 use super::KeywordKind;
 
@@ -139,8 +139,8 @@ impl KeywordKind {
 		}
 	}
 
-	pub fn in_allowed(&self, code_read_mode: &CodeReadModes) -> bool {
-		use CodeReadModes::*;
+	pub fn in_allowed(&self, code_read_mode: &SourceCodeReadModes) -> bool {
+		use SourceCodeReadModes::*;
 		use KeywordKind::*;
 
 		matches!(

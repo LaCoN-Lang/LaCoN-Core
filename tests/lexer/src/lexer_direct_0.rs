@@ -1,40 +1,34 @@
-const FILE_STRINGS_BIG: &str = include_str!("../../files/big.lacon");
-
 #[cfg(test)]
 mod lexer_tests {
-	// use super::super::big_strings::FILE_STRINGS_BIG;
-	use super::FILE_STRINGS_BIG;
 	use lacon_core::frontend::lexer::{Scanner, TokenKind};
-	use lacon_core::shared::{CodeReadModes, ErrorReporter, ErrorStorage, UnitArena, UnitContext};
+	use lacon_core::shared::{ErrorReporter, ErrorStorage, SourceFile, UnitArena, UnitContext};
 	use memory_stats::memory_stats;
+	use std::path::PathBuf;
 	use std::time::Instant;
 
 	#[test]
 	fn lexer_speed_test_full() {
 		let mut error_store = ErrorStorage::new();
-
 		let arena = UnitArena::new();
 		let ctx = UnitContext::new(&arena);
 
-		let source_str = FILE_STRINGS_BIG;
-		let code_mode = Some(CodeReadModes::None);
+		let path = PathBuf::from("../files/big.lacon");
+		let source_file = SourceFile::load(path).unwrap();
+		// let source_file = SourceFile::as_virtual("big.lacon", *super::super::big_strings::FILE_STRINGS_BIG);
+		let code_mode = source_file.code_mode();
 
 		let iterations = 1000;
 		let warmup_iterations = 10;
 
 		let multiple_files = true;
 
-		// Подготавливаем данные как байты
-		let bench_source_string = if multiple_files { source_str.to_string() } else { source_str.repeat(iterations) };
-		let source_bytes: &[u8] = if multiple_files { source_str.as_bytes() } else { bench_source_string.as_bytes() };
+		let bench_source_string = if multiple_files { source_file.source.to_string() } else { source_file.source.repeat(iterations) };
+		let source_bytes: &[u8] = if multiple_files { source_file.source.as_bytes() } else { bench_source_string.as_bytes() };
 
 		let iters_to_run = if multiple_files { iterations } else { 1 };
 
-		// Инициализируем сканер (убедись, что Scanner::new принимает &[u8])
-		// Если Scanner::new все еще принимает &str внутри, он сам сделает .as_bytes()
-		let mut scanner = Scanner::new(source_str.as_bytes(), &ctx, &mut error_store, code_mode);
+		let mut scanner = Scanner::new(source_file.source.as_bytes(), &ctx, &mut error_store, code_mode);
 
-		// Прогрев
 		for _ in 0..warmup_iterations {
 			scanner.reset(source_bytes, code_mode); // Передаем &[u8]
 			let tokens = scanner.scan_tokens();
@@ -59,8 +53,7 @@ mod lexer_tests {
 		let duration = start_time.elapsed();
 		let mem_after = memory_stats().map_or(0, |m| m.physical_mem);
 
-		// Расчеты
-		let total_bytes = source_bytes.len() * iters_to_run;
+		let total_bytes = source_file.size() * iters_to_run;
 		let actual_avg_tokens = total_tokens as f64 / iters_to_run as f64;
 		let duration_secs = duration.as_secs_f64();
 
@@ -108,7 +101,7 @@ mod lexer_tests {
 		println!("========================================");
 		println!("ТЕСТИРОВАНИЕ БАЙТ-ЛЕКСЕРА (u8):");
 		println!("Режим:             {}", if multiple_files { "Множество файлов" } else { "Один гигантский файл" });
-		println!("Длина исходника:   {} байт", format_int(source_bytes.len() as usize));
+		println!("Длина исходника:   {} байт", format_int(source_file.size() as usize));
 		println!("Итераций:          {}", format_int(iters_to_run as usize));
 		println!("----------------------------------------");
 		println!("РЕЗУЛЬТАТЫ:");
