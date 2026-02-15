@@ -1,9 +1,14 @@
+event set(name, signature)
+event on(name = "string", handler = procedure(), priority = 0)
+event trigger(name, args...)
+event listener(target, eventName, handler)
+
 event set("Twice if IsEven", (&a<Int>))
-event on("Twice if IsEven", function(&a) { if (a % 2 === 0) { a *= 2 } } )
+event on("Twice if IsEven", (&a) { if (a % 2 === 0) { a *= 2 } } )
 
 event set("x3 if IsOdd", (&a<Int>))
-event on("x3 if IsOdd", function(&a) { if (a % 2 !== 0) { a *= 3 } } )
-event on("x3 if IsOdd", function(&a) { if (a >= 15 <= 50) { a *= 3 } } )
+event on("x3 if IsOdd", (&a) { if (a % 2 !== 0) { a *= 3 } } )
+event on("x3 if IsOdd", (&a) { if (a >= 15 && a <= 50) { a *= 3 } } )
 
 const b<Int[]> = []
 const loopCount<Int> = 100
@@ -17,14 +22,14 @@ loop loopCount {
 }
 
 const currentUserID<Int> = 0
-currentUserID.AddEventListener("value-change", function(value) => db.userExists(value) ? login(value) : alert("User not found"))
-// OR
-event listener(currentUserID, "value-change", function(value) => db.userExists(value) ? login(value) : alert("User not found"))
-// OR
+currentUserID.AddEventListener("value-change", (value) => db.userExists(value) ? login(value) : alert("User not found"))
+/|\ OR
+event listener(currentUserID, "value-change", (value) => db.userExists(value) ? login(value) : alert("User not found"))
+/|\ OR
 
 event listener(currentUserID, [
-	("value-change", function(value) => db.userExists(value) ? login(value) : alert("User not found")),
-	// Another event listener
-	// Another event listener
-	// Another event listener
+	("value-change", (value) => db.userExists(value) ? login(value) : alert("User not found")),
+	/|\ Another event listener
+	/|\ Another event listener
+	/|\ Another event listener
 ])
