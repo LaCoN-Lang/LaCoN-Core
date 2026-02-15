@@ -52,6 +52,7 @@ impl KeywordKind {
 			b"cont" | b"container" => Some(Self::Container),
 			b"func" | b"function" => Some(Self::Function),
 			b"proc" | b"procedure" => Some(Self::Procedure),
+			b"event" => Some(Self::Event),
 			b"let" | b"var" | b"variable" => Some(Self::Variable),
 			b"const" | b"constant" => Some(Self::Constant),
 			b"entry" => Some(Self::Entry),
@@ -73,6 +74,15 @@ impl KeywordKind {
 			b"action" => Some(Self::Action),
 			b"capability" => Some(Self::Capability),
 			b"may" => Some(Self::May),
+
+			//
+			b"set" => Some(Self::Set),
+			b"get" => Some(Self::Get),
+			b"trigger" => Some(Self::Trigger),
+			b"on" => Some(Self::On),
+			b"unset" => Some(Self::Unset),
+			b"untrigger" => Some(Self::Untrigger),
+			b"unsetall" => Some(Self::UnsetAll),
 
 			// --- Типовая система ---
 			b"type" => Some(Self::Type),
@@ -140,8 +150,8 @@ impl KeywordKind {
 	}
 
 	pub fn in_allowed(&self, code_read_mode: &SourceCodeReadModes) -> bool {
-		use SourceCodeReadModes::*;
 		use KeywordKind::*;
+		use SourceCodeReadModes::*;
 
 		matches!(
 			(code_read_mode, self),

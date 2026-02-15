@@ -56,6 +56,7 @@ pub enum KeywordKind {
 	Callable,  // callable \\ Callable (заменить функции и процедуры на callable)
 	Function,  // function \\ FunctionDecl
 	Procedure, // procedure \\ ProcedureDecl
+	Event,     // event \\ Event
 	Variable,  // var  \\ VariableDecl
 	Constant,  // const\\ ConstantDecl
 	Entry,     // entry \\ Entry
@@ -77,6 +78,15 @@ pub enum KeywordKind {
 	Action,     // action \\ Action
 	Capability, // capability \\ Capability
 	May,        // may \\ May
+
+	//
+	Set,
+	Get,
+	Trigger,
+	On,
+	Unset,
+	Untrigger,
+	UnsetAll,
 
 	// ─────────────────────────────────────────────
 	// Типовая система

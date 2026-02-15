@@ -1,0 +1,30 @@
+event set("Twice if IsEven", (&a<Int>))
+event on("Twice if IsEven", function(&a) { if (a % 2 === 0) { a *= 2 } } )
+
+event set("x3 if IsOdd", (&a<Int>))
+event on("x3 if IsOdd", function(&a) { if (a % 2 !== 0) { a *= 3 } } )
+event on("x3 if IsOdd", function(&a) { if (a >= 15 <= 50) { a *= 3 } } )
+
+const b<Int[]> = []
+const loopCount<Int> = 100
+
+loop loopCount {
+	let c = _index
+	event trigger("Twice if IsEven", &c)
+	event trigger("x3 if IsOdd", &c)
+
+	b.insert(c)
+}
+
+const currentUserID<Int> = 0
+currentUserID.AddEventListener("value-change", function(value) => db.userExists(value) ? login(value) : alert("User not found"))
+// OR
+event listener(currentUserID, "value-change", function(value) => db.userExists(value) ? login(value) : alert("User not found"))
+// OR
+
+event listener(currentUserID, [
+	("value-change", function(value) => db.userExists(value) ? login(value) : alert("User not found")),
+	// Another event listener
+	// Another event listener
+	// Another event listener
+])
