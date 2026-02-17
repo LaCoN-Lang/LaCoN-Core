@@ -46,6 +46,7 @@ impl KeywordKind {
 			b"coroutine" => Some(Self::Coroutine),
 
 			// --- Объявления и Структура ---
+			b"declare" => Some(Self::Declare),
 			b"class" => Some(Self::Class),
 			b"interface" => Some(Self::Interface),
 			b"enum" => Some(Self::Enum),

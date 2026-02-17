@@ -1,0 +1,34 @@
+declare const archive: Dictionary<UInt64 as Hex, Dictionary<_, Any>>
+/*
+Dictionary → объявляем словарь
+	UInt64 as Hex → ключи словаря должны быть только положительными целыми числами в hex-формате литералов
+	Dictionary → объявление вложенного словаря
+		_ → wildcard обозначение ключа для возможности использовать идентификаторы (по умолчанию, но если нужно указать тип значения ключа — необходимо указывать и «_»)
+		Any → значение ключа может быть любого типа
+*/
+
+loop 1024 as i {
+	archive.set(i, {
+		code-point: i as Hex
+		html-entities: {
+			hex: format("&#x{:X};", i)
+			dec: format("&{:d};", i)
+		}
+	})
+}
+
+/|\ ИЛИ
+loop 0x0..0x400 as i {
+	archive.set(i, {
+		code-point: i
+		html-entities: {
+			hex: format("&#x{:X};", i)
+			dec: format("&{:d};", i)
+		}
+	})
+}
+
+let cyrillic_capital_letter_ie_with_grave = archive[0x400] /* 1024 */
+let hex-entity = cyrillic_capital_letter_ie_with_grave.html-entities.hex
+
+print('Hex entity of character «${to_char(0x400)}» is «${hex-entity}»')

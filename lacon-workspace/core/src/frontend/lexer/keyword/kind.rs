@@ -49,6 +49,7 @@ pub enum KeywordKind {
 	// ─────────────────────────────────────────────
 	// Объявления и структура программы
 	// ─────────────────────────────────────────────
+	Declare,   // declare \\ Declaration
 	Class,     // class \\ ClassDecl
 	Interface, // interface \\ InterfaceDecl
 	Enum,      // enum \\ EnumDecl
