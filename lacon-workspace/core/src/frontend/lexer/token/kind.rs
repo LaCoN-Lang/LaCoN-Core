@@ -25,18 +25,10 @@ pub enum TokenKind {
 
 	Underscore, // _  \\ Wildcard
 
-	//
-	LeftArrow,
-	RightArrow,
-	UpArrow,
-	DownArrow,
-	LeftDoubleArrow,
-	RightDoubleArrow,
-	UpDoubleArrow,
-	DownDoubleArrow,
+	Expression, // \\ Some / Some * Soma + Some...
 
 	// ─────────────────────────────────────────────
-	// Литералы и идентификаторы
+	// Literals and identifiers
 	// ─────────────────────────────────────────────
 	Identifier,             // name \\ Identifier
 	Keyword(KeywordKind),   // let \\ Keyword
@@ -45,15 +37,11 @@ pub enum TokenKind {
 	Number,                 // 123  \\ NumericLiteral
 	String,                 // " "  \\ StringLiteral
 	Placeholder,            // _    \\ Placeholder / PartialApply
+	Unit(UnitKind),
 
 	// ─────────────────────────────────────────────
-	// Комментарии
+	// Comments
 	// ─────────────────────────────────────────────
 	LineComment,  // //   \\ LineComment
 	BlockComment, // /* */\\ BlockComment
-	DocComment,   // ///  \\ DocumentationComment
-
-	Expression, // \\ Выражение: Some / Some * Soma + Some...
-
-	Unit(UnitKind),
 }

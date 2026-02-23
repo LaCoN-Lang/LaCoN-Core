@@ -137,6 +137,12 @@ impl KeywordKind {
 			b"or" => Some(Self::Or),
 			b"not" => Some(Self::Not),
 
+			// --- Флаги объявлений ---
+			b"sorted" => Some(Self::Sorted),
+			b"unsorted" => Some(Self::Unsorted),
+			b"unique" => Some(Self::Unique),
+			b"notunique" => Some(Self::NotUnique),
+
 			// --- Константы и Маркеры ---
 			b"infinity" | b"Infinity" => Some(Self::NumberInfinity),
 			b"delta" => Some(Self::Delta),
