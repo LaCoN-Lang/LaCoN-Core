@@ -30,7 +30,7 @@ mod lexer_tests {
 		let mut scanner = Scanner::new(source_file.source.as_bytes(), &ctx, &mut error_store, code_mode);
 
 		for _ in 0..warmup_iterations {
-			scanner.reset(source_bytes, code_mode); // Передаем &[u8]
+			scanner.reset(source_bytes, code_mode);
 			let tokens = scanner.scan_tokens();
 			std::hint::black_box(tokens);
 		}

@@ -1,6 +1,29 @@
-const a<String> = 'Just string'
-const b<String> = "interpolated ${String.as_ref()}"
-let c = 18kg
+const a: String = "Just string"
+let c: Mass = 18kg
 c++
 c *= c × (c ÷ 2)
-local const d<Expr> = 10kJ / delta 2s
+local const d: Expr = 10kJ / delta 2s
+
+const something = {
+	spread("?::one|two|three") as (index, label) {
+		yield "entry_number_${label}": {
+			number: index,
+		}
+	}
+}
+
+/|\ ↓ Результат
+
+const something = {
+	entry_number_one: {
+		number: 1
+	},
+	entry_number_two: {
+		number: 2
+	},
+	entry_number_three: {
+		number: 3
+	},
+}
+
+

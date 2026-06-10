@@ -117,25 +117,25 @@ spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni'], [1FBC, 1FB3]) as let (l
 }
 
 let что-то-там = 20_000μW
-let speed<Speed> = 278ft/s
-let time<Time> = 25μs
-let length<Length> = 25pc
-let degree<Degree> = 45°
-const generator-power<ElectricPower> = 15kW
-const vector-shield-dimension<Dimension> = 2D
-const fuel-energy<Energy> = 1.5MJ
-const temperature<Temperature> = 25°C
-const temperature<Temperature> = 25K
-const resistance<ElectricResistance> = 10_000MΩ
-const resistance<ElectricResistance> = 10000kΩ
-const field-area<Area> = 73.14m2
-const cube-volume<Volume> = 15m3
-const vessel-volume<Volume> = 0.1kL
-const number2<Number> = 0b1011110011
-const number8<Number> = 0o071
-const number16<Number> = 0x348FABD1
-const number32<Number> = 0tL1FF
-const number32<Number> = 0cZYX
+let speed: Velocity = 278ft/s
+let time: Time = 25μs
+let length: Length = 25pc
+let degree: Degree = 45°
+const generator-power: ElectricPower = 15kW
+const vector-shield-dimension: Dimension = 2D
+const fuel-energy: Energy = 1.5MJ
+const temperature: Temperature = 25°C
+const temperature: Temperature = 25K
+const resistance: ElectricResistance = 10_000MΩ
+const resistance: ElectricResistance = 10000kΩ
+const field-area: Area = 73.14m2
+const cube-volume: Volume = 15m3
+const vessel-volume: Volume = 0.1kL
+const number2: Number = 0b1011110011
+const number8: Number = 0o071
+const number16: Number = 0x348FABD1
+const number32: Number = 0tL1FF
+const number32: Number = 0cZYX
 
 const abcdefg = Infinitykg
 const hijklmn = -Infinitykg
@@ -177,3 +177,37 @@ text-data = """
 
 
 const uarr = sorted unique []
+
+
+spread(
+	["king", "queen", "rook", "bishop", "knight", "pawn", "equihopper", "knight_queen", "knight_rook", "knight_bishop", "ferz", "alfil"],
+	[["k"], ["q"], ["r"], ["b"], ["nt"], ["p"], ["eq"], ["nq"], ["nr"], ["nb"], ["f"], ["a"]]) as (i, pieceType, recipe) {
+		local starter = i >= 6 ? 0x2654 : 0x1FA48
+		local currentCodePoint = starter + (i - 1)
+
+		yield "chess_n_piece_${piceType}_white": {
+			codePoint: format("{:04X}", currentCodePoint),
+			options: { useLetterLocale: "_white$(remove)", applyFontOnRecipeField: false },
+			symbol: { beforeType: "white", font: "Noto Sans Symbols 2" },
+			recipePrefixes: ["chw "]
+			recipe: recipe,
+		}
+}
+
+/|\ Or?
+
+spread(
+	"?::king|queen|rook|bishop|knight|pawn|equihopper|knight_queen|knight_rook|knight_bishop|ferz|alfil",
+	"?::k|q|r|b|nt|p|eq|nq|nr|nb|f|a") as (i, pieceType, recipe) {
+		local starter = i >= 6 ? 0x2654 : 0x1FA48
+		local currentCodePoint = starter + (i - 1)
+
+		yield "chess_n_piece_${piceType}_white": {
+			codePoint: format("{:04X}", currentCodePoint),
+			options: { useLetterLocale: "_white$(remove)", applyFontOnRecipeField: false },
+			symbol: { beforeType: "white", font: "Noto Sans Symbols 2" },
+			recipePrefixes: ["chw "]
+			recipe: recipe,
+		}
+}
+

@@ -3,7 +3,7 @@ entity-name: <String>
 entity-description?: <String>
 energy<Dictionary>: {
 	power-reproduction: <Power>
-	fuel?<Dictionary>: {
+	fuel<Dictionary>?: {
 		type?: <String> of ("solid" | "liquid" | "gas")
 		consumption<Expr>?: <Mass> ÷ delta <Time>
 		emission<Dictionary[]>?: [
